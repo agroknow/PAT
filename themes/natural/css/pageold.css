@@ -1,0 +1,1190 @@
+/* -------------------------------------------------------------------- */
+/*                                                                      */
+/*    main ScienceTweets page template and some generic format/components		*/
+/*    (previously  this was several seperate stylesheets)	        */
+/*                                                                      */
+/* -------------------------------------------------------------------- */
+
+/* ----- MISCELLANEOUS SITE-WIDE ADJUSTMENTS ------------------------------------- */
+
+/* remove padding and margin from all elements and then reset for x-browser sameness */
+* 
+{
+	padding:0;
+	margin:0;
+}
+
+/* rule above adversely affects SELECTS in FireFox - this re-instates the browser default rule  */
+select > option
+{
+	padding-right: 5px;
+	padding-left: 3px;
+}
+
+img , object
+{
+	border-width: 0px;
+	vertical-align: bottom; 		/* override browser default 'baseline' which leaves space beneath the image ( display: block; works too) */
+}
+
+a:hover 	/* was: a, a:hover (changed 08/2007) */	
+{ 
+	text-decoration: underline;
+} 
+
+/* NOTE: assistiveText is deprecated */
+.assistiveText, .assistive-text			/* class applied to screen-reader messages and similar */
+{ 
+	display: none; 	
+}
+
+
+/* ----- MAIN PAGE TEMPLATE ---------------------------------------------------- */
+
+body 
+{
+	background-color: #81BEED;
+	background-image: url(../images/bg-body.gif);
+	background-repeat: repeat-x;
+	text-align: center;			/* needed for IE5 (see #page-container) - but margin:auto would be preferred */
+}
+A:visited { color:#E87400;}
+#page-container 				/* encloses ALL content */
+{
+	position: relative;			/* so bottom image can be absolutely positioned within container */
+	width: 762px;
+	background-color: #FFFFFF;
+	border-right: 1px solid #737173;
+	border-left: 1px solid #737173;
+	margin: auto;
+	text-align: left;			/* needed for IE5 */
+}
+#page-header 
+{
+	background-image: url(../images/bg-menubar-shadow.gif);	
+	background-position: bottom;
+	background-repeat: repeat-x;
+	padding-bottom: 5px;			/* make space for site menubar shadow */
+}
+#page-body 					/* encloses everything between header and footer, including breadcrumbs */
+{
+	padding: 10px 0px 10px 15px;
+	position: relative;			/* so #page-image-bottom can be absolutely positioned */
+	/* z-index: 0;				not sure why this is needed - but without it the page-image-bottom disappears [ not true, but might be if page-body had background image?? ] */
+}
+#page-footer 
+{
+	clear:both;
+	padding: 20px 0px;
+	/* !!! CHECK THIS - remove or reinstate as appropriate */
+	/* display: inline-block;		why??? - miks - 08/2007 */
+	/* width: 100%;				fixes dodgy rendering in Safari - but was that due to the rule above?? */
+}
+
+
+
+/* ----- LEGITIMATE MICROSITE CONTAINER ------------------------------ */
+div#container
+{
+	/* padding: 5px 15px 15px 15px; */
+	margin-bottom: -10px;
+	margin-left: -15px;
+}
+/* do we need to stop H1 floating in div#container ??? */
+
+
+
+/* ----- STANDARD HEADER ELEMENTS ------------------------------------ */
+
+/* ----- logo -------------------- */
+img#page-logo 
+{
+	margin: 5px 0px 4px 15px;
+}
+
+/* ----- decorative images ----------- */
+.page-image
+{
+	position: absolute;
+	/* display: block;		??? show page imagery (hidden for NN4) */
+	right: 0;
+	top: 0;				/* ??? "bottom drape" will need different */
+}
+
+/* ----- decorative image footprints ----- */
+/* width/height necessary in case images break (IE fine, but FF breaks layout) */
+#page-image-top-1
+{
+	z-index: 20; 
+	/* width: 300px;
+	height: 128px; */
+}
+#page-image-top-2
+{
+	z-index: 5;
+	/* width: 183px;
+	height: 167px; */
+}
+#page-image-top-3
+{
+	z-index:20; 
+	/* width: 183px;
+	height: 167px; */
+}
+#page-image-top-4
+{
+	z-index: 0; 
+	/* width: 93px;
+	height: 500px; */
+}
+
+
+/*
+if no longer specfying dimensions, do we still need all of these above?
+poss yes, because need to be careful of over-running content and menus?
+*/
+
+#page-image-flash		/* id for embed tag written into page-header by SWFobject script */
+{
+	padding: 0;
+	margin: 0;
+}
+
+/* ----- decorative image - bottom ------- */
+#page-image-bottom 
+{
+	top: auto;		/* ignore rule attached to class page-image, which is appropriate for header images only */
+	bottom: -20px;		/* so aligned with top of footer menubar (div#footer has 20px top padding) */
+	left: 0px;
+	z-index: 1;
+}
+
+
+/* ----- natureplus login links iframe ------- */
+#page-np-login
+{
+	border: 0px solid red;
+	width: 320px;
+	height: 50px;
+	position: absolute;
+	top: 70px;
+	left: 230px;
+	overflow: hidden;
+}
+
+
+/* ---- SITE NAVIGATION MENUBARS ----------------------------------------------- */
+
+/* ----- site navigation menubar LINK styles ---------- */
+
+/* ----- DEPRECATED hover styles ----- */
+.menubar .aboutUs a:hover 		{ color: #286DA8; }
+.menubar .businessCentre a:hover 	{ color: #000177; }
+.menubar .home a:hover 			{ color: #286DA8; }
+.menubar .buyOnline a:hover 		{ color: #E84300; }
+.menubar .education a:hover 		{ color: #AF5200; }
+.menubar .kidsOnly a:hover 		{ color: #6E3DDD; }
+.menubar .natureOnline a:hover 		{ color: #228900; }
+.menubar .researchCuration a:hover 	{ color: #015B28; }
+.menubar .takePart a:hover 		{ color: #0085BC; }
+.menubar .tring a:hover 		{ color: #232428; }
+.menubar .visitUs a:hover 		{ color: #B40000; }
+
+/* ----- hover styles ----- */
+/* NOTE - LI is for extra specificity - otherwise cascasde prevents correct operation on nature-plus pages, which may pull in a section.css but remove highlight from the corresponding menu item, unless hovered - miks - 08/2009 */
+/* BUT 	- extra specificity is only necessary because :link, :visit and :active used in section.css selectors - could remove those for more economical CSS, if safe - miks - 08/2009 */
+.menubar li.about-us a:hover 		{ color: #286DA8; }
+.menubar li.business-centre a:hover 	{ color: #000177; }
+.menubar li.home a:hover 		{ color: #286DA8; }
+.menubar li.buy-online a:hover 		{ color: #E84300; }
+.menubar li.education a:hover 		{ color: #AF5200; }
+.menubar li.kids-only a:hover 		{ color: #6E3DDD; }
+.menubar li.nature-online a:hover 	{ color: #228900; }
+.menubar li.research-curation a:hover 	{ color: #015B28; }
+.menubar li.take-part a:hover 		{ color: #0085BC; }
+.menubar li.tring a:hover 		{ color: #232428; }
+.menubar li.visit-us a:hover 		{ color: #B40000; }
+
+/* ----- DEPRECATED hover styles for top-menu item arrows ----- */
+#nav-site-supplementary li.aboutUs a:hover 		{ background-image: url(about-us/images/circle-right.gif); }
+#nav-site-supplementary li.researchCuration a:hover 	{ background-image: url(research-curation/images/circle-right.gif); }
+#nav-site-supplementary li.businessCentre a:hover 	{ background-image: url(business-centre/images/circle-right.gif); }
+
+/* ----- hover styles for top-menu item arrows ----- */
+#nav-site-supplementary li.about-us a:hover 		{ background-image: url(about-us/images/circle-right.gif); }
+#nav-site-supplementary li.research-curation a:hover 	{ background-image: url(research-curation/images/circle-right.gif); }
+#nav-site-supplementary li.business-centre a:hover 	{ background-image: url(business-centre/images/circle-right.gif); }
+
+
+/* ----- 'on' styles ----- */
+/* IN SECTIONAL STYLESHETS */
+
+
+/* ----- GENERIC site navigation menubar styles ---------- */
+div.menubar 
+{   
+	overflow: auto;		/* MACs need this - without it, in safari the menu bg collapses, and in IE5 content migrates out of the container! */	
+	width: 100%;
+	color: #747474;
+	background-color:#FFF;
+	background-image: url(../images/bg-menubar-bar.gif);
+	background-repeat: repeat-x;
+	border-bottom: 1px solid #DADADA;
+	font-weight: bold;
+}
+.menubar ul li 
+{
+	float: left;			/* would display:inline be better than floating? */
+	display: block;
+	padding-right: 15px;
+	border-right: 1px solid #CACACA;
+	list-style: none;
+}
+.menubar ul 
+{
+	display: inline; 
+	margin: 0px;
+}
+.menubar a:link, .menubar a:active, .menubar a:visited 
+{
+	color: #747474;
+	text-decoration: none;
+	/* white-space: nowrap; */
+}
+
+.menubar a:hover 	 	/* default hover style for menubar links - eg: footer nav gets this as has no more specific style applied  */
+{
+	color: #377FBD;
+	text-decoration:underline;
+}
+
+
+/* ----- SPECIFIC site navigation menubar styles ----------- */
+
+/* ----- top menubar --------------- */
+div#nav-site-supplementary 
+{
+	position: absolute;
+	top: 18px;
+	right: 0;
+	z-index: 25;
+	width: 440px;
+	background-color: transparent;
+	background-image: none;
+	border-bottom-width: 0px;		/* remove bottom border (from menubar class) */
+	overflow: visible;			/* override rule from .menubar class - or IE8 adds a scrollbar - miks - 06/2009 */
+}
+#nav-site-supplementary li 
+{
+	white-space: nowrap;
+	padding: 0px 5px 0px 5px;
+	margin: 2px 0px;
+	vertical-align: middle;
+}
+#nav-site-supplementary li a 
+{
+	display: block;
+	background-image: url(generic/images/circle-right.gif);
+	background-position: center right;
+	background-repeat: no-repeat;
+	padding-right: 15px;	
+
+}
+
+#search-site 				/* top menubar search LI */
+{
+	border-right: none;
+ 	vertical-align: middle;
+}
+#search-site-box			/* top menubar Search input */ 
+{
+	height: 1.5em;
+	border: 1px solid #DBDADA;
+	margin: 0px 3px;		/* seperate box from 'Search' label and container */
+	font-size: 0.75em;
+	width: 74px;			/* without this Mac FireFox wraps search LI - miks - 06/2009 */
+}
+#search-site-go, .searchGo 		/* is .searchGo deprecated ??? - miks - 08/2007 */
+{
+ 	vertical-align: middle;	
+}
+#search-site label
+{
+	float: none;
+	display: inline;	/* prevent conflict with style in forms-2007.css - miks - May 2007 */
+	width: auto;
+	font-weight: bold;
+	padding: 0;
+	line-height: 1.2em;	/* or rule in forms[-2007].css moves text downwards */
+}
+#search-site form, #search-site label, #search-site input
+{
+	vertical-align: top;
+}
+#search-site fieldset
+{
+	border-width: 0px;	/* remove default border */
+}
+
+/* ----- main menubar --------------- */
+#nav-site 
+{
+	clear: both;
+	position: relative;
+	z-index: 10;
+	background-image: url(../images/bg-menubar-bar.gif); 
+	padding: 4px 0px 3px 0px;
+	border-bottom: 1px solid #BFBFBF;
+}
+#nav-site ul
+{
+	display:block;
+	z-index:25;
+	width:820px;
+}
+#nav-site li 
+{
+	display:block;
+	padding: 0px 9px;	/* was 12px - changed to 10 when tring added, then 9 due to menu wrapping on Macs */
+}
+
+/* ----- footer menubar --------------- */
+#nav-footer 
+{
+	font-size: 0.8em;
+}
+div#nav-footer 
+{
+	font-weight: normal;
+	padding: 3px 0px 4px 0px;
+	margin: 0px;
+}
+div#nav-footer ul li 
+{
+	padding: 0px 10px;
+}
+div#nav-footer ul li#page-copyright 
+{
+	float: right;
+	padding-right:40px; 	
+	border-right:none;
+}
+#nav-footer-menu li.first-item 		/* no other way to centre menu without additional unnecessary div */
+{
+	padding-left:40px;
+}
+
+#copyright {float:left;margin-left: 10px;}
+#logo {float:right; margin-top:-40px; margin-right:10px;}
+#description {margin:0px 220px 0px 270px;}
+
+/* ----- bread crumbs --------------- */
+#nav-breadcrumbs 
+{
+	font-size: 0.9em; 
+	color: #000;
+	padding: 0 0px 8px 0;
+	margin-right: 15px;
+}
+#nav-breadcrumbs a:link, #nav-breadcrumbs a:active, #nav-breadcrumbs a:visited 
+{
+	color: #000;
+	text-decoration : none;
+}
+#nav-breadcrumbs ul 
+{
+	display:inline;
+	padding: 0px 0px 0px 2px;
+	margin:0px;
+}
+#nav-breadcrumbs ul li 
+{
+	display:inline;
+	list-style:none;
+}
+
+
+
+
+/* -------------------------------------------------------------------- */
+/*       LEFT-HAND NAV STYLES  (formerly nav-content.css)		*/
+/* -------------------------------------------------------------------- */
+
+/* ----- NOTES ---------------------------------------- 
+
+
+1) 	navigation 'header' and 'footer' curves
+	#nav-content - the navigation container DIV, implements the nav 'header' via padding and bg-image
+	ul#nav-content-level1 - the level 1 menu UL, implements the nav 'footer' via padding and bg-image
+2) 	NOTE: Rules for menu items (LIs and As) are mainly defined for the CONTEXT of particular menu (UL) IDs.  Therefore they are usually matched by menu items in all menus below the level of the definition, but may be over-written for successively deeper levels (eg - notes 3 & 4)
+3) 	menu item seperators - are first applied to the top of LIs, then at level 2 and below to the bottom, to avoid 'doubling' of borders with level 1 UL (is this really necessary? I certainly thought so originally... - miks)
+4)	menu item text indents - are made successively larger for each nested menu
+5)	menu items of class current-item should use an anchor rather than a link
+	menu items of class current-items should use an anchor if the menu item does not itself have an associated HREF (but can that even happen...?)
+6)	background colours for levels 3-4 are similar across all sections, but defined in sectional stylesheets to allow for the possiblity of section-specific changes later
+
+CHECK - there seems to be no down-arrow on a level-1 current-items link - 
+this seems to be because there is no generic rule defined to put in the
+white arrow for that in this stylesheet, so instead, the sectional down 
+arrow goes on the sectional colour and is therefore not visible.
+
+DO - need to make links extent entire width of nav div, but this needs 
+to be done with individual pixel widths for each nested level (but this 
+already works correctly in FF anyway... - miks - 08/2008 
+
+---------------------------------------------------- */
+
+/* ----- content menus container div (see note 1) ----- */
+#nav-content 
+{
+	float: left;
+	width: 170px;
+	/* background-position: top right;
+	background-repeat: no-repeat;
+	padding-top: 15px; 			REMOVED 02/2008 - miks */
+	margin-right: 15px;
+	font-weight: bold;
+}
+
+/* ----- generic rules for all content menu HTML elements ----- */
+#nav-content ul 
+{
+	padding: 0px;
+	margin: 0px;
+}
+#nav-content ul li 
+{
+	display: block;
+	width: 100%;
+    	vertical-align: top;						/* fixes IE5 additional space issue */
+	list-style: none;
+}
+#nav-content ul li a 
+{
+	display: block;
+	/* width: 100%;							needed for IE - fixes width of link, but extends width of containing div... */
+	text-decoration: none;
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+	padding: 3px 3px 3px 15px;
+}
+#nav-content ul li a:hover
+{	
+	background-color: #FFFFFF;
+	text-decoration: none;
+}
+
+/* ----- nav 'header' - rule added 02/2008 so KO section can implement background on div#nav-content - miks ----- */ 
+/* firstItem is DEPRECATED */
+#nav-content ul#nav-content-level1 li.firstItem, 
+#nav-content ul#nav-content-level1 li.first-item
+{
+	padding-top: 16px;
+	background-position: top right;
+}
+
+/* ----- additional specific styles for level 1 menu to implement nav 'footer' (see note 1) ----- */
+ul#nav-content-level1
+{
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	padding-bottom: 15px;
+	border-top: 1px solid #FFF; 					/* top seperator */
+}
+
+/* ----- menu item seperators (see note 3) ----- */
+ul#nav-content-level1 li 
+{
+	border-bottom: 1px solid #FFF; 					/* seperate list items in level 1 */
+}
+ul#nav-content-level2 li
+{
+	border-width: 0px;						/* remove bottom border added by previous rule */
+	border-top: 1px solid #FFF;					/* seperate list items in level2 and below */
+}
+
+/* ----- menu-item indents (see note 4) ----- */
+ul#nav-content-level2 li a
+{
+	background-position: 15px 50%;  
+	padding: 3px 3px 3px 25px;
+}
+ul#nav-content-level3 li a
+{
+	background-position: 25px 50%;  
+	padding: 3px 3px 3px 35px;
+}
+ul#nav-content-level4 li a
+{
+	background-position: 35px 50%;  
+	padding: 3px 3px 3px 45px;
+}
+
+/* ----- level 1 collapsed style (level 2 collapsed is sectional) ----- */
+#nav-content li a.collapsed
+{
+	background-image: url(generic/images/arrow-left.gif);
+}
+
+/* ----- level 1 current-itemS style (all lower levels use sectional arrow - this has generic white arrow) ----- */
+#nav-content ul#nav-content-level1 li a.current-items
+{
+	background-image: url(generic/images/arrow-down.gif);
+}
+
+
+/* -------- END LEFT-HAND NAVIGATION ---------------------------------- */
+
+
+/* -------------------------------------------------------------------- */
+/*       GENERIC STYLES 			*/
+/* -------------------------------------------------------------------- */
+
+/* ----- TYPOGRAPHICS ------------------------------------------------- */
+body					{ font-size: 76%; }
+body, textarea 				{ font-family: Arial, Sans-Serif; }
+p, input, select, textarea, ol, ul, li  { font-size: 1.0em; }
+.smaller 				{ font-size: 90%; }
+
+h1	{ font-size: 1.6em; }
+h2	{ font-size: 1.4em; }
+h3	{ font-size: 1.4em; }
+h4	{ font-size: 1.2em; }
+h5	{ font-size: 1.0em; } 	/* is this correct - and if so, is it being applied ??? shouldn't it be same as P??? */
+h6	{ font-size: 1.0em; }	
+
+h1 span.subtitle
+{
+    display: block;
+    font-size: 0.8em;
+}
+
+/* ----- PAGE LAYOUT -------------------------------------------------- */
+
+.column
+{
+	float: left; 
+	position: relative;	/* so can have z-index */
+	z-index: 2;		/* so visible above #page-image-bottom */
+}
+
+.column_resources
+{
+	float: left; 
+	position: relative;	/* so can have z-index */
+	z-index: 2;		/* so visible above #page-image-bottom */
+}
+
+.panel
+{
+	margin-bottom: 15px; 
+	background-color: #F2F2F2;
+	line-height: 1.2em;			/* explicit line-height fixes peekaboo bug - www.positioniseverything.net */			
+	clear: both; 				/* because very occasionally panel follows floated content (eg - forums ) */
+
+}
+
+
+/* ----- PANEL- and IMAGE- FOOTERS ------------------------------------------------- */
+div.panel-footer, div.image-footer
+{
+	background-position: bottom left;
+	padding: 4px 5px 4px 5px;
+}
+div.panel-footer
+{
+	margin-top: -1px; 			/* conceal last panel-content border */
+}
+
+div.in-panel div.panel-footer
+{
+	background-image: none;			/* remove background curve for in-panel ("what's on") promos */
+}
+div.panel-footer a, div.image-footer a
+{
+	color: #fff;
+	font-weight: bold;
+	display: block; 
+	text-align: right;
+}
+
+
+
+/* ----- FIX DODGY FLOATING BEHAVIOUR -------------------------------------------- */
+/* ----- CLEARFIX - see: www.positioniseverything.net ---------------------------- */
+
+/* required to force correct enclosure of floated content in ff */
+.panel-content:after, .clearfix:after, div.panel-intro:after, ul.index li:after, 
+div#page-body:after, div.tab-content:after, div.index-item:after, div.recordset-navigation:after
+{
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+
+
+
+/* -------------------------------------------------------------------- */
+/*   GENERIC PAGE COMPONENTS						*/
+/* -------------------------------------------------------------------- */
+
+/* ----- "TEXT-ONLY" MENU  (ie - plain text, pipe-seperated) ----- */
+
+/* ----- centered version ----- */
+div.textmenu
+{
+	/* margin-top: 10px;		why -top?? - this looks wrong - should be bottom */
+	margin-bottom: 10px;
+}
+div.textmenu ul
+{
+	padding:  0;	
+	margin: 0;
+	list-style-type: none;
+	width: 100%;	/* [is this still necessary if not using line below??] can cause probs in IE - eg - British Fleas search form - hence hack on next line - FIX THIS - ideally remove need for width:100% ?? - miks - June 2007 */
+	/* _width: 90%;	IE HACK - but can't do this generically - causes other probs... although maybe do it do DIV instead...? */
+	text-align: center;
+}
+div.textmenu ul li 
+{ 
+	display: inline; 
+	white-space: nowrap;
+	background: none;
+	padding: 0px;
+}
+div.textmenu ul li a
+{
+	text-decoration: none;
+	padding: 0 5px;
+	border-right: 1px solid #747474;
+}
+div.textmenu ul li a:hover
+{
+	text-decoration: underline;
+}
+div.textmenu ul li.first-item a
+{
+	padding-left: 0px;
+}
+div.textmenu ul li.last-item  a
+{
+	border-right-width: 0px;
+	padding-right: 0px;
+}
+
+/* CHECK THIS WORKS OK
+div.textmenu ul li.current-item a
+{
+	color: #000;
+}
+div.textmenu ul li.current-item a:hover
+{
+	text-decoration: none;		
+}
+*/
+
+
+/* ----- NEW GENERIC MENU - 06/2008 ----------------------------- */
+/* AMALGAMATE WITH RULES ABOVE and deprecate "textmenu" ?? */
+/* or maybe just call this one something diff...? ("menu" too general - logically should be applied to main menubars and l/h nav too) */
+/* ----- centered?? version ----- */
+div.menu
+{
+	margin: 0 0 10px 10px;		/* right-margin not defined - LI has right-margin instead */
+}
+div.menu ul
+{
+	padding:  0;
+	margin: 0;
+	list-style-type: none;
+	line-height: 2em;		/* to provide space between rows of LIs when they are wrapped - not the best method, but x-browser issues... */
+	/* text-align: center;	this should centre the menu, but doesn't in this version - WHY ?? */
+}
+#utilities div.menu ul
+{
+	padding-left: 0px;		/* adjustment for DIV#utilities - not sure why this is even necessary, as ideally it shouldn't be... - prob something to do with interacting rules for UL/LI paddings/margins - miks - 02/20009 */
+}
+div.menu ul li, #utilities div.menu ul li
+{ 
+	/* display: inline-block;	BEST - fine for FF, and allows addition of margin-bottom to LI - but not good for IE (hence need to use line-height above) */
+	display: inline;		/* acceptable for IE - but have to use line-height to provide space between LI rows */
+	background: none;
+	padding:  0;	
+	background-image: none;
+	padding-left: 0px;
+	padding-right: 10px;		/* default - appropriate for left-aligned (5px l/r for centred) */
+	padding-bottom: 5px;
+}
+div.menu ul li a
+{
+	text-decoration: none;
+	white-space: nowrap;
+}
+div.menu ul li a:hover
+{
+	text-decoration: underline;
+}
+div.menu ul li.first-item a
+{
+	padding-left: 0px;
+}
+div.menu ul li.last-item  a
+{
+	border-right-width: 0px;
+	padding-right: 0px;
+}
+div.menu p, div.menu ul		/* so menu may be preceded by introductory text */
+{
+	display: inline;
+}
+
+/* create space between successive rows of LIs when they are wrapped */
+/* 
+ideally, use display:inline-block on the LIs (above) so can give them margin-bottom - but no good for IE6/7 - so have to use display:inline (above) and to the following instead... sigh... - miks - 02/2009 
+*/
+div.menu ul
+{
+	line-height: 2em;
+}
+div.menu img
+{
+	vertical-align: middle;	
+}
+
+/* ----- modifications to styles (mainly widths) for rules from non-layout stylesheets ----- */
+/* 
+The rules in this stylesheet over-rite rules in other stylesheets top-level stylesheets.
+This stylesheet will be included into new layout stylesheets implementing wider widths, so 
+that the original stylesheets can serve both original width content and newer content.
+If the old widths are ever completely redundant, at least for content using /css-2007 rather 
+than /css, we can re-incorporate these rules back into the main stylesheets, and remove this one.
+
+!important - ensures these rules take precedence.
+*/
+
+/* ----- page.css ------ */
+div#page-container { width: 970px !important; }	
+div#nav-content { margin-bottom: 20px; width: 190px !important; }
+
+/* ----- utilities.css ----- */
+div#utilities  { width: 230px !important; }
+
+/* ----- content.css ------- */
+h1 { width: 735px !important;}	
+
+/* ----- database.css ----- */
+div.column div#utilities 	{ width: 100% !important; }
+
+/* column.css*/
+#column-c {width:695px;}
+#column-a {width:375px; margin-right: 15px;}
+#column-b {width:345px;}
+#column-d {width:510px; margin-right: 15px;}
+#column-e {width:225px;}
+#subcolumn-a {width:170px; margin-right:15px;}
+#subcolumn-b {width:160px;}
+
+
+
+/*Style for partners info*/
+#partenariat {left:0px;position:absolute;top:0px; z-index:7; font-size:110%; font-weight:bold; color:#99CCFF;font-style: italic;}
+#supporters {left:250px;position:absolute;top:0px; z-index:3; font-size:110%; font-weight:bold; color:#0C4799;font-style: italic;}
+#GRNET {left:390px;position:absolute;top:275px; z-index:3; font-size:136%; font-weight:bold; color:#FFFFFF;}
+#GRNET a {color:#FF6600;}
+#GRNET a:hover {color:#FF6600;}
+#EF {left:205px;position:absolute;top:115px; z-index:10; font-size:136%; font-weight:bold;}
+#EF a {color:#FF6600;}
+#EF a:hover {color:#FF6600;}
+#FUB {left:75px;position:absolute;top:130px; z-index:3; font-size:136%; font-weight:bold;}
+#FUB a {color:#FF6600;}
+#FUB a:hover {color:#FF6600;}
+#FPL_CEA {left:40px;position:absolute;top:245px; z-index:3; font-size:136%; font-weight:bold;}
+#FPL_CEA a {color:#FF6600;}
+#FPL_CEA a:hover {color:#FF6600;}
+#UPF {left:210px;position:absolute;top:250px; z-index:3; font-size:136%; font-weight:bold;}
+#UPF a {color:#FF6600;}
+#UPF a:hover {color:#FF6600;}
+#EPA {left:105px;position:absolute;top:5px; z-index:3; font-size:136%; font-weight:bold;}
+#EPA a {color:#0C4799;}
+#EPA a:hover {color:#FF6600;}
+#TPCI {left:0px;position:absolute;top:125px; z-index:3; font-size:136%; font-weight:bold;}
+#TPCI a {color:#0C4799;}
+#TPCI a:hover {color:#FF6600;}
+#EEF {left:350px;position:absolute;top:55px; z-index:3; font-size:136%; font-weight:bold;}
+#EEF a {color:#0C4799;}
+#EEF a:hover {color:#FF6600;}
+#ETPE {left:330px;position:absolute;top:365px; z-index:3; font-size:136%; font-weight:bold;}
+#ETPE a {color:#0C4799;}
+#ETPE a:hover {color:#FF6600;}
+#HMEOE {left:235px;position:absolute;top:65px; z-index:3; font-size:136%; font-weight:bold;}
+#HMEOE a {color:#0C4799;}
+#HMEOE a:hover {color:#FF6600;}
+#ECSITE {left:425px;position:absolute;top:135px; z-index:3; font-size:136%; font-weight:bold;}
+#ECSITE a {color:#0C4799;}
+#ECSITE a:hover {color:#FF6600;}
+
+#EF_info {display:none;left:245px;position:absolute;top:155px; z-index:6;}
+#EF_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:300px;}
+#EF_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#GRNET_info {display:none;left:395px;position:absolute;top:305px; z-index:7;}
+#GRNET_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:300px;}
+#GRNET_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#FPL_info {display:none;left:100px;position:absolute;top:255px; z-index:6;}
+#FPL_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:300px;}
+#FPL_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#FUB_info {display:none;left:110px;position:absolute;top:75px; z-index:11;}
+#FUB_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:250px;}
+#FUB_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#UPF_info {display:none;left:260px;position:absolute;top:215px; z-index:7;}
+#UPF_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:300px;}
+#UPF_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#EPA_info {display:none;left:120px;position:absolute;top:25px; z-index:7;}
+#EPA_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:250px;}
+#EPA_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#TPCI_info {display:none;left:20px;position:absolute;top:155px; z-index:11;}
+#TPCI_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:340px;}
+#TPCI_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#EEF_info {display:none;left:380px;position:absolute;top:85px; z-index:7;}
+#EEF_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:250px;}
+#EEF_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#ETPE_info {display:none;left:310px;position:absolute;top:385px; z-index:7;}
+#ETPE_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:280px;}
+#ETPE_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#HMEOE_info {display:none;left:220px;position:absolute;top:85px; z-index:17;}
+#HMEOE_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:280px;}
+#HMEOE_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+#ECSITE_info {display:none;left:415px;position:absolute;top:150px; z-index:7;}
+#ECSITE_info div.container {background-color:#FFFFFF;border:1px solid #666666;font-size:8pt;padding:2px 0 4px;position:absolute;text-align:left;width:280px;}
+#HECSITE_info div.container div#share-sites {margin-left:54px;margin-top:-14px;}
+
+
+/* searcing */
+.search_results{ text-align:left; margin-top:7px; margin-bottom:1px; font-size:8pt; border-bottom:1px solid #0173BA; width:90%;}
+.search_results div#id1{ padding:3px; text-align:left; font-size:10pt; background:#0173BA; width:100%; color: #FFFFFF;}
+.search_results div#id1 a{ color:#FFFFFF; font-weight: bold;}
+
+/* do */
+#do {list-style-type:none;}
+#do li {display:inline; float:left; margin:0px; padding:0px; text-align:center; width:55px;}
+#do img {border-style:none; margin-bottom:-8px;}
+#do a {font-size:7pt; font-weight:bold; text-decoration:none; color:#0c4799; text-decoration:none;}
+#do a:hover {color:#ef4908;}
+
+/* FOR THE TAG CLOUD */
+.hTagcloud {margin-top:1em;}
+.popularity ul {margin-left:0; padding-left:0; line-height:1.8em;}
+	.popularity li {display:inline; margin-right:8px;}
+
+	.popular {font-size:100%;}
+	.v-popular {font-size:140%;}
+	.vv-popular {font-size:180%;}
+	.vvv-popular {font-size:220%;}
+	.vvvv-popular {font-size:260%;}
+	.vvvvv-popular {font-size:270%;}
+	.vvvvvv-popular {font-size:280%;}
+	.vvvvvvv-popular {font-size:290%;}
+	.vvvvvvvv-popular {font-size:300%;}
+
+	.popular a, .popular a:visited {color: #714271;}
+	.v-popular a, .v-popular a:visited {color: #714271;}
+	.vv-popular a, .vv-popular a:visited {color: #714271;}
+	.vvv-popular a, .vvv-popular a:visited {color: #636;}
+	.vvvv-popular a, .vvvv-popular a:visited {color: #636;}
+	.vvvvv-popular a, .vvvvv-popular a:visited {color: #5D2E5D;}
+	.vvvvvv-popular a, .vvvvvv-popular a:visited {color: #5D2E5D;}
+	.vvvvvvv-popular a, .vvvvvvv-popular a:visited {color: #5D2E5D;}
+	.vvvvvvvv-popular a, .vvvvvvvv-popular a:visited {color: #5D2E5D;}
+	
+	
+/* USERS FORM */
+#new-user-form {position:relative; top:3px; display:block; padding:2px;margin-bottom: 1.8em;}
+	#new-user-form fieldset {border-width:0;}
+	#new-user-form legend {background:transparent;}
+	#new-user-form .textinput, #new-user-form select {width:216px; float:left;background:#fff;margin:0;}
+	#new-user-form select {width: 226px;}
+	#new-user-form label {float:left;width: 174px;text-align:left;margin:0;}
+	#new-user-form .field {overflow:hidden;clear:both; margin-bottom:0.9em;}
+	#new-user-form .textfield1 {overflow:hidden;clear:both; margin-bottom:0.1em;}
+	#new-user-form #entity-type {margin-bottom:1.5em;}
+
+input#institution {margin-bottom: 1.5em;}
+.textinput {display:block; border:1px solid #B5D4EC; background:#fff url("../images/textfield-bg.gif") top left no-repeat;padding:4px; width:268px;}
+
+.error {background:#f1c8ba; color:#933; margin:0.5em; font-size:0.7em; padding:0.5em;width:136;}
+.field .error {clear:both;}
+.error {background-image:url("../../../admin/themes/defualt/images/error.gif");}
+
+/* For jquery paging */
+a { text-decoration:none }
+.glossary_results{text-align:left; margin-bottom:1px; font-size:9pt;}
+#login .theInput {font-family: Verdana;font-size: 9px;width: 90px;margin-right: 5px;height:11px;}
+#login .theSubmit {font-family: Verdana;font-size: 9px;background-color: #333333;color: #FFFFFF;margin-right: 5px;}
+
+/* paging */
+.active_page{
+color:#FF0000;}
+
+#page_navigation {
+padding-top:3px;
+margin-top:3px;
+  bottom:2px;
+}
+
+/* For do actions */
+#do-buttons 
+{
+	width: 170px;
+	margin-right: 15px;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* For rate action */
+#rate_button 
+{
+	width: 170px;
+	margin-left: 5px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+/* Exhibit navigation */
+#submenu10 {z-index:3; margin:0px; padding:0px;}
+
+#submenu10 a:visited {color:#ff3300;}
+#submenu10 a:hover {color:#ff3300;}
+#submenu10 a {font-weight:bold; text-decoration:none; color:#0173ba;}
+
+
+#view {margin-left: 365px; background-color:#E7F4FC; width:120px; text-align:center; font-weight:bold; padding:5px;}
+#exhibit-sections {padding: 10px; background-color:#E7F4FC;}
+#content-exhibit {padding-bottom: 10px; background-color:#FFFFFF; overflow:hidden;}
+#photo_right {float:none; margin-left:0px; margin-bottom:5px;margin-top:5px;text-align:center;}
+#panel-exhibit {
+	float:left;
+	margin-right:15px;
+	width:205px;
+	
+	clear:both;
+	line-height:1.2em;
+	margin-bottom:15px;
+}
+
+#panel-exhibit.fixed {
+   float:left;
+	margin-right:15px;
+	width:205px;
+	
+	clear:both;
+	line-height:1.2em;
+	margin-bottom:15px;
+
+  position: fixed;
+  top: 0;
+  height: auto !important;
+  bottom:105px;  
+  overflow:auto;
+}
+
+#panel-exhibitlink {
+	right: 20px; position: absolute;
+}
+#panel-exhibitlink.fixed {
+	right: 0px; position: absolute;
+}
+
+#panel-exhibit_gialink {
+    background-color:#F2F2F2;
+	padding-top: 2px;
+	margin-top: 0px;
+	padding-bottom: 4px;
+	margin-bottom: 0px;
+}
+
+#panel-exhibit h2 {
+	background-color:#0099D9;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: 120%;
+}
+
+#panel-exhibit h3 {
+	background-color:#0099D9;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: 120%;
+	margin-left:0px;
+}
+
+
+#panel-exhibit h4 {
+	padding-top: 5px;
+	line-height: 100%;
+	margin-bottom: 5px;
+}
+.panel-exhibit {
+	float:left;
+	margin-right:15px;
+	width:205px;
+	
+	clear:both;
+	line-height:1.2em;
+	margin-bottom:15px;
+}
+.panel-exhibit2 {
+	float:left;
+	margin-right:15px;
+	width:205px;
+	clear:both;
+	line-height:1.2em;
+	margin-bottom:15px;
+}
+
+.panel-exhibit h2 {
+	background-color:#0099D9;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: 120%;
+}
+
+.panel-exhibit h3 {
+	background-color:#0099D9;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: 120%;
+	margin-left:0px;
+}
+
+.panel-exhibit h4 {
+	padding-top: 5px;
+	line-height: 100%;
+	margin-bottom: 5px;
+}
+
+/* Page layout */
+.image-list-right {overflow:hidden;width:auto;}
+.image-list-right  img {float:none; margin-left:18px; margin-bottom:18px;text-align: center;}
+
+
+/* ul for content */
+.column ul {margin: 0px 10px 10px 20px;}
+.column ul li
+{
+	list-style-image: none;
+	list-style-type: none;
+	background-repeat: no-repeat;		/* this should be global? */
+	background-position: left 0.6em;	/* hack slightly for IE ? */
+	padding-left: 15px;
+	border: 0px solid red;
+	background-image:url(../images/bullet.gif);
+}
+
+#more_info {
+	display:none;
+	left:2px;
+	position:relative;
+	top:10px;
+	z-index:3;
+}
+
+#more_info div.container {
+	background-color:#F2F2F2;
+	border:1px solid #377FBD;
+	font-size:10pt;
+	padding:4px;
+	position:absolute;
+	text-align:left;
+	width:370px;
+}
+
+#more_info1 div.container {
+	background-color:#F2F2F2;
+	border:1px solid #377FBD;
+	font-size:10pt;
+	padding:4px;
+	position:absolute;
+	text-align:left;
+	width:370px;
+}
+
+#more_info2 div.container {
+	background-color:#F2F2F2;
+	border:1px solid #377FBD;
+	font-size:10pt;
+	padding:4px;
+	position:absolute;
+	text-align:left;
+	width:450px;
+}
+
+#more_info1 {
+	display:none;
+	left:2px;
+	position:relative;
+	top:3px;
+	z-index:7;
+}
+#more_info2 {
+	display:none;
+	left:20px;
+	position:relative;
+	top:-100px;
+	z-index:7;
+}
+
+.image-thumb {margin-bottom:5px; text-align:center;}
+
+#share {
+	display:none;
+	left:10px;
+	position:relative;
+	top:5px;
+	z-index:6;
+}
+#share div.container {
+	background-color:#FFFFFF;
+	border:1px solid #666666;
+	font-size:10pt;
+	padding:2px 0 4px;
+	position:absolute;
+	text-align:left;
+	width:170px;
+}
+
+#explore_home0 {
+		color:#003399;
+		font-size:11pt;
+		font-weight:bold;
+		list-style-type:none;
+		margin-top:10px;
+		padding:0px 20px 10px 4px;
+		z-index:3;
+}
+#explore_home0 li {
+		display:inline;
+		margin:0;
+		padding-left:10px;
+		padding-right:10px;
+		text-align:center;
+		background-image: none;
+		border-right:1px solid #CACACA;
+}
+#explore_home0 li.selected {
+		background-color:#CACACA;
+}
+
+.image_caption {margin-bottom:5px; margin-top:5px; text-align:center;}

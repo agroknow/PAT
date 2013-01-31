@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ScienceTweets portal</title>
+<!-- Meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-7" />
+<meta name="HTML and CSS" content="GRNET" />
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+
+<link rel="alternate" type="application/rss+xml" title="Omeka RSS Feed" href="http://www.sciencetweets.eu/photochemistry/items/?output=rss2" /><!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="css/page.css"/> 
+<link rel="shortcut icon" href="./images/fav.ico" />
+<!--<link rel="stylesheet" type="text/css" href="" /> -->
+
+<link rel="stylesheet" type="text/css" href="http://www.sciencetweets.eu/photochemistry/themes/natural/lightview/css/lightview.css" />
+ 
+<link rel="stylesheet" type="text/css" href="http://www.sciencetweets.eu/photochemistry/themes/natural/css/typography.css"/>
+<!--[if lt IE 8]><link href="http://www.sciencetweets.eu/photochemistry/themes/natural/css/page_ie7.css" rel="stylesheet" type="text/css" media="screen" /><![endif]--> 
+
+<!-- JavaScripts -->
+<!--<script type="text/javascript" src="http://www.sciencetweets.eu/photochemistry/themes/natural/scripts/ajax/ajax.js"></script>
+<script type="text/javascript" src="http://www.sciencetweets.eu/photochemistry/themes/natural/scripts/ajax/ajax_chained.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.1/prototype.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js"></script>
+<script type="text/javascript" src=""></script>
+
+<script type='text/javascript' src="http://www.sciencetweets.eu/photochemistry/themes/natural/lightview/js/lightview.js"></script>
+<script type='text/javascript' src="http://www.sciencetweets.eu/photochemistry/themes/natural/scripts/functions.js"></script>
+<!--<script type='text/javascript' src=""></script> -->
+
+
+
+
+<link rel="stylesheet" type="text/css" href="" />
+
+<link rel="stylesheet" type="text/css" href="http://www.sciencetweets.eu/photochemistry/themes/natural/jcarousel/skins/tango/skin.css" />
+
+<script type="text/javascript" language="javascript" src="http://www.sciencetweets.eu/photochemistry/themes/natural/javascripts/jquery.js"></script>
+	 <script>
+		 jQuery.noConflict();
+	   
+
+function MM_CheckFlashVersion(reqVerStr,msg){
+  with(navigator){
+    var isIE  = (appVersion.indexOf("MSIE") != -1 && userAgent.indexOf("Opera") == -1);
+    var isWin = (appVersion.toLowerCase().indexOf("win") != -1);
+    if (!isIE || !isWin){  
+      var flashVer = -1;
+      if (plugins && plugins.length > 0){
+        var desc = plugins["Shockwave Flash"] ? plugins["Shockwave Flash"].description : "";
+        desc = plugins["Shockwave Flash 2.0"] ? plugins["Shockwave Flash 2.0"].description : desc;
+        if (desc == "") flashVer = -1;
+        else{
+          var descArr = desc.split(" ");
+          var tempArrMajor = descArr[2].split(".");
+          var verMajor = tempArrMajor[0];
+          var tempArrMinor = (descArr[3] != "") ? descArr[3].split("r") : descArr[4].split("r");
+          var verMinor = (tempArrMinor[1] > 0) ? tempArrMinor[1] : 0;
+          flashVer =  parseFloat(verMajor + "." + verMinor);
+        }
+      }
+      // WebTV has Flash Player 4 or lower -- too low for video
+      else if (userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 4.0;
+
+      var verArr = reqVerStr.split(",");
+      var reqVer = parseFloat(verArr[0] + "." + verArr[2]);
+  
+      if (flashVer < reqVer){
+        if (confirm(msg))
+          window.location = "http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash";
+      }
+    }
+  } 
+}
+</script>
+<script type="text/javascript" language="javascript" src="http://www.sciencetweets.eu/photochemistry/themes/natural/javascripts/main_tooltip.js"></script>
+<!--<script type="text/javascript" language="javascript" src="js/jquery.flash.js"></script>-->
+<!-- Plugin Stuff -->
+
+<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+
+</head>
+<body onload="MM_CheckFlashVersion('8,0,0,0','Content on this page requires a newer version of Adobe Flash Player. Do you want to download it now?');">
+<div id="page-container">
+<div id="top_divider"></div><!--end top-divider div--><!--top_divider DIV NEEDS TO BE ADDED TO ALL TEMPLATES-->
+<div id="page-header">
+    <div class="rx"><h1><a href="http://www.sciencetweets.eu/photochemistry/home">Science Tweets on Photochemistry</a></h1></div><!--end rx div-->
+
+<div id="nav-site-supplementary" class="menubar">
+    	<ul id="nav-site-supplementary-menu">
+		<li><a href="http://www.sciencetweets.eu/photochemistry/admin/users/login" title="Sign-in">Sign-in</a></li>
+		<li><a href="http://www.sciencetweets.eu/photochemistry/users/add?section=home" title="Register">Register</a></li>
+		<li><a href="http://www.sciencetweets.eu/photochemistry/rss_feed?section=home" title="RSS">RSS</a></li>
+		<li><a href="http://www.sciencetweets.eu/photochemistry/contactus?section=home" title="Contact us">Contact us</a></li>
+		<li id="search-site">
+
+	<form name="search_form" action="http://www.sciencetweets.eu/photochemistry/search" method="post">
+			<fieldset>
+				<input name="action" type="hidden" value="textsearch"/>
+		    <label for="search-site-box" id="search-label" title="Search science tweets">Search</label>
+				 <input accesskey="4" id="search-site-box" name="srch_wrd" size="12" type="text"/>
+				 <input alt="" id="search-site-go" type="submit" value="Search"/>
+			</fieldset>
+			</form>			
+		</li>
+
+	</ul><!--end nav-site-supplementary-menu ul-->
+    </div><!--end nav-site-supplementary div-->
+    <div id="nav-site" class="menubar">
+	
+<div id="nav-site-menu-general"><!--nav-site-menu-general DIV NEEDS TO BE ADDED TO ALL TEMPLATES-->
+            <ul>
+                <li class='selected'><a href="http://www.sciencetweets.eu/photochemistry/home">Home</a></li>
+                <li ><a href="http://www.sciencetweets.eu/photochemistry/project" title="The e-knownet project">The e-KnowNet Project</a></li>
+                <li ><a href="http://www.sciencetweets.eu/photochemistry/intro" title="The Science of Photochemistry">The Science of Photochemistry</a></li>
+
+                <li><a rel="iframe" target="_blank" title="Events :: :: width:800, height:600" href="http://www.e-knownet.eu/e-knownet/resources/index.html" class="lightview" title="News">News</a></li>
+            </ul>
+        </div><!--end nav-site-menu div class="general"-->
+        <ul id="nav-site-menu" class="target-groups">
+        	<li class="for"><span class="menu-text">for</span></li>
+            <li class="divider"></li>
+			
+        	<li class="students"><a href="http://www.sciencetweets.eu/photochemistry/index?target=students" title="Students"><span class="menu-text">Students</span></a></li>
+
+            <li class="divider"></li>
+			<li class="lifelong_learners"><a href="http://www.sciencetweets.eu/photochemistry/index" title="Lifelong Learners"><span class="menu-text">Lifelong Learners</span></a></li>
+            <li class="divider"></li>
+			<li class="science_educators"><a href="http://www.sciencetweets.eu/photochemistry/index?target=educators" title="Educators"><span class="menu-text">Science Educators</span></a></li>
+            <li class="divider"></li>
+			<li class="researchers"><a href="http://www.sciencetweets.eu/photochemistry/index?target=researchers" title="Researchers"><span class="menu-text">Researchers</span></a></li>
+            <li class="divider"></li>
+
+			
+			
+            <li class="divider last "></li>
+        </ul><!--end nav-site-menu div class="target-groups"-->
+    </div><!--end nav-site div-->
+</div><!--end page-header div-->
+
+
+
+
+<div id="page-body" class="two_column">
+<div id="nav-breadcrumbs"> You are here:
+      <ul id="nav-breadcrumbs-menu">
+	  <li>
+
+		<a href=http://www.sciencetweets.eu/photochemistry >Photochemistry ></a><a href="http://www.sciencetweets.eu/photochemistry/home">Home</a>  </li>  
+
+      </ul>	
+</div>
+<!-- EDUCATORS -->
+<div id="nav-content">
+<ul id="nav-content-level1" class="menu">
+		
+		<li><a href="http://www.sciencetweets.eu/photochemistry/exhibits?section=home" >Digital Exhibits</a></li>
+		<li><a href="http://www.sciencetweets.eu/photochemistry/collections?section=home" >Web Collections</a></li>
+		<li><a href="http://www.sciencetweets.eu/photochemistry/resources?section=home" >Resources</a></li>
+
+		<li><a href="http://www.sciencetweets.eu/photochemistry/glossary?section=home" >Glossary</a></li>
+		
+</ul>
+		
+        </ul>
+		
+		<ul id="nav-content-level1-1" class="target-groups">
+        	<li class="divider"></li>
+        </ul>
+		
+						<ul class="banners">
+		 <li><p>Under the auspices of</p>
+
+<a href="http://www.photochemistry.eu/"><img width="100" height="53"  src="http://www.sciencetweets.eu/photochemistry/themes/natural/images/EPAlogo.gif"/></a></li>
+ <li><p>Supported by</p>
+<a href="http://eacea.ec.europa.eu/llp/index_en.htm"><img src="http://www.sciencetweets.eu/photochemistry/themes/natural/images/logo_llp.gif" alt=""></a></li>
+</ul>
+				
+										<!--end rating script / div --> 
+</div>
+<!-- ELSE (LIFELONG) -->
+
+<div class="column" id="column-d">
+<h1 class="section_title index">Science Tweets on... Photochemistry</h1>
+
+	<div class="flash_animation">
+     
+      <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0','width','424','height','200','id','FLVPlayer','src','FLVPlayer_Progressive','flashvars','&MM_ComponentVersion=1&skinName=Clear_Skin_1&streamName=flashanimation/sciencetweets&autoPlay=true&autoRewind=true','quality','high','scale','noscale','name','FLVPlayer','salign','lt','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','FLVPlayer_Progressive' ); //end AC code
+</script><noscript>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="424" height="200" id="FLVPlayer">
+        <param name="movie" value="FLVPlayer_Progressive.swf" />
+        <param name="salign" value="lt" />
+        <param name="quality" value="high" />
+        <param name="scale" value="noscale" />
+		<param name="LOOP" value="true">
+        <param name="wMode" value="transparent"/>
+        <param name="FlashVars" value="&MM_ComponentVersion=1&skinName=Clear_Skin_1&streamName=flashanimation/sciencetweets&autoPlay=true&autoRewind=true&loop=true" />
+        <embed src="FLVPlayer_Progressive.swf" flashvars="&MM_ComponentVersion=1&skinName=Clear_Skin_1&streamName=flashanimation/sciencetweets&autoPlay=true&autoRewind=true&loop=true" quality="high" loop="true" scale="noscale" width="424" height="200" name="FLVPlayer" salign="LT" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />        
+</object></noscript>
+      
+ 
+    </div><!--end flash_animation--->
+    <div class="intro-text">
+
+        <p>Welcome to the ScienceTweets on Photochemistry platform, 
+a collaborative initiative of the <a href="http://www.sciencetweets.eu/photochemistry/project?section=home">e-Knownet project.</a></p>
+		<p>This platform was developed by a <a href="http://www.sciencetweets.eu/photochemistry/network?section=home">network of contributors</a> hoping to promote fast and efficient sharing of new scientific knowledge with the rest of society.</p> 
+      	</div><!--end intro-text div-->
+		
+		
+   	  <div class="clear"></div>
+       	<dl class="intro-text">
+
+          <dt>This platform is relevant for you, if you are:</dt>
+               <dd class="students">- a <a href="http://www.sciencetweets.eu/photochemistry/index?target=students">Student</a></dd>
+               <dd class="lifelong_learners">- a <a href="http://www.sciencetweets.eu/photochemistry/index">Lifelong Learner</a></dd>
+               <dd class="science_educators">- a <a href="http://www.sciencetweets.eu/photochemistry/index?target=educators">Science Educator</a>, or anyone involved in science museum education</dd>
+               <dd class="researchers">- a <a href="http://www.sciencetweets.eu/photochemistry/index?target=researchers">Researcher</a> in Photochemistry</dd>
+
+       	</dl>
+        <div class="quick_links index">
+        	<p>Here you can:</p>
+            <ul>
+            	<li class="left">
+                    <p><span class="first_word">Explore</span> engaging learning material in the form of digital exhibits and web collections and learn more about Photochemistry.</p>
+                    <p><span class="first_word">Develop</span> digital resources that tell your own Photochemistry 'story', for your own enjoyment, to share with friends and colleagues, or for learning purposes, especially if you work in science education, at school or in a non-formal learning environment (e.g. a science museum).</p>
+
+                    <p><span class="first_word">Discover</span> a wealth of educational and entertaining digital resources, such as information links, images and videos, interactive games, and lots more...</p>
+                </li>
+                <li class="right">
+                	<p><span class="first_word">Share</span> relevant digital material developed by you or resources which you discovered on the web. If you are a Photochemistry expert you have the opportunity to share you research findings with non-experts in a creating and entertaining way: you can develop your own exhibit using a simple editorial tool provided by ScienceTweets.</p>
+                    <p><span class="first_word">Communicate</span> with people and learning communities that share the same interests with you.</p>
+
+                    <p><span class="first_word">Vote</span> for the most engaging exhibits and other resources, post your comments and suggestions, and help scientists communicate their ideas!</p>
+                </li>
+            </ul>
+        </div><!--end quick_links div-->
+</div><!--end columnD div-->
+
+
+<div class="column" id="column-e">
+        <div class="panel sidebar">
+
+        <ul class="videos">
+        <li>
+        	<h2 class="descriptive_title">Interview with Dr. Dimitra Markovitsi<br>Head of the Francis Perrin Laboratory
+<br>President of the European Photochemistry Association 2007- 2010</h2>
+			<script type='text/javascript' src='http://www.sciencetweets.eu/test2/archive/player/swfobject.js'></script>
+			<div id='mediaspace'>This text will be replaced</div>
+			<script type='text/javascript'>
+			  var so = new SWFObject('http://www.sciencetweets.eu/test2/archive/player/player.swf','mpl','230','190','9');
+			  so.addParam('allowfullscreen','true');
+			  so.addParam('allowscriptaccess','always');
+			  so.addParam('wmode','opaque');
+			  so.addVariable('stretching','fill');
+			  so.addVariable('icons','false');
+			  so.addVariable('image','http://www.sciencetweets.eu/photochemistry/archive/files/Markovitsi_mask.jpg');
+			  so.addVariable('file','http://www.sciencetweets.eu/photochemistry/archive/files/evlalia_markovitsh_idryma_finalsmall_4ace2cc760.mp4?frame=11');
+			  so.write('mediaspace');
+			</script>
+
+        </li>
+        <li>
+        	<h2 class="descriptive_title"><a href="http://www.sciencetweets.eu/photochemistry/archive/files/00___cedis_introani_ve_0d344966c4.swf" target="_blank" class="lightview" title=" :: :: width: 720, height: 540">Introduction into
+Photochemistry</a></h2>
+			<a href="http://www.sciencetweets.eu/photochemistry/archive/files/00___cedis_introani_ve_0d344966c4.swf" target="_blank" class="lightview" title=" :: :: width: 720, height: 540"><img src="http://www.sciencetweets.eu/photochemistry/themes/natural/images/Intro_video_fub_mask.jpg"/></a>
+        </li>
+        </ul>
+         </div><!--end panel sidebar div-->
+</div><!--end columnE div-->
+<div class="clear"></div><!--clear DIV NEEDS TO BE ADDED TO ALL TEMPLATES-->
+
+</div><!--end page-body div-->
+<div class="clear"></div><!--clear DIV NEEDS TO BE ADDED TO ALL TEMPLATES-->
+</div><!--end page-container div-->
+
+<div id="page-footer">
+		<ul id="nav-footer-menu">
+		
+            <li><a href="http://www.e-knownet.eu" target="_blank">The e-KnowNet Project website</a></li>
+            <li class="first-item"><a href="http://www.sciencetweets.eu/photochemistry/contactus?section=home" >Contact</a></li>
+			<li><a href="http://www.sciencetweets.eu/photochemistry/disclaimer?section=home">Disclaimer</a></li>
+			<li id="page-copyright">&copy; 2010 The Science Tweets</li>
+
+          <li id="e-knownet-copyright">&copy; 2008-2009 The e-Knownet Consortium</li>
+        </ul><!--end nav-footer-menu ul-->
+		
+<ul id="acknowledgements">
+    		<li><a href="http://eacea.ec.europa.eu/llp/index_en.htm"><img src="http://www.sciencetweets.eu/photochemistry/themes/natural/images/interface/logo_llp.gif" alt="" /></a></li>
+            <li><p>An action supported by the EC under the Lifelong Learning Programme
+Grant Agreement Number: 2007-3610/001-001</p></li>
+            <li><a href="http://www.photochemistry.eu/"><img src="http://www.sciencetweets.eu/photochemistry/themes/natural/images/interface/EPAlogo-footer.jpg" /></a></li>
+		</ul><!--end nav-footer-menu ul-->
+
+</div><!--end page-footer div-->
+		
+	
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9559890-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

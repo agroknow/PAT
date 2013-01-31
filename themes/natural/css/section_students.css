@@ -1,0 +1,379 @@
+/* ------------------------------------------------------------ */
+/*	TAKE PART sectional styles				*/
+/* ------------------------------------------------------------ */
+
+/* ----- main menu item (active) ------------------------------ */
+/* FIRST LINE FOLLOWING DEPRECATED */
+A:visited { color:#E87400;}
+.menubar .takePart a:link, .menubar .takePart a:visited, .menubar .takePart a:active, 
+.menubar .take-part a:link, .menubar .take-part a:visited, .menubar .take-part a:active 
+{ 
+	color: #0085BC; 
+}
+
+/* ----- CONTENT NAVIGATION SECTIONAL STYLES ----------------------------- */
+/* see notes in nav-content.css (content nav structural rules) */
+
+/* ----- main content-nav container div ----- */
+#nav-content 
+{
+	/* background-color: #0099D9;
+	background-image: url(images/curve-top.gif); 		REMOVED 02/2008 - miks */
+}
+
+/* added to allow KO to implement background image on div#nav-content - firstItem is deprecated - 02/2008 - miks */
+#nav-content ul#nav-content-level1 li.firstItem, 
+#nav-content ul#nav-content-level1 li.first-item
+{
+	background-image: url(images/nav-content-top.gif);
+}
+
+/* ----- level 1 menu ------------------- */
+ul#nav-content-level1
+{
+	background-color: #8929E3;
+	background-image: url(images/curve-bot.gif);    /* bottom corner and color for UL */
+}
+/* ----- menu item colours -------------- */
+ul#nav-content-level1 li a
+{
+	color: #FFFFFF;
+	background-color: #8929E3;
+}
+ul#nav-content-level2 li a
+{
+	color: #7849A9; 
+	background-color: #F1E8F9;
+}
+
+/* ----- levels 3-4 background colours - see nav-content.css (note 6) ----- */
+ul#nav-content-level3 li a
+{
+	background-color: #E4E4E4;
+}
+ul#nav-content-level4 li a
+{
+	background-color: #F2F2F2;
+}
+
+/* ----- generic item hover style ----- */
+#nav-content ul li a:hover
+{
+	color: #0085BC;
+	background-image: url(images/arrow-right.gif);
+}
+
+/* ----- generic current item styles ----- */
+#nav-content li a.current-item	
+{
+	color: #8929E3;
+	background-color: #FFFFFF;					/* this could be in generic stylesheet - it's ALWAYS white */
+	background-image: url(../images/arrow-right.gif);
+}
+#nav-content ul#nav-content-level2 li a.current-items			/* for level2 and below - level1 has generic white from nhm-page.css */
+{
+	color: #0085BC;
+	background-color: #FFFFFF;
+	background-image: url(images/arrow-down.gif);
+}
+
+/* ----- collapsed item styles ----- */
+#nav-content ul li a.collapsed:hover
+{
+	background-image: url(images/arrow-left.gif);				/*  need this or arrow reverses direction on hover */
+}
+ul#nav-content-level2 li a.collapsed
+{
+	background-image: url(images/arrow-left.gif);
+}
+/* ----- END CONTENT NAVIGATION SECTIONAL STYLES ----------------- */
+
+
+
+
+/* ----- html elements ------------------------------------------- */
+h1, h2, h3, h4, h5, a 			{ color: #7849A9; }
+
+div.index h5				{ background-color: #C6EDF7; }
+
+a.point-right 				{ background-image: url(images/circle-right.gif); }
+a.point-left 				{ background-image: url(images/circle-left.gif); }
+a.top					{ background-image: url(images/circle-up.gif); }
+
+div.image-footer a.point-right, .panel-footer a.point-right, .panel-footer a				
+{ 
+	background-image: url(images/bgcircle-right.gif); 
+}
+
+div.image-footer, div.panel-footer, #utilities div.panel-footer	
+{ 
+	background-color: #8929E3; 
+	background-image: url(images/curve-bot.gif); 
+}
+
+
+.panel h2 
+{ 
+	background-image: url(images/curve-top.gif);
+	background-color: #0099D9; 
+}
+
+.panel ul li, #utilities ul li
+{
+	background-image: url(images/bullet.gif);
+}
+
+
+/* ----- generic classes --------------------------------------------- */
+.accent1	{ background-color: #B6DFEB; }
+.accent2	{ background-color: #C6EDF7; }
+.news-item	{ background-color: #B6DFEB; }
+.highlight 	{ color: #0085BC; }		/* section-specific text highlight */
+div.information { background-color: #B6DFEB; }	/* EG - news page */
+
+/* ----- panel classes ----------------------------------------------- */
+.panel-intro	{ background-color: #F1E8F9; }
+
+div.panel div.panel-intro:first-child
+{
+	background-image: url(images/curve-top-accent2.gif);
+	background-position: top right;
+}
+div.panel div.panel-intro:last-child
+{
+	background-image: url(images/curve-bot-accent2.gif);
+	background-position: bottom left;
+}
+
+/* ----- utilities styles -------------------------------------------- */
+
+div#utility-relatedlinks, div#utility-search-events 
+{
+	background-color: #C6EDF7;
+}
+div#utility-relatedlinks:first-child, div#utility-search-events:first-child 
+{
+	background-image: url(images/curve-top-accent2.gif);
+}
+#utility-sponsors div.sponsor a
+{
+	background-image: url(images/bullet.gif);
+}
+
+/* ----- calendar styles -------------------------------------------- */
+.selected-date, #calendar-container
+{
+	background-color: #C6EDF7;
+}
+
+
+/* ----- form styles ------------------------------------------------ */
+legend 
+{
+	color: #0085BC; 
+}
+
+
+/* ----- tab styles ------------------------------------------------ */
+.sectional .tab-content, .sectional .tab-header
+{
+	background-color: #C6EDF7; 
+}
+.sectional ul.tabs li
+{
+	background-image: url(images/tab.gif); 
+	border-left: 1px solid #0085BC; 
+}
+.sectional ul.tabs li.tab-active
+{
+	background-image: url(images/tab-active.gif); 	
+	border-width: 0px; 
+}
+.sectional ul.tabs li a, .sectional ul.tabs li a:link, 
+.sectional ul.tabs li a:visited, .sectional ul.tabs li a:active, .sectional ul.tabs li a:hover
+{
+	color: #0085BC;
+}
+.sectional ul.tabs li.tab-active a
+{
+	color: #0085BC;
+}
+
+
+/* ----- buttons -------------------------------------------------- */
+
+/* ----- buttonbar ----- */
+ul.buttonbar li a
+{
+	background-color: #0099D9;
+}
+ul.buttonbar li a:link, ul.buttonbar li a:visited, ul.buttonbar li a:active
+{
+	background-image: url(images/button-right.gif);
+}
+#page-container ul.search li a,
+ul.buttonbar li a.link-back:link, ul.buttonbar li a.link-back:visited, ul.buttonbar li a.link-back:active
+{
+	background-image: url(images/button-left.gif);
+}
+ul.buttonbar li a.link-down:link, ul.buttonbar li a.link-down:visited, ul.buttonbar li a.link-down:active
+{
+	background-image: url(images/button-down.gif);
+}
+ul.buttonbar li a.link-up:link, ul.buttonbar li a.link-up:visited, ul.buttonbar li a.link-up:active
+{
+	background-image: url(images/button-up.gif);
+}
+
+/* ----- single button ----- */
+a.button, a.button:link, a.button:visited, a.button:active
+{
+	background-color: #0099D9;
+	background-image: url(images/button-right.gif);
+}
+a.link-back, a.link-back:link, a.link-back:visited, a.link-back:active
+{
+	background-image: url(images/button-left.gif);
+}
+a.link-up, a.link-up:link, a.link-up:visited, a.link-up:active
+{
+	background-image: url(images/button-up.gif);
+}
+a.link-down, a.link-down:link, a.link-down:visited, a.link-down:active
+{
+	background-image: url(images/button-down.gif);
+}
+
+/* ----- database output --------------------------------------------- */
+
+.recordset-criteria, .recordset-navigation
+{
+	background-color: #C6EDF7;
+}
+tr.group-header th
+{
+	background-color: #C6EDF7;
+}
+
+/* ----- google-style links bar ----- */
+ul.recordset-nav-pages a
+{
+	color: #0085BC;
+	border: 1px solid #0085BC;
+}
+ul.recordset-nav-pages a.current, ul.recordset-nav-pages a:hover
+{
+	background-color: #0085BC;
+}
+ul.recordset-nav-pages a.inactive:hover
+{
+	color: #015B28;	
+}
+
+
+/* ----- slideshow -------------------------------------------------- */
+/* ----- hover styles (see slideshow.css Note 1) ----- */
+#ssTileSelector a.ssTileLink:hover, #ssTileSelector a.ssTileLink:hover img
+{
+	border-color: #0085BC;
+}
+/* ----- current slide style ----- */
+#ssTileSelector img.ssCurrTileImage
+{
+	border-color: #0085BC;
+}
+div.ssMenubar ul li a:link, div.ssMenubar ul li a:visited, div.ssMenubar ul li a:active
+{
+	color: #0085BC;
+}
+
+/* THIS NOT GOOD !! should have diff classes for on background or not, or (maybe preferable) use diff selectors in higher-level stylesheets - miks */
+#ssSlideshow a.point-right
+{
+	background-image: url(images/circle-right.gif);
+}
+#ssSlideshow a.point-left
+{
+	background-image: url(images/circle-left.gif);
+}
+
+
+
+/* ----- natureplus --------------------------------------------------- */
+.np-logo
+{
+	background-image: url(images/icon-natureplus-16x16.gif);
+}
+
+
+
+/* ----- microsites (legacy) ------------------------------------------ */
+#microsite-nav-local-menu li a:hover
+{
+	color: #0099D9;
+}
+
+#microsite-nav-local-menu li a
+{
+	background-color: #0099D9;
+	border-top-color: #0099D9;
+	border-bottom-color: #0099D9;
+}
+
+#microsite-nav-local-menu li.current-item a
+{
+	color: #0099D9;
+	border-right-color: #0099D9;
+}
+
+#microsite-nav-local-menu li.first-item
+{
+	border-left-color: #0099D9;
+}
+
+#microsite-nav-local-menu li.last-item
+{
+	background-image: url(images/curve-top.gif);
+	background-color: #0099D9;
+}
+
+#microsite-nav-local-menu li a:hover
+{
+	border-right-color: #0099D9;
+}
+
+
+#microsite-head h2, #microsite-body h2
+{
+	color: #0099D9;
+}
+hr
+{
+	color: #0099D9;
+}
+#microsite-body ul li
+{
+	/* this probably shouldn't be necessary... - miks */
+	list-style-image: url(images/bullet.gif);
+}
+#microsite-nav-backtosection span
+{
+	background: url(images/microsite-back.gif) no-repeat left bottom;
+	background-color: #0099D9;
+}
+#microsite-nav-backtosection a
+{
+	background: url(images/curve-top-accent2.gif) no-repeat right top;
+	background-color: #B6DFEB;
+	color: #0099D9;
+}
+
+.dbNavContainer	/* DEPRECATED */
+{
+	background-color: #B6DFEB;
+}
+
+#table-criteria caption
+{
+	color: #0099D9;	
+}

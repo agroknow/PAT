@@ -1,0 +1,239 @@
+ /* CSS Document */
+/*TYPOGRAPHY.CSS
+----------------------------------------------------------------------------------------- */
+body { font:11px/18px Arial, sans-serif; color: #000; }
+/* General utility typography classes
+----------------------------------------------------------------------------------------- */
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+/* COLORS
+----------------------------------------------------------------------------------------- */
+/* page body BACKGROUND COLOR
+----------------------------------------------------------------------------------------- */
+.page_body_bg { color: #E9E9E9; }
+/* menu and image body BACKGROUND COLORS
+----------------------------------------------------------------------------------------- */
+.off_white.bg { color: #f5f5f5; }
+/* target groups BACKGROUND COLORS
+----------------------------------------------------------------------------------------- */
+.students.bg { color: #99CC33; }
+.lifelong_learners.bg { color: #54C9FF; }
+.science_educators.bg { color: #FFA406; }
+.researchers.bg { color: #A77AA7; }
+/* target groups FONT COLORS
+----------------------------------------------------------------------------------------- */
+.students.txt { color: #81AA2B; }
+.lifelong_learners.txt { color: #00AAEE; }
+.science_educators.txt { color: #E08C01; }
+.researchers.txt { color: #996699; }
+/*HEADINGS
+----------------------------------------------------------------------------------------- */
+/*---H2---*/
+/*---H3---*/
+/*---H4---*/
+/*PARAGRAPHS specific
+----------------------------------------------------------------------------------------- */
+/*PARAGRAPHS general
+----------------------------------------------------------------------------------------- */
+p { font: 12px/18px Arial, sans-serif; color: #000; }
+p em { font-style:italic; }
+/* MAIN-LISTING PAGE
+----------------------------------------------------------------------------------------- */
+/* MAIN-DETAIL PAGE
+----------------------------------------------------------------------------------------- */
+div.detail-text p { font: normal 12px/18px Arial, sans-serif; color: #333; }
+/*LINKS general
+----------------------------------------------------------------------------------------- */
+a, a:link, a:visited, a:hover, a:active { outline : none; text-decoration : none; color:#000; font-weight: bold; }
+	/*header links 
+	----------------------------------------------------------------------------------------- */
+div#page-header div.rx a {  }
+div#page-header a:hover {  }
+div#page-header div.nav-site-supplementary ul#nav-site-supplementary-menu li a {  }
+div#page-header div#nav-site.menubar div#nav-site-menu-general ul li a {  }
+div#page-header div#nav-site.menubar ul#nav-site-menu.target-groups li a {  }
+	/*content links - menu
+	----------------------------------------------------------------------------------------- */
+div#page-body div#nav-breadcrumbs ul#nav-breadcrumbs-menu li a {  }
+div#page-body div#nav-content ul#nav-content-level1 li a {  }
+	/*content links - main body
+	----------------------------------------------------------------------------------------- */
+div#column-c a, div#column-c ul li a, div#column-c p a { color: #996633; font-weight: normal;  }
+div#column-c a:hover, div#column-c ul li a:hover, div#column-c p a:hover {  text-decoration:underline;}
+div#column-c a:visited, div#column-c ul li a:visited, div#column-c p a:visited { color: #636;}
+
+div#column-d a, div#column-d_intro a { color: #996633; font-weight: normal;text-decoration:none !important; }
+div#column-d ul li a, div#column-d_intro ul li a { color: #996633; font-weight: normal; }
+div#column-d p a, div#column-d_intro p a { color: #996633; font-weight: normal; }
+
+div.column#column-e a {  }
+div.column#column-e ul li a {  }
+div.column#column-e p a {  }
+div.column#column-e h2 { font: normal 11px/15px Arial, Helvetica, sans-serif; margin: 0 0 10px 0; color: #555; }
+	/*footer links 
+	----------------------------------------------------------------------------------------- */
+div#page-footer ul#nav-footer-menu li a {  }
+div#page-footer ul#acknowledgements li a {  }
+/*old style
+----------------------------------------------------------------------------------------- 
+a:hover { text-decoration: underline; } */
+/*LINKS specific
+----------------------------------------------------------------------------------------- */
+/* NAVIGATION
+----------------------------------------------------------------------------------------- */
+	/* HEADER (NAVIGATION)
+	----------------------------------------------------------------------------------------- */
+	/* nav-site-supplementary-menu
+	----------------------------------------------------------------------------------------- */
+ul#nav-site-supplementary-menu li a, ul#nav-site-supplementary-menu li#search-site label { font: bold 12px/15px Arial, sans-serif; color: #999; }
+ul#nav-site-supplementary-menu li a:hover { text-decoration : underline; }
+#search-site-box { font-size: 12px; color: #fff; } 
+	/* nav-site ul#nav-site-menu-general
+	----------------------------------------------------------------------------------------- */
+div#nav-site-menu-general ul li a { font: normal 13px/20px Arial, sans-serif; color: #ccc; }
+div#nav-site-menu-general ul li.selected a, div#nav-site-menu-general ul li a:hover {color: #fff; text-decoration: none !important; }
+	/* nav-site ul#nav-site-menu
+	----------------------------------------------------------------------------------------- */
+div#nav-site ul#nav-site-menu li, div#nav-site ul#nav-site-menu li a { font: normal 13px/20px Arial, sans-serif; color: #000; text-align: center; }
+div#nav-site ul#nav-site-menu li a:hover { text-decoration: none !important; }
+div#nav-site ul#nav-site-menu li.for { color: #fff; } 
+/* RATE-CONTENT
+----------------------------------------------------------------------------------------- */
+h2.rate_heading {  font-size: 12px;  }
+ul#do li a { font: normal 11px/13px Arial, sans-serif; color: #000; text-align: left; }
+	/* PAGE BODY (NAVIGATION)
+	----------------------------------------------------------------------------------------- */
+	/* ul#nav-content-level1
+	----------------------------------------------------------------------------------------- */
+ul#nav-content-level1 li a, ul#nav-content-level1-1 li a { display: inline-block;font: normal 13px/18px Arial, sans-serif; color: #000; text-decoration: none !important;  }
+ul#nav-content-level1 li a:hover, ul#nav-content-level1-1 li a:hover { color: #666; }
+ul#nav-content-level1 li a.current-item, ul#nav-content-level1-1 li a.current-item { color: #666; }
+		/* ul#nav-content-level2
+			----------------------------------------------------------------------------------------- */
+		ul#nav-content-level2 li a { font: normal 11px/13px Arial, sans-serif; color: #000; }
+		ul#nav-content-level2 li a:hover { color: #666; text-decoration: none !important;  }
+		ul#nav-content-level2 li a.current-item { color: #666; }	
+			
+		/* ul#nav-content-level1 STUDENTS
+		----------------------------------------------------------------------------------------- */
+ul#nav-content-level1.students li a:hover, ul#nav-content-level1-1.students li a:hover, ul#nav-content-level1.students li a.current-item, ul#nav-content-level1-1.students li a.current-item { color: #81AA2B; }
+ul#nav-content-level1.students ul#nav-content-level2 li a:hover { color: #81AA2B; text-decoration: none !important;  }
+ul#nav-content-level1.students ul#nav-content-level2 li a.current-item { color: #81AA2B; }
+		/* ul#nav-content-level1 LIFELONG LEARNERS
+		----------------------------------------------------------------------------------------- */
+ul#nav-content-level1.lifelong_learners li a:hover, ul#nav-content-level1-1.lifelong_learners li a:hover, ul#nav-content-level1.lifelong_learners li a.current-item, ul#nav-content-level1-1.lifelong_learners li a.current-item { color: #00AAEE; }
+		/* ul#nav-content-level1 SCIENCE EDUCATORS
+		----------------------------------------------------------------------------------------- */
+ul#nav-content-level1.science_educators li a:hover, ul#nav-content-level1-1.science_educators li a:hover, ul#nav-content-level1.science_educators li a.current-item, ul#nav-content-level1-1.science_educators li a.current-item { color: #E08C01; }
+		/* ul#nav-content-level1 RESEARCHERS
+		----------------------------------------------------------------------------------------- */
+ul#nav-content-level1.researchers li a:hover, ul#nav-content-level1-1.researchers li a:hover, ul#nav-content-level1.researchers li a.current-item, ul#nav-content-level1-1.researchers li a.current-item { color: #996699; }
+/* BREADCRUMBS
+----------------------------------------------------------------------------------------- */
+div#nav-breadcrumbs, div#nav-breadcrumbs ul#nav-breadcrumbs-menu li { font: normal 11px/11px Arial, sans-serif; color: #000; }
+div#nav-breadcrumbs ul#nav-breadcrumbs-menu li a { font: normal 11px/11px Arial, sans-serif; color: #000; }
+/* nav-content DIV far left column contains ALL LEFT COLUMN CONTENT
+----------------------------------------------------------------------------------------- */
+ul.banners p { font: normal 12px/18px Arial, sans-serif; color: #333; }
+/* COLUMNS
+----------------------------------------------------------------------------------------- */
+/* COLUMNS - GENERAL
+----------------------------------------------------------------------------------------- */
+ p, ul, ul li { font: normal 12px/18px Arial, sans-serif; }
+
+	/* column D - pages
+	----------------------------------------------------------------------------------------- */
+	h1.section_title { font: bold 15px/20px Arial, sans-serif; color: #000; } 
+	h1 span.last_modified { font: normal 11px/15px Arial, sans-serif; color: #555; display: block; }
+	h2.section_sub_title { font: bold 13px/20px Arial, sans-serif; color: #000; } 
+	div#column-c ul.target-groups li a { font: bold 12px/18px Arial, sans-serif; }
+ 	div#column-c ul.target-groups li.students a { color: #81AA2B; }
+	div#column-c ul.target-groups li.lifelong_learners a  { color: #00AAEE; }
+	div#column-c ul.target-groups li.science_educators a { color: #E08C01; }
+	div#column-c ul.target-groups li.researchers a { color: #996699; }
+	/* column D - index - intro-text
+	----------------------------------------------------------------------------------------- */
+	h1.section_title.index { font: normal 20px/20px Arial, sans-serif; color: #000; }
+	div.intro-text p { font: normal 13px/18px Arial, sans-serif; color: #000; }
+	dl.intro-text dt, dl.intro-text dd { font: normal 12px/18px Arial, sans-serif; color: #000; }
+	div#column-d dl.intro-text dd a { font-weight: bold; }
+	div#column-d dl.intro-text dd.students a { color: #81AA2B; }
+	div#column-d dl.intro-text dd.lifelong_learners a  { color: #00AAEE; }
+	div#column-d dl.intro-text dd.science_educators a { color: #E08C01; }
+	div#column-d dl.intro-text dd.researchers a { color: #996699; }
+	/* column D - index - quick links
+	----------------------------------------------------------------------------------------- */
+	div.quick_links { position: relative; width: 405px; margin: 0 0 0 0; border-top: 1px solid #666; }
+	div.quick_links ul li p span.first_word { font-size:26px; line-height: 28px; }
+	h2.descriptive_title, h2.resource_label { font: bold 11px/13px Arial, sans-serif; color: #000; }
+	a.more { font: bold 11px/11px Arial, sans-serif; color: #fff; }
+	div#column-c.column.students div.quick_links ul.digital_exhibits li a.more { font: bold 18px/20px Arial, sans-serif; }
+	div#column-c.column div.quick_links ul.digital_exhibits li div.exhibit-data p { font: normal 12px Arial, sans-serif; color: #000; }
+	div#column-c.column div.quick_links ul.digital_exhibits li a.more { font: bold 12px/15px Arial, sans-serif; color: #fff; padding: 7px;  width: auto; }
+	
+		/* column E 
+	----------------------------------------------------------------------------------------- */
+	div.panel.sidebar.top ul li a { font: bold 12px/14px Arial, sans-serif; color: #333;  }
+	/* column E panel.sidebar.resources.top
+		----------------------------------------------------------------------------------------- */
+		div.column#column-e h2.title_sel, div.column#column-e h3.title_sel { font: normal 15px/18px Arial, sans-serif; color: #000; }
+		div.column#column-e h2.title_sel span { display: block; font: bold 15px/18px Arial, sans-serif; color: #000; }
+		div#item-tip, div#item-tip p { font: normal 12px/16px Arial, sans-serif; color: #000; }
+		h4.panel-exhibit_gialink, h4.panel-exhibit_gialink a { font: normal 12px/16px Arial, sans-serif; color: #000;  }
+		div.panel.sidebar.resources div.panel-intro  a { font: normal 12px/15px Arial, sans-serif; color: #555; }
+		/*div.panel.sidebar.resources div#video-resources a:hover {  color: #666; }*/
+		div.panel-intro a { font: bold 12px/16px Arial, sans-serif; color: #000; }
+/* KEYWORDS
+----------------------------------------------------------------------------------------- */
+div#tagcloud { font: normal 12px/16px Arial, sans-serif; color: #000;  }
+div#column-c div#keywords p, div#column-c div#keywords p a { font: bold 12px/16px Arial, sans-serif; color: #666; }
+div#column-c div#keywords p a:hover { color: #000; }
+
+/* EXHIBIT ACCORDION
+----------------------------------------------------------------------------------------- */
+div#submenu10 h3 a { font: normal 15px/18px Arial, sans-serif; color: #000;  } 
+div#column-d div#submenu10 h3:hover a.trigger { text-decoration: none !important; }
+div#submenu10 h3 a.close_section { font: normal 11px/11px Arial, sans-serif; color: #666;  } 
+div#column-d div.image_caption p { font: normal 11px/15px Arial, sans-serif; color: #555;  }
+/* FOOTER
+----------------------------------------------------------------------------------------- */
+div#page-footer ul#nav-footer-menu li a { color: #000; }
+div#page-footer ul#nav-footer-menu li a:hover { color: #666; }
+div#page-footer ul#nav-footer-menu li#e-knownet-copyright, div#page-footer ul#nav-footer-menu li#page-copyright { color: #666; }
+div#page-footer ul#acknowledgements li p { font: normal 11px/11px Arial, sans-serif; color: #333; }
+/* WEB COLLECTIONS
+----------------------------------------------------------------------------------------- */
+div#column-c div.image-title, div.image-title p { font: bold 12px/18px Arial, sans-serif; color: #000; }
+div#column-c div.image-link a, div#column-c div.image-link a:visited { font: bold 12px/18px Arial, sans-serif; color: #fff; }
+
+div#column-c div.wc_metadata p.wc_photo-caption { font: bold 12px/18px Arial, sans-serif; color: #000; }
+div#column-c div.wc_read_more a, div#column-c div.wc_read_more a:visited { font: bold 11px/13px Arial, sans-serif; color: #000; }
+div#column-c ul.wc_listing#content_paging div.wc_photo p.wc_photo-caption { font: bold 12px/18px Arial, sans-serif; color: #000; }
+/* RESOURCES
+----------------------------------------------------------------------------------------- */
+div#column-c ul#explore_home0 li a, div#column-c ul#explore_home0 li a:visited { font-weight: normal; font-size: 13px; color: #000; }
+div#column-c ul#explore_home0 li.selected a { text-decoration:underline !important; }
+	/* images
+	----------------------------------------------------------------------------------------- */
+div.counter { font-size: 12px; }
+div.resources.images ul li p { font-size: 11px !important; line-height: 13px !important;  }
+	/* pagination styling
+	----------------------------------------------------------------------------------------- */
+div#column-c div.page_navigation { font-weight: normal !important; }
+div#column-c div.page_navigation a, div#column-c div.page_navigation a.previous_link { font-weight: normal !important; color: #000 !important; }
+div#column-c div.page_navigation a.selected { font-weight: bold !important; color: #000 !important; }
+div#column-c div.page_navigation a.next_link { font-weight: normal !important; color: #000 !important;  }
+div#column-c div.page_navigation a.previous_link:hover, div.page_navigation a.next_link:hover { color: #666 !important; text-decoration: none !important; } 
+div#column-c div.page_navigation a.page_link { font-weight: normal !important; color: #000 !important;  }
+div#column-c div.page_navigation a.page_link:hover { color: #666 !important; text-decoration: none !important; }
+div#column-c div.page_navigation a.page_link.active_page { font-weight: bold !important; }
+/* SEARCH FORM
+----------------------------------------------------------------------------------------- */
+div.field { font-weight: bold; color: #333; font-size: 12px;}
+div.field select, div.field select option { color: #333; font-size: 12px;  }
+form#new-user-form h4 { font-weight: bold; color: #000; font-size: 13px; }
+/* SEARCH RESULTS
+----------------------------------------------------------------------------------------- */
+div#column-c div.search_results h2.sr_type a { font: bold 12px/18px Arial, sans-serif; color: #000 !important;  }
+div#column-c div.search_results div.result { font-size: 13px; }
+div#column-c div.search_results div.sr_view_more a { font: bold 11px/13px Arial, sans-serif; color: #000; text-align: right; }

@@ -1,0 +1,123 @@
+/* ----- main menu item (active) ----- */
+A:visited { color:#E87400;}
+.menubar .home a:link, .menubar .home a:visited, .menubar .home a:active 
+{ 
+	color: #286DA8; 
+}
+.menubar .kidsonly a:link, .menubar .kidsonly a:visited, .menubar .kidsonly a:active 
+{ 
+	color: #6E3DDD; 
+}
+
+
+/* ----- overall layout ------------------------------------------- */
+#page-container {width:970px;}
+.panel
+{
+	/* no cols on homepage, so float and space panels */
+	float: left;
+	margin-right: 15px;
+	clear: none;
+}
+#panel-one 
+{
+	width:490px;
+}
+#panel-two 
+{
+	width:353px;
+}
+
+#panel-container 
+{
+	float: left;		/* IS THIS NECESSARY? removed for IE5.0 with no probs - miks - 07/2008 */
+	width: 858px;	
+	padding: 0px;
+}	
+#panel-container div.panel 		/* small panel divs */
+{
+	width: 276px;	
+	margin-bottom: 0;
+}
+
+#panel-container div.panel-content 		/* small panel contents  */
+{
+	min-height: 260px;		/* IE6- will ignore this */
+}
+
+#panel-five 
+{
+	margin-right: 0;		/* no need for this here, and causes small alignment issue in IE */
+}
+
+
+/* ----- panel formatting -------------------------------- */
+#panel-three .panel-content, #panel-four .panel-content
+{
+	background-image: none;
+}
+#panel-five .panel-content
+{
+	background-image: url(generic/images/curve-top.gif);
+	background-position: top right;	
+}
+#panel-four .panel-footer, #panel-five .panel-footer
+{
+	background-image: none;
+}
+
+
+/* ----- panel-one content ------------------- */
+blockquote
+{
+	margin: 0px 10px 10px 10px; 
+}
+
+
+div.panel-footer ul
+{
+	margin: 0;
+}
+div.panel-footer ul li
+{
+	padding: 0;
+	display: inline-block;		/* needed for IE */
+	vertical-align: bottom;		/* needed for IE */
+}
+div.panel-footer li.first
+{
+	float: left;
+	padding-left: 10px;
+}
+
+
+
+
+/* ----- panel-two content ------------------- */
+li.news
+{
+	background-color: #F4D9D9;
+}
+li.news a.point-right
+{
+	font-weight: bold;
+	margin-bottom: 10px;
+	display: block;
+	text-align: right;
+}
+ul.index li
+{
+	vertical-align: bottom;		/* fixes IE spacing bug */
+}
+
+/* ----- added 09/2009 - miks ----- */
+.news h6 a:before
+{
+	content: 'NEWS: ';
+}
+
+/* ------- added 11/12/09 - DWB - for Species of the day
+------- only temp, will need to be removed when homepage is sorted properly */
+.about-us .panel-intro {background-color:#F2F2F2;}
+li.sotd {background-color:#B2DAFD;}
+li.sotd a.point-right {display:block;font-weight:bold;margin-bottom:10px;text-align:right;}

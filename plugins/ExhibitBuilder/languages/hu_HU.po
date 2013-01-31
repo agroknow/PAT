@@ -1,0 +1,763 @@
+# Translation for the Exhibit Builder plugin for Omeka.
+# Copyright (C) 2011 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+#   <holler@mttm.hu>, 2012.
+#   <rajczy@nhmus.hu>, 2012.
+#   <vas.zoltan@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pathway Authoring Tool\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
+"POT-Creation-Date: 2012-01-09 21:49-0500\n"
+"PO-Revision-Date: 2012-11-22 07:50+0000\n"
+"Last-Translator: rajczym <rajczy@nhmus.hu>\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/hu_HU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Gallery Full Left"
+msgstr "Képgaléria a bal oldalon"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider left column for 1 full-size"
+" image and text block."
+msgstr "Megjeleníti 8 nézőkép galériáját, egy szélesebb bal oldali oszloppal 1 teljes méretű kép és szöveg számára."
+
+msgid "Gallery Full Right"
+msgstr "Képgaléria a jobb oldalon"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider right column for 1 full-"
+"size image and text block."
+msgstr "Megjeleníti 8 nézőkép galériáját, egy szélesebb jobb oldali oszloppal 1 teljes méretű kép és szöveg számára."
+
+msgid "Gallery Thumbnails Text Bottom"
+msgstr "Nézőképek galériája - szöveg alul"
+
+msgid "Displays a block of text below a gallery of up to 12 items."
+msgstr "Megjelenít maximum 12 szöveget a galéria alatt."
+
+msgid "Gallery Thumbnails Text Top"
+msgstr "Nézőképek galériája - szöveg fent"
+
+msgid "Displays a block of text above a gallery of up to 12 items."
+msgstr "Megjelenít maximum 12 szöveget a galéria felett."
+
+msgid "Gallery Thumbnails"
+msgstr "Nézőképek galériája"
+
+msgid "Displays a gallery of up to 16 items."
+msgstr "Megjelenít egy galériát maximum 16 elemmel."
+
+msgid "Image List Left Thumbs"
+msgstr "Képlista a bal oldalon - nézőképek"
+
+msgid ""
+"Displays up to 8 thumbnails on the left with up to 8 text blocks on the "
+"right."
+msgstr "Megjelenít maximum 8 nézőképet a bal oldalon és maximum 8 szöveget a jobb oldalon."
+
+msgid "Image List Left"
+msgstr "Képlista a bal oldalon"
+
+msgid ""
+"Displays up to 8 full-size images on the left with up to 8 text blocks on "
+"the right."
+msgstr "Megjelenít maximum 8 teljes méretű képet a bal oldalon és maximum 8 szöveget a jobb oldalon."
+
+msgid "Image List Right Thumbs"
+msgstr "Képlista a jobb oldalon - nézőképek"
+
+msgid ""
+"Displays up to 8 thumbnails on the right with up to 8 text blocks on the "
+"left."
+msgstr "Megjeleníti (maximum) 8 kép nézőképét a jobb oldalon és (maximum) 8 szöveget a bal oldalon."
+
+msgid "Image List Right"
+msgstr "Képlista a jobb oldalon"
+
+msgid ""
+"Displays up to 8 full-size images on the right with up to 8 text blocks on "
+"the left."
+msgstr "Megjelenít (maximum) 8 képet a jobb oldalon és (maximum) 8 szöveget a bal oldalon."
+
+msgid "Text Image Left"
+msgstr "Szöveg kép a bal oldalon"
+
+msgid "Displays a full page of text, with a full-size image floated left."
+msgstr "Megjelenít egy teljes méretű szöveget és egy teljes méretű képet a bal oldalon."
+
+msgid "Text Image Right"
+msgstr "Szöveg kép a jobb oldalon"
+
+msgid "Displays a full page of text, with a full-size image floated right."
+msgstr "Megjelenít egy teljes méretű szöveget és egy teljes méretű képet a jobb oldalon."
+
+msgid "Text"
+msgstr "Szöveg"
+
+msgid "Displays a full page of text without items."
+msgstr "Megjelenít egy teljes méretű szöveget."
+
+#: config_form.php:3
+msgid "Use Exhibit Browse Page For Homepage?"
+msgstr "Legyen a kiállítási egységek böngésző-lapja a kezdőlap?"
+
+#: config_form.php:9
+msgid "If checked, Omeka will use the exhibit browse page for the homepage."
+msgstr "Ha bejelöli, az Omeka a kiállítási egységek böngésző-listáját használja kezdőlapként"
+
+#: config_form.php:14
+msgid "Sorting Exhibits"
+msgstr "Kiállítási egységek rendezése"
+
+#: config_form.php:19
+msgid ""
+"The default method by which you wish to sort the listing of exhibits on the "
+"exhibits/browse page. Default is 'Date Added'."
+msgstr "A kiállítási egységek alapértelmezett rendezési módja a böngésző-lista lapon. Eredeti érték: \"Hozzáadás ideje\""
+
+#: controllers/ExhibitsController.php:87
+msgid "This item is not used within this exhibit."
+msgstr "Ez az elem nincs használatban ebben a kiállítási egységben"
+
+#: controllers/ExhibitsController.php:254
+msgid "You must specifically select a theme in order to configure it."
+msgstr "Ki kell választania egy témát, hogy be tudja állítani."
+
+#: functions.php:212 functions.php:244
+#: views/admin/exhibits/exhibit-metadata-form.php:87
+#: views/admin/exhibits/page-content-form.php:87
+#: views/admin/exhibits/page-metadata-form.php:48
+#: views/admin/exhibits/section-metadata-form.php:43
+msgid "Exhibits"
+msgstr "Kiállítási egységek"
+
+#: functions.php:215 functions.php:231 views/admin/exhibits/browse.php:2
+#: views/public/exhibits/browse.php:2
+msgid "Browse Exhibits"
+msgstr "Kiállítási egységek böngészése"
+
+#: functions.php:216
+msgid "Create an Exhibit"
+msgstr "Kiállítási egység létrehozása"
+
+#: functions.php:218
+msgid "Create and manage exhibits that display items from the archive."
+msgstr "Kiállítási egységek létrehozása és kezelése, amil az archívumból elemeket jelenítenek meg."
+
+#: functions.php:440
+msgid "Search by Exhibit"
+msgstr "Keresés a Kiállítási egységek alapján"
+
+#: helpers/ExhibitFunctions.php:219
+msgid "There is no item attached."
+msgstr "Nincs csatolt elem."
+
+#: helpers/ExhibitFunctions.php:221
+#: views/admin/exhibits/page-content-form.php:57
+msgid "Attach an Item"
+msgstr "Egy elem csatolása"
+
+#: helpers/ExhibitFunctions.php:272
+msgid "Caption"
+msgstr "Képaláírás"
+
+#: helpers/ExhibitFunctions.php:441
+msgid "Featured Exhibit"
+msgstr "Kiemelt kiállítási egységek"
+
+#: helpers/ExhibitFunctions.php:446
+msgid "You have no featured exhibits."
+msgstr "Nincsenek kiemelt kiállítási egységei"
+
+#: helpers/ExhibitPageFunctions.php:155
+msgid "Next Page &rarr;"
+msgstr "Következő oldal &rarr;"
+
+#: helpers/ExhibitPageFunctions.php:189
+msgid "&larr; Previous Page"
+msgstr "&larr; Előző oldal"
+
+#: models/Exhibit.php:38
+msgid "An exhibit must be given a title."
+msgstr "Egy kiállítási egységnek címet kell adni"
+
+#: models/Exhibit.php:42
+msgid "The title for an exhibit must be 255 characters or less."
+msgstr "A kiállítási egység címe legfeljebb 255 karakter lehet"
+
+#: models/Exhibit.php:46
+msgid "The name of your theme must be 30 characters or less."
+msgstr "A  téma neve legfeljebb 30 karakter lehet."
+
+#: models/Exhibit.php:66
+msgid "Exhibits must be given a valid slug."
+msgstr "A kiállíytási egységnek érvényes álnevet kell adni."
+
+#: models/Exhibit.php:67 models/ExhibitPage.php:31
+#: models/ExhibitSection.php:33
+msgid "A slug must be 30 characters or less."
+msgstr "Egy álnév legfeljebb 30 karakter lehet."
+
+#: models/Exhibit.php:68
+msgid ""
+"Your URL slug is already in use by another exhibit.  Please choose another."
+msgstr "Ez az álnevet egy másik kiállítási egység már használja. Kérem, válasszon másikat!"
+
+#: models/ExhibitPage.php:30
+msgid "A slug must be given for each page of an exhibit."
+msgstr "A kiállítási egység minden lapjának álnevet kell adni."
+
+#: models/ExhibitPage.php:32
+msgid ""
+"This page slug has already been used in this section.  Please modify the "
+"slug so that it is unique."
+msgstr "Ez az álnevet más használta ebben a szakaszban. Kérem, módosítsa, hogy egyedi legyen!"
+
+#: models/ExhibitPage.php:47
+msgid "A layout must be provided for each exhibit page."
+msgstr "Minden kiállítási egység laphoz hozzá kell rendelni egy oldalformátumot. "
+
+#: models/ExhibitPage.php:51
+msgid "Exhibit pages must be given a title."
+msgstr "A kiállítási egységeknek címet kell adni."
+
+#: models/ExhibitSection.php:32
+msgid "A slug must be given for each section of an exhibit."
+msgstr "A kiállítási egység minden szakaszának álnevet kell adni."
+
+#: models/ExhibitSection.php:34
+msgid ""
+"This section slug has already been used in this exhibit.  Please modify the "
+"slug so that it is unique."
+msgstr "Ezt a szakasz álnevet már használta ebben a kiállítási egységben. Kérem, módosítsa, hogy egyedi legyen!"
+
+#: models/ExhibitSection.php:40
+msgid "Sections of an exhibit must be given a title."
+msgstr "A kiállítási egységek szakaszainak címet kell adni."
+
+#: views/admin/exhibits/browse.php:7
+#: views/admin/exhibits/exhibit-metadata-form.php:5
+msgid "Add Exhibit"
+msgstr "Kiállítási egység hozzáadása."
+
+#: views/admin/exhibits/browse.php:13
+msgid "There are no exhibits yet."
+msgstr "Még nincsenek kiállítási egységek."
+
+#: views/admin/exhibits/browse.php:16
+msgid "Add an exhibit."
+msgstr "Egy kiállítási egység hozzáadása."
+
+#: views/admin/exhibits/browse.php:35
+#: views/admin/exhibits/exhibit-metadata-form.php:125
+msgid "Theme"
+msgstr "Téma"
+
+#: views/admin/exhibits/browse.php:39
+msgid "Delete?"
+msgstr "Törli?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:3
+#, php-format
+msgid "Edit Exhibit: \"%s\""
+msgstr "Kiállítási egység szerkesztése: \"%s\""
+
+#: views/admin/exhibits/exhibit-metadata-form.php:5
+msgid "Edit Exhibit"
+msgstr "Kiállítási egység szerkesztése."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:22
+msgid "Are you sure you want to delete this section?"
+msgstr "Biztosan törli ezt a szakaszt?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:36
+#: views/admin/exhibits/section-metadata-form.php:18
+msgid "Are you sure you want to delete this page?"
+msgstr "Biztosan törli ezt az oldalt?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:96
+msgid "Exhibit Metadata"
+msgstr "Kiállítási egység metaadatai"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:102
+#: views/admin/exhibits/page-metadata-form.php:59
+#: views/admin/exhibits/section-metadata-form.php:58
+msgid "Slug"
+msgstr "Álnév"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:103
+#: views/admin/exhibits/page-metadata-form.php:60
+#: views/admin/exhibits/section-metadata-form.php:59
+msgid "No spaces or special characters allowed."
+msgstr "Szóközök és speciális karakterek használata nem engedélyezett."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:107
+#: views/public/exhibits/summary.php:9
+msgid "Credits"
+msgstr "Stáblista"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:126
+msgid "Current Public Theme"
+msgstr "Jelenlegi publikus téma"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:133
+msgid "Sections and Pages"
+msgstr "Szakaszok és oldalak"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:136
+msgid "There are no sections."
+msgstr "Nincsenek szakaszok."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:138
+msgid ""
+"To reorder sections or pages, click and drag the section or page up or down "
+"to the preferred location."
+msgstr "A szakaszok vagy oldalak sorrendjének módosításához kattintson a kiválasztott szakaszra vagy oldalra, és húzza fel vagy le a kívánt helyre."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:145
+#: views/admin/exhibits/section-metadata-form.php:5
+msgid "Add Section"
+msgstr "Szakasz hozzáadása"
+
+#: views/admin/exhibits/items.php:1
+msgid "Show Search Form"
+msgstr "Kereső lap mutatása"
+
+#: views/admin/exhibits/items.php:21
+#, php-format
+msgid "There are no items to choose from.  Please refine your search or %s."
+msgstr "Nincsen egyetlen ilyen elem sem. Kérjük, pontosítsa a keresést vagy %s."
+
+#: views/admin/exhibits/items.php:21
+msgid "add some items"
+msgstr "elemek hozzáadása"
+
+#: views/admin/exhibits/page-content-form.php:2
+#, php-format
+msgid "Edit Page Content: \"%s\""
+msgstr "Oldal szerksztése: \"%s\""
+
+#: views/admin/exhibits/page-content-form.php:25
+msgid "Remove This Item"
+msgstr "Elem eltávolítása"
+
+#: views/admin/exhibits/page-content-form.php:60
+msgid "Attach Selected Item"
+msgstr "Kiválasztott elem csatolása"
+
+#: views/admin/exhibits/page-content-form.php:100
+msgid "Page Layout"
+msgstr "Oldaltérkép"
+
+#: views/admin/exhibits/page-content-form.php:112
+#: views/admin/exhibits/page-metadata-form.php:2
+msgid "Edit Page"
+msgstr "Oldal szerkesztése"
+
+#: views/admin/exhibits/page-content-form.php:116
+msgid "Page Content"
+msgstr "Az oldal tartalma"
+
+#: views/admin/exhibits/page-content-form.php:124
+msgid "Save and Return to Section"
+msgstr "Mentés és vissza a szakaszhoz"
+
+#: views/admin/exhibits/page-content-form.php:125
+msgid "Save and Add Another Page"
+msgstr "Mentés és újabb oldal hozzáadása"
+
+#: views/admin/exhibits/page-metadata-form.php:2
+#: views/admin/exhibits/section-metadata-form.php:77
+msgid "Add Page"
+msgstr "Oldal hozzáadása"
+
+#: views/admin/exhibits/page-metadata-form.php:55
+msgid "Page Metadata"
+msgstr "Oldal metaadatok"
+
+#: views/admin/exhibits/page-metadata-form.php:65
+msgid "Layouts"
+msgstr "Elrendezések"
+
+#: views/admin/exhibits/page-metadata-form.php:72
+msgid "Choose a layout by selecting a thumbnail on the right."
+msgstr "Válaszd ki az elrendezést a jobb oldali nézőképek közül."
+
+#: views/admin/exhibits/section-list.php:10
+#: views/admin/exhibits/section-metadata-form.php:5
+msgid "Edit Section"
+msgstr "Szakasz szerkesztése"
+
+#: views/admin/exhibits/section-list.php:11
+msgid "Delete Section"
+msgstr "Szakasz törlése"
+
+#: views/admin/exhibits/section-list.php:25
+msgid "Add a Page"
+msgstr "Egy oldal hozzáadása"
+
+#: views/admin/exhibits/section-metadata-form.php:3
+#, php-format
+msgid "Edit Section: \"%s\""
+msgstr "Szakasz szerkesztése: \"%s\""
+
+#: views/admin/exhibits/section-metadata-form.php:55
+msgid "Section Metadata"
+msgstr "Szakasz metaadatok"
+
+#: views/admin/exhibits/section-metadata-form.php:64
+msgid "Pages in this Section"
+msgstr "Oldalak ebben a szakaszban"
+
+#: views/admin/exhibits/section-metadata-form.php:66
+msgid ""
+"To reorder pages, click and drag the page thumbnail up or down to the "
+"preferred location."
+msgstr "Az oldalak sorrendjének módosításához kattintson a kiválasztott oldalra, és húzza fel vagy le a kívánt helyére."
+
+#: views/admin/exhibits/section-metadata-form.php:68
+msgid "There are no pages in this section."
+msgstr "Nincsenek oldalak ebben a szakaszban."
+
+#: views/admin/exhibits/tags.php:2 views/public/exhibits/tags.php:2
+msgid "Browse Exhibits by Tag"
+msgstr "Kiállítási egységek böngészése a címke alapján"
+
+#: views/admin/exhibits/tags.php:14
+msgid "There are no tags to display. You must first tag some exhibits."
+msgstr "Nincsen megjeníthető címke. Először fel kell címkézni néhány kiállítási egységet."
+
+#: views/public/exhibits/browse.php:30
+msgid "There are no exhibits available yet."
+msgstr "Még nincs megjeleníthető kiállítási egység."
+
+#: views/public/exhibits/summary.php:14
+msgid "Sections"
+msgstr "Szakaszok"
+
+#: views/shared/exhibit_layouts/gallery-full-left/form.php:4
+#: views/shared/exhibit_layouts/gallery-full-right/form.php:4
+msgid "Primary"
+msgstr "Elsődleges"
+
+#: views/shared/exhibit_layouts/gallery-full-left/form.php:11
+#: views/shared/exhibit_layouts/gallery-full-right/form.php:12
+msgid "Secondary"
+msgstr "Másodlagos"
+
+#: admingeneral!
+msgid "Pathways"
+msgstr "Tanösvények"
+
+#: admingeneral!
+msgid "Browse Pathways"
+msgstr "Tanösvények tallózása"
+
+#: admingeneral!
+msgid "Create a Pathway"
+msgstr "Tanösvény létrehozása"
+
+#: admingeneral!
+msgid " Add Pathway"
+msgstr "Tanösvény hozzáadása"
+
+#: admingeneral!
+msgid "Add a Pathway"
+msgstr "Egy tanösvény hozzáadása"
+
+#: admingeneral!
+msgid "Create and manage Pathways"
+msgstr "Tanösvény létrehozása és kezelése"
+
+#: admingeneral!
+msgid "Search by Pathway"
+msgstr "Keresés tanösvény alapján"
+
+#: admingeneral!
+msgid "Attach a Resource"
+msgstr "Forrás csatolása"
+
+#: admingeneral!
+msgid "Click to attach a resource from your collection."
+msgstr "Kattintson ide egy forrás saját gyűjteményből történő csatolásához"
+
+#: admingeneral!
+msgid "Introduction"
+msgstr "Bevezetés"
+
+#: admingeneral!
+msgid "Pre-visit Phase"
+msgstr "Látogatás előtti szakasz"
+
+#: admingeneral!
+msgid "Visit Phase"
+msgstr "Látogatási szakasz"
+
+#: admingeneral!
+msgid "Post-visit Phase"
+msgstr "Látogatás utáni szakasz"
+
+#: admingeneral!
+msgid "Introductory section and preparatory"
+msgstr "Bevezető szakasz és előkészítés"
+
+#: admingeneral!
+msgid "Engagement"
+msgstr "Elfoglaltság"
+
+#: admingeneral!
+msgid "Game"
+msgstr "Játék"
+
+#: admingeneral!
+msgid "Reflection"
+msgstr "Visszajelzés"
+
+#: admingeneral!
+msgid "Guidance for preparation"
+msgstr "Segítség a felkészüléshez"
+
+#: admingeneral!
+msgid "Connection with curriculum"
+msgstr "Tanagyaggal való kapcsolat"
+
+#: admingeneral!
+msgid "Provoke curiosity"
+msgstr "Érdeklődés felkeltése"
+
+#: admingeneral!
+msgid "Define questions from current knowledge"
+msgstr "Meglévő ismeretekre alapozott kérdések"
+
+#: admingeneral!
+msgid "Propose preliminary explanations or hypotheses"
+msgstr "Előzetes magyarázatok, hipotézisek felvetése"
+
+#: admingeneral!
+msgid "Plan and conduct simple investigation"
+msgstr " Egyszerű vizsgálatok tervezése és kivitelezése "
+
+#: admingeneral!
+msgid "Gather evidence from observation"
+msgstr " Bizonyítékok összegyűjtése megfigyelések útján"
+
+#: admingeneral!
+msgid "Explanation based on evidence"
+msgstr "Tényeken alapuló magyarázat"
+
+#: admingeneral!
+msgid "Consider other explanations"
+msgstr "Egyéb magyarázatok megfontolása"
+
+#: admingeneral!
+msgid "Communicate explanation"
+msgstr "Magyarázatok megvitatása"
+
+#: admingeneral!
+msgid "Follow-up activities and materials"
+msgstr "További tevékenységek és segédanyagok"
+
+#: admingeneral!
+msgid "Sustainable contact"
+msgstr "Kapcsolatfelvétel"
+
+#: admingeneral!
+msgid "Curiosity Provocation"
+msgstr "Érdeklődés felkeltése"
+
+#: admingeneral!
+msgid "Abstract Conceptulization"
+msgstr "Gondolkozzunk!"
+
+#: admingeneral!
+msgid "Active Experimentation1"
+msgstr "Próbáld ki!  1"
+
+#: admingeneral!
+msgid "Active Experimentation2"
+msgstr "Próbáld ki!  2"
+
+#: admingeneral!
+msgid "Active Experimentation3"
+msgstr "Próbáld ki!  3"
+
+#: admingeneral!
+msgid "Active Experimentation4"
+msgstr "Próbáld ki!  4"
+
+#: admingeneral!
+msgid "Active Experimentation5"
+msgstr "Próbáld ki!  5"
+
+#: admingeneral!
+msgid "Active Experimentation6"
+msgstr "Próbáld ki!  6"
+
+#: admingeneral!
+msgid "Active Experimentation7"
+msgstr "Próbáld ki!  7"
+
+#: admingeneral!
+msgid "Active Experimentation8"
+msgstr "Próbáld ki!  8"
+
+#: admingeneral!
+msgid "Active Experimentation9"
+msgstr "Próbáld ki!  9"
+
+#: admingeneral!
+msgid "Active Experimentation10"
+msgstr "Próbáld ki!  10"
+
+#: admingeneral!
+msgid "Active Experimentation11"
+msgstr "Próbáld ki!  11"
+
+#: admingeneral!
+msgid "Active Experimentation12"
+msgstr "Próbáld ki!  12"
+
+#: admingeneral!
+msgid "Active Experimentation13"
+msgstr "Próbáld ki!  13"
+
+#: admingeneral!
+msgid "Active Experimentation14"
+msgstr "Próbáld ki!  14"
+
+#: admingeneral!
+msgid "Active Experimentation15"
+msgstr "Próbáld ki!  15"
+
+#: admingeneral!
+msgid "Reflection-COMMUNICATE EXPLANATION"
+msgstr "Visszajelzés - magyarázatok megvitatása"
+
+#: admingeneral!
+msgid "Last Modified:"
+msgstr "Utoljára módosítva:"
+
+#: admingeneral!
+msgid "Supporting Materials"
+msgstr "Segédanyagok"
+
+#: admingeneral!
+msgid "Add your tag"
+msgstr "Adjon hozzá a cimkét"
+
+#: admingeneral!
+msgid "Given Metadata"
+msgstr "Megadott metaadat"
+
+#: admingeneral!
+msgid "There are no pathways yet."
+msgstr "Még nincs tanösvény"
+
+#: admingeneral!
+msgid "Educational Pathways"
+msgstr "Oktatási tanösvény"
+
+#: admingeneral!
+msgid "GO NOW!"
+msgstr "Indítás most!"
+
+#: admingeneral!
+msgid "Creator"
+msgstr "Létrehozó"
+
+#: admingeneral!
+msgid "You are here"
+msgstr "Ön itt áll"
+
+#: admingeneral!
+msgid "Edit Pathway: %s"
+msgstr "Tanösvény szerkesztése: %s"
+
+#: admingeneral!
+msgid "Edit Pathway"
+msgstr "Tanösvény szerkesztése"
+
+#: admingeneral!
+msgid "Preview Pathway"
+msgstr "Tanösvény előnézete"
+
+#: admingeneral!
+msgid "Quality Criteria for Natural Europe Pathways"
+msgstr "A Natural Europe tanösvények minőségi követelményei"
+
+#: admingeneral!
+msgid "Description"
+msgstr "Leírás"
+
+#: admingeneral!
+msgid "Language"
+msgstr "Nyelv"
+
+#: admingeneral!
+msgid "Pathway Title"
+msgstr "Tanösvény címe"
+
+#: admingeneral!
+msgid "no spaces or special characters"
+msgstr "szóköz és speciális karakterek nélkül"
+
+#: admingeneral!
+msgid "Pathway ready for validation"
+msgstr "A tanösvény jóváhagyásra előkészítve"
+
+#: admingeneral!
+msgid "Pathway Metadata"
+msgstr "Tanösvény metaadatai"
+
+#: admingeneral!
+msgid "Save and Finish"
+msgstr "Mentés és befejezés"
+
+#: admingeneral!
+msgid "Save Changes"
+msgstr "Változtatások mentése"
+
+#: admingeneral!
+msgid "Select Pathway Template"
+msgstr "Tanösvény séma választás"
+
+#: admingeneral!
+msgid "There are no sections"
+msgstr "Nincsenek szakaszok"
+
+#: admingeneral!
+msgid "Cancel"
+msgstr "Mégse"
+
+#: admingeneral!
+msgid "Click to add Supporting Materials"
+msgstr "Segédanyagok hozzáadásához kattintson ide"
+
+#: admingeneral!
+msgid ""
+"Resources that will be added here serve as <br> complementary to the items "
+"attached on the pathway"
+msgstr "Az itt hozzáadott segédletek a tanösvényhez csatolt elemek kiegészítőjeként szolgálnak."
+
+#: admingeneral!
+msgid "Select an object to add"
+msgstr "Válassza ki a hozzáadni kívánt objektumot"
+
+#: admingeneral!
+msgid "All Items: "
+msgstr "Valamennyi elem:"
+
+#: admingeneral!
+msgid "Insert"
+msgstr "Beszúrás"
+
+#: admingeneral!
+msgid "No items"
+msgstr "Nincsen egyetlen elem sem."

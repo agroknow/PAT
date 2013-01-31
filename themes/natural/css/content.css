@@ -1,0 +1,834 @@
+/* -------------------------------------------------------------------- */
+/*                                                                      */
+/*    standard & core formats - actual content (images, text, etc)      */
+/*                                                                      */
+/* -------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------
+
+	CONTENTS
+
+	page layout DIVs (panel-content, banners, etc) - MOVE ??
+	default styles for HTML elements
+		a
+		address, blockquote, cite
+		tables
+	specific styles for HTML elements
+		headers
+		lists (OL/UL)
+		defintion lists
+		text
+		images & flash
+	page layout DIV content (P,UL, etc in div.panel-content, div.banner, etc)
+	generic format/alignment classes
+	generic link classes (point-right, printVersion etc)
+	
+	specifics formats or structures
+		pullouts
+		news pages
+		video pages
+		named tables
+	
+----------------------------------------------------------------------- */
+
+
+/* ----- ORIGINAL minimal table styles ----- 
+@import url("tables.css");
+table, td, th 		{ border-width: 0px; }
+.panel-content table 	{ margin: 10px; }
+*/
+
+
+
+
+/* ----- default minimal table styles ----- */
+/* should include TH styles for TBODY/THEAD but not supported by CMS - miks - 08/2008 */
+A:visited { color:#E87400;}
+.panel-content table, .tab-panel table 	
+{
+	border-collapse: collapse; 
+	margin: 0px 10px 10px 10px; 
+	border-width: 0px;
+}
+td, th
+{
+	border: 1px solid #747474;
+	padding: 3px 5px 3px 3px;
+	vertical-align: top;
+	text-align: left;
+}
+th	{ font-weight: bold; }
+
+
+
+
+
+/* ----- "index" ULs ---------------------- */
+
+.panel ul.index
+{
+	margin: 0;
+}
+
+.panel ul.index li
+{
+	list-style: none;
+	padding: 0;
+	padding-top: 10px;
+	padding-right: 10px;
+	background-image: none;
+	text-align: justify;
+}
+.panel ul.index li img
+{
+	margin: 3px 10px 7px 17px;
+	float: left;
+}
+.panel ul.index h6
+{
+	padding-bottom: 0px;		/* this should be unnecessary - h6 needs no bottom padding - miks */
+
+	position: relative;
+	top: -2px;			/* fix alignment wrt image - added 09/2008 - miks */
+	/* margin-top: -3px;		should work, but messes formatting in FF */
+}
+ul.index p
+{
+	padding: 0px;
+	margin: 0px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+} 
+ul.index h6
+{
+	margin-left: 10px;
+}
+
+
+/* NEED TO CLARIFY CLASSES ON CONTAINING DIVS - INDEX, panel-content, SPONSORS ??? */
+/* and adjust test pages and rationalise CSS accordingly */
+
+
+/* 
+original intention was that multiple sponsors would be listed in a UL.index.
+However, it seems this is not what will happen (instead, they are just added 
+as sucessive div.sponsor), so some of this CSS is probably redundant.
+- miks - 07/2008
+*/
+
+		/* adjustments for sponsors indexes */
+		div.sponsor img, ul.index li div.sponsor img
+		{
+			float: none;
+			display: block;
+		}
+		div.sponsor img
+		{
+			margin-left: 10px;
+			/* margin-top: 10px; */
+		}
+		div.sponsors h4
+		{
+			margin-top: 10px;
+		}
+
+
+
+
+/* ----- central nav snippet outside UL.index ----- */
+/* 
+occasionally the nav snippet will get inserted into DIV.panel-content 
+rather than UL.index - this makes it work correctly if it uses a 
+DIV.index-item rather then an LI in a UL.index - miks - 08/2008
+*/
+div.index-item img
+{
+	float: left;
+	margin: 0 10px 10px 10px;
+}
+/* following prevents following content from floating "into" the preceding DIV in IE only (clearfix approach used for other browsers) - miks - 08/2008 */
+div.index-item, div.panel-content div.sponsor
+{
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+div.panel-intro 		
+{ 
+	border-bottom: 1px solid #FFF;
+	padding: 7px;
+}
+
+
+
+div.index h5
+{
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 1.1em;
+	color: #000;
+}
+
+
+div.index div.panel-content
+{
+	border-bottom: 1px solid #f2f2f2;	/* remove white bottom border */
+}
+
+
+
+
+/* ******************************** NEW ******************************** */
+
+h3
+{
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+h4
+{
+	margin: 10px;
+	margin-top: 0px;
+}
+h5
+{
+	margin: 0px 10px 5px 10px;	
+}
+h6
+{
+	margin: 0px 10px 0px 10px;
+}
+p
+{
+	margin: 0px 10px 3px 10px;
+}
+
+
+
+
+
+/* ********************************************************************* */
+
+
+
+
+
+/* ----- PAGE LAYOUT DIVISIONS ------------------------------------------------- */
+/* ??? SHOULD THESE BE HERE OR IN NHM-PAGE.CSS ??? */
+div.panel-content
+{
+	border-bottom: 1px solid white;		/* create seperator */
+	padding-top: 10px;
+}
+
+/* add curve to top-right of DIV.panel-content if first item in div.panel */
+/* NOTE: div.panel added to selectors to prevent these rules being picked up by Jive, where extra template DIVs make this rule apply when it shouldn't (ditto in sectional stylesheets for div.panel-intro) - miks 09/2009 */
+div.panel div.panel-content:first-child 	
+{
+	background-image: url(generic/images/curve-top.gif);
+	background-position: top right;
+}
+
+	/* fix above for when panel-content in div.index  */
+	div.panel div.index div.panel-content:first-child
+	{
+		background-image: none;
+	}
+	div.panel div.index:first-child div.panel-content
+	{
+		background-image: url(generic/images/curve-top.gif);
+	}
+	
+	/* SEE ALSO: similar fix to above also found in tabs.css */
+	
+/* add curve to bottom-left of DIV.panel-content if last item in div.panel */
+div.panel div.panel-content:last-child 	
+{
+	background-image: url(generic/images/curve-bot.gif);
+	background-position: bottom left;
+}
+
+
+
+/* ----- DEFAULT HTML ELEMENT STYLES --------------------------------------------- */
+div, h2, h3, h4, h5, a 	{ background-repeat: no-repeat;	}
+a, a:link, a:visited, a:active 
+{
+	background-position: right center;
+	text-decoration: none;
+
+	/* ? color: black; !!!!!!!! new default, so only A-tags which are actually links will be coloured (potentially useful for menus and similar) - miks - 12/2006 */
+	/* if do above, must replace sectional rules for a with rules for a:link, a:visited, a:active... */ 
+}
+
+a:hover { text-decoration: underline; }
+
+address
+{
+	margin: 0px 10px 10px 10px;		/* WAS padding */
+	font-style: normal;
+}
+
+blockquote { margin: 0 30px 10px 30px; }
+blockquote p 
+{
+	margin-left: 0;
+	margin-right: 0;
+}
+blockquote cite
+{
+	font-style: normal;
+	/* display: block; */
+	text-align: right;
+}
+
+div.panel-content form 	{ margin: 0 10px 10px 10px; }
+object, embed			{ margin: 0 0 10px; }
+
+/* is following line necessary? - object should prob be in a DIV.flash which already has appropriate CSS? - miks - 08/2008 */
+div.banner object, div.banner embed 	{ margin: 0; }		/* flash objects inserted by the swfobject-v1 need this - not sure about v2 - miks - 07/2008 */
+
+
+
+
+
+
+
+
+/* !!!! REMOVE FOR INTERNT -------------------------------------------------------- */
+
+/* ----- default minimal table styles ----- */
+/* CAN CAUSE PROBS ON INTERNT - RE-EXAMINE THIS PROB IF NEC... - miks - 08/2007 */
+/* PROB NEED TO REMOVE @IMPORT INSTEAD NOW */
+
+/* !!!! END REMOVE FOR INTERNT -------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* ----- SPECIFIC HTML ELEMENT STYLES --------------------------------------------- */
+
+h1
+{
+	float: left; 		/* for core pages with l/h nav */
+	width: 540px;		/* so following divs clear floated header - possibly not the best way as requires adjustment for some formats - miks - 08/2007 */
+	padding-bottom:5px;
+	margin-top: 0px;
+}
+h2
+{ 
+	margin: 0px;
+	padding: 5px 5px 5px 0; 
+}
+.panel h2 
+{ 
+	color: #FFF;
+	background-position: top right;
+	margin: 0px;
+	padding: 5px 5px 5px 10px; 
+}
+
+
+
+
+
+
+
+
+/* ----- LISTS --------------------------------------------------- */
+
+/* paragraphs and h6 in lists - remove lateral margins */
+li p, li h6
+{
+	margin-right: 0;
+	margin-left: 0;
+}
+
+/* maybe best to make this universal then overwrite for other ULs such as menubars etc?? */
+.panel ul li, #utilities ul li
+{
+	list-style-image: none;
+	list-style-type: none;
+	background-repeat: no-repeat;		/* this should be global? */
+	background-position: left 0.6em;	/* hack slightly for IE ? */
+	padding-left: 15px;
+	border: 0px solid red;
+}
+
+.panel ul 	{ margin: 0px 10px 10px 20px; }
+.panel ol 	{ margin: 0px 10px 10px 40px; }
+.panel li 	{ padding: 2px 10px 2px 0px;  }		/* LI right-margin should not really be required, as UL margin should do it... */
+
+
+
+/* ----- NESTED LISTS ----------- */
+.panel ul ul, .panel ol ol
+{
+	margin-bottom: 0;
+}
+
+
+/* ----- OL numbering options --- */
+ol.roman-upper	{ list-style-type: upper-roman; }
+ol.roman-lower	{ list-style-type: lower-roman; }
+ol.alpha-upper	{ list-style-type: upper-alpha; }
+ol.alpha-lower	{ list-style-type: lower-alpha; }
+
+
+
+/* ----- REFERENCE LISTS -------- */
+ul.reference-list
+{
+	margin-left: 10px;
+}
+#page-container ul.reference-list li		/* #page-container needed for greater specificity needed to remove "bullet" bg-image from LIs */
+{
+	background-image: none;
+	padding-left: 0;
+	margin-bottom: 10px;
+}
+ul.reference-list li span.links	
+{
+	display: block;
+}
+
+/* 
+----- HANGING INDENT - could create optional additional stylesheet
+ul.reference-list	{ padding-left: 25px; }
+ul.reference-list li 	{ text-indent: -25px; }
+*/
+
+
+/* ----- DEFINITION LISTS --------------------------------------------- */
+
+/* ----- default ----- */
+dl
+{
+	margin: 0 10px 10px 10px;
+}
+dt
+{
+	font-weight: bold;
+	float: left;
+	clear: left;
+	margin-right: 5px;
+}
+dd
+{
+	margin-bottom: 3px;
+}
+
+/* ----- glossary ----- */
+dl.glossary dt
+{
+	clear: both;
+	padding-right: 10px;
+	float: none;
+	display: block;
+}
+dl.glossary dd
+{
+	margin-bottom: 5px;
+	padding-left: 15px;
+}
+
+/* ----- right aligned (needs specific widths) ----- */
+dl.dl-right dt
+{
+	width: 35%;
+	text-align: right;
+	margin-right: 5px !important;
+}
+dl.dl-right dd
+{
+	padding-left: 37%;
+}
+
+dl.dl-right dt
+{
+	float: left;
+}
+
+
+
+/* ----- taxonomy (originally for sotd 2009) ----- */
+dl.taxonomy dt { font-weight: normal; }
+dl.taxonomy dd { font-weight: bold; }
+/* indentation */
+dl.taxonomy dt:nth-of-type(2)  { margin-left: 5px; }
+dl.taxonomy dt:nth-of-type(3)  { margin-left: 10px; }
+dl.taxonomy dt:nth-of-type(4)  { margin-left: 15px; }
+dl.taxonomy dt:nth-of-type(5)  { margin-left: 20px; }
+dl.taxonomy dt:nth-of-type(6)  { margin-left: 25px; }
+dl.taxonomy dt:nth-of-type(7)  { margin-left: 30px; }
+dl.taxonomy dt:nth-of-type(8)  { margin-left: 35px; }
+dl.taxonomy dt:nth-of-type(9)  { margin-left: 40px; }
+dl.taxonomy dt:nth-of-type(10) { margin-left: 45px; }
+dl.taxonomy dt:nth-of-type(11) { margin-left: 50px; }
+dl.taxonomy dt:nth-of-type(12) { margin-left: 55px; }
+dl.taxonomy dt:nth-of-type(13) { margin-left: 60px; }
+dl.taxonomy dt:nth-of-type(14) { margin-left: 65px; }
+dl.taxonomy dt:nth-of-type(15) { margin-left: 70px; }
+
+
+
+
+
+
+/* ----- TEXT ----------------------------------------------------- */
+p.reference 		{ margin-left: 15px; }
+blockquote p.reference
+{
+	text-align: right;
+	margin-left: 0px;	
+}
+
+
+
+
+
+
+/* ---- NEW (09/2007) IMAGE & FLASH STYLES ----- */
+/* 
+These styles mainly depend on a width class or style attribute being used to define 
+a literal width for the containing DIV.image, otherwise it is not possible to constrain 
+a caption to the same width as an image.  This situation may or may not improve with 
+better browser support for display:inline-block.
+*/
+
+
+div.image, div.flash
+{
+	margin: 0px 0px 0px 0px;
+}
+
+div.flash object, div.flash embed
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+div.right, div.left	
+{
+	margin: 0px 10px 10px 10px;
+}
+div.centered, div.centre		/* centre preferred */	
+{
+	margin-left: auto;		/* fails in IE5.5 */
+	margin-right: auto;		/* fails in IE5.5 */
+	margin-bottom: 10px;
+}
+
+
+/* it would be nice to remove the div.banner - but maybe not worth the effort.. - miks - 03/2009 */
+div.banner div.image, div.banner div.flash
+{
+	margin: 0px 0px 0px 0px;
+}
+
+
+
+div.image p, div.flash p
+{
+	background-color: #737373;
+	color: #FFF;
+	border: 1px solid #FFF;
+	border-width: 1px 0px;
+	padding: 4px 10px;
+	margin: 0;
+}
+span.copyright
+{
+	/* display: block; */
+}
+
+
+
+/* ----- defined widths - add more as required (cannot find a good alternative to this...unfortunately - miks) ----- */
+/* these are not required for CMS content, but are preferable to using the style attribute for div.image in non-CMS content */
+.width250 { width: 250px; }
+.width200 { width: 200px; }
+.width190 { width: 190px; }
+.width170 { width: 170px; }
+.width160 { width: 160px; }
+.width150 { width: 150px; }
+.width140 { width: 140px; }
+.width120 { width: 120px; }
+.width115 { width: 115px; }
+.width100 { width: 100px; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----- GENERIC FORMAT/ALIGNMENT CLASSES ----------------------------------------- */
+
+.odd 					{ background-color:#E4E4E4; }		/* alternate bg colours */
+.tab-content .odd    		{ background-color:#f2f2f2; }		/*for index columns in a tab panel*/
+.contrast 				{ background-color:#E4E4E4; }	
+.leader, .terminator			{ font-weight: bold; }			/* mainly for news */
+ 
+/* .subtext				{ text-align: right; } */
+
+.right, .panel-content img.right 	{ float: right; }			/* img.right is deprecated */
+img.right 				{ padding: 0px 0px 5px 10px; }		/* img.right is deprecated */
+.left, .panel-content img.left 		{ float: left; }			/* img.left is deprecated */
+img.left 				{ padding: 0px 10px 5px 0px; }		/* img.left is deprecated */
+.text-right 				{ text-align: right; }
+.text-left 				{ text-align: left; }
+
+
+.taxon-format	{ font-style: italic; }			/* italic format for taxon names */
+.keyword 	{ font-weight: bold; }			/* bold format for keywords in text */
+
+
+
+.error-message, .warning, .required
+{
+	color: #AA0000;
+}
+
+
+/* hide "separator" - ie - bottom border (usually of a panel-content) */
+/* noSeparator is DEPRECATED - no-separator may be unnecessary? */
+div.noSeparator, div.no-separator	{ border-color: #f2f2f2; }
+
+
+
+h6 span.date
+{
+	color:#000;
+}
+
+
+
+/* ----- GENERIC LINK CLASSES ------------------------------------------- */
+
+/* 
+NEED TO FIX THESE SO HOVER UNDERLINES - PROB NEED BETTER GENERIC RULES 
+FOR A-TAG ALONE, THEN NO NEED TO SPECIFY TEXT DECORATION HERE OR ELSEWHERE??
+*/
+
+a.point-right, a.point-right:link, a.point-right:visited, a.point-right:active, .panel-footer a 
+{
+	padding-right: 15px;
+}
+a.point-left, a.point-left:link, a.point-left:visited, a.point-left:active 
+{
+	background-position: center left;
+	padding-left: 15px;
+}
+a.top, a.top:link, a.top:visited, a.top:active 
+{
+	float: right;
+	padding-right: 15px;
+}
+a.print-version, .panel-footer a.print-version
+{
+	font-weight: bold;
+	background-image: url(generic/images/print.gif);
+	padding-right: 20px;
+}
+
+/* FIX: ensure correct spacing even if point-right/left link NOT in a P-tag - miks - 07/2008 */
+div.panel a.point-right
+{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+div.panel a.point-left
+{
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+/* make adjustments for previous rule block - miks - 07/2008 */
+div.panel p a.point-right, div.panel-footer a.point-right, 
+div#page-body div.image-footer a.point-right
+{
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+div.panel p a.point-left
+{
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+
+
+/* ----- specific link class implementations ------------- */
+/* SEE ALSO: promo panel-footer styles in utilities.css */
+
+/* !!! these look a bit confused - rationalise?? */
+
+div.panel-content a.point-right, div.panel-content a.point-left 	
+{ 
+	margin-bottom: 10px; 
+	/* this is to do with clearing (floated) content - may be or become redundant - miks - 08/2007 */
+	/* and possibly this interferes with other rules... - miks - 04/2009 */
+}
+
+.panel-intro a.point-right, .panel-content a.point-right, .tab-content a.point-right
+{
+	display: block;
+	text-align: right;
+	font-weight: bold;
+}
+
+.panel-content a.point-left, .panel-content a.point-left, .tab-content a.point-left
+{
+	display: block;
+	font-weight: bold;
+}
+
+/* ----- PULLOUTS ---------------------------------------------- */
+/* For important info that needs to be pulled out into mini panel within the main content */
+/* IS THIS WHOLE FORMAT DEPRECATED NOW ?? */
+div.pullout
+{
+	float:right;
+	width:180px;
+	background-color: #fff;
+	border: 1px solid #E4E4E4;
+	margin-left: 10px;
+	margin-bottom: 10px; 
+	margin-right: 10px; 		/* hacked for IE6- 2x-margin bug */
+}
+div.pullout h4
+{
+	font-size: 1.0em;
+	padding:5px 5px 5px 10px;
+	margin: 0;
+	margin-bottom: 7px;
+	color:#000;
+	background-color: #E4E4E4;
+}
+
+
+
+
+
+
+
+/* ----- VIDEO PAGES ---------------------------------------------- */
+
+.video .panel-intro
+{
+	padding: 0;
+}
+.video .panel-intro div.image
+{
+	margin: 0;
+}
+
+div.stream-choice
+{
+	border: 0px solid red;
+	float: left;
+  	width:155px;			/* prob needs hackery for ie<7 */
+	padding: 3px 5px 0px 10px;
+  	font-size:0.9em;
+}
+
+div.stream-choice h6
+{
+	color: #000;
+	font-weight: normal;
+	border: 0px solid red;
+	margin: 0;
+}
+div.stream-choice ul
+{
+	margin: 0 0 3px 5px;
+}
+div.stream-choice a
+{
+	font-weight: bold;
+	color: #000;
+}
+
+/* remove bullets and margin for lists of this format - eg - video page */
+.panel ul.info
+{
+	margin: 0 0 10px 10px;
+}
+.panel ul.info li
+{
+	background-image: none;
+	padding: 0;
+}
+
+/* video content row */
+/* div.video { background-position: top right; }	!! document use of this class (if nec - probably redundant?? - miks - 11/07 */
+
+/* header-text is DEPRECATED */
+span.header-text, span.header-inline, span.header-block 
+{ font-weight: bold; }		
+span.header-block 
+{ display: block; }		
+
+
+
+
+/* ----- SPECIFIC TABLES ---------------------------------------------- */
+
+/* ----- museum opening times ------------ */
+#table-opening-times 
+{ 
+	width: 90%; 	
+	font-size: 1.1em;
+	text-align: left;
+	border-width: 0;
+}
+#table-opening-times th		
+{ 
+	text-align: left; 
+	background-color: transparent;
+	color: #000;
+	font-weight: bold;
+	border-width: 0;
+}
+#table-opening-times td		
+{ 
+	text-align: right; 
+	border-width: 0;
+}
+
+
+/* ----- biography timelines ------------ */
+table.biography-timeline tbody th
+{
+	text-align: right;
+}
+table.biography-timeline th, table.biography-timeline td
+{
+	border-width: 0;
+}
+
+/* ----- SPECIES OF THE DAY ---------------------------------------------- */
+/* ----- specifically for species of the day index and landing ------------ */
+.index .sotd .point-right {
+	display:block;
+	font-weight:bold;
+	text-align:right;
+	margin-right: 0;
+}

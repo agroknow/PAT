@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+#page-header { height:150px; }
+ul.digital_exhibits li a.block { background: url(../blank.gif)}
+		/* nav-site-supplementary-menu
+		----------------------------------------------------------------------------------------- */
+		/* nav-site-supplementary-menu search box
+		----------------------------------------------------------------------------------------- */
+input#search-site-go { padding: 0 0 0 0px;  outline: none !important; border: none !important; cursor: pointer; text-indent: -90000px; font-size: 0;
+ line-height: 0; overflow: hidden; }
+input#search-site-go:focus, input#search-site-go:active, input#search-site-go:hover { outline: none !important; border: none !important; background: url(../images/interface/go.gif) 0 -16px no-repeat; }
+
+div#share div.container { position: absolute; left:10px; margin: -150px 0 0 0px; width: 150px; padding: 3px 8px 8px 8px; z-index: 10000; }
