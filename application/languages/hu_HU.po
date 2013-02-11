@@ -7,7 +7,8 @@
 #   <holler@mttm.hu>, 2012.
 # Imre Juhász <juhasz.imr@gmail.com>, 2012.
 #   <madarasz.csaba@gmail.com>, 2012.
-#   <rajczy@nhmus.hu>, 2012.
+# Miklos Rajczy <rajczy@nhmus.hu>, 2013.
+#   <rajczy@nhmus.hu>, 2012-2013.
 # Sándor Koroknai <koroknaisandor@gmail.com>, 2012.
 #   <vas.zoltan@gmail.com>, 2012.
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2012-11-21 21:33+0000\n"
+"PO-Revision-Date: 2013-02-07 14:48+0000\n"
 "Last-Translator: rajczym <rajczy@nhmus.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +30,7 @@ msgid ""
 "The Dublin Core metadata element set. These elements are common to all Omeka"
 " resources, including items, files, collections, exhibits, and entities. See"
 " http://dublincore.org/documents/dces/."
-msgstr "A Dublin Core metaadat elemkészlete. Ezek az elemek közösek minden Omeka alkalmazásban, tartalmazzon az tárgyakat, fájlokat, gyűjteményeket, kiállításokat vagy személyeket és intézményeket. Lásd http://dublincore.org/documents/dces/."
+msgstr "A Dublin Core metaadat elemkészlete. Ezek az elemek közösek minden Omeka forrásban, legyen az tétel, fájl, gyűjtemény, kiállítási egység, személy vagy intézmény. Lásd http://dublincore.org/documents/dces/."
 
 # #-#-#-#-#  Omeka.base.pot (Omeka 1.5)  #-#-#-#-#
 # Dublin Core: Title element
@@ -41,11 +42,11 @@ msgstr "Cím"
 # Dublin Core: Creator element
 #: admin/themes/default/items/browse.php:130
 msgid "Creator"
-msgstr "Készítő"
+msgstr "Létrehozó"
 
 # Dublin Core: Subject element
 msgid "Subject"
-msgstr "Tárgy"
+msgstr "Tárgy- és kulcsszavak,"
 
 # #-#-#-#-#  Omeka.base.pot (Omeka 1.5)  #-#-#-#-#
 # Dublin Core: Description element
@@ -64,12 +65,12 @@ msgstr "Leírás"
 
 # Dublin Core: Publisher element
 msgid "Publisher"
-msgstr "Publikáló"
+msgstr "Kiadó"
 
 # Dublin Core: Contributor element
 # User role: contributor
 msgid "Contributor"
-msgstr "Hozzájáruló"
+msgstr "Közreműködő"
 
 # Dublin Core: Date element
 msgid "Date"
@@ -87,11 +88,11 @@ msgstr "Formátum"
 
 # Dublin Core: Identifier element
 msgid "Identifier"
-msgstr "Azonosító"
+msgstr "Forrásazonosító"
 
 # Dublin Core: Source element
 msgid "Source"
-msgstr "Forrás"
+msgstr "Eredeti információforrás"
 
 # Dublin Core: Language element
 msgid "Language"
@@ -103,7 +104,7 @@ msgstr "Kapcsolat"
 
 # Dublin Core: Coverage element
 msgid "Coverage"
-msgstr "Lefedettség"
+msgstr "Tér-idő vonatkozás"
 
 # Dublin Core: Rights element
 msgid "Rights"
@@ -111,17 +112,17 @@ msgstr "Jogok"
 
 # Item Type Metadata
 msgid "Item Type Metadata"
-msgstr ""
+msgstr "Tétel típusú metaadatok"
 
 # Item Type Metadata description
 msgid ""
 "The item type metadata element set, consisting of all item type elements "
 "bundled with Omeka and all item type elements created by an administrator."
-msgstr ""
+msgstr "A tétel típusú metadatok elemkészlete, amely tartalmazza az összes Omekához kapcsolt tétel típusú elemet, valamint az adminisztrátor által létrehozott minden ilyen elemet."
 
 # Omeka Legacy File
 msgid "Omeka Legacy File"
-msgstr ""
+msgstr "Omeka örökölt fájl"
 
 # Omeka Legacy File description
 msgid ""
@@ -129,7 +130,7 @@ msgid ""
 "was included in the `files` table in previous versions of Omeka. These "
 "elements are common to all Omeka files. This set may be deprecated in future"
 " versions."
-msgstr ""
+msgstr "Az Omeka korábbi verzióiban a \"files\" tábla tartalmazta a Dublin Core elemkészletét kiegészítő metaadat elemkészletet. Ezek az elemek közösek minden Omeka fájlra. Ez a készlet a következő verziókban elavultnak számíthat."
 
 # Omeka Legacy File: Additional Creator element
 msgid "Additional Creator"
@@ -137,35 +138,35 @@ msgstr "További alkotó"
 
 # Omeka Legacy File: Transcriber element
 msgid "Transcriber"
-msgstr ""
+msgstr "Átíró"
 
 # Omeka Legacy File: Producer element
 msgid "Producer"
-msgstr "Létrehozó"
+msgstr "Producer"
 
 # Omeka Legacy File: Render Device element
 msgid "Render Device"
-msgstr ""
+msgstr "Megjelenítő eszköz"
 
 # Omeka Legacy File: Render Details element
 msgid "Render Details"
-msgstr ""
+msgstr "A megjelenítés részletei"
 
 # Omeka Legacy File: Capture Date element
 msgid "Capture Date"
-msgstr "Dátum beolvasása"
+msgstr "Rögzítés dátuma"
 
 # Omeka Legacy File: Capture Device element
 msgid "Capture Device"
-msgstr ""
+msgstr "Rögzítő eszköz"
 
 # Omeka Legacy File: Capture Details element
 msgid "Capture Details"
-msgstr ""
+msgstr "Rögzítés részletei"
 
 # Omeka Legacy File: Change History element
 msgid "Change History"
-msgstr "Változás történet"
+msgstr "Változástörténet"
 
 # Omeka Legacy File: Watermark element
 msgid "Watermark"
@@ -173,7 +174,7 @@ msgstr "Vízjel"
 
 # Omeka Legacy File: Encryption element
 msgid "Encryption"
-msgstr "Kódolás"
+msgstr "Titkosítás"
 
 # Omeka Legacy File: Compression element
 msgid "Compression"
@@ -181,7 +182,7 @@ msgstr "Tömörítés"
 
 # Omeka Legacy File: Post Processing element
 msgid "Post Processing"
-msgstr ""
+msgstr "Utómunkálatok"
 
 # Omeka Image File
 msgid "Omeka Image File"
@@ -191,7 +192,7 @@ msgstr "Omeka kép fájl"
 msgid ""
 "The metadata element set that was included in the `files_images` table in "
 "previous versions of Omeka. These elements are common to all image files."
-msgstr ""
+msgstr "Az Omeka korábbi verzióiban ezt a \"files_images\" tábla tartalmazta. Ezek az elemek közösek minden képfájlra."
 
 # Omeka Image File: Width element
 msgid "Width"
@@ -215,7 +216,7 @@ msgstr "Exif karakterlánc"
 
 # Omeka Image File: Exif Array element
 msgid "Exif Array"
-msgstr ""
+msgstr "Exif tömb"
 
 # Omeka Image File: IPTC String element
 msgid "IPTC String"
@@ -223,7 +224,7 @@ msgstr "IPTC karakterlánc"
 
 # Omeka Image File: IPTC Array element
 msgid "IPTC Array"
-msgstr ""
+msgstr "IPTC tömb"
 
 # Omeka Video File
 msgid "Omeka Video File"
@@ -233,7 +234,7 @@ msgstr "Omeka Video Fájl"
 msgid ""
 "The metadata element set that was included in the `files_videos` table in "
 "previous versions of Omeka. These elements are common to all video files."
-msgstr ""
+msgstr "Az Omeka korábbi verzióiban ezt a \"files_videos\" tábla tartalmazta. Ezek az elemek közösek minden video fájlra."
 
 # Omeka Video File: Bitrate element
 msgid "Bitrate"
@@ -241,27 +242,27 @@ msgstr "Bitráta"
 
 # Omeka Video File: Duration element
 msgid "Duration"
-msgstr "Tartósság"
+msgstr "Tartam"
 
 # Omeka Video File: Sample Rate element
 msgid "Sample Rate"
-msgstr ""
+msgstr "Mintavételi sűrűség"
 
 # Omeka Video File: Codec element
 msgid "Codec"
-msgstr "Kódek"
+msgstr "Kodek"
 
 # Format (Legacy) Metadata element set
 msgid "Format (Legacy) Metadata"
-msgstr ""
+msgstr "Formátum metaadatok (örökölt)"
 
 # User role: Super
 msgid "Super"
-msgstr "Szuper"
+msgstr "Szuperadminisztrátor"
 
 # User role: Admin
 msgid "Admin"
-msgstr "Admin"
+msgstr "Adminisztrátor"
 
 # User role: Researcher
 msgid "Researcher"
@@ -270,7 +271,7 @@ msgstr "Kutató"
 #: admin/themes/default/collections/add.php:2
 #: admin/themes/default/collections/browse.php:6
 msgid "Add a Collection"
-msgstr "Gyűjtemény"
+msgstr "Gyűjtemény hozzáadása"
 
 #: admin/themes/default/collections/add.php:9
 msgid "Save Collection"
@@ -298,7 +299,7 @@ msgstr "(%s összesen)"
 
 #: admin/themes/default/collections/browse.php:18
 msgid "ID"
-msgstr "ID"
+msgstr "Azonosító"
 
 #: admin/themes/default/collections/browse.php:19
 #: admin/themes/default/element-sets/browse.php:12
@@ -316,13 +317,13 @@ msgstr "Gyűjtők"
 #: admin/themes/default/items/browse.php:134
 #: application/views/scripts/files/show.php:57
 msgid "Date Added"
-msgstr "Hozzáadás dátuma"
+msgstr "Hozzáadott dátum"
 
 #: admin/themes/default/collections/browse.php:22
 #: admin/themes/default/collections/show.php:39
 #: admin/themes/default/item-types/show.php:42
 msgid "Total Number of Items"
-msgstr "Összes elemek száma"
+msgstr "Összes tétel száma"
 
 #: admin/themes/default/collections/browse.php:25
 #: admin/themes/default/item-types/browse.php:17
@@ -355,7 +356,7 @@ msgstr "Gyűjtemény hozzáadása"
 
 #: admin/themes/default/collections/browse.php:71
 msgid "There are no collections in your archive."
-msgstr "Nincs gyűjtemény az archívumban."
+msgstr "Nincs gyűjtemény az archívumában."
 
 #: admin/themes/default/collections/edit.php:8
 #: admin/themes/default/collections/show.php:8
@@ -365,7 +366,7 @@ msgstr "#%s gyűjtemény szerkesztése"
 
 #: admin/themes/default/collections/edit.php:14
 msgid "Delete this Collection"
-msgstr "Eme gyűjtemény törlése"
+msgstr "Gyűjtemény törlése"
 
 #: admin/themes/default/collections/edit.php:20
 #: admin/themes/default/files/edit.php:36
@@ -436,21 +437,21 @@ msgstr "Nem kiemelt"
 #: admin/themes/default/collections/show.php:11
 #: admin/themes/default/items/show.php:14
 msgid "View Public Page"
-msgstr "A publikus oldal megtekintése"
+msgstr "A nyilvános oldal megtekintése"
 
 #: admin/themes/default/collections/show.php:13
 msgid "Edit this Collection"
-msgstr "Eme gyűjtmény szerkesztése"
+msgstr "A gyűjtmény szerkesztése"
 
 #: admin/themes/default/collections/show.php:27
 msgid "No collectors."
-msgstr "Nincsen gyűjtője"
+msgstr "Nincsenek gyűjtők"
 
 #: admin/themes/default/collections/show.php:33
 #: admin/themes/default/item-types/show.php:30
 #: application/views/scripts/index.php:35
 msgid "Recently Added Items"
-msgstr "Mostanában hozzáadott elemek"
+msgstr "Mostanában hozzáadott tételek"
 
 #: admin/themes/default/common/footer.php:4
 msgid "Documentation"
@@ -459,7 +460,7 @@ msgstr "Dokumentáció"
 #: admin/themes/default/common/footer.php:4
 #: admin/themes/default/common/login-footer.php:4
 msgid "Powered by Omeka"
-msgstr ""
+msgstr "Az Omeka működteti"
 
 #: admin/themes/default/common/footer.php:4
 msgid "Support Forums"
@@ -470,15 +471,15 @@ msgstr "Támogató fórumok"
 #: admin/themes/default/plugins/plugin-info.php:65
 #, php-format
 msgid "Version %s"
-msgstr "Verzió %s"
+msgstr "%s verzió "
 
 #: admin/themes/default/common/footer.php:9
 msgid "More information about your system"
-msgstr "Több információ a rendszeredről"
+msgstr "Több információ a rendszeréről"
 
 #: admin/themes/default/common/header.php:5
 msgid "Omeka Admin"
-msgstr "Omeka Adminja"
+msgstr "Omeka adminisztrátor"
 
 #: admin/themes/default/common/header.php:24
 msgid "Skip Navigation"
@@ -543,7 +544,7 @@ msgstr "Felhasználók"
 
 #: admin/themes/default/common/settings-nav.php:17
 msgid "Element Sets"
-msgstr ""
+msgstr "Elemkészletek"
 
 #: admin/themes/default/common/settings-nav.php:20
 msgid "Security Settings"
@@ -552,22 +553,22 @@ msgstr "Biztonsági beállítások"
 #: admin/themes/default/common/tags-nav.php:3
 #: admin/themes/default/tags/browse.php:2
 msgid "Browse Tags"
-msgstr "Cimkék böngészése"
+msgstr "Címkék böngészése"
 
 #: admin/themes/default/common/tags-nav.php:5
 #: admin/themes/default/tags/edit.php:2
 msgid "Edit Tag"
-msgstr "Cimke szerkesztése"
+msgstr "Címke szerkesztése"
 
 #: admin/themes/default/common/tags-nav.php:8
 #: admin/themes/default/tags/delete.php:2
 #: admin/themes/default/tags/delete.php:21
 msgid "Delete Tag"
-msgstr "Cimke törlése"
+msgstr "Címke törlése"
 
 #: admin/themes/default/element-sets/browse.php:2
 msgid "Browse Element Sets"
-msgstr ""
+msgstr "Elemkészletek böngészése"
 
 #: admin/themes/default/element-sets/browse.php:14
 #: admin/themes/default/items/batch-edit.php:101
@@ -584,7 +585,7 @@ msgstr "403: Tiltott"
 
 #: admin/themes/default/error/403.php:9
 msgid "Sorry, you do not have permission to access this page."
-msgstr "Sajnálom, nincs jogod ehhez az oldalhoz."
+msgstr "Sajnálom, nincs joga ehhez az oldalhoz."
 
 #: admin/themes/default/error/403.php:12 admin/themes/default/error/404.php:12
 #: admin/themes/default/error/405.php:10
@@ -594,7 +595,7 @@ msgstr "Oldal adminisztrátor"
 #: admin/themes/default/error/403.php:13
 #, php-format
 msgid "If you think you should have permission, try contacting the %s."
-msgstr "Ha úgy gondolja van jogosultsága, próbáljon kapcsolatba lépni az %s."
+msgstr "Ha úgy gondolja van jogosultsága, próbáljon kapcsolatba lépni a felelőssel: %s."
 
 #: admin/themes/default/error/404.php:2
 msgid "404: Page Not Found"
@@ -605,16 +606,16 @@ msgid ""
 "You&#8217;ve tried to access a page that does not seem to exist. Sometimes "
 "this happens. Below is a quick break-down of the items, collections, and "
 "exhibits on this site."
-msgstr ""
+msgstr "Nem létező oldalt próbált elérni. Néha ez előfordul. Az oldal alján\n  az itt megtalálható tételek, gyűjtemények és kiállítási elemek gyorslistája szerepel."
 
 #: admin/themes/default/error/404.php:13
 #, php-format
 msgid "If this does not help, try contacting the %s."
-msgstr ""
+msgstr "Ha ez nem segít, próbálja meg hívni %s-t"
 
 #: admin/themes/default/error/404.php:15 admin/themes/default/index.php:88
 msgid "Recent Items"
-msgstr "Legfrisebb dokumentumok"
+msgstr "Legfrissebb tételek"
 
 #: admin/themes/default/error/404.php:25
 msgid "Recent Collections"
@@ -629,7 +630,7 @@ msgstr "405: Nem engedélyezett metódus"
 msgid ""
 "You must use a different method to access this URL. If you reached this page"
 " by following a link or clicking a button in Omeka, please contact the %s."
-msgstr ""
+msgstr "Máshogy kell elérnie ezt az URL-t. Ha egy linkre, vagy egy Omeka gombra kattintva talált ide, kérjük lépjen kapcsolatba a következővel: %s"
 
 #: admin/themes/default/files/edit.php:8
 #, php-format
@@ -698,12 +699,12 @@ msgstr "Mime tipus / Böngésző"
 #: admin/themes/default/files/show.php:48
 #: application/views/scripts/files/show.php:45
 msgid "Mime Type / OS"
-msgstr "Mime tipus / Op.r"
+msgstr "Mime típus / operációs rendszer"
 
 #: admin/themes/default/files/show.php:49
 #: application/views/scripts/files/show.php:49
 msgid "File Type / OS"
-msgstr "Fájl tipus / Op.r"
+msgstr "Fájl típus / operációs rendszer"
 
 #: admin/themes/default/files/show.php:54
 #: admin/themes/default/items/browse.php:201
@@ -713,7 +714,7 @@ msgstr "Kimeneti formátumok"
 
 #: admin/themes/default/index.php:2
 msgid "Dashboard"
-msgstr ""
+msgstr "Munkafelület"
 
 #: admin/themes/default/index.php:12
 msgid "A new version of Omeka is available for download."
@@ -722,27 +723,27 @@ msgstr "Letölthető az Omeka legújabb verziója"
 #: admin/themes/default/index.php:13
 #, php-format
 msgid "Upgrade to %s"
-msgstr ""
+msgstr "Használjon újabb verziót: %s"
 
 #: admin/themes/default/index.php:19
 msgid "Getting Started with Omeka"
-msgstr ""
+msgstr "Az Omeka megnyitása"
 
 #: admin/themes/default/index.php:24
 msgid "Add a new item to your archive"
-msgstr ""
+msgstr "Új tétel hozzáadása az archívumhoz"
 
 #: admin/themes/default/index.php:25
 msgid "Browse your items"
-msgstr "Saját dokumentumok böngészése"
+msgstr "Saját tételek böngészése"
 
 #: admin/themes/default/index.php:28
 msgid "Manage items in your archive: add, edit, and delete items."
-msgstr ""
+msgstr "Az archívum elemeinek kezelése: tételek hozzáadása, szerkesztése és törlése"
 
 #: admin/themes/default/index.php:35
 msgid "Add a collection to group items"
-msgstr ""
+msgstr "Gyűjtemény hozzáadása tételek csoportosítása céljából"
 
 #: admin/themes/default/index.php:36
 msgid "Browse your collections"
@@ -750,7 +751,7 @@ msgstr "Saját gyűjtemények böngészése"
 
 #: admin/themes/default/index.php:39
 msgid "Manage collections in your archive: add, edit, and delete collections."
-msgstr ""
+msgstr "Archivum gyűjteményeinek kezelése: gyűjtemény hozzáadása, szerkesztése, törlése"
 
 #: admin/themes/default/index.php:48 admin/themes/default/users/browse.php:2
 msgid "Browse Users"
@@ -762,7 +763,7 @@ msgstr "Új felhasználó"
 
 #: admin/themes/default/index.php:53
 msgid "Manage users of various levels: from researcher to super."
-msgstr ""
+msgstr "Különböző szintű felhasználók kezelése: kutatótól vezetőig"
 
 #: admin/themes/default/index.php:61 admin/themes/default/settings/edit.php:2
 msgid "Edit General Settings"
@@ -774,7 +775,7 @@ msgstr "Témák kezelése"
 
 #: admin/themes/default/index.php:63
 msgid "Manage Plugins"
-msgstr "Bővítmények kezelés"
+msgstr "Bővítmények kezelése"
 
 #: admin/themes/default/index.php:65
 msgid ""
@@ -791,19 +792,19 @@ msgstr "Honlap áttekintés"
 msgid ""
 "<em>%1$s</em> contains %2$s items, in %3$s collections, tagged with %4$s "
 "keywords. There are %5$s users."
-msgstr ""
+msgstr "<em>%1$s</em> tartalmaz %2$s tételt, %3$s gyűjteményben, %4$s kulcsszó mutat rá. Felhasználók száma: %5$s."
 
 #: admin/themes/default/index.php:91
 msgid "There are no items to display."
-msgstr ""
+msgstr "Nincs megjelenítendő tétel"
 
 #: admin/themes/default/index.php:102 application/views/scripts/index.php:71
 msgid "View All Items"
-msgstr "Összes dokumentum megtekintése"
+msgstr "Összes tétel megtekintése"
 
 #: admin/themes/default/index.php:107
 msgid "Recent Tags"
-msgstr "Legfrissebb cimkék"
+msgstr "Legfrissebb címkék"
 
 #: admin/themes/default/item-types/add-existing-element.php:7
 #: admin/themes/default/item-types/add-new-element.php:7
@@ -816,15 +817,15 @@ msgstr "Eltávolítás"
 #: admin/themes/default/item-types/add.php:2
 #: admin/themes/default/item-types/add.php:10
 msgid "Add Item Type"
-msgstr "Dokumentum tipus hozzáadása"
+msgstr "Tétel típus hozzáadása"
 
 #: admin/themes/default/item-types/browse.php:2
 msgid "Browse Item Types"
-msgstr "Dokumentum tipusok böngészése"
+msgstr "Tétel típusok böngészése"
 
 #: admin/themes/default/item-types/browse.php:6
 msgid "Add an Item Type"
-msgstr ""
+msgstr "Tétel típus hozzáadása"
 
 #: admin/themes/default/item-types/browse.php:13
 msgid "Type Name"
@@ -832,28 +833,28 @@ msgstr "Tipus név"
 
 #: admin/themes/default/item-types/browse.php:15
 msgid "Total Items"
-msgstr ""
+msgstr "Összes tétel"
 
 #: admin/themes/default/item-types/edit.php:8
 #, php-format
 msgid "Edit Item Type #%s"
-msgstr ""
+msgstr "#%s tétel típus szerkesztése"
 
 #: admin/themes/default/item-types/edit.php:14
 msgid "Delete this Item Type"
-msgstr ""
+msgstr "Tétel típus törlése"
 
 #: admin/themes/default/item-types/element-form.php:3
 msgid "Add an Element to this Item Type"
-msgstr ""
+msgstr "Új elem hozzáadása a tétel típushoz"
 
 #: admin/themes/default/item-types/element-form.php:6
 msgid "Choose an existing element"
-msgstr ""
+msgstr "létező elem választása"
 
 #: admin/themes/default/item-types/element-form.php:14
 msgid "Or Create a new Element"
-msgstr ""
+msgstr "vagy új elem létrehozása"
 
 #: admin/themes/default/item-types/element-form.php:31
 #: admin/themes/default/item-types/element-list.php:7
@@ -863,15 +864,15 @@ msgstr "Adat tipus"
 #: admin/themes/default/item-types/element-form.php:40
 #: admin/themes/default/item-types/element-list.php:61
 msgid "Add Element"
-msgstr ""
+msgstr "Elem hozzáadása"
 
 #: admin/themes/default/item-types/element-list.php:1
 msgid "Edit Current Elements"
-msgstr ""
+msgstr "Legújabb elemek szerkesztése"
 
 #: admin/themes/default/item-types/element-list.php:5
 msgid "Element Name"
-msgstr ""
+msgstr "Elem neve"
 
 #: admin/themes/default/item-types/element-list.php:8
 #: admin/themes/default/items/files-form.php:14
@@ -880,7 +881,7 @@ msgstr "Rendezés"
 
 #: admin/themes/default/item-types/element-list.php:59
 msgid "Existing"
-msgstr ""
+msgstr "Létező"
 
 #: admin/themes/default/item-types/element-list.php:60
 msgid "New"
@@ -888,45 +889,45 @@ msgstr "Új"
 
 #: admin/themes/default/item-types/form.php:17
 msgid "Item Type Information"
-msgstr ""
+msgstr "A tétel típusra vonatkozó információ"
 
 #: admin/themes/default/item-types/form.php:35
 msgid "Elements"
-msgstr ""
+msgstr "Elemek"
 
 #: admin/themes/default/item-types/show.php:8
 #, php-format
 msgid "Item Type #%s"
-msgstr ""
+msgstr "#%s tétel típus"
 
 #: admin/themes/default/item-types/show.php:13
 msgid "Edit this Item Type"
-msgstr ""
+msgstr "Tétel típus szerkesztése"
 
 #: admin/themes/default/item-types/show.php:39
 msgid "There are no recently added items."
-msgstr "Exif karakterlánc"
+msgstr "Nincsenek újonnan hozzáadott tételek."
 
 #: admin/themes/default/items/add.php:2
 #: admin/themes/default/items/browse.php:6
 msgid "Add an Item"
-msgstr ""
+msgstr "Tétel hozzáadása"
 
 #: admin/themes/default/items/add.php:12
 msgid "Add Item"
-msgstr ""
+msgstr "Tétel hozzáadása"
 
 #: admin/themes/default/items/batch-edit.php:2
 msgid "Batch Edit Items"
-msgstr ""
+msgstr "Tételek csoportos szerkesztése"
 
 #: admin/themes/default/items/batch-edit.php:15
 msgid "Changes will be applied to checked items."
-msgstr ""
+msgstr "A változások a megjelölt tételekre vonatkoznak"
 
 #: admin/themes/default/items/batch-edit.php:36
 msgid "Item Metadata"
-msgstr ""
+msgstr "Tétel metaadatok"
 
 #: admin/themes/default/items/batch-edit.php:39
 msgid "Public?"
@@ -937,7 +938,7 @@ msgstr "Nyilvános?"
 #: admin/themes/default/items/batch-edit.php:65
 #: admin/themes/default/items/batch-edit.php:78
 msgid "Select Below"
-msgstr ""
+msgstr "Válassz az alábbiakból"
 
 #: admin/themes/default/items/batch-edit.php:51
 msgid "Featured?"
@@ -946,7 +947,7 @@ msgstr "Kiemelt?"
 #: admin/themes/default/items/batch-edit.php:62
 #: admin/themes/default/items/item-type-form.php:2
 msgid "Item Type"
-msgstr "405: Nem engedélyezett metódus"
+msgstr "Tétel típus"
 
 #: admin/themes/default/items/batch-edit.php:70
 #: admin/themes/default/items/batch-edit.php:83
@@ -965,20 +966,20 @@ msgstr "Gyűjtemény"
 #: admin/themes/default/items/tag-form.php:11
 #: admin/themes/default/items/tag-form.php:13
 msgid "Add Tags"
-msgstr "Cimkék hozzáadása"
+msgstr "Címkék hozzáadása"
 
 #: admin/themes/default/items/batch-edit.php:90
 #, php-format
 msgid "List of tags to add to all checked items, separated by %s."
-msgstr ""
+msgstr "A bejelölt tételekhez hozzáadandó címkék listája, elválasztójel: %s."
 
 #: admin/themes/default/items/batch-edit.php:98
 msgid "Delete Items"
-msgstr ""
+msgstr "Tételek törlése"
 
 #: admin/themes/default/items/batch-edit.php:99
 msgid "Check if you wish to delete selected items."
-msgstr ""
+msgstr "Jelölje be, ha törölni kívánja a kiválasztott tételeket."
 
 #: admin/themes/default/items/browse.php:2
 #: application/views/scripts/common/footer.php:6
@@ -986,11 +987,11 @@ msgstr ""
 #: application/views/scripts/items/browse.php:2
 #: application/views/scripts/items/tags.php:2
 msgid "Browse Items"
-msgstr ""
+msgstr "Tételek böngészése"
 
 #: admin/themes/default/items/browse.php:13
 msgid "Toggle"
-msgstr ""
+msgstr "Átváltás"
 
 #: admin/themes/default/items/browse.php:14
 msgid "Details"
@@ -1025,7 +1026,7 @@ msgstr "Összetett keresés"
 #: admin/themes/default/items/browse.php:117
 #: admin/themes/default/items/browse.php:193
 msgid "Edit Selected Items"
-msgstr ""
+msgstr "Tételek szerkesztése"
 
 #: admin/themes/default/items/browse.php:126
 msgid "Select"
@@ -1038,25 +1039,25 @@ msgstr "Nincs gyűjtemény"
 
 #: admin/themes/default/items/browse.php:166
 msgid "No Tags"
-msgstr "Nincs cimke"
+msgstr "Nincsenek címkék"
 
 #: admin/themes/default/items/browse.php:207
 msgid "There are no items in the archive yet."
-msgstr ""
+msgstr "Még nincsenek tételek az archívumban"
 
 #: admin/themes/default/items/browse.php:210
 msgid "Add an item."
-msgstr ""
+msgstr "Tétel hozzáadása"
 
 #: admin/themes/default/items/browse.php:215
 #, php-format
 msgid "The query searched %s items and returned no results."
-msgstr ""
+msgstr "A lekérdezés %s tételt nézett át és nem talált semmit."
 
 #: admin/themes/default/items/browse.php:215
 #, php-format
 msgid "Would you like to %s?"
-msgstr ""
+msgstr "Szeretné: %s?"
 
 #: admin/themes/default/items/browse.php:215
 msgid "refine your search"
@@ -1071,18 +1072,18 @@ msgstr "[Cím nélkül]"
 #: admin/themes/default/items/edit.php:8
 #, php-format
 msgid "Edit Item #%s"
-msgstr ""
+msgstr "#%s tétel szerkesztése"
 
 #: admin/themes/default/items/edit.php:12
 msgid "Delete this Item"
-msgstr ""
+msgstr "Tétel törlése"
 
 #: admin/themes/default/items/files-form.php:4
 msgid ""
 "The path to Image Magick has not been set. No derivative images will be "
 "created. If you would like Omeka to create derivative images, please add the"
 " path to your settings form."
-msgstr "Az Image Magick elérési útvonala nem lett beállítva. Származtatott képfájlok nem készíthetők. Ha szeretné, hogy az Omeka készítsen származtatott képfájlokat akkor kérem adja hozzá az elérési utat az Általános beállításokhoz."
+msgstr "Az Image Magick elérési útvonala nem lett beállítva. Származtatott képfájlok nem készíthetők. Ha szeretné, hogy az Omeka készítsen származtatott képfájlokat, akkor kérem, adja hozzá az elérési utat az Beállítások űrlapon."
 
 #: admin/themes/default/items/files-form.php:7
 msgid "Current Files"
@@ -1098,7 +1099,7 @@ msgstr "A fájl metaadatainak szerkesztése"
 
 #: admin/themes/default/items/files-form.php:36
 msgid "Add New Files"
-msgstr "Új fájl hozzáadása"
+msgstr "Új fájlok hozzáadása"
 
 #: admin/themes/default/items/files-form.php:39
 #: admin/themes/default/items/files-form.php:50
@@ -1116,11 +1117,11 @@ msgstr "Típus kiválasztása"
 #: admin/themes/default/items/show.php:8
 #, php-format
 msgid "Item #%s"
-msgstr ""
+msgstr "#%s tétel"
 
 #: admin/themes/default/items/show.php:18
 msgid "Edit this Item"
-msgstr ""
+msgstr "Tétel szerkesztése"
 
 #: admin/themes/default/items/show.php:55
 msgid "Bibliographic Citation"
@@ -1129,11 +1130,11 @@ msgstr "Irodalmi hivatkozás"
 #: admin/themes/default/items/show.php:76
 #: admin/themes/default/items/tag-form.php:18
 msgid "My Tags"
-msgstr "Cimkéim"
+msgstr "Címkéim"
 
 #: admin/themes/default/items/show.php:85
 msgid "Save Tags"
-msgstr "Cimkék mentése"
+msgstr "Címkék mentése"
 
 #: admin/themes/default/items/show.php:95
 #: admin/themes/default/items/show.php:102
@@ -1146,36 +1147,36 @@ msgstr "Fájl hozáadása"
 
 #: admin/themes/default/items/show.php:98
 msgid "There are no files for this item yet."
-msgstr ""
+msgstr "Még nincsenek fájlok ehhez a tételhez"
 
 #: admin/themes/default/items/tag-form.php:14
 #, php-format
 msgid "Separate tags with %s"
-msgstr "Cimkék elválasztása %s karakterrel"
+msgstr "Címkék elválasztása %s karakterrel"
 
 #: admin/themes/default/items/tag-form.php:42
 #: admin/themes/default/items/tag-list.php:2
 msgid "All Tags"
-msgstr "Minden cimke"
+msgstr "Minden címke"
 
 #: admin/themes/default/items/tags.php:2
 msgid "Browse Items by Tag"
-msgstr ""
+msgstr "Tételek böngészése címkék alapján"
 
 #: admin/themes/default/items/tags.php:9
 #: admin/themes/default/tags/browse.php:27
 msgid "There are no tags to display. You must first tag some items."
-msgstr ""
+msgstr "Nincs megjelenítendő címke. Először meg kell címkéznie néhány tételt!"
 
 #: admin/themes/default/plugins/browse.php:2
 msgid "Browse Plugins"
-msgstr "Bővítmények keresése"
+msgstr "Bővítmények böngészése"
 
 #: admin/themes/default/plugins/browse.php:21
 msgid ""
 "You do not have any plugins installed. Add them to the plugins directory to "
 "see them listed here."
-msgstr "Egyetlen bővítmény sincs telepítve. Adjon bővítményeket a plugins könyvtárhoz, hogy megjelenjen itt."
+msgstr "Egyetlen bővítmény sincs telepítve. Adjon bővítményeket a plugins könyvtárhoz, hogy itt megjelenjenek."
 
 #: admin/themes/default/plugins/browse.php:24
 msgid ""
@@ -1183,7 +1184,7 @@ msgid ""
 "ons/plugins/\">Omeka Plugins Directory</a>, or <a "
 "href=\"http://omeka.org/codex/Plugin_Writing_Best_Practices\">write your "
 "own</a>!"
-msgstr "Új bővítmények letöltése az <a href=\"http://omeka.org/add-ons/plugins/\">Omeka Bővítmény Könyvtárból</a>, vagy <a href=\"http://omeka.org/codex/Plugin_Writing_Best_Practices\">saját bővítmény készítése</a>!"
+msgstr "Új bővítmények letöltése az <a href=\"http://omeka.org/add-ons/plugins/\">Omeka bővítmény könyvtárból</a>, vagy <a href=\"http://omeka.org/codex/Plugin_Writing_Best_Practices\">saját bővítmény készítése</a>!"
 
 #: admin/themes/default/plugins/config.php:2
 #, php-format
@@ -1205,7 +1206,7 @@ msgstr "Igen, el szeretném távolítani a bővítményt."
 
 #: admin/themes/default/plugins/confirm-uninstall.php:16
 msgid "Cancel"
-msgstr "mégsem"
+msgstr "Mégsem"
 
 #: admin/themes/default/plugins/confirm-uninstall.php:16
 #: admin/themes/default/plugins/plugin-info.php:107
@@ -1219,14 +1220,14 @@ msgstr "vagy"
 #: admin/themes/default/plugins/plugin-info.php:24
 #, php-format
 msgid "This version of %1$s requires at least Omeka %2$s."
-msgstr "%1$s eme verziójához legalább az Omeka %2$s szükséges."
+msgstr "Ehhez a %1$s verzióhoz legalább az Omeka %2$s szükséges."
 
 #: admin/themes/default/plugins/plugin-info.php:27
 #, php-format
 msgid ""
 "%1$s requires the following plugins to be installed, activated, and loaded: "
 "%2$s"
-msgstr "%1$s bővítménynek szükséges, hogy a következő bővítmény telepítve, aktiválva és betöltve legyen: %2$s"
+msgstr "A %1$s igényli, hogy a következő bővítmény telepítve, aktiválva és betöltve legyen: %2$s"
 
 #: admin/themes/default/plugins/plugin-info.php:30
 msgid "The plugin.php file is missing."
@@ -1235,12 +1236,12 @@ msgstr "A plugin.php fájl hiányzik."
 #: admin/themes/default/plugins/plugin-info.php:39
 #, php-format
 msgid "The %s plugin cannot be loaded for the following reasons:"
-msgstr "%s bővítményt nem lehet betölteni a következő okok miatt:"
+msgstr "A %s bővítményt nem lehet betölteni a következő okok miatt:"
 
 #: admin/themes/default/plugins/plugin-info.php:48
 #, php-format
 msgid "You have a new version of %s. Please upgrade!"
-msgstr ""
+msgstr "%s - új verzió jelent meg. Kérjük frissítse!"
 
 #: admin/themes/default/plugins/plugin-info.php:58
 #: admin/themes/default/themes/browse.php:10
@@ -1250,7 +1251,7 @@ msgstr "Konfigurálás"
 #: admin/themes/default/plugins/plugin-info.php:69
 #, php-format
 msgid "By %s"
-msgstr ""
+msgstr "%s használatával"
 
 #: admin/themes/default/plugins/plugin-info.php:87
 msgid "Upgrade"
@@ -1276,11 +1277,11 @@ msgstr "Biztonsági beállítások szerkesztése"
 
 #: admin/themes/default/security/edit.php:10
 msgid "Restore Default File Extensions"
-msgstr "Az oldal nem található!"
+msgstr "Alapértelmezett fájl kiterjesztések helyreállítása"
 
 #: admin/themes/default/security/edit.php:15
 msgid "Restore Default File Mime Types"
-msgstr ""
+msgstr "Alapértelmezett fájl mime típusok helyreállítása"
 
 #: admin/themes/default/settings/edit.php:10
 msgid "Test"
@@ -1292,7 +1293,7 @@ msgstr "Rendszer információ"
 
 #: admin/themes/default/tags/browse.php:8
 msgid "Sort by"
-msgstr "Rendezés"
+msgstr "Rendezési szempont"
 
 #: admin/themes/default/tags/browse.php:11
 msgid "Most"
@@ -1308,27 +1309,27 @@ msgstr "Betűrendes"
 
 #: admin/themes/default/tags/browse.php:14
 msgid "Recent"
-msgstr ""
+msgstr "Legújabb"
 
 #: admin/themes/default/tags/delete.php:11
 msgid "Select a tag to delete:"
-msgstr "Cimkék kijelölése törlésre:"
+msgstr "Címke kijelölése törlésre:"
 
 #: admin/themes/default/tags/delete.php:25
 msgid "There are no tags to delete. You must first tag some items."
-msgstr ""
+msgstr "Nincsenek törölni való címkék. Először meg kell címkéznie néhány tételt."
 
 #: admin/themes/default/tags/edit.php:12
 msgid "Choose a tag to rename"
-msgstr ""
+msgstr "Átnevezendő címke kiválasztása"
 
 #: admin/themes/default/tags/edit.php:22
 msgid "Enter a new tag name"
-msgstr ""
+msgstr "Új címkenév beírása"
 
 #: admin/themes/default/tags/edit.php:32
 msgid "There are no tags to edit. You must first tag some items."
-msgstr ""
+msgstr "Nincsenek szerkeszthető címkék. Először meg kell címkéznie néhány tételt."
 
 #: admin/themes/default/themes/browse.php:2
 msgid "Browse Themes"
@@ -1373,12 +1374,12 @@ msgid ""
 "ons/themes/\">Omeka Theme Directory</a>, or <a "
 "href=\"http://omeka.org/codex/Theme_Writing_Best_Practices\">design your "
 "own</a>!"
-msgstr "Új téma hozzáadása az  <a href=\"http://omeka.org/add-ons/themes/\">Omeka Táma Könyvtárból</a>, vagy <a href=\"http://omeka.org/codex/Theme_Writing_Best_Practices\">saját készítése</a>!"
+msgstr "Új téma letöltése az  <a href=\"http://omeka.org/add-ons/themes/\">Omeka téma könyvtárből</a>, vagy <a href=\"http://omeka.org/codex/Theme_Writing_Best_Practices\">saját téma készítése</a>!"
 
 #: admin/themes/default/themes/config.php:2
 #, php-format
 msgid "Configure the &#8220;%s&#8221; Theme"
-msgstr "&#8220;%s&#8221; téma konfigurálása"
+msgstr "A &#8220;%s&#8221; téma konfigurálása"
 
 #: admin/themes/default/themes/config.php:9
 msgid "Configurations apply to this theme only."
@@ -1410,15 +1411,15 @@ msgstr "Státusz kiválasztása"
 
 #: admin/themes/default/users/browse.php:19
 msgid "Sort By"
-msgstr "Rendezés ... szerint"
+msgstr "Rendezési szempont"
 
 #: admin/themes/default/users/browse.php:20 application/forms/User.php:78
 msgid "First Name"
-msgstr "keresztnév"
+msgstr "Keresztnév"
 
 #: admin/themes/default/users/browse.php:21 application/forms/User.php:91
 msgid "Last Name"
-msgstr "vezetéknév"
+msgstr "Vezetéknév"
 
 #: admin/themes/default/users/browse.php:22
 msgid "Institution Name"
@@ -1469,16 +1470,16 @@ msgstr "E-mail"
 #: admin/themes/default/users/edit.php:8
 #, php-format
 msgid "Edit User #%s"
-msgstr ""
+msgstr "#%s felhasználó szerkesztése"
 
 #: admin/themes/default/users/show.php:8
 #, php-format
 msgid "User #%s"
-msgstr ""
+msgstr "#%s felhasználó"
 
 #: admin/themes/default/users/show.php:15
 msgid "Edit this User"
-msgstr ""
+msgstr "A felhasználó szerkesztése"
 
 #: admin/themes/default/users/show.php:28 application/forms/User.php:137
 msgid "Institution"
@@ -1504,17 +1505,17 @@ msgid ""
 "This will delete the collection and its associated metadata. This will not "
 "delete any items in this collection, but will delete the reference to this "
 "collection in each item."
-msgstr ""
+msgstr "Ez törli a gyűjteményt és a hozzá tartozó metaadatokat. Nem törli a gyűjteményben lévő tételeket, de megszünteti mindegyik tétel esetében a gyűjteményre való utalást."
 
 #: application/controllers/ElementSetsController.php:26
 msgid ""
 "This will delete the element set and all elements assigned to the element "
 "set. Items will lose all metadata that is specific to this element set."
-msgstr ""
+msgstr "Ez törli az elemkészletet és minden egyes az elemkészlethez rendelt elemet. A tételek elvesztik minden metaadatukat, ami ehhez az elemkészlethez kapcsolódik."
 
 #: application/controllers/ErrorController.php:66
 msgid "Page not found."
-msgstr "Az oldal nem található!"
+msgstr "Az oldal nem található."
 
 #: application/controllers/ErrorController.php:85
 msgid "Access denied."
@@ -1525,82 +1526,82 @@ msgid ""
 "This will delete the item type but will not delete the elements assigned to "
 "the item type. Items that are assigned to this item type will lose all "
 "metadata that is specific to the item type."
-msgstr ""
+msgstr "Ez törli a tétel-típust, de nem törli a tétel-típushoz kapcsolódó elemeket. Azok a tételek, amelyek ehhez a tétel-típushoz kapcsolódnak, elveszítik azokat a metaadatokat, amelyek ehhez a tétel-típushoz kapcsolódnak."
 
 #: application/controllers/ItemTypesController.php:58
 #, php-format
 msgid ""
 "The item type \"%s\" was successfully added!  You may now add elements to "
 "your new item type."
-msgstr ""
+msgstr "A \"%s\" tétel-típust sikeresen hozzáadta. Most már hozzáadhat elemeket az új tétel-típushoz."
 
 #: application/controllers/ItemTypesController.php:94
 #, php-format
 msgid "The item type \"%s\" was successfully changed!"
-msgstr ""
+msgstr "A \"%s\" tétel-típust sikeresen megváltoztatta!"
 
 #: application/controllers/ItemTypesController.php:115
 #: application/controllers/ItemTypesController.php:123
 #, php-format
 msgid "The item type cannot have more than one \"%s\" element."
-msgstr ""
+msgstr "A tétel-típusnak nem lehet egynél több \"%s\"  eleme."
 
 #: application/controllers/ItemsController.php:108
 msgid "The item was successfully added!"
-msgstr ""
+msgstr "A tételt sikeresen hozzáadta!"
 
 #: application/controllers/ItemsController.php:113
 msgid "The item was successfully changed!"
-msgstr ""
+msgstr "A tételt sikeresen megváltoztatta!"
 
 #: application/controllers/ItemsController.php:118
 msgid "The item was successfully deleted!"
-msgstr ""
+msgstr "A tételt sikeresen törölte!"
 
 #: application/controllers/ItemsController.php:123
 msgid ""
 "This will delete the item and its associated metadata. It will also delete "
 "all files and file metadata associated with this item."
-msgstr ""
+msgstr "Ez törli a tételt és a hozzá kapcsolt metaadatokat. Ez egyben törli mindazokat a fájlokat és fájl metaadatokat, amelyek ehhez a tételhez kapcsolódnak."
 
 #: application/controllers/ItemsController.php:266
 msgid "User does not have permission to add tags."
-msgstr "A felhasználónak nincs engedélye cimke hozzáadásához."
+msgstr "A felhasználónak nincs engedélye címke hozzáadásához."
 
 #: application/controllers/ItemsController.php:299
 msgid "You must choose some items to batch edit."
-msgstr ""
+msgstr "Ki kell választani néhány tételt a csoportos szerkesztéshez."
 
 #: application/controllers/ItemsController.php:338
 msgid "User is not allowed to modify visibility of items."
-msgstr ""
+msgstr "A felhasználónak nincs engedélye a tételek láthatóságának megváltoztatására."
 
 #: application/controllers/ItemsController.php:343
 msgid "User is not allowed to modify featured status of items."
-msgstr ""
+msgstr "A felhasználónak nincs engedélye a tételek kiemelt státusának megváltoztatására."
 
 #: application/controllers/ItemsController.php:350
 msgid "User is not allowed to delete selected items."
-msgstr ""
+msgstr "A felhasználónak nincs engedélye a kiválasztott tételek törlésére."
 
 #: application/controllers/ItemsController.php:356
 msgid "User is not allowed to edit selected items."
-msgstr "A kiválasztott elemek szerkesztése nem engedélyzett."
+msgstr "A kiválasztott tételek szerkesztése nem engedélyzett."
 
 #: application/controllers/ItemsController.php:361
 msgid "User is not allowed to tag selected items."
-msgstr ""
+msgstr "A felhasználónak nincs engedélye kiválasztott tételek címkézéséhez."
 
 #: application/controllers/ItemsController.php:384
 msgid "The items were successfully changed!"
-msgstr "Sikeres változtatás!"
+msgstr "A tételeket sikeresen megváltoztatta!"
 
 #: application/controllers/PluginsController.php:49
 #, php-format
 msgid ""
 "Error in configuring plugin named \"%s\". Missing config and/or config_form "
 "hook(s)."
-msgstr "\"%s\" konfigurálása közben hiba történt. Hiányzó config és/vagy config_from fájl(ok)."
+msgstr "A \"%s\" bővítrnény konfigurálása közben hiba történt. Hiányzó config és/vagy config_from hook(s)."
 
 #: application/controllers/PluginsController.php:55
 #, php-format
@@ -1625,27 +1626,27 @@ msgstr "%s bővítmény telepítése közben a következő hiba történt: "
 #: application/controllers/PluginsController.php:111
 #, php-format
 msgid "The %s plugin was successfully activated!"
-msgstr "%s bővítmény sikeresen aktiválva!"
+msgstr "%s bővítmény sikeresen bekapcsolva!"
 
 #: application/controllers/PluginsController.php:113
 #, php-format
 msgid "The %s plugin was activated, but could not be loaded: "
-msgstr "%s bővítmény aktiválva, de nem lehet betölteni: "
+msgstr "%s bővítmény be van kapcsolva, de nem lehet betölteni: "
 
 #: application/controllers/PluginsController.php:116
 #, php-format
 msgid "The following error occurred while activating the %s plugin: "
-msgstr "%s bővítmény aktiválása közben a következő hiba lépett fel: "
+msgstr "%s bővítmény bekapcsolása közben a következő hiba lépett fel: "
 
 #: application/controllers/PluginsController.php:137
 #, php-format
 msgid "The %s plugin was successfully deactivated!"
-msgstr "%s bővítmény sikeresen deaktiválva!"
+msgstr "%s bővítmény sikeresen kikapcsolva!"
 
 #: application/controllers/PluginsController.php:139
 #, php-format
 msgid "The following error occurred while deactivating the %s plugin: "
-msgstr "%s bővítmény deaktiválása közben a következő hiba lépett fel: "
+msgstr "%s bővítmény kikapcsolása közben a következő hiba lépett fel: "
 
 #: application/controllers/PluginsController.php:156
 #, php-format
@@ -1659,7 +1660,7 @@ msgstr "%s bővítmény frissítése közben a következő hiba lépett fel: "
 
 #: application/controllers/PluginsController.php:212
 msgid "You must confirm the uninstall before proceeding."
-msgstr "Erősítse meg a törlési szándékát."
+msgstr "Továbblépés előtt meg kell erősítenie eltávolítási szándékát."
 
 #: application/controllers/PluginsController.php:227
 #, php-format
@@ -1678,54 +1679,54 @@ msgstr "Nincs megadva a bővítmény neve."
 #: application/controllers/PluginsController.php:269
 #, php-format
 msgid "The plugin %s must be installed."
-msgstr "%s bővítményt telepíteni kell."
+msgstr "A %s bővítményt telepíteni kell."
 
 #: application/controllers/SecurityController.php:46
 msgid "The security settings have been updated."
-msgstr "A biztonsági beállítások frissítve. "
+msgstr "Biztonsági beállítások felülírva. "
 
 #: application/controllers/SettingsController.php:44
 msgid "The general settings have been updated."
-msgstr "Az általános beállítások frissítése megtörtént."
+msgstr "Általános beállítások felülírva."
 
 #: application/controllers/SettingsController.php:46
 #: install/views/scripts/index/index.phtml:16
 msgid "There were errors found in your form. Please edit and resubmit."
-msgstr ""
+msgstr "Hibák vannak az űrlapon. Kérjük javítsa és újra töltse fel."
 
 #: application/controllers/SettingsController.php:70
 msgid "Works"
-msgstr ""
+msgstr "Munkák"
 
 #: application/controllers/SettingsController.php:71
 msgid "Fails"
-msgstr ""
+msgstr "Hibák"
 
 #: application/controllers/TagsController.php:51
 #, php-format
 msgid "Tag named '%s' was successfully deleted."
-msgstr "'%s' nevű cimke sikeresen törölve."
+msgstr "'%s' nevű címke sikeresen törölve."
 
 #: application/controllers/TagsController.php:64
 msgid "You have to be logged in to edit tags!"
-msgstr ""
+msgstr "Címkék szerkesztéséhez be kell lépnie"
 
 #: application/controllers/TagsController.php:101
 #, php-format
 msgid "Tag named \"%1$s\" was successfully renamed to \"%2$s\"."
-msgstr ""
+msgstr "\"%1$s\" nevű címke sikeresen átnevezve. Új név:  \"%2$s\"."
 
 #: application/controllers/TagsController.php:128
 msgid "Invalid tagType given"
-msgstr ""
+msgstr "Érvénytelen címketípus"
 
 #: application/controllers/ThemesController.php:30
 msgid "Invalid form submission."
-msgstr ""
+msgstr "Érvénytelen adat elküldése"
 
 #: application/controllers/ThemesController.php:38
 msgid "You have chosen an illegal theme name. Please select another theme."
-msgstr "Érvényelen témát választott. Kérem, válasszon újat."
+msgstr "Érvénytelen témanevet választott. Kérem, válasszon új témát."
 
 #: application/controllers/ThemesController.php:51
 msgid "The theme has been successfully changed."
@@ -1733,38 +1734,38 @@ msgstr "A téma sikeresen megváltoztatva."
 
 #: application/controllers/ThemesController.php:77
 msgid "The theme settings were successfully saved!"
-msgstr "A téma beállítsok mentése sikeres!"
+msgstr "A téma beállítsainak mentése sikeres!"
 
 #: application/controllers/UpgradeController.php:57
 msgid "SQL error in migration: "
-msgstr ""
+msgstr "SQL hiba a migráció folyamán:"
 
 #: application/controllers/UsersController.php:97
 #: application/controllers/UsersController.php:103
 msgid ""
 "Unable to reset password. Please verify that the information is correct and "
 "contact an administrator if necessary."
-msgstr ""
+msgstr "Új jelszó megadása sikertelen. Kérjük ellenőrizze, hogy helyesek-e az adatok, és ha szükséges, lépjen kapcsolatba az adminisztrátorral."
 
 #: application/controllers/UsersController.php:129
 msgid "Please follow this link to reset your password:"
-msgstr ""
+msgstr "Kövesse ezt a linket új jelszó megadásához."
 
 #: application/controllers/UsersController.php:131
 #: application/controllers/UsersController.php:134
 #: application/controllers/UsersController.php:298
 #, php-format
 msgid "%s Administrator"
-msgstr "%s Adminisztrátor"
+msgstr "%s adminisztrátor "
 
 #: application/controllers/UsersController.php:135
 #, php-format
 msgid "[%s] Reset Your Password"
-msgstr ""
+msgstr "[%s] Adja meg új jelszavát"
 
 #: application/controllers/UsersController.php:138
 msgid "Please check your email for a link to reset your password."
-msgstr ""
+msgstr "Kérjük nyissa meg a kapott e-mailt a jelszó beállításához."
 
 #: application/controllers/UsersController.php:154
 msgid "Password: The passwords do not match."
@@ -1772,7 +1773,7 @@ msgstr "Jelszó: A jelszavak nem egyeznek."
 
 #: application/controllers/UsersController.php:160
 msgid "You may now log in to Omeka."
-msgstr "Most jelentkezzen be Omeká-ba."
+msgstr "Most bejelentkezhet az Omeká-ba."
 
 #: application/controllers/UsersController.php:179
 msgid "Add User"
@@ -1785,17 +1786,17 @@ msgstr "\"%s\" felhasználó sikeresen hozzáadva!"
 
 #: application/controllers/UsersController.php:245
 msgid "Password changed!"
-msgstr "Jelszó megváltozott!"
+msgstr "A jelszó megváltozott!"
 
 #: application/controllers/UsersController.php:254
 #, php-format
 msgid "The user %s was successfully changed!"
-msgstr "\"%s\" felhasználó változtatása sikeres!"
+msgstr "\"%s\" felhasználó sikeresen változtatva!"
 
 #: application/controllers/UsersController.php:274
 #, php-format
 msgid "The user \"%s\" was successfully deleted!"
-msgstr "\"%s\" felhasználó törlése sikeres!"
+msgstr "\"%s\" felhasználó sikeresen törölve!"
 
 #: application/controllers/UsersController.php:280
 #, php-format
@@ -1803,7 +1804,7 @@ msgid ""
 "%s will be deleted from the system. Items, collections, and tags created by "
 "this user will remain in the archive, but will no longer be associated with "
 "this user."
-msgstr "\"%s\" felhasználó törlésre kerül. Az általa létrehozott tartalmak az archívumban maradnak, de már nincsenek összekapcsolva a felhasználóval."
+msgstr "\"%s\" felhasználó törlésre kerül. Az általa létrehozott tételek, gyűjtemények és címkék az archívumban maradnak, de már lesznek összekapcsolva a felhasználóval."
 
 #: application/controllers/UsersController.php:294
 msgid "Welcome!"
@@ -1814,24 +1815,24 @@ msgstr "Üdvözlöm!"
 msgid ""
 "Your account for the %s archive has been created. Please click the following"
 " link to activate your account:"
-msgstr "A felhasználói fiókja a %s archívumhoz létrejött. Kattintson a következő linkre a felhasználói fiók aktiválásához:"
+msgstr "Felhasználói fiókja a %s archívumhoz létrejött. Kattintson a következő linkre a felhasználói fiók aktiválásához:"
 
 #: application/controllers/UsersController.php:299
 #, php-format
 msgid "Activate your account with the %s archive"
-msgstr ""
+msgstr "Aktiválja felhasználói fiókját a %s archívummal."
 
 #: application/forms/ChangePassword.php:35
 msgid "Current Password"
-msgstr "Jelenlegi jelszó!"
+msgstr "Jelenlegi jelszó"
 
 #: application/forms/ChangePassword.php:44
 msgid "New Password"
-msgstr "Új jelszó!"
+msgstr "Új jelszó"
 
 #: application/forms/ChangePassword.php:78
 msgid "Repeat New Password"
-msgstr "Új jelszó újra!"
+msgstr "Új jelszó újra"
 
 #: application/forms/ChangePassword.php:86
 msgid "Save Password"
@@ -1843,11 +1844,11 @@ msgstr "Jelszó változtatás"
 
 #: application/forms/GeneralSettings.php:28 application/forms/Install.php:85
 msgid "Site Title"
-msgstr "Oldal címe"
+msgstr "Honlap címe"
 
 #: application/forms/GeneralSettings.php:32 application/forms/Install.php:90
 msgid "Site Description"
-msgstr "Oldal leírása."
+msgstr "Honlap leírása."
 
 #: application/forms/GeneralSettings.php:36 application/forms/Install.php:94
 msgid "Administrator Email"
@@ -1855,29 +1856,29 @@ msgstr "Adminisztrátor e-mail címe."
 
 #: application/forms/GeneralSettings.php:42 application/forms/Install.php:100
 msgid "Site Copyright Information"
-msgstr "Oldal Copyrigth információk"
+msgstr "Honlap copyright információk"
 
 #: application/forms/GeneralSettings.php:46 application/forms/Install.php:104
 msgid "Site Author Information"
-msgstr ""
+msgstr "Honlap szerzői információk"
 
 #: application/forms/GeneralSettings.php:50 application/forms/Install.php:108
 msgid "Tag Delimiter"
-msgstr ""
+msgstr "Címke elválasztó karakter"
 
 #: application/forms/GeneralSettings.php:51
 msgid ""
 "Separate tags using this character or string. Be careful when changing this "
 "setting. You run the risk of splitting tags that contain the old delimiter."
-msgstr ""
+msgstr "Ezt a karaktert vagy karakterláncot használja a címkék elválasztásához.  Legyen óvatos, ha megváltoztatja ezt a beállítást. Lehetséges, hogy akaratlanul szétvág olyan címkéket, amelyek a régi elválasztójelet tartalmazzák."
 
 #: application/forms/GeneralSettings.php:64 application/forms/Install.php:123
 msgid "Fullsize Image Size"
-msgstr "Teljes kép mérete."
+msgstr "Teljesméretű kép mérete."
 
 #: application/forms/GeneralSettings.php:65 application/forms/Install.php:124
 msgid "Maximum fullsize image size constraint (in pixels)."
-msgstr "Teljes méretű képek maximális felbontása (pixelben)."
+msgstr "Teljesméretű képek legnagyobb mérete (pixelben)."
 
 #: application/forms/GeneralSettings.php:71 application/forms/Install.php:131
 msgid "Thumbnail Size"
@@ -1885,51 +1886,51 @@ msgstr "Bélyegkép mérete"
 
 #: application/forms/GeneralSettings.php:72 application/forms/Install.php:132
 msgid "Maximum thumbnail size constraint (in pixels)."
-msgstr "Nézőképek maximális felbontása (pixelben)."
+msgstr "Nézőképek legnagyobb mérete (pixelben)."
 
 #: application/forms/GeneralSettings.php:78 application/forms/Install.php:139
 msgid "Square Thumbnail Size"
-msgstr "Négyezetes bélyegkép"
+msgstr "Négyzetes bélyegkép mérete"
 
 #: application/forms/GeneralSettings.php:79 application/forms/Install.php:140
 msgid "Maximum square thumbnail size constraint (in pixels)."
-msgstr ""
+msgstr "Négyzetes bélyegkép legnagyobb mérete (pixelekben)"
 
 #: application/forms/GeneralSettings.php:85 application/forms/Install.php:147
 msgid "Items Per Page (admin)"
-msgstr ""
+msgstr "Oldalankénti tételszám (admin)"
 
 #: application/forms/GeneralSettings.php:86 application/forms/Install.php:148
 msgid ""
 "Limit the number of items displayed per page in the administrative "
 "interface."
-msgstr ""
+msgstr "Korlátozza az oldalanként megjelenített tételek számát az adminisztratív felületen."
 
 #: application/forms/GeneralSettings.php:92 application/forms/Install.php:155
 msgid "Items Per Page (public)"
-msgstr ""
+msgstr "Oldalankénti tételszám (nyilvános)"
 
 #: application/forms/GeneralSettings.php:93 application/forms/Install.php:156
 msgid "Limit the number of items displayed per page in the public interface."
-msgstr ""
+msgstr "Korlátozza az oldalanként megjelenített tételek számát a nyilvános felületen."
 
 #: application/forms/GeneralSettings.php:99 application/forms/Install.php:163
 msgid "Show Empty Elements"
-msgstr ""
+msgstr "Mutassa az üres elemeket"
 
 #: application/forms/GeneralSettings.php:104
 msgid "Enable Prototype"
-msgstr "Prototype engedélyezése"
+msgstr "a prototype engedélyezése"
 
 #: application/forms/GeneralSettings.php:106
 msgid ""
 "Enable the Prototype JavaScript library. This may be required for some older"
 " plugins."
-msgstr "Prototype JavaScript könyvtár engedélyezése. Néhány régebbi bővítményhez szükséges lehet."
+msgstr "A prototype JavaScript könyvtár engedélyezése. Néhány régebbi bővítményhez szükséges lehet."
 
 #: application/forms/GeneralSettings.php:110 application/forms/Install.php:169
 msgid "Imagemagick Directory Path"
-msgstr "Imagemagick könyvtár útvonal"
+msgstr "Imagemagick könyvtár útvonala"
 
 #: application/forms/GeneralSettings.php:114
 msgid "Save Settings"
@@ -1945,7 +1946,7 @@ msgstr "Jelszó"
 
 #: application/forms/Install.php:44
 msgid "Must be at least 6 characters."
-msgstr "Atom"
+msgstr "Legalább 6 karakter hosszúnak kell lennie."
 
 #: application/forms/Install.php:66 application/forms/ResetPassword.php:49
 #: application/views/scripts/users/activate.php:19
@@ -1958,15 +1959,15 @@ msgstr "Erősítse meg a jelszavát."
 
 #: application/forms/Install.php:109
 msgid "Separate tags using this character or string."
-msgstr ""
+msgstr "Ezt a karaktert vagy karakterláncot használja a címkék elválasztásához."
 
 #: application/forms/Install.php:165
 msgid "Whether metadata elements with no text will be displayed."
-msgstr ""
+msgstr "Szöveg nélküli metaadat elemek megjelenítése"
 
 #: application/forms/Install.php:180
 msgid "Default Superuser Account"
-msgstr ""
+msgstr "Alapértelmezett rendszergazda jogú fiók"
 
 #: application/forms/Install.php:190
 msgid "Site Settings"
@@ -1982,7 +1983,7 @@ msgstr "A Jelszó nem lehet üres."
 
 #: application/forms/Login.php:42
 msgid "Remember Me?"
-msgstr "Emlékezz rám?"
+msgstr "Emlékezzen rám?"
 
 #: application/forms/Login.php:44 application/views/scripts/users/login.php:3
 msgid "Log In"
@@ -1998,11 +1999,11 @@ msgstr "Érvénytelen e-mail címet adott meg."
 
 #: application/forms/RecoverPassword.php:53
 msgid "Invalid format given for email address."
-msgstr "Érvénytelen email cím formátum."
+msgstr "Érvénytelen e-mail cím formátum."
 
 #: application/forms/RecoverPassword.php:55
 msgid "Invalid hostname given for email address."
-msgstr "Érvénytelen szolgáltatónév az email címben."
+msgstr "Érvénytelen host név az e-mail címben."
 
 #: application/forms/RecoverPassword.php:73
 msgid "Invalid email address"
@@ -2019,25 +2020,25 @@ msgstr "Jelszó szükséges."
 
 #: application/forms/ResetPassword.php:38
 msgid "Typed passwords do not match."
-msgstr "Begépelt jelszavak nem egyeznek."
+msgstr "a begépelt jelszavak nem egyeznek."
 
 #: application/forms/SecuritySettings.php:27
 msgid "Disable File Upload Validation"
-msgstr ""
+msgstr "Fájlfeltöltés érvényesítésének letiltása"
 
 #: application/forms/SecuritySettings.php:29
 msgid ""
 "Check this field if you would like to allow any file to be uploaded to "
 "Omeka."
-msgstr ""
+msgstr "Jelölje meg ezt a mezőt, ha megengedi bármely fálj feltöltését az Omeka-ba."
 
 #: application/forms/SecuritySettings.php:35
 msgid "Allowed File Extensions"
-msgstr "Engedélyezett fájlkiterjesztések"
+msgstr "Engedélyezett fájl kiterjesztések"
 
 #: application/forms/SecuritySettings.php:36
 msgid "List of allowed extensions for file uploads."
-msgstr "Feltöltésnél engedélyzett fájlkiterjesztések listázása"
+msgstr "Feltöltésnél engedélyezett fájl kiterjesztések listája."
 
 #: application/forms/SecuritySettings.php:45
 msgid "Allowed File Types"
@@ -2049,13 +2050,13 @@ msgstr "Feltöltésnél engedélyzett MIME típusok listázása"
 
 #: application/forms/SecuritySettings.php:55
 msgid "ReCaptcha Public Key"
-msgstr "ReCaptcha nyílvános kulcs"
+msgstr "ReCaptcha nyilvános kulcs"
 
 #: application/forms/SecuritySettings.php:56
 msgid ""
 "Public key from recaptcha.net. Both this and the private key must be filled "
 "in to secure public forms."
-msgstr ""
+msgstr "Nyilvános kulcs a recaptcha.net-től. Ezt is és a privát kulcsot is be kell írni a nyilvános űrlapok védelme érdekében."
 
 #: application/forms/SecuritySettings.php:63
 msgid "ReCaptcha Private Key"
@@ -2065,7 +2066,7 @@ msgstr "ReCaptcha privát kulcs"
 msgid ""
 "Private key from recaptcha.net. Both this and the public key must be filled "
 "in to secure public forms."
-msgstr ""
+msgstr "Privát kulcs a recaptcha.net-től. Ezt is és a nyilvános kulcsot is be kell írni a nyilvános formák védelme érdekében."
 
 #: application/forms/User.php:35
 msgid "Username is required."
@@ -2073,15 +2074,15 @@ msgstr "Felhasználónév szükséges."
 
 #: application/forms/User.php:43
 msgid "Username must contain only letters and numbers."
-msgstr "A Felhasználónév csak betűket és számokat tartalmazhat."
+msgstr "A felhasználónév csak betűket és számokat tartalmazhat."
 
 #: application/forms/User.php:53
 msgid "Username must be at least %min% characters long."
-msgstr ""
+msgstr "A felhasználónév legyen legalább %min% ckarakter hosszú."
 
 #: application/forms/User.php:55
 msgid "Username must be at most %max% characters long."
-msgstr ""
+msgstr "A felhasználónév legfeljebb %max% ckarakter hosszú lehet."
 
 #: application/forms/User.php:69
 msgid "This username is already in use."
@@ -2089,19 +2090,19 @@ msgstr "Ez a felhasználónév már használatban van."
 
 #: application/forms/User.php:84
 msgid "First name is required."
-msgstr "A Keresztnév szükséges."
+msgstr "A keresztnév szükséges."
 
 #: application/forms/User.php:97
 msgid "Last name is required."
-msgstr "A Vezetéknév szükséges."
+msgstr "A vezetéknév szükséges."
 
 #: application/forms/User.php:103
 msgid "This email address is invalid."
-msgstr "Ez az email cím érvénytelen."
+msgstr "Ez az e-mail cím érvénytelen."
 
 #: application/forms/User.php:111
 msgid "Email is required."
-msgstr "Email szükséges."
+msgstr "E-mail szükséges."
 
 #: application/forms/User.php:130
 msgid "This email address is already in use."
@@ -2115,12 +2116,12 @@ msgstr "Aktív?"
 #: application/helpers/AssetFunctions.php:289
 #, php-format
 msgid "Could not find file %s!"
-msgstr ""
+msgstr "A %s fájl nem található!"
 
 #: application/helpers/CollectionFunctions.php:58
 #, php-format
 msgid "%s does not exist for collections!"
-msgstr ""
+msgstr "Nincs %s a gyűjteményekhez!"
 
 #: application/helpers/CollectionFunctions.php:123
 msgid "Featured Collection"
@@ -2128,16 +2129,16 @@ msgstr "Kiemelt gyűjtemény"
 
 #: application/helpers/CollectionFunctions.php:131
 msgid "No featured collections are available."
-msgstr ""
+msgstr "Nincs elérhető kiemelt gyűjtemény."
 
 #: application/helpers/ElementForm.php:50
 msgid "Add Input"
-msgstr ""
+msgstr "Bevitel hozzáadása"
 
 #: application/helpers/ElementForm.php:286
 #, php-format
 msgid "Cannot display a form input for \"%s\" if element type name is not given!"
-msgstr ""
+msgstr "Ha az elem-típus neve nincs megadva, nem jeleníthető meg beviteli űrlap \"%s\" számára."
 
 #: application/helpers/ElementForm.php:346
 msgid "From"
@@ -2154,17 +2155,17 @@ msgstr "Használja a HTML-t"
 #: application/helpers/FileMetadata.php:83
 #, php-format
 msgid "%s is an invalid special value."
-msgstr ""
+msgstr "%s egy érvénytelen speciális érték"
 
 #: application/helpers/FormFunctions.php:134
 msgid "Select Below "
-msgstr ""
+msgstr "Válasszon az alábbiakból"
 
 #: application/helpers/FormFunctions.php:244
 #: application/helpers/FormFunctions.php:532
 #: application/views/scripts/users/forgot-password.php:18
 msgid "Submit"
-msgstr ""
+msgstr "Feltöltés"
 
 #: application/helpers/Functions.php:53
 msgid "Omeka RSS Feed"
@@ -2176,30 +2177,30 @@ msgstr "Omeka Atom Feed"
 
 #: application/helpers/Functions.php:200
 msgid "Error: Invalid callback was provided for the loop."
-msgstr ""
+msgstr "Hiba: érvénytelen hívás a hurokban"
 
 #: application/helpers/ItemFunctions.php:58
 msgid "Featured Item"
-msgstr ""
+msgstr "Kiemelt tétel"
 
 #: application/helpers/ItemFunctions.php:73
 msgid ""
 "An item has not been set to be displayed on this theme page! Please see "
 "Omeka documentation for details."
-msgstr ""
+msgstr "Egy tétel nem úgy van beállítva, hogy megjelenhessen ezen a témaoldalon. A részletekért tanulmányozza az Omeka dokumentációt."
 
 #: application/helpers/ItemFunctions.php:571
 msgid "No featured items are available."
-msgstr ""
+msgstr "Nincs elérhető kiemelt tétel"
 
 #: application/helpers/ItemMetadata.php:79
 #, php-format
 msgid "'%s' is an invalid special value."
-msgstr ""
+msgstr "'%s' egy érvénytelen speciális érték."
 
 #: application/helpers/LinkFunctions.php:43
 msgid "View"
-msgstr "Megtekint"
+msgstr "Megtekintés"
 
 #: application/helpers/LinkFunctions.php:208
 msgid "RSS"
@@ -2207,11 +2208,11 @@ msgstr "RSS"
 
 #: application/helpers/LinkFunctions.php:225
 msgid "Next Item &rarr;"
-msgstr ""
+msgstr "Következő tétel - &rarr;"
 
 #: application/helpers/LinkFunctions.php:241
 msgid "&larr; Previous Item"
-msgstr ""
+msgstr "Előző tétel - &rarr; "
 
 #: application/helpers/LinkFunctions.php:525
 msgid "Atom"
@@ -2219,7 +2220,7 @@ msgstr "Atom"
 
 #: application/helpers/TagFunctions.php:133
 msgid "No tags are available."
-msgstr ""
+msgstr "Nincs elérhető címke"
 
 #: application/libraries/Omeka/View/Helper/RecordMetadataList.php:91
 msgid "[no text]"
@@ -2228,34 +2229,34 @@ msgstr "[nincs szöveg]"
 #: application/models/ActsAsElementText.php:255
 #, php-format
 msgid "Cannot find an element with an ID of '%s'!"
-msgstr ""
+msgstr "Nem található elem '%s' azonosítóval!"
 
 #: application/models/ActsAsElementText.php:312
 #, php-format
 msgid ""
 "Element name is ambiguous! There is more than one element set containing an "
 "element named \"%s\"!"
-msgstr ""
+msgstr "Az elem neve nem egyértelmű. Több elemkészlet is van, amely \"%s\" nevű elemet tartalmaz."
 
 #: application/models/ActsAsElementText.php:315
 #: application/models/ActsAsElementText.php:322
 #, php-format
 msgid "There is no element named \"%s\"!"
-msgstr ""
+msgstr "Nincs \"%s\" nevű elem!"
 
 #: application/models/ActsAsElementText.php:326
 #, php-format
 msgid "There is no element named \"%1$s\" in the set named \"%2$s\"!"
-msgstr ""
+msgstr "A \"%2$s\" nevű elemkészletben nincs \"%1$s\" nevű elem!"
 
 #: application/models/ActsAsElementText.php:482
 msgid "Element texts are not formatted correctly!"
-msgstr ""
+msgstr "Az elem szövegei nem megfelelően formázottak!"
 
 #: application/models/ActsAsElementText.php:645
 #, php-format
 msgid "Cannot process form input for element with data type \"%s\"!"
-msgstr ""
+msgstr "\"%s\" adattípusú elemhez nem lehet a feltöltött űrlapot feldolgozni. "
 
 #: application/models/ActsAsElementText.php:660
 #, php-format
@@ -2265,15 +2266,15 @@ msgstr "A \"%s\" mezőben legalább egy érvénytelen érték van!"
 #: application/models/ActsAsElementText.php:693
 #, php-format
 msgid "Cannot validate an element of data type \"%s\"!"
-msgstr ""
+msgstr "A \"%s\" adattípusú elem nem érvényesíthető"
 
 #: application/models/ActsAsElementText.php:733
 msgid "Cannot save element text for records that are not yet persistent!"
-msgstr ""
+msgstr "A még nem végleges rekordokhoz nem menthetők elem szövegek."
 
 #: application/models/Collection.php:107
 msgid "Collectors must be either a string or an array."
-msgstr "A gyűjtőknek vagy szöveg vagy tömb típusnak kell lennie!"
+msgstr "A gyűjtőknek vagy szöveg vagy tömb típusúnak kell lennie!"
 
 #: application/models/Collection.php:148
 #, php-format
@@ -2283,219 +2284,219 @@ msgstr "A gyűjtemény neve minimum %1$s és maximum %2$s karakterből állhat."
 #: application/models/Collection.php:198
 msgid ""
 "Argument passed to addCollector() must be a string or an instance of Entity."
-msgstr "Az addCollector()-nak átadott paraméter szöveg típusú vagy Entity egy példánya kell, hogy legyen."
+msgstr "Az addCollector()-nak átadott változó szöveg típusú vagy az Entity mező egyik értéke kell, hogy legyen."
 
 #: application/models/Collection.php:230
 msgid "Cannot associate the collection with an unsaved user."
-msgstr ""
+msgstr "Nem mentett felhasználóhoz nem rendelhető gyűjtemény."
 
 #: application/models/CollectionPermissions.php:37
 msgid "Invalid query provided to CollectionPermissions check"
-msgstr ""
+msgstr "Érvénytelen keresést kapott a CollectionPermissions ellenőrzés"
 
 #: application/models/DataTypeTable.php:31
 #, php-format
 msgid "Cannot find id from DataType name: %s"
-msgstr ""
+msgstr "A %s adattípus névhez nem található azonosító"
 
 #: application/models/Element.php:180
 msgid "Name must not be empty!"
-msgstr "A név mező nem lehet üres!"
+msgstr "A név nem lehet üres!"
 
 #: application/models/Element.php:184
 msgid "Element must have a valid data type!"
-msgstr ""
+msgstr "Az elemnek érvényes adattípusa kell legyen!"
 
 #: application/models/Element.php:188
 msgid "Element must have a valid record type!"
-msgstr ""
+msgstr "Az elemnek érvényes rekordtípusa kell legyen!"
 
 #: application/models/Element.php:193
 #, php-format
 msgid "%1$s already exists for element set #%2$s"
-msgstr ""
+msgstr "A #%2$s elemkészlethez már %1$s  létezik."
 
 #: application/models/Element.php:252
 #, php-format
 msgid "Cannot set element set ID: set named \"%s\" does not exist."
-msgstr ""
+msgstr "Nem rendelhető hozzá elemkészlet azonosító: a \"%s\" nevű elemkészlet nem létezik."
 
 #: application/models/ElementSet.php:119
 msgid "Name of element set must be unique."
-msgstr ""
+msgstr "Az elemkészlet nevének egyedinek kell lennie."
 
 #: application/models/ElementSet.php:123
 msgid "Name of element set must not be empty."
-msgstr ""
+msgstr "Az elemkészlet neve nem lehet üres."
 
 #: application/models/EntitiesRelations.php:29
 msgid "Joins in the EntitiesRelations table must be given a polymorphic type"
-msgstr ""
+msgstr "Az EntitiesRelations táblában a kapcsolatoknak polimorfikus tipúsúaknak kell lenniük"
 
 #: application/models/EntitiesRelations.php:33
 msgid "Joins in the EntitiesRelations table must be filled out entirely"
-msgstr ""
+msgstr "Az EntitiesRelations táblában minden kapcsolatot meg kell adni."
 
 #: application/models/Entity.php:37
 msgid "The email address provided is not valid."
-msgstr "A megadott email cím érvénytelen."
+msgstr "A megadott e-mail cím érvénytelen."
 
 #: application/models/Entity.php:41
 msgid "The name for a person may not be completely blank."
-msgstr "Személy névmezője nem lehet üres."
+msgstr "A személy neve nem lehet teljesen üres."
 
 #: application/models/Entity.php:134
 msgid "Both of these Entities must be persistent in order to merge them."
-msgstr ""
+msgstr "Mindkét személynek vagy intézménynek véglegesnek kell lennie ahhoz, hogy egyesíthetők legyenek. "
 
 #: application/models/File.php:110
 msgid "Cannot get the local path for a stored file."
-msgstr "Fájl elérési útvonala nem elérhető."
+msgstr "A fájl helyi elérési útvonala nem elérhető."
 
 #: application/models/Item.php:298
 msgid ""
 "Files cannot be attached to an item that is not persistent in the database!"
-msgstr ""
+msgstr "Nem rendelhető fájl olyan tételhez, amely nem végleges az adatbázisban!"
 
 #: application/models/Item.php:412
 msgid "Cannot add an existing file to an item!"
-msgstr ""
+msgstr "Nem adható egy létező fájl egy tételhez!"
 
 #: application/models/Item.php:416
 msgid "File must be valid before it can be associated with an item!"
-msgstr "Összes böngészése"
+msgstr "A fáljnak érvényesnek kell lennie ahhoz, hogy egy tételhez kapcsolhassuk!"
 
 #: application/models/ItemBuilder.php:141
 msgid "Cannot add tags to an item if no Entity is available to tag."
-msgstr ""
+msgstr "Nem adható címke a tételhez, ha nincs személy vagy intézmény erre felhatalmazva."
 
 #: application/models/ItemBuilder.php:265
 msgid "Must specify a file transfer type when attaching files to an item!"
-msgstr ""
+msgstr "Ha egy tételhez fájlt kapcsolunk, meg kell adni a fájl transzfer típust!"
 
 #: application/models/ItemPermissions.php:34
 #, php-format
 msgid ""
 "This SQL statement needs a FROM or JOIN clause equivalent to '%s i' in order"
 " to have permissions checked!"
-msgstr ""
+msgstr "Ez az SQL parancs egy FROM vagy egy JOIN alparancsot vár, ami megfelel a '%s i'-nak. Csak így ellenőrizhetők a jogosultságok!"
 
 #: application/models/ItemSearch.php:98
 msgid "Invalid search type given!"
-msgstr ""
+msgstr "Érvénytelen keresési típus!"
 
 #: application/models/ItemType.php:83
 #, php-format
 msgid "The item type name must have between %1$s and %2$s characters."
-msgstr ""
+msgstr "A tétel típusának nevének hossza %1$s és %2$s karakter között legyen."
 
 #: application/models/ItemType.php:87
 msgid "The item type name must be unique."
-msgstr ""
+msgstr "A tétel neve legyen egyedi."
 
 #: application/models/ItemType.php:175
 msgid "There are too many values in the element ordering array."
-msgstr ""
+msgstr "Túl sok érték van az elem-rendező tömbben."
 
 #: application/models/ItemType.php:177
 msgid "There are too few values in the element ordering array."
-msgstr ""
+msgstr "Túl kevés érték van az elem-rendező tömbben."
 
 #: application/models/ItemType.php:221
 msgid ""
 "Invalid element data. To add elements, you must either pass an element "
 "objects or an array of element metadata."
-msgstr ""
+msgstr "Invalid element data. To add elements, you must either pass an element objects or an array of element metadata."
 
 #: application/models/ItemType.php:285
 msgid ""
 "Cannot remove elements from an item type that is not persistent in the "
 "database!"
-msgstr ""
+msgstr "Nem törölhet elemeket olyan elem-típusból ami nem végleges az adatbázisban!"
 
 #: application/models/ItemType.php:294
 #, php-format
 msgid "Cannot find element with ID %s!"
-msgstr ""
+msgstr "Nem található elem %s azonosítóval."
 
 #: application/models/ItemType.php:337
 #, php-format
 msgid "Item type does not contain an element with the ID %s!"
-msgstr ""
+msgstr "A tétel típus nem tartalmaz %s azonosítójú elemet!"
 
 #: application/models/ItemType.php:360
 msgid ""
 "Invalid parameter. The hasElement function requires either an element object"
 " or an element id to determine if an item type has an element."
-msgstr ""
+msgstr "Érvénytelen paraméter. A hasElement funkció vagy egy elem objektumot, vagy egy elem azonosítót vár ahhoz, hogy megállapíthassa, a tétel típusnak van-e eleme."
 
 #: application/models/Option.php:28 application/models/Option.php:32
 msgid "Each option must have a unique name."
-msgstr ""
+msgstr "Minden opciónak egyedi neve kell legyen."
 
 #: application/models/Orderable.php:101
 msgid "Cannot add a child to a record that does not exist yet!"
-msgstr ""
+msgstr "Még nem létező rekordhoz nem kapcsolható gyerek rekord!"
 
 #: application/models/Orderable.php:105
 #, php-format
 msgid "Child must be an instance of \"%s\""
-msgstr ""
+msgstr "A gyerek rekord a \"%s\" eleme kell legyen"
 
 #: application/models/Plugin.php:94
 msgid "Names of plugins must not be blank"
-msgstr "Bővítmények nevei nem lehetnek üresek"
+msgstr "Bővítmények neve nem lehet üres"
 
 #: application/models/Relatable.php:158
 msgid "Invalid entity provided!"
-msgstr ""
+msgstr "Érvénytelen személyt vagy intézményt adott meg!"
 
 #: application/models/Relatable.php:169
 #, php-format
 msgid "Relationship called %s does not exist."
-msgstr ""
+msgstr "%s nevű kapcsolat nem létezik."
 
 #: application/models/Relatable.php:222
 msgid "Record must exist before relations can be set."
-msgstr ""
+msgstr "A rekordnak léteznie kell ahhoz, hogy kapcsolatot lehessen létrehozni hozzá"
 
 #: application/models/Tag.php:58
 msgid "Tags must be given a name."
-msgstr ""
+msgstr "A címkéknek nevet kell adni."
 
 #: application/models/Tag.php:62
 msgid "That name is already taken for this tag."
-msgstr ""
+msgstr "Ennek a címkének már ez a neve."
 
 #: application/models/Taggable.php:195
 msgid "A valid record ID # must be provided when tagging."
-msgstr ""
+msgstr "Címkézéskor érvényes rekord azonosítót kell adni."
 
 #: application/models/Taggable.php:199
 msgid "A valid entity or user must be provided when tagging."
-msgstr ""
+msgstr "Érvényes személy, intézmény vagy felhasználó szükséges a címkézéshez."
 
 #: application/models/User.php:63
 msgid "No Entity record available."
-msgstr ""
+msgstr "Nincs elérhető személy vagy intézmény rekord."
 
 #: application/models/User.php:75
 msgid "No Entity record is available when saving this User."
-msgstr ""
+msgstr "Nincs elérhető intézmény a felhasználó mentéséhez."
 
 #: application/models/User.php:92
 msgid "User may not change permissions to super-user"
-msgstr ""
+msgstr "A felhasználó nem cserélheti lejogosultságait rendszergazdaira"
 
 #: application/models/User.php:95
 msgid "User may not change roles."
-msgstr ""
+msgstr "A felhasználó nem váltathatja meg szerepeit."
 
 #: application/models/User.php:153
 msgid ""
 "If a first name and last name are not provided, then an institution name is "
 "required."
-msgstr ""
+msgstr "Vezeték- és keresztnév hiányában az intézmény nevét kell megadni."
 
 #: application/models/User.php:156
 msgid "A first name is required."
@@ -2503,29 +2504,29 @@ msgstr "A keresztnév megadása kötelező"
 
 #: application/models/User.php:159
 msgid "A last name is required."
-msgstr "A vezetéknék megadása kötelező"
+msgstr "A vezetéknév megadása kötelező"
 
 #: application/models/User.php:175
 msgid "The user must be assigned a role."
-msgstr ""
+msgstr "A felhasználóhoz szerepet kell rendelni."
 
 #: application/models/User.php:180
 #, php-format
 msgid "The username \"%1$s\" must be between %2$s and %3$s characters."
-msgstr ""
+msgstr "\"%1$s\" felhasználónév hosszának  %2$s és %3$s karakter között kell lennie."
 
 #: application/models/User.php:182
 msgid "The username must be alphanumeric."
-msgstr ""
+msgstr "Alfanumerikus felhasználónév szükséges."
 
 #: application/models/User.php:184
 #, php-format
 msgid "'%s' is already in use. Please choose another username."
-msgstr "A \"%s\" felhasználónév már foglalt. Kérem, válasszon mást."
+msgstr "A '%s' felhasználónév már foglalt. Kérem, válasszon mást."
 
 #: application/models/UsersActivations.php:31
 msgid "Cannot create a user activation for non-existent user."
-msgstr ""
+msgstr "Nem létező felhasználó számára nem lehet felhasználó-aktiválást adni."
 
 #: application/views/scripts/collections/browse.php:21
 #: application/views/scripts/collections/show.php:13
@@ -2536,17 +2537,17 @@ msgstr "Gyűjtő(k)"
 #: application/views/scripts/collections/show.php:22
 #, php-format
 msgid "View the items in %s"
-msgstr ""
+msgstr "Lásd a tételeket %s-ban."
 
 #: application/views/scripts/collections/show.php:25
 #, php-format
 msgid "Items in the %s Collection"
-msgstr ""
+msgstr "Tételek a %s gyűjteményben"
 
 #: application/views/scripts/common/delete-confirm.php:3
 #, php-format
 msgid "Delete %s"
-msgstr "Töröl %s"
+msgstr "Törölje: %s"
 
 #: application/views/scripts/common/delete-confirm.php:12
 msgid "Are you sure?"
@@ -2554,11 +2555,11 @@ msgstr "Biztos benne?"
 
 #: application/views/scripts/common/footer.php:6
 msgid "Home"
-msgstr ""
+msgstr "Főmenü"
 
 #: application/views/scripts/common/footer.php:14
 msgid "Proudly powered by <a href=\"http://omeka.org\">Omeka</a>."
-msgstr ""
+msgstr "Proudly powered by <a href=\"http://omeka.org\">Omeka</a>."
 
 #: application/views/scripts/common/pagination_control.php:7
 msgid "First"
@@ -2578,7 +2579,7 @@ msgstr "Utolsó"
 
 #: application/views/scripts/error/403.php:2
 msgid "403 Page Forbidden"
-msgstr "403-as HIBA Forbidden - a kért anyaghoz nincs hozzáférési joga"
+msgstr "403 A lap elérése tiltott"
 
 #: application/views/scripts/error/403.php:8
 msgid "You do not have permission to access this page."
@@ -2588,29 +2589,29 @@ msgstr "Nincs hozzáférési jogosultsága a laphoz."
 #: application/views/scripts/error/404.php:2
 #: application/views/scripts/error/404.xml.php:1
 msgid "404 Page Not Found"
-msgstr "404-es hiba: A lap nem található"
+msgstr "404 A lap nem található"
 
 #: application/views/scripts/error/404.php:7
 #, php-format
 msgid "%s is not a valid URL."
-msgstr ""
+msgstr "%s nem érvényes URL"
 
 #: application/views/scripts/error/404.rss2.php:1
 msgid "Rss2.0 Feed Not Found!"
-msgstr ""
+msgstr "Rss2.0 Feed nem található!"
 
 #: application/views/scripts/error/405.php:2
 msgid "405 Method Not Allowed"
-msgstr "405-ös HIBA - az eljárás nem engedélyezett! "
+msgstr "405 Az eljárás nem engedélyezett! "
 
 #: application/views/scripts/error/405.php:7
 #, php-format
 msgid "The method used to access this URL (%s) is not valid."
-msgstr ""
+msgstr "Érvénytelen eljárás az URL eléréséhez (%s)."
 
 #: application/views/scripts/error/index.php:4
 msgid "Omeka has encountered an error"
-msgstr ""
+msgstr "Az Omeka egy hibát talált"
 
 #: application/views/scripts/error/index.php:29
 msgid ""
@@ -2618,7 +2619,7 @@ msgid ""
 "Omeka Codex page on <a "
 "href=\"http://omeka.org/codex/Retrieving_error_messages\">retrieving error "
 "messages</a>."
-msgstr ""
+msgstr "A hibáról részletesebb információért keresse az Omeka Codex oldalt: <a href=\"http://omeka.org/codex/Retrieving_error_messages\">hibaüzenetek visszakeresése</a>. "
 
 #: application/views/scripts/functions.php:54
 msgid "Dublin Core"
@@ -2630,11 +2631,11 @@ msgstr "Összes böngészése"
 
 #: application/views/scripts/functions.php:131
 msgid "Browse by Tag"
-msgstr ""
+msgstr "Böngészés címkék szerint"
 
 #: application/views/scripts/index.php:67
 msgid "No recent items available."
-msgstr ""
+msgstr "Nincs elérhető tétel."
 
 #: application/views/scripts/items/advanced-search.php:32
 msgid "Search for Keywords"
@@ -2646,7 +2647,7 @@ msgstr "Szűkítés specifikus mezőkkel"
 
 #: application/views/scripts/items/advanced-search.php:71
 msgid "contains"
-msgstr ""
+msgstr "tartalmazza"
 
 #: application/views/scripts/items/advanced-search.php:72
 msgid "does not contain"
@@ -2670,7 +2671,7 @@ msgstr "Mező hozzáadása"
 
 #: application/views/scripts/items/advanced-search.php:90
 msgid "Search by a range of ID#s (example: 1-4, 156, 79)"
-msgstr ""
+msgstr "Keresés azonosító számok szerint (pl. 1-4, 156, 79)"
 
 #: application/views/scripts/items/advanced-search.php:102
 msgid "Search By Collection"
@@ -2678,39 +2679,39 @@ msgstr "Keresés gyűjtemény szerint"
 
 #: application/views/scripts/items/advanced-search.php:112
 msgid "Search By Type"
-msgstr "Keresés típus alapján"
+msgstr "Keresés típus szerint"
 
 #: application/views/scripts/items/advanced-search.php:122
 msgid "Search By User"
-msgstr "Keresés felhasználó alapján"
+msgstr "Keresés felhasználó szerint"
 
 #: application/views/scripts/items/advanced-search.php:133
 msgid "Search By Tags"
-msgstr ""
+msgstr "Keresés címkék szerint"
 
 #: application/views/scripts/items/advanced-search.php:147
 msgid "Public/Non-Public"
-msgstr "Publikus/Nem publikus"
+msgstr "Nyilvánosd/Nem nyilvános"
 
 #: application/views/scripts/items/advanced-search.php:150
 msgid "Only Public Items"
-msgstr "Csak pulbikus tartalmak"
+msgstr "Csak nyilvános tartalmak"
 
 #: application/views/scripts/items/advanced-search.php:151
 msgid "Only Non-Public Items"
-msgstr "Csak nem pulbikus tartalmak"
+msgstr "Csak nem nyilvános tartalmak"
 
 #: application/views/scripts/items/advanced-search.php:157
 msgid "Featured/Non-Featured"
-msgstr ""
+msgstr "Kiemelt/Nem kiemelt"
 
 #: application/views/scripts/items/advanced-search.php:160
 msgid "Only Featured Items"
-msgstr ""
+msgstr "Csak kiemelt tételek"
 
 #: application/views/scripts/items/advanced-search.php:161
 msgid "Only Non-Featured Items"
-msgstr ""
+msgstr "Csak nem kiemelt tételek"
 
 #: application/views/scripts/items/show.php:11
 msgid "Files"
@@ -2733,11 +2734,11 @@ msgstr "Az Omeka frissítése kész."
 #: application/views/scripts/upgrade/completed.php:11
 #, php-format
 msgid "Please return to the %1$s or your site&#8217;s %2$s"
-msgstr ""
+msgstr "Térjen vissza %1$s-hoz az Ön %2$s oldalán."
 
 #: application/views/scripts/upgrade/completed.php:11
 msgid "Your Omeka database is completely up-to-date."
-msgstr ""
+msgstr "Az Ön Omeka adatbázisa teljesen naprakész."
 
 #: application/views/scripts/upgrade/completed.php:13
 #: application/views/scripts/upgrade/migrate.php:18
@@ -2745,21 +2746,21 @@ msgid ""
 "If you have any questions please refer to <a "
 "href=\"http://omeka.org/codex\">Omeka documentation</a> or post a message on"
 " the <a href=\"http://omeka.org/forums\">Omeka forums</a>."
-msgstr ""
+msgstr "Ha kérdése van forduljon az <a href=\"http://omeka.org/codex\">Omeka  dokumentációhoz</a>, vagy posztoljon üzenetet az <a href=\"http://omeka.org/forums\">Omeka fórumokon</a>."
 
 #: application/views/scripts/upgrade/index.php:10
 msgid "Upgrade Your Omeka Database"
-msgstr ""
+msgstr "Frissítse Omeka adatbázisát!"
 
 #: application/views/scripts/upgrade/index.php:12
 msgid ""
 "Your Omeka database is not compatible with your current version of Omeka."
-msgstr ""
+msgstr "Omeka adatbázisa nem kompatibillis az Omeka jelenlegi verziójával."
 
 #: application/views/scripts/upgrade/index.php:13
 msgid ""
 "Please back up your existing database and then click the button to upgrade."
-msgstr ""
+msgstr "Kérjük mentse a létező adatbázist, majd kattintson a frissítés gombra."
 
 #: application/views/scripts/upgrade/index.php:15
 msgid "Upgrade Database"
@@ -2767,19 +2768,19 @@ msgstr "Adatbázis frissítése"
 
 #: application/views/scripts/upgrade/migrate.php:11
 msgid "Omeka encountered an error when upgrading your installation."
-msgstr ""
+msgstr "Az Omeka hibát talált az ön telepítésének frissítése során."
 
 #: application/views/scripts/upgrade/migrate.php:16
 msgid "Please restore from your database backup and try again."
-msgstr ""
+msgstr "Kérjük állítsa vissza az elmentett adatbázist és próbálja újra."
 
 #: application/views/scripts/upgrade/migrate.php:21
 msgid "Omeka has upgraded successfully."
-msgstr ""
+msgstr "Omeka frissítése sikeres"
 
 #: application/views/scripts/upgrade/migrate.php:22
 msgid "Return to Dashboard"
-msgstr ""
+msgstr "Visszatérés a kezelőfelülethez"
 
 #: application/views/scripts/users/activate.php:2
 msgid "User Activation"
@@ -2795,7 +2796,7 @@ msgstr "Vissza a bejelentkezéshez"
 
 #: application/views/scripts/users/forgot-password.php:10
 msgid "Enter your email address to retrieve your password."
-msgstr "Adja meg az email címét a jelszó elküldéséhez."
+msgstr "Adja meg az e-mail címét a jelszó elküldéséhez."
 
 #: application/views/scripts/users/login.php:9
 msgid "Go to Home Page"
@@ -2812,7 +2813,7 @@ msgstr "Telepítési hiba."
 #: install/views/scripts/index/errors.phtml:2
 msgid ""
 "Before installation can continue, the following errors must be resolved:"
-msgstr "A telepítés folytatása előtt a következő hibákat meg kell oldani:"
+msgstr "A telepítés folytatása előtt a következő hibákat ki kell javítani:"
 
 #: install/views/scripts/index/fatal-error.phtml:1
 msgid "Fatal Error"
@@ -2826,21 +2827,21 @@ msgstr "Telepítési figyelmeztetés"
 msgid ""
 "The following issues will not affect installation, but they may negatively "
 "affect the behavior of Omeka:"
-msgstr "A következő problémák nem érintik a telepítést, de ngatív hatással lehetnek az Omeka telepítésére:"
+msgstr "A következő problémák nem érintik a telepítést, de negatív hatással lehetnek az Omeka viselkedésére:"
 
 #: install/views/scripts/index/index.phtml:13
 msgid "Configure Your Site"
-msgstr "Konfigurálja az Oldalát"
+msgstr "Konfigurálja a honlapját"
 
 #: install/views/scripts/index/index.phtml:15
 msgid "Form Validation Errors"
-msgstr ""
+msgstr "Űrlap érvényesítési hiba"
 
 #: install/views/scripts/index/installed.phtml:1
 msgid ""
 "Omeka is installed. You may remove the \"install\" directory for security "
 "reasons."
-msgstr ""
+msgstr "Az Omeka telepítve van. Biztonsági okoból eltávolíthatja az \"install\" könyvtárat."
 
 #: install/views/scripts/index/installed.phtml:2
 msgid "Admin Panel"
@@ -2848,7 +2849,7 @@ msgstr "Admin Panel"
 
 #: install/views/scripts/index/installed.phtml:2
 msgid "Public Site"
-msgstr "Nyilvános oldal."
+msgstr "Nyilvános honlap"
 
 #: install/views/scripts/layout.phtml:5 install/views/scripts/layout.phtml:9
 msgid "Omeka Installation"
@@ -2856,7 +2857,7 @@ msgstr "Omeka telepítése"
 
 #: admin/themes/default/items/browse.php:8
 msgid "Add a Hyperlink"
-msgstr ""
+msgstr "Adjon meg egy hiperlinket"
 
 #: admin/themes/default/items/files-form.php:93
 msgid "Upload a File"
@@ -2868,15 +2869,15 @@ msgstr "Hozzáad"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Pathway Authoring Tool"
-msgstr "Tanösvény-szerkesztő"
+msgstr "Tanösvényszerkesztő Eszköz"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Translate"
-msgstr "Fordít"
+msgstr "Fordítás"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Hyperlink"
@@ -2892,11 +2893,11 @@ msgstr "Fotók"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Add a new hyperlink to your archive"
-msgstr ""
+msgstr "Hiperlink hozzáadása az archivumhoz."
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Please select language to translate:"
-msgstr ""
+msgstr "Válasszon fordítandó nyelvet"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Translate Item #%s"
@@ -2912,7 +2913,7 @@ msgstr "Oktatási tanösvények"
 
 #: admingeneral!
 msgid "GO NOW!"
-msgstr ""
+msgstr "RAJTA!"
 
 #: admingeneral!
 msgid "Pathways"
@@ -2924,15 +2925,15 @@ msgstr "A Natural Europe Projekt honlapja"
 
 #: admingeneral!
 msgid "Natural Europe Pathway Authoring and Metadata Tool.  &copy; 2011"
-msgstr ""
+msgstr "Natural Europe tanösvényszerkesztő és metaadatoló eszköz. &copy; 2011"
 
 #: admingeneral!
 msgid "You are here"
-msgstr ""
+msgstr "Ön itt van"
 
 #: admingeneral!
 msgid "Access the Resource"
-msgstr "Forrás elérése"
+msgstr "Segédanyag elérése"
 
 #: admingeneral!
 msgid "Given Metadata"
@@ -2948,19 +2949,19 @@ msgstr "Vissza a tanösvényhez"
 
 #: admingeneral!
 msgid "Resources"
-msgstr "Források"
+msgstr "Segédanyagok"
 
 #: admingeneral!
 msgid "Browse Resources"
-msgstr "Források tallózása"
+msgstr "Segédanyagok tallózása"
 
 #: admingeneral!
 msgid "Ingest a Resource"
-msgstr "Forrás bevétele"
+msgstr "Segédanyag átemelése"
 
 #: admingeneral!
 msgid "Ingest a Resource from Natural Europe federation"
-msgstr "Forrás bevétele Natural Europe tartalomból"
+msgstr "Segédanyag átemelése a Natural Europe szövetségtől"
 
 #: admingeneral!
 msgid "Search in Natural Europe"
@@ -2968,7 +2969,7 @@ msgstr "Keresés a Natural Europe tartalmakban"
 
 #: admingeneral!
 msgid "Access to the resource"
-msgstr "Forrás elérése"
+msgstr "Segédanyag elérése"
 
 #: admingeneral!
 msgid "View Metadata"
@@ -2976,7 +2977,7 @@ msgstr "Metaadat megtekintése"
 
 #: admingeneral!
 msgid "Ingest a Resource from Europeana federation"
-msgstr "Forrás bevétele Europeana tartalomból"
+msgstr "Segédanyag átemelése az Europeana szövetségtől"
 
 #: admingeneral!
 msgid "IMAGE"
@@ -2996,15 +2997,15 @@ msgstr "HANG"
 
 #: admingeneral!
 msgid "Access resource at Europeana"
-msgstr "Europeana tartalmak elérése"
+msgstr "Segédanyag elérése az Europeana szövetségnél"
 
 #: admingeneral!
 msgid "Provider"
-msgstr "Közlő"
+msgstr "Szolgáltató"
 
 #: admingeneral!
 msgid "Ingest a Resource from Ariadne federation"
-msgstr "Forrás bevétele Ariadne tartalomból"
+msgstr "Segédanyag átemelése az Ariadne szövetségtől"
 
 #: admingeneral!
 msgid "Search in Ariadne"
@@ -3032,7 +3033,7 @@ msgstr "Natural Europe kézikönyv"
 
 #: admingeneral!
 msgid "Natural Europe Manual"
-msgstr "Natural Europe Kalauz"
+msgstr "Natural Europe kalauz"
 
 #: admingeneral!
 msgid "Quality Criteria for Natural Europe Pathways"
@@ -3041,7 +3042,7 @@ msgstr "Natural Europe tanösvények minőségi elvárásai"
 #: admin/themes/default/index.php:85
 #, php-format
 msgid "<em>%1$s</em> contains %2$s resources. There are %5$s users."
-msgstr ""
+msgstr "<em>%1$s</em> összesen %2$s tételt tartalmaz. Összesen %5$s felhasználó van."
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Validate"

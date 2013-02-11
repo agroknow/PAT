@@ -1570,7 +1570,7 @@ $exec=$db->query($maxIdSQL);
 }
 
 function sameinstitutionexhibit($exhibit,$user){ 
-	if($user['role']=='Museum Educators' && strlen($user['institution'])>0 && isset($user['institution'])){
+	if(($user['role']=='Museum Educators' or $user['role']=='Validator') && strlen($user['institution'])>0 && isset($user['institution'])){
 	$sameinstitution=0;
 	$sqlWhereClause="institution='".$user['institution']."'";
 	$tusers=get_db()->getTable('User')->findBySql($sqlWhereClause);

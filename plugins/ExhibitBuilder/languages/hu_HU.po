@@ -4,6 +4,7 @@
 # 
 # Translators:
 #   <holler@mttm.hu>, 2012.
+# Judit Holler <holler@mttm.hu>, 2013.
 #   <rajczy@nhmus.hu>, 2012.
 #   <vas.zoltan@gmail.com>, 2012.
 msgid ""
@@ -11,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2012-11-22 07:50+0000\n"
-"Last-Translator: rajczym <rajczy@nhmus.hu>\n"
+"PO-Revision-Date: 2013-02-07 16:24+0000\n"
+"Last-Translator: holler <holler@mttm.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,25 +107,25 @@ msgstr "Megjelenít egy teljes méretű szöveget."
 
 #: config_form.php:3
 msgid "Use Exhibit Browse Page For Homepage?"
-msgstr "Legyen a kiállítási egységek böngésző-lapja a kezdőlap?"
+msgstr "A tanösvények böngésző oldala legyen a kezdőoldal?"
 
 #: config_form.php:9
 msgid "If checked, Omeka will use the exhibit browse page for the homepage."
-msgstr "Ha bejelöli, az Omeka a kiállítási egységek böngésző-listáját használja kezdőlapként"
+msgstr "Ha bejelöli, az Omeka a tanösvények böngésző-listáját használja kezdőlapként"
 
 #: config_form.php:14
 msgid "Sorting Exhibits"
-msgstr "Kiállítási egységek rendezése"
+msgstr "Tanösvények rendezése"
 
 #: config_form.php:19
 msgid ""
 "The default method by which you wish to sort the listing of exhibits on the "
 "exhibits/browse page. Default is 'Date Added'."
-msgstr "A kiállítási egységek alapértelmezett rendezési módja a böngésző-lista lapon. Eredeti érték: \"Hozzáadás ideje\""
+msgstr "A tanösvények alapértelmezett rendezési módja a böngésző-lista lapon. Eredeti érték: \"Hozzáadás ideje\""
 
 #: controllers/ExhibitsController.php:87
 msgid "This item is not used within this exhibit."
-msgstr "Ez az elem nincs használatban ebben a kiállítási egységben"
+msgstr "Ez az elem nincs használatban ebben a tanösvényben."
 
 #: controllers/ExhibitsController.php:254
 msgid "You must specifically select a theme in order to configure it."
@@ -136,24 +137,24 @@ msgstr "Ki kell választania egy témát, hogy be tudja állítani."
 #: views/admin/exhibits/page-metadata-form.php:48
 #: views/admin/exhibits/section-metadata-form.php:43
 msgid "Exhibits"
-msgstr "Kiállítási egységek"
+msgstr "Tanösvények"
 
 #: functions.php:215 functions.php:231 views/admin/exhibits/browse.php:2
 #: views/public/exhibits/browse.php:2
 msgid "Browse Exhibits"
-msgstr "Kiállítási egységek böngészése"
+msgstr "Tanösvények böngészése"
 
 #: functions.php:216
 msgid "Create an Exhibit"
-msgstr "Kiállítási egység létrehozása"
+msgstr "Tanösvény létrehozása"
 
 #: functions.php:218
 msgid "Create and manage exhibits that display items from the archive."
-msgstr "Kiállítási egységek létrehozása és kezelése, amil az archívumból elemeket jelenítenek meg."
+msgstr "Tanösvények létrehozása és kezelése. Ezek az archívumból elemeket jelenítenek meg."
 
 #: functions.php:440
 msgid "Search by Exhibit"
-msgstr "Keresés a Kiállítási egységek alapján"
+msgstr "Keresés a tanösvények szerint"
 
 #: helpers/ExhibitFunctions.php:219
 msgid "There is no item attached."
@@ -170,11 +171,11 @@ msgstr "Képaláírás"
 
 #: helpers/ExhibitFunctions.php:441
 msgid "Featured Exhibit"
-msgstr "Kiemelt kiállítási egységek"
+msgstr "Kiemelt tanösvények"
 
 #: helpers/ExhibitFunctions.php:446
 msgid "You have no featured exhibits."
-msgstr "Nincsenek kiemelt kiállítási egységei"
+msgstr "Nincsenek kiemelt tanösvényei"
 
 #: helpers/ExhibitPageFunctions.php:155
 msgid "Next Page &rarr;"
@@ -186,11 +187,11 @@ msgstr "&larr; Előző oldal"
 
 #: models/Exhibit.php:38
 msgid "An exhibit must be given a title."
-msgstr "Egy kiállítási egységnek címet kell adni"
+msgstr "Egy tanösvénynek címet kell adni."
 
 #: models/Exhibit.php:42
 msgid "The title for an exhibit must be 255 characters or less."
-msgstr "A kiállítási egység címe legfeljebb 255 karakter lehet"
+msgstr "A tanösvény címe legfeljebb 255 karakter lehet"
 
 #: models/Exhibit.php:46
 msgid "The name of your theme must be 30 characters or less."
@@ -198,7 +199,7 @@ msgstr "A  téma neve legfeljebb 30 karakter lehet."
 
 #: models/Exhibit.php:66
 msgid "Exhibits must be given a valid slug."
-msgstr "A kiállíytási egységnek érvényes álnevet kell adni."
+msgstr "A tanösvénynek érvényes álnevet kell adni."
 
 #: models/Exhibit.php:67 models/ExhibitPage.php:31
 #: models/ExhibitSection.php:33
@@ -208,11 +209,11 @@ msgstr "Egy álnév legfeljebb 30 karakter lehet."
 #: models/Exhibit.php:68
 msgid ""
 "Your URL slug is already in use by another exhibit.  Please choose another."
-msgstr "Ez az álnevet egy másik kiállítási egység már használja. Kérem, válasszon másikat!"
+msgstr "Ez az álnevet egy másik tanösvény már használja. Kérem, válasszon másikat!"
 
 #: models/ExhibitPage.php:30
 msgid "A slug must be given for each page of an exhibit."
-msgstr "A kiállítási egység minden lapjának álnevet kell adni."
+msgstr "A tanösvény minden lapjának álnevet kell adni."
 
 #: models/ExhibitPage.php:32
 msgid ""
@@ -222,38 +223,38 @@ msgstr "Ez az álnevet más használta ebben a szakaszban. Kérem, módosítsa, 
 
 #: models/ExhibitPage.php:47
 msgid "A layout must be provided for each exhibit page."
-msgstr "Minden kiállítási egység laphoz hozzá kell rendelni egy oldalformátumot. "
+msgstr "Minden minden tanösvényhez hozzá kell rendelni egy oldalformátumot. "
 
 #: models/ExhibitPage.php:51
 msgid "Exhibit pages must be given a title."
-msgstr "A kiállítási egységeknek címet kell adni."
+msgstr "A tanösvényeknek címet kell adni."
 
 #: models/ExhibitSection.php:32
 msgid "A slug must be given for each section of an exhibit."
-msgstr "A kiállítási egység minden szakaszának álnevet kell adni."
+msgstr "A tanösvény minden szakaszának álnevet kell adni."
 
 #: models/ExhibitSection.php:34
 msgid ""
 "This section slug has already been used in this exhibit.  Please modify the "
 "slug so that it is unique."
-msgstr "Ezt a szakasz álnevet már használta ebben a kiállítási egységben. Kérem, módosítsa, hogy egyedi legyen!"
+msgstr "Ezt a szakasz álnevet már használta ebben a tanösvényben. Kérem, módosítsa, hogy egyedi legyen!"
 
 #: models/ExhibitSection.php:40
 msgid "Sections of an exhibit must be given a title."
-msgstr "A kiállítási egységek szakaszainak címet kell adni."
+msgstr "A tanösvény szakaszainak címet kell adni."
 
 #: views/admin/exhibits/browse.php:7
 #: views/admin/exhibits/exhibit-metadata-form.php:5
 msgid "Add Exhibit"
-msgstr "Kiállítási egység hozzáadása."
+msgstr "Tanösvény hozzáadása."
 
 #: views/admin/exhibits/browse.php:13
 msgid "There are no exhibits yet."
-msgstr "Még nincsenek kiállítási egységek."
+msgstr "Még nincsenek tanösvények."
 
 #: views/admin/exhibits/browse.php:16
 msgid "Add an exhibit."
-msgstr "Egy kiállítási egység hozzáadása."
+msgstr "Egy tanösvény hozzáadása."
 
 #: views/admin/exhibits/browse.php:35
 #: views/admin/exhibits/exhibit-metadata-form.php:125
@@ -267,11 +268,11 @@ msgstr "Törli?"
 #: views/admin/exhibits/exhibit-metadata-form.php:3
 #, php-format
 msgid "Edit Exhibit: \"%s\""
-msgstr "Kiállítási egység szerkesztése: \"%s\""
+msgstr "\"%s\" tanösvény szerkesztése"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:5
 msgid "Edit Exhibit"
-msgstr "Kiállítási egység szerkesztése."
+msgstr "Tanösvény szerkesztése."
 
 #: views/admin/exhibits/exhibit-metadata-form.php:22
 msgid "Are you sure you want to delete this section?"
@@ -284,7 +285,7 @@ msgstr "Biztosan törli ezt az oldalt?"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:96
 msgid "Exhibit Metadata"
-msgstr "Kiállítási egység metaadatai"
+msgstr "Tanösvény metaadatai"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:102
 #: views/admin/exhibits/page-metadata-form.php:59
@@ -428,15 +429,15 @@ msgstr "Nincsenek oldalak ebben a szakaszban."
 
 #: views/admin/exhibits/tags.php:2 views/public/exhibits/tags.php:2
 msgid "Browse Exhibits by Tag"
-msgstr "Kiállítási egységek böngészése a címke alapján"
+msgstr "Tanösvények böngészése a címke alapján"
 
 #: views/admin/exhibits/tags.php:14
 msgid "There are no tags to display. You must first tag some exhibits."
-msgstr "Nincsen megjeníthető címke. Először fel kell címkézni néhány kiállítási egységet."
+msgstr "Nincsen megjeníthető címke. Először fel kell címkézni néhány tanösvényt."
 
 #: views/public/exhibits/browse.php:30
 msgid "There are no exhibits available yet."
-msgstr "Még nincs megjeleníthető kiállítási egység."
+msgstr "Még nincs megjeleníthető tanösvény."
 
 #: views/public/exhibits/summary.php:14
 msgid "Sections"
@@ -474,7 +475,7 @@ msgstr "Egy tanösvény hozzáadása"
 
 #: admingeneral!
 msgid "Create and manage Pathways"
-msgstr "Tanösvény létrehozása és kezelése"
+msgstr "Tanösvény létrehozása és szerkesztése"
 
 #: admingeneral!
 msgid "Search by Pathway"
@@ -482,11 +483,11 @@ msgstr "Keresés tanösvény alapján"
 
 #: admingeneral!
 msgid "Attach a Resource"
-msgstr "Forrás csatolása"
+msgstr "Segédanyag csatolása"
 
 #: admingeneral!
 msgid "Click to attach a resource from your collection."
-msgstr "Kattintson ide egy forrás saját gyűjteményből történő csatolásához"
+msgstr "Saját gyűjteményben létező segédanyag csatolásához kattintson ide."
 
 #: admingeneral!
 msgid "Introduction"
@@ -494,23 +495,23 @@ msgstr "Bevezetés"
 
 #: admingeneral!
 msgid "Pre-visit Phase"
-msgstr "Látogatás előtti szakasz"
+msgstr "Látogatás előtt"
 
 #: admingeneral!
 msgid "Visit Phase"
-msgstr "Látogatási szakasz"
+msgstr "Múzeumátogatás"
 
 #: admingeneral!
 msgid "Post-visit Phase"
-msgstr "Látogatás utáni szakasz"
+msgstr "Látogatás után"
 
 #: admingeneral!
 msgid "Introductory section and preparatory"
-msgstr "Bevezető szakasz és előkészítés"
+msgstr "Kedvcsináló a családnak"
 
 #: admingeneral!
 msgid "Engagement"
-msgstr "Elfoglaltság"
+msgstr "Előkészületek"
 
 #: admingeneral!
 msgid "Game"
@@ -518,7 +519,7 @@ msgstr "Játék"
 
 #: admingeneral!
 msgid "Reflection"
-msgstr "Visszajelzés"
+msgstr "Újra otthon"
 
 #: admingeneral!
 msgid "Guidance for preparation"
@@ -546,7 +547,7 @@ msgstr " Egyszerű vizsgálatok tervezése és kivitelezése "
 
 #: admingeneral!
 msgid "Gather evidence from observation"
-msgstr " Bizonyítékok összegyűjtése megfigyelések útján"
+msgstr " Bizonyítékok gyűjtése megfigyelések útján"
 
 #: admingeneral!
 msgid "Explanation based on evidence"
@@ -554,7 +555,7 @@ msgstr "Tényeken alapuló magyarázat"
 
 #: admingeneral!
 msgid "Consider other explanations"
-msgstr "Egyéb magyarázatok megfontolása"
+msgstr "Lehetséges más magyarázat?"
 
 #: admingeneral!
 msgid "Communicate explanation"
@@ -570,7 +571,7 @@ msgstr "Kapcsolatfelvétel"
 
 #: admingeneral!
 msgid "Curiosity Provocation"
-msgstr "Érdeklődés felkeltése"
+msgstr "Érdekes ez?"
 
 #: admingeneral!
 msgid "Abstract Conceptulization"
@@ -638,7 +639,7 @@ msgstr "Próbáld ki!  15"
 
 #: admingeneral!
 msgid "Reflection-COMMUNICATE EXPLANATION"
-msgstr "Visszajelzés - magyarázatok megvitatása"
+msgstr "Beszélgessünk róla!"
 
 #: admingeneral!
 msgid "Last Modified:"
@@ -650,7 +651,7 @@ msgstr "Segédanyagok"
 
 #: admingeneral!
 msgid "Add your tag"
-msgstr "Adjon hozzá a cimkét"
+msgstr "Adjon hozzá a címkét"
 
 #: admingeneral!
 msgid "Given Metadata"
@@ -666,7 +667,7 @@ msgstr "Oktatási tanösvény"
 
 #: admingeneral!
 msgid "GO NOW!"
-msgstr "Indítás most!"
+msgstr "Indítás "
 
 #: admingeneral!
 msgid "Creator"
@@ -726,7 +727,7 @@ msgstr "Változtatások mentése"
 
 #: admingeneral!
 msgid "Select Pathway Template"
-msgstr "Tanösvény séma választás"
+msgstr "Tanösvény-típus választása"
 
 #: admingeneral!
 msgid "There are no sections"
@@ -744,7 +745,7 @@ msgstr "Segédanyagok hozzáadásához kattintson ide"
 msgid ""
 "Resources that will be added here serve as <br> complementary to the items "
 "attached on the pathway"
-msgstr "Az itt hozzáadott segédletek a tanösvényhez csatolt elemek kiegészítőjeként szolgálnak."
+msgstr "Az itt hozzáadott segédanyagok a tanösvény mellékleteinek további kiegészítői."
 
 #: admingeneral!
 msgid "Select an object to add"
@@ -752,7 +753,7 @@ msgstr "Válassza ki a hozzáadni kívánt objektumot"
 
 #: admingeneral!
 msgid "All Items: "
-msgstr "Valamennyi elem:"
+msgstr "Valamennyi tétel:"
 
 #: admingeneral!
 msgid "Insert"
@@ -760,4 +761,4 @@ msgstr "Beszúrás"
 
 #: admingeneral!
 msgid "No items"
-msgstr "Nincsen egyetlen elem sem."
+msgstr "Nincsen egyetlen tétel sem."

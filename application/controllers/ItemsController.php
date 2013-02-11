@@ -319,7 +319,7 @@ $varName = strtolower($this->_modelClass);
 	
 		
         $user = current_user();
-        $results = $this->_helper->searchItems(array('search' => 'advanced','user' => ''.$user['id'].'' ));
+        $results = $this->_helper->searchItems(array('search' => 'advanced','user' => ''.$user['id'].'','role' => ''.$user['role'].'' ));
         
         /** 
          * Now process the pagination

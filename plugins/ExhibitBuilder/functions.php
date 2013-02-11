@@ -163,6 +163,10 @@ function exhibit_builder_setup_acl($acl)
         'showNotPublic', 'add-page', 'edit-page-content',
         'edit-page-metadata', 'delete-page', 'add-section',
         'edit-section', 'delete-section', 'section-list', 'page-list', 'makepublic'));
+        $acl->allow('Validator', 'ExhibitBuilder_Exhibits',array('add', 'editSelf', 'deleteSelf',
+        'showNotPublic', 'add-page', 'edit-page-content',
+        'edit-page-metadata', 'delete-page', 'add-section',
+        'edit-section', 'delete-section', 'section-list', 'page-list', 'makepublic'));
 	$acl->allow('Teachers-Students', 'ExhibitBuilder_Exhibits',array('add', 'editSelf', 'deleteSelf',
         'showNotPublic', 'add-page', 'edit-page-content',
         'edit-page-metadata', 'delete-page', 'add-section',

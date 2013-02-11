@@ -33,6 +33,9 @@ $allowList = array(
     array(null, array('Items', 'ItemTypes', 'Tags', 'Collections'), array('browse')),
     //Super user can do anything
     array('super'),
+    array('Validator', 'Items', array('add', 'batch-edit', 'edit', 'editSelf', 'editAll', 'delete', 'deleteSelf', 'deleteAll', 'tag', 'showNotPublic', 'showSelfNotPublic', 'untagOthers', 'makePublic', 'makeFeatured', 'modifyPerPage', 'browse', 'browseAll')),
+    array('Validator', 'Users', array('browse', 'editSelf', 'deleteSelf')),
+    array('Validator', 'Collections', array('add', 'edit', 'delete', 'showNotPublic', 'browse', 'editSelf')),
     //Researchers can view items and collections that are not yet public
     array('researcher',array('Items', 'Collections'),array('showNotPublic')),
     //Contributors can add and tag items, edit or delete their own items, and see their items that are not public
@@ -60,6 +63,7 @@ $acl->addRole(new Zend_Acl_Role('super'));
 $acl->addRole(new Zend_Acl_Role('admin'), 'super');
 
 //Contributors and researchers do not inherit from the other roles.
+$acl->addRole(new Zend_Acl_Role('Validator'));
 $acl->addRole(new Zend_Acl_Role('contributor'));
 $acl->addRole(new Zend_Acl_Role('researcher'));
 
@@ -88,9 +92,9 @@ $acl->deny(array(null, 'admin', 'super'), 'Users');
 // For some unknown reason, this assertion must be associated with named roles 
 // (i.e., not null) in order to work correctly.  Allowing the null role causes 
 // it to fail.
-$acl->allow(array('admin', 'super','Science center staff','Museum Educators','Teachers-Students'), 'Users', null,
+$acl->allow(array('admin', 'super', 'Validator','Science center staff','Museum Educators','Teachers-Students'), 'Users', null,
     new User_AclAssertion());
-$acl->allow(array('admin', 'super','Science center staff','Museum Educators','Teachers-Students'),
+$acl->allow(array('admin', 'super', 'Validator','Science center staff','Museum Educators','Teachers-Students'),
     'Items', array('edit', 'delete'), new Item_OwnershipAclAssertion());
 $acl->deny('admin', 'ItemTypes', array('delete', 'delete-element'));
 ?>
