@@ -87,7 +87,7 @@ head(array('bodyclass'=>'index primary-secondary', 'title'=>$pageTitle)); ?>
             </div>
             <div id="site-meta" class="info-panel">
                 <h2><?php echo __('Guidelines'); ?></h2>
-                <p><a href="http://www.natural-europe.eu/files/Natural_Europe_Pathway_Authoring_Tool_Manual.pdf" target="_blank"><?php echo __('Natural Europe Manual'); ?></a></p>
+<!--                <p><a href="http://www.natural-europe.eu/files/Natural_Europe_Pathway_Authoring_Tool_Manual.pdf" target="_blank"><?php //echo __('Natural Europe Manual'); ?></a></p>-->
 			<p><a href="http://education.natural-europe.eu/natural_europe/archive/handbook/natural-europe-educational-pathway-handbook.pdf" target="_blank"><?php echo __('Natural Europe Handbook'); ?></a></p>
             <p><a href="<?php $uri = WEB_ROOT; echo $uri; ?>/quality" target="_blank"><?php echo __('Quality Criteria for Natural Europe Pathways'); ?></a></p>
             </div>
