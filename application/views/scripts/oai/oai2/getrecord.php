@@ -103,8 +103,15 @@ if (empty($errors)) { //if no errors
 
 
     if ($metadatarecord['object_type'] == 'item') {
-        if (strlen($omekaitem['collection_id']) > 0) {
-            $sqlcollection = "select * from omeka_collections where id=" . $omekaitem['collection_id'] . " ";
+        $oai_collection_general = $set_prefix . 'resources';
+
+        $sqlmetadatarecordfromomeka = "select * from omeka_items where id=" . $metadatarecord['object_id'] . " ";
+//echo $sqlmetadatarecord; //break;
+        $execfromomeka = $db->query($sqlmetadatarecordfromomeka);
+        $metadatarecordfromomeka = $execfromomeka->fetch();
+
+        if (strlen($metadatarecordfromomeka['collection_id']) > 0) {
+            $sqlcollection = "select * from omeka_collections where id=" . $metadatarecordfromomeka['collection_id'] . " ";
 //echo $sqlmetadatarecord; //break;
             $execcollection = $db->query($sqlcollection);
             $oai_collection = $execcollection->fetch();
@@ -113,7 +120,7 @@ if (empty($errors)) { //if no errors
         }
     } else {
 
-        $oai_collection['id'] = 'pathways';
+        $oai_collection_general = $set_prefix . 'pathways';
     }
 
 
@@ -147,6 +154,9 @@ if (empty($errors)) { //if no errors
     $output .= '<datestamp>';
     $output .= $datestamp;
     $output .= '</datestamp>' . "\n";
+    $output .= '<setSpec>';
+    $output .=$oai_collection_general;
+    $output .= '</setSpec>' . "\n";
     if (strlen($oai_collection['id']) > 0) {
         $output .= '<setSpec>';
         $output .=$set_prefix . '' . $oai_collection['id'];

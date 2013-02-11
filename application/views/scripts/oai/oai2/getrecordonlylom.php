@@ -77,7 +77,7 @@ if ($object_type == 'exhibit' or $object_type == 'item') {
 }
 
 ////////////query if exist metadata record in the db!!!!//////////////////////////////
-$sqlmetadatarecord = "select * from metadata_record where object_id=" . $identifier . " and object_type='" . $object_type . "' and validate=1";
+$sqlmetadatarecord = "select * from metadata_record where object_id=" . $identifier . " and object_type='" . $object_type . "'";
 //echo $sqlmetadatarecord; //break;
 $exec2 = $db->query($sqlmetadatarecord);
 $metadatarecord = $exec2->fetch();
@@ -101,20 +101,6 @@ if (empty($errors)) { //if no errors
         $omekaitem = $execomekaitem->fetch();
     }
 
-
-    if ($metadatarecord['object_type'] == 'item') {
-        if (strlen($omekaitem['collection_id']) > 0) {
-            $sqlcollection = "select * from omeka_collections where id=" . $omekaitem['collection_id'] . " ";
-//echo $sqlmetadatarecord; //break;
-            $execcollection = $db->query($sqlcollection);
-            $oai_collection = $execcollection->fetch();
-        } else {
-            $oai_collection['id'] = '';
-        }
-    } else {
-
-        $oai_collection['id'] = 'pathways';
-    }
 
 
     $sqlmetadatarecordvalue = "select * from metadata_element_value where record_id=" . $metadatarecord['id'] . " ORDER BY element_hierarchy ASC";
