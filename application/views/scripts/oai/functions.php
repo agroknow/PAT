@@ -712,8 +712,8 @@ function returndatetime($date) {
 
 function usersFromInstitution($institution) {
     if (strlen($institution) > 0) {
-        $institution = mysql_real_escape_string($institution);
-        return get_db()->getTable('Entity')->findBySql('institution="' . $institution . '" ');
+        //echo $institution = mysql_real_escape_string($institution);
+        return get_db()->getTable('Entity')->findBySql('institution="' . addslashes($institution) . '" ');
     }
 }
 
