@@ -124,21 +124,30 @@ $exec_collection = $db->query($collections_query);
 $row_collections = $exec_collection->fetchAll();
 $string_collections = "";
 $SETS = array();
-$set_prefix="ne_collection_";
+$set_prefix = "ne_collection_";
 foreach ($row_collections as $value) {
-    $SETS[] = array('setSpec' => $set_prefix.'' . $value['id'], 'setName' => $value['name'] . '');
+    $SETS[] = array('setSpec' => $set_prefix . '' . $value['id'], 'setName' => $value['name'] . '');
 }
 $exhibit_collections_query = "select * from omeka_exhibits where public=1";
 $exec_exhibit_collection = $db->query($exhibit_collections_query);
 $row_exhibit_collecction = $exec_exhibit_collection->fetch();
-if($row_exhibit_collecction['id']>0){
-    $SETS[] = array('setSpec' => $set_prefix.'pathways', 'setName' => 'Educational Pathways');
+if ($row_exhibit_collecction['id'] > 0) {
+    $SETS[] = array('setSpec' => $set_prefix . 'pathways', 'setName' => 'Educational Pathways');
 }
 $exhibit_collections_query = "select * from omeka_items where public=1";
 $exec_exhibit_collection = $db->query($exhibit_collections_query);
 $row_exhibit_collecction = $exec_exhibit_collection->fetch();
-if($row_exhibit_collecction['id']>0){
-    $SETS[] = array('setSpec' => $set_prefix.'resources', 'setName' => 'All Educational Resources');
+if ($row_exhibit_collecction['id'] > 0) {
+    $SETS[] = array('setSpec' => $set_prefix . 'resources', 'setName' => 'All Educational Resources');
+}
+$exhibit_collections_query = "select DISTINCT institution from omeka_entities where 1";
+$exec_exhibit_collection = $db->query($exhibit_collections_query);
+$row_exhibit_collecction = $exec_exhibit_collection->fetchAll();
+foreach ($row_exhibit_collecction as $row_exhibit_collecction) {
+    if (strlen($row_exhibit_collecction['institution']) > 0) {
+        $row_exhibit_collecction1 = str_replace(' ', '_', $row_exhibit_collecction['institution']);
+        $SETS[] = array('setSpec' => $set_prefix . 'institution_' . $row_exhibit_collecction1, 'setName' => '' . $row_exhibit_collecction['institution'] . '');
+    }
 }
 //$SETS = 	array ( 
 //array('setSpec'=>'phdthesis', 'setName'=>'PHD Thesis', 'setDescription'=>'') ,
@@ -214,10 +223,10 @@ $responseDate = $datetime . 'Z';
 $datetime_resum2 = gmstrftime('%Y-%m-%d'); //for expire date of the resumptionToken
 $datetime_resum = gmstrftime('%Y%m%d'); //for creation and checking of resumptionToken
 // do not change
-/*$XMLHEADER =
-        '<?xml version="1.0" encoding="UTF-8"?>
-<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">' . "\n";
-*/
+/* $XMLHEADER =
+  '<?xml version="1.0" encoding="UTF-8"?>
+  <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">' . "\n";
+ */
 $XMLHEADER =
         '<?xml version="1.0" encoding="UTF-8"?>
 <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">' . "\n";

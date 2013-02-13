@@ -155,8 +155,26 @@ if (isset($_GET['resumptionToken'])) { ///////yyyymmdd:offset:metadataprefix:set
             $execspec = $db->query($query_spec);
             $row_spec = $execspec->fetch();
             $specSize = count($row_spec);
-            } elseif ($resumptionTokensetSpec == 'no') {
+        } elseif ($resumptionTokensetSpec == 'no') {
             $query_spec = "select * from metadata_record where validate=1 ";
+            $execspec = $db->query($query_spec);
+            $row_spec = $execspec->fetch();
+            $specSize = count($row_spec);
+        } elseif (strpos($_GET['resumptionToken'], 'institution')) {
+            $getset1 = explode('institution_', $resumptionToken[3]);
+            $getsetn1 = $getset1[1];
+            $usersfrominstitution = usersFromInstitution($getsetn1);
+            $sqlforinstitution = '';
+            foreach ($usersfrominstitution as $usersfrominstitution) {
+                $sqlforinstitution.="or b.entity_id=" . $usersfrominstitution->id . " ";
+            }
+            if (strlen($sqlforinstitution) > 0) {
+                $sqlforinstitution = substr($sqlforinstitution, 2);
+                $sqlforinstitution = " and (" . $sqlforinstitution . ")";
+            } else {
+                $sqlforinstitution = " and (b.entity_id=0)";
+            }
+            $query_spec = "select a.* from metadata_record as a join omeka_entities_relations as b on (b.relation_id=a.object_id and lower(b.type)=a.object_type) where a.validate=1 and b.relationship_id=1 " . $sqlforinstitution . "";
             $execspec = $db->query($query_spec);
             $row_spec = $execspec->fetch();
             $specSize = count($row_spec);
@@ -185,7 +203,9 @@ if (isset($_GET['resumptionToken'])) { ///////yyyymmdd:offset:metadataprefix:set
         $errors .= oai_error('badResumptionToken', '', $_GET['resumptionToken']);
     } elseif ((!$resumptionTokenoffset > 0) or $testdivoffset != 0) {
         $errors .= oai_error('badResumptionToken', '', $_GET['resumptionToken']);
-    } elseif ((($resumptionTokensetSpec != 'resources' and $resumptionTokensetSpec != 'pathways') or (!$resumptionTokensetSpec > 0) or (!$specSize > 0)) and $resumptionTokensetSpecforno != 'no') {
+    } elseif (!$specSize > 0) {
+        $errors .= oai_error('badResumptionToken', '', $_GET['resumptionToken']);
+    } elseif ($resumptionTokensetSpec != 'resources' and $resumptionTokensetSpec != 'pathways' and $resumptionTokensetSpec != 'no' and !$resumptionTokensetSpec > 0 and !strpos($_GET['resumptionToken'], 'institution')) {
         $errors .= oai_error('badResumptionToken', '', $_GET['resumptionToken']);
     } elseif (strlen($val) > 0) {
         if (is_array($METADATAFORMATS[$val])
@@ -214,6 +234,20 @@ if (isset($_GET['set'])) {
         $getset = " and a.object_type='item'";
     } elseif ($getsetn == 'pathways') {
         $getset = " and a.object_type='exhibit'";
+    } elseif (strpos($_GET['set'], 'institution')) {
+        $getset1 = explode('institution_', $getsetn);
+        $getsetn1 = $getset1[1];
+        $usersfrominstitution = usersFromInstitution($getsetn1);
+        $sqlforinstitution = '';
+        foreach ($usersfrominstitution as $usersfrominstitution) {
+            $sqlforinstitution.="or b.entity_id=" . $usersfrominstitution->id . " ";
+        }
+        if (strlen($sqlforinstitution) > 0) {
+            $sqlforinstitution = substr($sqlforinstitution, 2);
+            $sqlforinstitution = " and (" . $sqlforinstitution . ")";
+        } else {
+            $sqlforinstitution = " and (b.entity_id=0)";
+        }
     } else {
         $getsetn = onlyNumbers($getset[1]);
         if ($getsetn > 0) {
@@ -230,6 +264,20 @@ if (isset($_GET['set'])) {
         $getset = " and a.object_type='item'";
     } elseif ($getsetn == 'pathways') {
         $getset = " and a.object_type='exhibit'";
+    } elseif (strpos($_GET['resumptionToken'], 'institution')) {
+        $getset1 = explode('institution_', $resumptionTokensetSpec);
+        $getsetn1 = $getset1[1];
+        $usersfrominstitution = usersFromInstitution($getsetn1);
+        $sqlforinstitution = '';
+        foreach ($usersfrominstitution as $usersfrominstitution) {
+            $sqlforinstitution.="or b.entity_id=" . $usersfrominstitution->id . " ";
+        }
+        if (strlen($sqlforinstitution) > 0) {
+            $sqlforinstitution = substr($sqlforinstitution, 2);
+            $sqlforinstitution = " and (" . $sqlforinstitution . ")";
+        } else {
+            $sqlforinstitution = " and (b.entity_id=0)";
+        }
     } elseif ($getsetn == 'no') {
         $getset = "";
     } else {
@@ -251,6 +299,8 @@ if (isset($_GET['set']) or strlen($resumptionTokensetSpec) > 0) {
 
     if ($getsetn == 'resources' or $getsetn == 'pathways' or $getsetn == 'no') {
         $sqlmetadatarecord = "select a.* from metadata_record as a where a.validate=1 " . $getset . "";
+    } elseif (strpos($_GET['set'], 'institution') or strpos($_GET['resumptionToken'], 'institution')) {
+        $sqlmetadatarecord = "select a.* from metadata_record as a join omeka_entities_relations as b on (b.relation_id=a.object_id and lower(b.type)=a.object_type) where a.validate=1 and b.relationship_id=1 " . $sqlforinstitution . "";
     } else {
         $sqlmetadatarecord = "select a.* from metadata_record as a join omeka_items as b on a.object_id=b.id where a.validate=1 and a.object_type='item' " . $getsetcol . "";
     }
@@ -293,7 +343,7 @@ if (empty($errors)) { //if no errors
 
         if ($metadatarecord['object_type'] == 'item') {
             $oai_collection_general = $set_prefix . 'resources';
-            $varforidentfiobject='item';
+            $varforidentfiobject = 'item';
 
             $sqlmetadatarecordfromomeka = "select * from omeka_items where id=" . $metadatarecord['object_id'] . " ";
 //echo $sqlmetadatarecord; //break;
@@ -311,7 +361,7 @@ if (empty($errors)) { //if no errors
         } else {
 
             $oai_collection_general = $set_prefix . 'pathways';
-            $varforidentfiobject='exhibit';
+            $varforidentfiobject = 'exhibit';
         }
 
 
@@ -338,7 +388,7 @@ if (empty($errors)) { //if no errors
         $output .= '<record>' . "\n";
         $output .= '<header>' . "\n";
         $output .= '<identifier>';
-        $output .= 'oai:' . $repositoryIdentifier . ':' . $metadatarecord['object_id'].':'.$varforidentfiobject;
+        $output .= 'oai:' . $repositoryIdentifier . ':' . $metadatarecord['object_id'] . ':' . $varforidentfiobject;
         $output .= '</identifier>' . "\n";
         $output .= '<datestamp>';
         $output .= $datestamp;
@@ -346,6 +396,11 @@ if (empty($errors)) { //if no errors
         $output .= '<setSpec>';
         $output .=$oai_collection_general;
         $output .= '</setSpec>' . "\n";
+        if (strpos($_GET['set'], 'institution') or strpos($_GET['resumptionToken'], 'institution')) {
+            $output .= '<setSpec>';
+            $output .=$set_prefix . '' . $getsetn;
+            $output .= '</setSpec>' . "\n";
+        }
         if (strlen($oai_collection['id']) > 0) {
             $output .= '<setSpec>';
             $output .=$set_prefix . '' . $oai_collection['id'];
