@@ -541,6 +541,7 @@ function exhibit_builder_user_can_edit($exhibit = null, $user = null) {
 
     $canEditSelf = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editSelf');
     $canEditOthers = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editAll');
+    $canEditSameInstitution = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editSameInstitution');
 
     ////////////////custom code by gkista
     $entityofexhibit = return_user_of_exhibit_new($exhibit->id);
@@ -548,7 +549,7 @@ function exhibit_builder_user_can_edit($exhibit = null, $user = null) {
     $exhibituser = get_db()->getTable('Entity')->findBySql($sqlWhereClause);
 
 //echo $exhibit->wasAddedBy($user);
-    return (($exhibit->wasAddedBy($user) && $canEditSelf) || $canEditOthers || ($user['institution'] == $exhibituser[0]['institution'] && $user['role'] == 'Museum Educators' && strlen($user['institution']) > 0 && isset($user['institution'])));
+    return (($exhibit->wasAddedBy($user) && $canEditSelf) || $canEditOthers || ($user['institution'] == $exhibituser[0]['institution'] && $canEditSameInstitution && strlen($user['institution']) > 0 && isset($user['institution'])));
     //return (($exhibit->wasAddedBy($user) && $canEditSelf) || $canEditOthers); 
 }
 

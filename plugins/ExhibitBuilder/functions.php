@@ -143,7 +143,7 @@ function exhibit_builder_setup_acl($acl)
         'add', 'editSelf', 'editAll', 'deleteSelf', 'deleteAll',
         'showNotPublic', 'add-page', 'edit-page-content',
         'edit-page-metadata', 'delete-page', 'add-section',
-        'edit-section', 'delete-section', 'section-list', 'page-list')
+        'edit-section', 'delete-section', 'section-list', 'page-list', 'editSameInstitution')
     );
     $acl->loadResourceList($resourceList);
 
@@ -162,11 +162,11 @@ function exhibit_builder_setup_acl($acl)
 	$acl->allow('Museum Educators', 'ExhibitBuilder_Exhibits',array('add', 'editSelf', 'deleteSelf',
         'showNotPublic', 'add-page', 'edit-page-content',
         'edit-page-metadata', 'delete-page', 'add-section',
-        'edit-section', 'delete-section', 'section-list', 'page-list', 'makepublic'));
+        'edit-section', 'delete-section', 'section-list', 'page-list', 'makepublic', 'editSameInstitution'));
         $acl->allow('Validator', 'ExhibitBuilder_Exhibits',array('add', 'editSelf', 'deleteSelf',
         'showNotPublic', 'add-page', 'edit-page-content',
         'edit-page-metadata', 'delete-page', 'add-section',
-        'edit-section', 'delete-section', 'section-list', 'page-list', 'makepublic'));
+        'edit-section', 'delete-section', 'section-list', 'page-list', 'makepublic', 'editSameInstitution'));
 	$acl->allow('Teachers-Students', 'ExhibitBuilder_Exhibits',array('add', 'editSelf', 'deleteSelf',
         'showNotPublic', 'add-page', 'edit-page-content',
         'edit-page-metadata', 'delete-page', 'add-section',
