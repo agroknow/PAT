@@ -685,397 +685,395 @@ function link_to_exhibit($text = null, $props = array(), $exhibitSection = null,
     return exhibit_builder_link_to_exhibit($exhibit, $text, $props, $exhibitSection, $exhibitPage);
 }
 
-
 //////////////////////custom extra functions ///////////////////////////////
 
 
-function exhibit_picture($ex_eid,$size,$page,$slugsec='to-begin-with'){
+function exhibit_picture($ex_eid, $size, $page, $slugsec = 'to-begin-with') {
 
-require_once 'Zend/Db.php';	
+    require_once 'Zend/Db.php';
 
-$configSQL = new Zend_Config_Ini('./db.ini', 'database');
+    $configSQL = new Zend_Config_Ini('./db.ini', 'database');
 
-$params = array(
-'host' => $configSQL->host,
-'dbname' => $configSQL->name,
-'username'=> $configSQL->username,
-'password'=> $configSQL->password);
-$db = Zend_Db::factory('Mysqli',$params);
-$db->query("SET NAMES 'utf8'");
+    $params = array(
+        'host' => $configSQL->host,
+        'dbname' => $configSQL->name,
+        'username' => $configSQL->username,
+        'password' => $configSQL->password);
+    $db = Zend_Db::factory('Mysqli', $params);
+    $db->query("SET NAMES 'utf8'");
 
-$ex_eid = (int) $ex_eid;
-$select = $db->select();
-$select->from(array('f'=>'omeka_sections'),array('id'));
-$select->where('f.exhibit_id = ?',$ex_eid);
-$select->where('f.slug = ?',$slugsec);
-$rowset = $db->fetchRow($select);
+    $ex_eid = (int) $ex_eid;
+    $select = $db->select();
+    $select->from(array('f' => 'omeka_sections'), array('id'));
+    $select->where('f.exhibit_id = ?', $ex_eid);
+    $select->where('f.slug = ?', $slugsec);
+    $rowset = $db->fetchRow($select);
 
-$select = $db->select();
-$select->from(array('f'=>'omeka_section_pages'),array('id'));
-$select->where('f. section_id = ?',''.$rowset['id'].'');
-$select->where('f.order = ?','1');
-$rowset = $db->fetchRow($select);
+    $select = $db->select();
+    $select->from(array('f' => 'omeka_section_pages'), array('id'));
+    $select->where('f. section_id = ?', '' . $rowset['id'] . '');
+    $select->where('f.order = ?', '1');
+    $rowset = $db->fetchRow($select);
 //echo $rowset['id'];
 
-$select = $db->select();
-$select->from(array('f'=>'omeka_items_section_pages'),array('id','item_id'));
-$select->where('f. page_id = ?',''.$rowset['id'].'');
-$select->where('f.order = ?','1');
-$rowset = $db->fetchRow($select);
+    $select = $db->select();
+    $select->from(array('f' => 'omeka_items_section_pages'), array('id', 'item_id'));
+    $select->where('f. page_id = ?', '' . $rowset['id'] . '');
+    $select->where('f.order = ?', '1');
+    $rowset = $db->fetchRow($select);
 //$rowCount = count($rowset); 
-if($rowset['id']>0){
+    if ($rowset['id'] > 0) {
 
-$itemid=$rowset['item_id'];
-$select = $db->select();
-$select->from(array('f'=>'omeka_files'),array('id','archive_filename','original_filename'));
-$select->where('f. item_id = ?',''.$itemid.'');
-$rowset = $db->fetchRow($select);
-$rowCount2 = count($rowset); 
-if($rowset['id']>0){ 
+        $itemid = $rowset['item_id'];
+        $select = $db->select();
+        $select->from(array('f' => 'omeka_files'), array('id', 'archive_filename', 'original_filename'));
+        $select->where('f. item_id = ?', '' . $itemid . '');
+        $rowset = $db->fetchRow($select);
+        $rowCount2 = count($rowset);
+        if ($rowset['id'] > 0) {
 
-$Images_jpg = explode('.',$rowset['archive_filename'],2);
-			if ($Images_jpg[1]=='gif' or $Images_jpg[1]=='jpg' or $Images_jpg[1]=='png' or $Images_jpg[1]=='tif' or $Images_jpg[1]=='jpeg' or $Images_jpg[1]=='JPG' or $Images_jpg[1]=='JPEG') {
-			if ($Images_jpg[1]=='gif') {
-				$Images_jpg = $Images_jpg[0].".gif";
-			}
-			elseif ($Images_jpg[1]=='png') {
-				$Images_jpg = $Images_jpg[0].".png";
-			}
-			elseif ($Images_jpg[1]=='tif') {
-				$Images_jpg = $Images_jpg[0].".tif";
-			}
-			elseif ($Images_jpg[1]=='jpeg') {
-				$Images_jpg = $Images_jpg[0].".jpeg";
-			}
-			elseif ($Images_jpg[1]=='JPG') {
-				$Images_jpg = $Images_jpg[0].".JPG";
-			}
-			elseif ($Images_jpg[1]=='JPEG') {
-				$Images_jpg = $Images_jpg[0].".JPEG";
-			}
-			else
-			{
-				$Images_jpg = $Images_jpg[0].".jpg";
-			}
+            $Images_jpg = explode('.', $rowset['archive_filename'], 2);
+            if ($Images_jpg[1] == 'gif' or $Images_jpg[1] == 'jpg' or $Images_jpg[1] == 'png' or $Images_jpg[1] == 'tif' or $Images_jpg[1] == 'jpeg' or $Images_jpg[1] == 'JPG' or $Images_jpg[1] == 'JPEG') {
+                if ($Images_jpg[1] == 'gif') {
+                    $Images_jpg = $Images_jpg[0] . ".gif";
+                } elseif ($Images_jpg[1] == 'png') {
+                    $Images_jpg = $Images_jpg[0] . ".png";
+                } elseif ($Images_jpg[1] == 'tif') {
+                    $Images_jpg = $Images_jpg[0] . ".tif";
+                } elseif ($Images_jpg[1] == 'jpeg') {
+                    $Images_jpg = $Images_jpg[0] . ".jpeg";
+                } elseif ($Images_jpg[1] == 'JPG') {
+                    $Images_jpg = $Images_jpg[0] . ".JPG";
+                } elseif ($Images_jpg[1] == 'JPEG') {
+                    $Images_jpg = $Images_jpg[0] . ".JPEG";
+                } else {
+                    $Images_jpg = $Images_jpg[0] . ".jpg";
+                }
+            }
 
-			}
+            $uri = WEB_ROOT;
+            if ($page == 'browse') {
 
-$uri=WEB_ROOT;
-if($page=='browse'){
-
-$returnimage=" 
+                $returnimage = " 
 			<p align='center'>
-<img src='".uri("custom/phpThumb/phpThumb.php?src=".  $uri."/archive/files/".$Images_jpg."")."&h=".$size."'>
+<img src='" . uri("custom/phpThumb/phpThumb.php?src=" . $uri . "/archive/files/" . $Images_jpg . "") . "&h=" . $size . "'>
 </p>  ";
+            } elseif ($page == 'index') {
 
-}
-elseif($page=='index'){
-
-$returnimage=" 
+                $returnimage = " 
 			<p align='center'>
-<img src='".uri("custom/phpThumb/phpThumb.php?src=".  $uri."/archive/files/".$Images_jpg."")."&h=".$size."' width='200px' height='135'>
+<img src='" . uri("custom/phpThumb/phpThumb.php?src=" . $uri . "/archive/files/" . $Images_jpg . "") . "&h=" . $size . "' width='200px' height='135'>
 </p>  ";
+            } elseif ($page == 'indexstund') {
 
-}
-elseif($page=='indexstund'){
-
-	//echo $Images_jpg;
-$returnimage=" 
+                //echo $Images_jpg;
+                $returnimage = " 
 			
-<img src='".uri("custom/phpThumb/phpThumb.php?src=".  $uri."/archive/files/".$Images_jpg."")."&w=".$size."' height='90' width='135'  class='left'/> ";
+<img src='" . uri("custom/phpThumb/phpThumb.php?src=" . $uri . "/archive/files/" . $Images_jpg . "") . "&w=" . $size . "' height='90' width='135'  class='left'/> ";
+            } elseif ($page == 'indexstunds') {
 
-}
-elseif($page=='indexstunds'){
-
-$returnimage=" 
+                $returnimage = " 
 			
-<img src='".uri("custom/phpThumb/phpThumb.php?src=".  $uri."/archive/files/".$Images_jpg."")."&h=".$size."' height='120' class='left'/> ";
-
-}
-
-else{
- $returnimage=" 
+<img src='" . uri("custom/phpThumb/phpThumb.php?src=" . $uri . "/archive/files/" . $Images_jpg . "") . "&h=" . $size . "' height='120' class='left'/> ";
+            } else {
+                $returnimage = " 
 			
-<a class='lightview'  href='".uri("archive/fullsize/".$Images_jpg."")." '
-title='".$rowset['description']." :: ".$rowset['rights']."' >
-<img src='".uri("custom/phpThumb/phpThumb.php?src=".  $uri."/archive/files/".$rowset['archive_filename']."")."&w=".$size."'></a>
+<a class='lightview'  href='" . uri("archive/fullsize/" . $Images_jpg . "") . " '
+title='" . $rowset['description'] . " :: " . $rowset['rights'] . "' >
+<img src='" . uri("custom/phpThumb/phpThumb.php?src=" . $uri . "/archive/files/" . $rowset['archive_filename'] . "") . "&w=" . $size . "'></a>
  ";
-}
+            }
 
-echo $returnimage; 
-
-}
-
-}
-
-}
-
-function return_user_of_exhibit($ex_id)
-	{
-require_once 'Zend/Db.php';	
-
-$configSQL = new Zend_Config_Ini('./db.ini', 'database');
-
-$params = array(
-'host' => $configSQL->host,
-'dbname' => $configSQL->name,
-'username'=> $configSQL->username,
-'password'=> $configSQL->password,
-'charset'   => $configSQL->charset);
-$db = Zend_Db::factory('Mysqli',$params);
-$db->query("SET NAMES 'utf8'");
-
-
-$select = $db->select();
-$select->from(array('f'=>'omeka_entities_relations'),array('entity_id','id'));
-$select->where('f.relation_id = ?',$ex_id);
-$select->where('f.type = ?','Exhibit');
-$select->where('f.relationship_id = ?','1');
-$select->orwhere('f.relationship_id = ?','2');
-$select->order(array('f.id ASC'));
-$rowset = $db->fetchRow($select);
-
-		return $rowset['entity_id'];
-	}
-function return_user_of_exhibit2($ex_id)
-	{
-require_once 'Zend/Db.php';	
-
-$configSQL = new Zend_Config_Ini('./db.ini', 'database');
-
-$params = array(
-'host' => $configSQL->host,
-'dbname' => $configSQL->name,
-'username'=> $configSQL->username,
-'password'=> $configSQL->password,
-'charset'   => $configSQL->charset);
-$db = Zend_Db::factory('Mysqli',$params);
-$db->query("SET NAMES 'utf8'");
-
-
-$select = $db->select();
-$select->from(array('f'=>'omeka_entities_relations'),array('entity_id','id'));
-$select->join(array('sec'=>'omeka_entities'),'f.entity_id=sec.id',array('first_name','last_name'));
-$select->where('f.relation_id = ?',$ex_id);
-$select->where('f.type = ?','Exhibit');
-$select->where('f.relationship_id = ?','1');
-$select->order(array('f.id ASC'));
-$rowset = $db->fetchRow($select);
-		$name= $rowset['last_name']." ".$rowset['first_name'];
-		return $name;
-	}
-
-function bypass(){
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
-    try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+            echo $returnimage;
+        }
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
 }
-$exhibitdb=$db->Exhibit;
-$sectiondb=$db->ExhibitSection;
-$sectionPagedb=$db->ExhibitPage;
-$sectionPageTextdb=$db->ExhibitPageEntry;
+
+function return_user_of_exhibit($ex_id) {
+    require_once 'Zend/Db.php';
+
+    $configSQL = new Zend_Config_Ini('./db.ini', 'database');
+
+    $params = array(
+        'host' => $configSQL->host,
+        'dbname' => $configSQL->name,
+        'username' => $configSQL->username,
+        'password' => $configSQL->password,
+        'charset' => $configSQL->charset);
+    $db = Zend_Db::factory('Mysqli', $params);
+    $db->query("SET NAMES 'utf8'");
 
 
-$maxIdSQL="SELECT MAX(id) AS MAX_ID FROM ". $exhibitdb." LIMIT 0,1";
-$exec=$db->query($maxIdSQL);
-$row=$exec->fetch();
-$max_id=$row["MAX_ID"];
-$exec=null;
+    $select = $db->select();
+    $select->from(array('f' => 'omeka_entities_relations'), array('entity_id', 'id'));
+    $select->where('f.relation_id = ?', $ex_id);
+    $select->where('f.type = ?', 'Exhibit');
+    $select->where('f.relationship_id = ?', '1');
+    $select->orwhere('f.relationship_id = ?', '2');
+    $select->order(array('f.id ASC'));
+    $rowset = $db->fetchRow($select);
 
-if($_POST['slug']){$path_slug=$_POST['slug'];} else{
-	$path_slug=str_replace(" ","-",$_POST['title']);
-	$path_slug=preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
-	$path_slug=str_replace(" ","-",$path_slug);
-	$countslug=strlen($path_slug); if($countslug<2){$path_slug="Pathway-slug-".$max_id;}
+    return $rowset['entity_id'];
 }
-$maxIdSQL="SELECT id FROM ". $exhibitdb." WHERE slug='".$path_slug."' LIMIT 0,1";
-$exec=$db->query($maxIdSQL);
-$row=$exec->fetch();
-$slug_id=0;
-if(isset($row["id"])){$slug_id=$row["id"];}
-$exec=null;
-if($slug_id>0){$path_slug="Pathway-slug-".$max_id;} //echo $slug_id;break;
-if($_POST['title']){$path_title=addslashes($_POST['title']);} else{$path_title="pathway-title-".$max_id."";}
-if($_POST['description']){$path_description=addslashes($_POST['description']);} else{$path_description="";}
-$path_language=$_POST['language'];
-if($_POST['public']){$path_public=$_POST['public'];} else{$path_public="0";}
-if($_POST['template']){$template=intval($_POST['template']);} else{$template="0";}
-$formetypetext=272; ///always text/htm; ta pathways
-$path_slug=$path_slug;
-$uri = WEB_ROOT;
-$pathtopath=$uri."/exhibits/show/".$path_slug."/to-begin-with";
 
-$mainAttributesSql="INSERT INTO $exhibitdb (id, title, description, credits, featured, public, theme, slug, target_group, date_modified) VALUES (NULL,'".$path_title."',\"Pathway's Subtitle\", 'Write the credits for this exhibits. If no credits, then erase this line', 0, ".$path_public.", '','".$path_slug."', ".$template.",'')";
+function return_user_of_exhibit2($ex_id) {
+    require_once 'Zend/Db.php';
+
+    $configSQL = new Zend_Config_Ini('./db.ini', 'database');
+
+    $params = array(
+        'host' => $configSQL->host,
+        'dbname' => $configSQL->name,
+        'username' => $configSQL->username,
+        'password' => $configSQL->password,
+        'charset' => $configSQL->charset);
+    $db = Zend_Db::factory('Mysqli', $params);
+    $db->query("SET NAMES 'utf8'");
+
+
+    $select = $db->select();
+    $select->from(array('f' => 'omeka_entities_relations'), array('entity_id', 'id'));
+    $select->join(array('sec' => 'omeka_entities'), 'f.entity_id=sec.id', array('first_name', 'last_name'));
+    $select->where('f.relation_id = ?', $ex_id);
+    $select->where('f.type = ?', 'Exhibit');
+    $select->where('f.relationship_id = ?', '1');
+    $select->order(array('f.id ASC'));
+    $rowset = $db->fetchRow($select);
+    $name = $rowset['last_name'] . " " . $rowset['first_name'];
+    return $name;
+}
+
+function bypass() {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+    $exhibitdb = $db->Exhibit;
+    $sectiondb = $db->ExhibitSection;
+    $sectionPagedb = $db->ExhibitPage;
+    $sectionPageTextdb = $db->ExhibitPageEntry;
+
+
+    $maxIdSQL = "SELECT MAX(id) AS MAX_ID FROM " . $exhibitdb . " LIMIT 0,1";
+    $exec = $db->query($maxIdSQL);
+    $row = $exec->fetch();
+    $max_id = $row["MAX_ID"];
+    $exec = null;
+
+    if ($_POST['slug']) {
+        $path_slug = $_POST['slug'];
+    } else {
+        $path_slug = str_replace(" ", "-", $_POST['title']);
+        $path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
+        $path_slug = str_replace(" ", "-", $path_slug);
+        $countslug = strlen($path_slug);
+        if ($countslug < 2) {
+            $path_slug = "Pathway-slug-" . $max_id;
+        }
+    }
+    $maxIdSQL = "SELECT id FROM " . $exhibitdb . " WHERE slug='" . $path_slug . "' LIMIT 0,1";
+    $exec = $db->query($maxIdSQL);
+    $row = $exec->fetch();
+    $slug_id = 0;
+    if (isset($row["id"])) {
+        $slug_id = $row["id"];
+    }
+    $exec = null;
+    if ($slug_id > 0) {
+        $path_slug = "Pathway-slug-" . $max_id;
+    } //echo $slug_id;break;
+    if ($_POST['title']) {
+        $path_title = addslashes($_POST['title']);
+    } else {
+        $path_title = "pathway-title-" . $max_id . "";
+    }
+    if ($_POST['description']) {
+        $path_description = addslashes($_POST['description']);
+    } else {
+        $path_description = "";
+    }
+    $path_language = $_POST['language'];
+    if ($_POST['public']) {
+        $path_public = $_POST['public'];
+    } else {
+        $path_public = "0";
+    }
+    if ($_POST['template']) {
+        $template = intval($_POST['template']);
+    } else {
+        $template = "0";
+    }
+    $formetypetext = 272; ///always text/htm; ta pathways
+    $path_slug = $path_slug;
+    $uri = WEB_ROOT;
+    $pathtopath = $uri . "/exhibits/show/" . $path_slug . "/to-begin-with";
+
+    $mainAttributesSql = "INSERT INTO $exhibitdb (id, title, description, credits, featured, public, theme, slug, target_group, date_modified) VALUES (NULL,'" . $path_title . "',\"Pathway's Subtitle\", 'Write the credits for this exhibits. If no credits, then erase this line', 0, " . $path_public . ", '','" . $path_slug . "', " . $template . ",'')";
 //echo $mainAttributesSql;break;
-$db->exec($mainAttributesSql);
+    $db->exec($mainAttributesSql);
 
 
-$lastExhibitIdSQL="SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM ". $exhibitdb;
-$exec=$db->query($lastExhibitIdSQL);
-$row=$exec->fetch();
-$last_exhibit_id=$row["LAST_EXHIBIT_ID"];
-$exec=null;
+    $lastExhibitIdSQL = "SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM " . $exhibitdb;
+    $exec = $db->query($lastExhibitIdSQL);
+    $row = $exec->fetch();
+    $last_exhibit_id = $row["LAST_EXHIBIT_ID"];
+    $exec = null;
 
-/*===================================INSERT record for METADATA===================================*/
-$metadatarecordSql="INSERT INTO metadata_record (id, object_id, object_type) VALUES ('', ".$last_exhibit_id.",'exhibit')";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
+    /* ===================================INSERT record for METADATA=================================== */
+    $metadatarecordSql = "INSERT INTO metadata_record (id, object_id, object_type) VALUES ('', " . $last_exhibit_id . ",'exhibit')";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
 
-$lastExhibitIdSQL="SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM metadata_record";
-$exec=$db->query($lastExhibitIdSQL);
-$row=$exec->fetch();
-$last_record_id=$row["LAST_EXHIBIT_ID"];
-$exec=null;
+    $lastExhibitIdSQL = "SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM metadata_record";
+    $exec = $db->query($lastExhibitIdSQL);
+    $row = $exec->fetch();
+    $last_record_id = $row["LAST_EXHIBIT_ID"];
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('7',NULL,'none',305,1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('7',NULL,'none',305,1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('11',NULL,'none',495,1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('11',NULL,'none',495,1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('6','".$path_title."','en',1, ".$last_record_id.",1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('6','" . $path_title . "','en',1, " . $last_record_id . ",1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('8','".$path_description."','en',1, ".$last_record_id.",1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-
-//libraries/omeka/record.php
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('32','".$pathtopath."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('8','" . $path_description . "','en',1, " . $last_record_id . ",1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //libraries/omeka/record.php
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none','".$formetypetext."',1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('32','" . $pathtopath . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+//libraries/omeka/record.php
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none','" . $formetypetext . "',1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('53','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('54','URI','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('53','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','".$pathtopath."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('54','URI','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('60','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','" . $pathtopath . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('61','Natural_Europe_Schema','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('60','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('62','Natural_Europe_".$last_record_id."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('61','Natural_Europe_Schema','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('63','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('62','Natural_Europe_" . $last_record_id . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('64',NULL,'none',120,1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('63','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
+
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('64',NULL,'none',120,1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //////////////////////rights for coe/////////////////////////////
-/*$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('9','yes','none',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('24','no','none',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('81','Ressource made available for free by the Council of Europe. All rights reserved.','en',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;*/
+    /* $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('9','yes','none',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null;
+      $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('24','no','none',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null;
+      $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('81','Ressource made available for free by the Council of Europe. All rights reserved.','en',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null; */
 
 ///////////////////////vcard///////////////////////////
-$entityuser = current_user(); //print_r($entityuser); break;
-$vcard_name=$entityuser['first_name'];
-				$vcard_surname=$entityuser['last_name'];
-				$vcard_email=$entityuser['email'];
-				$vcard_organization=$entityuser['institution'];
-				
-				if(strlen($vcard_name)>0 or strlen($vcard_surname)>0 or strlen($vcard_email)>0 or strlen($vcard_organization)>0){
+    $entityuser = current_user(); //print_r($entityuser); break;
+    $vcard_name = $entityuser['first_name'];
+    $vcard_surname = $entityuser['last_name'];
+    $vcard_email = $entityuser['email'];
+    $vcard_organization = $entityuser['institution'];
 
-$chechvcard="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-$execchechvcard=$db->query($chechvcard);
-$result_chechvcard=$execchechvcard->fetch();
-$execchechvcard=null;	
+    if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
 
-					if(strlen($result_chechvcard['id'])>0){
-					
-					$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, ".$last_record_id.",1,".$result_chechvcard['id'].",0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+        $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+        $execchechvcard = $db->query($chechvcard);
+        $result_chechvcard = $execchechvcard->fetch();
+        $execchechvcard = null;
 
-					
-					}else{
-					$chechvcardins="insert into metadata_vcard SET name='".$vcard_name."',surname='".$vcard_surname."',email='".$vcard_email."',organization='".$vcard_organization."'";
-					$execchechvcardins=$db->query($chechvcardins);
-					$result_chechvcardins=$execchechvcardins->fetch();
-					$execchechvcardins=null;
+        if (strlen($result_chechvcard['id']) > 0) {
 
-					$chechvcardnew="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-					$execchechvcardnew=$db->query($chechvcardnew);
-					$result_chechvcardnew=$execchechvcardnew->fetch();
-					$execchechvcardnew=null;
-					
-					$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, ".$last_record_id.",1,".$result_chechvcardnew['id'].",0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-					
-					}
-					
-				}//if isset one value from vcard
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, " . $last_record_id . ",1," . $result_chechvcard['id'] . ",0)";
+            $execmetadatarecordSql = $db->query($metadatarecordSql);
+            $exec = null;
+        } else {
+            $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
+            $execchechvcardins = $db->query($chechvcardins);
+            $result_chechvcardins = $execchechvcardins->fetch();
+            $execchechvcardins = null;
 
+            $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+            $execchechvcardnew = $db->query($chechvcardnew);
+            $result_chechvcardnew = $execchechvcardnew->fetch();
+            $execchechvcardnew = null;
+
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, " . $last_record_id . ",1," . $result_chechvcardnew['id'] . ",0)";
+            $execmetadatarecordSql = $db->query($metadatarecordSql);
+            $exec = null;
+        }
+    }//if isset one value from vcard
 ///////////////////////end vcard///////////////////////////
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('66','".$date_modified."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('66','" . $date_modified . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('67','NE AP v1.0','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('67','NE AP v1.0','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
-/*===================================CREATE THE SECTIONS AND THE SECTIONS' PAGES===================================*/
-$sectionsSql="INSERT INTO ".$sectiondb." (id, title, description, exhibit_id, `order`, slug) VALUES (NULL, ?,'',".$last_exhibit_id.", ?, ?)";
-$sectionPageSql="INSERT INTO ". $sectionPagedb ."(id, section_id, layout, `order`, title ) VALUES (NULL, ?, 'text-image-right', ?, ?)";
-$sectionPageTextSql="INSERT INTO ". $sectionPageTextdb ."(id, item_id, page_id, text, `order`) VALUES (NULL, NULL, LAST_INSERT_ID(), 'Put text here',1)";
+    /* ===================================CREATE THE SECTIONS AND THE SECTIONS' PAGES=================================== */
+    $sectionsSql = "INSERT INTO " . $sectiondb . " (id, title, description, exhibit_id, `order`, slug) VALUES (NULL, ?,''," . $last_exhibit_id . ", ?, ?)";
+    $sectionPageSql = "INSERT INTO " . $sectionPagedb . "(id, section_id, layout, `order`, title ) VALUES (NULL, ?, 'text-image-right', ?, ?)";
+    $sectionPageTextSql = "INSERT INTO " . $sectionPageTextdb . "(id, item_id, page_id, text, `order`) VALUES (NULL, NULL, LAST_INSERT_ID(), 'Put text here',1)";
 //sections is an array of section. Each section is an array that contains 4 attributes:
 //$section[0]. The title of the Section  
 //$section[1]. The sequence of the Section  
 //$section[2]. The slug of the Section
 //$section[3]. The number of the pages of the Section 
-$sections=sections_return_from_template($template);
+    $sections = sections_return_from_template($template);
 //$sections=array(
 //array('Introduction',1,'to-begin-with',1),
 //				array('Pre-visit Phase',2,'pre-visit-phase',1),
@@ -1083,563 +1081,559 @@ $sections=sections_return_from_template($template);
 //				array('Post-visit Phase',4,'post-visit-phase',1)
 //				);
 
-foreach ($sections as $v){
-	//print_r($v);
-	$db->exec($sectionsSql,array($v[0],$v[1],$v[2]));
-	$lastSectionIdSQL="SELECT LAST_INSERT_ID() AS LAST_SECTION_ID FROM ". $sectiondb;
-	$exec=$db->query($lastSectionIdSQL);
-	$row=$exec->fetch();
-	$last_section_id=$row["LAST_SECTION_ID"];
-	$exec=null;
-	create_section_pages($v,$last_section_id,$sectionPageSql,$sectionPageTextSql,$template);
-
-	
-	
-	
-}
-$entitiesRelationsdb=$db->EntitiesRelations;
-$entity_id = current_user();
-$entitiesRelationsSql="INSERT INTO ".$entitiesRelationsdb." (entity_id, relation_id, relationship_id, type, time) VALUES (".$entity_id->entity_id.", ".$last_exhibit_id.",1,'Exhibit','".date("Y-m-d H:i:s")."')";
-$exec=$db->query($entitiesRelationsSql);
-return $last_exhibit_id;
+    foreach ($sections as $v) {
+        //print_r($v);
+        $db->exec($sectionsSql, array($v[0], $v[1], $v[2]));
+        $lastSectionIdSQL = "SELECT LAST_INSERT_ID() AS LAST_SECTION_ID FROM " . $sectiondb;
+        $exec = $db->query($lastSectionIdSQL);
+        $row = $exec->fetch();
+        $last_section_id = $row["LAST_SECTION_ID"];
+        $exec = null;
+        create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPageTextSql, $template);
+    }
+    $entitiesRelationsdb = $db->EntitiesRelations;
+    $entity_id = current_user();
+    $entitiesRelationsSql = "INSERT INTO " . $entitiesRelationsdb . " (entity_id, relation_id, relationship_id, type, time) VALUES (" . $entity_id->entity_id . ", " . $last_exhibit_id . ",1,'Exhibit','" . date("Y-m-d H:i:s") . "')";
+    $exec = $db->query($entitiesRelationsSql);
+    return $last_exhibit_id;
 //header('Location:'.uri('exhibits/edit/'.$last_exhibit_id));
-
 }
 
-function sections_return_from_template($template){
+function sections_return_from_template($template) {
 
-if($template==1){
-$sections=array(
-array('Introduction',1,'to-begin-with',1),
-				array('Pre-visit Phase',2,'pre-visit-phase',1),
-				array('Visit Phase',3,'visit-phase',1),
-				array('Post-visit Phase',4,'post-visit-phase',1)
-				);
-} elseif($template==2){
-$sections=array(
-array('Introductory section and preparatory',1,'to-begin-with',1),
-				array('Engagement',2,'engagement',1),
-				array('Game',3,'game',1),
-				array('Reflection',4,'reflection',1)
-				);
-}
-				
-	return $sections;
-				
-}	
-
-
-function create_section_pages($v,$last_section_id,$sectionPageSql,$sectionPageTextSql,$template){
-
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
-    try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+    if ($template == 1) {
+        $sections = array(
+            array('Introduction', 1, 'to-begin-with', 1),
+            array('Pre-visit Phase', 2, 'pre-visit-phase', 1),
+            array('Visit Phase', 3, 'visit-phase', 1),
+            array('Post-visit Phase', 4, 'post-visit-phase', 1)
+        );
+    } elseif ($template == 2) {
+        $sections = array(
+            array('Introductory section and preparatory', 1, 'to-begin-with', 1),
+            array('Engagement', 2, 'engagement', 1),
+            array('Game', 3, 'game', 1),
+            array('Reflection', 4, 'reflection', 1)
+        );
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+
+    return $sections;
 }
-$exhibitdb=$db->Exhibit;
-$sectiondb=$db->ExhibitSection;
-$sectionPagedb=$db->ExhibitPage;
-$sectionPageTextdb=$db->ExhibitPageEntry;
 
-if($template==1){
-	if($v[2]=='to-begin-with'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Guidance for preparation'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'2','Connection with curriculum'));
-		$db->exec($sectionPageTextSql);
-	}
-	if($v[2]=='pre-visit-phase'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Provoke curiosity'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'2','Define questions from current knowledge'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'3','Propose preliminary explanations or hypotheses'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'4','Plan and conduct simple investigation'));
-		$db->exec($sectionPageTextSql);
-	}
-	
-	if($v[2]=='visit-phase'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Gather evidence from observation'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'2','Explanation based on evidence'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'3','Consider other explanations'));
-		$db->exec($sectionPageTextSql);
+function create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPageTextSql, $template) {
 
-	}
-	
-	if($v[2]=='post-visit-phase'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Communicate explanation'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'2','Follow-up activities and materials'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'3','Sustainable contact'));
-		$db->exec($sectionPageTextSql);
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-	}
-}elseif($template==2){
-
-	if($v[2]=='to-begin-with'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Introduction'));
-		$db->exec($sectionPageTextSql);
-
-	}
-	if($v[2]=='engagement'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Curiosity Provocation'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'2','Abstract Conceptulization'));
-		$db->exec($sectionPageTextSql);
-
-	}
-	
-	if($v[2]=='game'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Active Experimentation1'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'2','Active Experimentation2'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'3','Active Experimentation3'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'4','Active Experimentation4'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'5','Active Experimentation5'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'6','Active Experimentation6'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'7','Active Experimentation7'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'8','Active Experimentation8'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'9','Active Experimentation9'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'10','Active Experimentation10'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'11','Active Experimentation11'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'12','Active Experimentation12'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'13','Active Experimentation13'));
-		$db->exec($sectionPageTextSql);
-		
-		$db->exec($sectionPageSql,array($last_section_id,'14','Active Experimentation14'));
-		$db->exec($sectionPageTextSql);
-	}
-	
-	if($v[2]=='reflection'){
-		$db->exec($sectionPageSql,array($last_section_id,'1','Reflection-COMMUNICATE EXPLANATION'));
-		$db->exec($sectionPageTextSql);
-		
-
-	}
-
-}
-	
-}			
-
-function savemetadataexhibit(){
-
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
+    $exhibitdb = $db->Exhibit;
+    $sectiondb = $db->ExhibitSection;
+    $sectionPagedb = $db->ExhibitPage;
+    $sectionPageTextdb = $db->ExhibitPageEntry;
 
-$maxIdSQL="select * from metadata_record where object_id=".$_POST['exhibit_id']." and object_type='exhibit'";
-$exec=$db->query($maxIdSQL);
-$row=$exec->fetch();
-$record_id=$row["id"];
-$exec=null;
+    if ($template == 1) {
+        if ($v[2] == 'to-begin-with') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Guidance for preparation'));
+            $db->exec($sectionPageTextSql);
 
-foreach($_POST as $var => $value)
-{
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Connection with curriculum'));
+            $db->exec($sectionPageTextSql);
+        }
+        if ($v[2] == 'pre-visit-phase') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Provoke curiosity'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Define questions from current knowledge'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '3', 'Propose preliminary explanations or hypotheses'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '4', 'Plan and conduct simple investigation'));
+            $db->exec($sectionPageTextSql);
+        }
+
+        if ($v[2] == 'visit-phase') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Gather evidence from observation'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Explanation based on evidence'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '3', 'Consider other explanations'));
+            $db->exec($sectionPageTextSql);
+        }
+
+        if ($v[2] == 'post-visit-phase') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Communicate explanation'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Follow-up activities and materials'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '3', 'Sustainable contact'));
+            $db->exec($sectionPageTextSql);
+        }
+    } elseif ($template == 2) {
+
+        if ($v[2] == 'to-begin-with') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Introduction'));
+            $db->exec($sectionPageTextSql);
+        }
+        if ($v[2] == 'engagement') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Curiosity Provocation'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Abstract Conceptulization'));
+            $db->exec($sectionPageTextSql);
+        }
+
+        if ($v[2] == 'game') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Active Experimentation1'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Active Experimentation2'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '3', 'Active Experimentation3'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '4', 'Active Experimentation4'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '5', 'Active Experimentation5'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '6', 'Active Experimentation6'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '7', 'Active Experimentation7'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '8', 'Active Experimentation8'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '9', 'Active Experimentation9'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '10', 'Active Experimentation10'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '11', 'Active Experimentation11'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '12', 'Active Experimentation12'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '13', 'Active Experimentation13'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '14', 'Active Experimentation14'));
+            $db->exec($sectionPageTextSql);
+        }
+
+        if ($v[2] == 'reflection') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Reflection-COMMUNICATE EXPLANATION'));
+            $db->exec($sectionPageTextSql);
+        }
+    }
+}
+
+function savemetadataexhibit() {
+
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+
+    $maxIdSQL = "select * from metadata_record where object_id=" . $_POST['exhibit_id'] . " and object_type='exhibit'";
+    $exec = $db->query($maxIdSQL);
+    $row = $exec->fetch();
+    $record_id = $row["id"];
+    $exec = null;
+
+    foreach ($_POST as $var => $value) {
 
 
-if($var!='exhibit_id' and $var!='title' and $var!='Pages' and $var!='hdnLine' and $var!='hdnLine_group_total' and $var!='hdnLine_group_vcard' and $var!='hdnLine_group_total_parent' and $var!='slug' and $var!='public' and $var!='Sections' and $var!='save_exhibit' and $var!='date_modified' and $var!='save_meta'){
+        if ($var != 'exhibit_id' and $var != 'title' and $var != 'Pages' and $var != 'hdnLine' and $var != 'hdnLine_group_total' and $var != 'hdnLine_group_vcard' and $var != 'hdnLine_group_total_parent' and $var != 'slug' and $var != 'public' and $var != 'Sections' and $var != 'save_exhibit' and $var != 'date_modified' and $var != 'save_meta') {
 
-$var1=explode("_",$var); //split form name at _
-if($var1[0]=='vcard'){ //if is vcard!!!
-$var=$var1[2];
-$varmulti=$var1[3]; 
-$varlan=NULL; 
-}else{
-$var=$var1[0];
-$varmulti=$var1[1]; 
-$varlan=$var1[3]; 
-} 
-
-
-
-if($varlan!='lan' and $var!='hdnLine'){ //not get in if is language name at form or name is hdnline
+            $var1 = explode("_", $var); //split form name at _
+            if ($var1[0] == 'vcard') { //if is vcard!!!
+                $var = $var1[2];
+                $varmulti = $var1[3];
+                $varlan = NULL;
+            } else {
+                $var = $var1[0];
+                $varmulti = $var1[1];
+                $varlan = $var1[3];
+            }
 
 
 
-if(isset($_POST[$var.'_'.$var1[1].'_'.$var1[2].'_lan'])){
-$language=$_POST[$var.'_'.$var1[1].'_'.$var1[2].'_lan'];
-$parent_indexer=1;
-} else{
-if(isset($var1[2]) and $var1[2]>0){$parent_indexer=$var1[2];}else{$parent_indexer=1;}
-$language='none';
-}//langueage for this form name
+            if ($varlan != 'lan' and $var != 'hdnLine') { //not get in if is language name at form or name is hdnline
+                if (isset($_POST[$var . '_' . $var1[1] . '_' . $var1[2] . '_lan'])) {
+                    $language = $_POST[$var . '_' . $var1[1] . '_' . $var1[2] . '_lan'];
+                    $parent_indexer = 1;
+                } else {
+                    if (isset($var1[2]) and $var1[2] > 0) {
+                        $parent_indexer = $var1[2];
+                    } else {
+                        $parent_indexer = 1;
+                    }
+                    $language = 'none';
+                }//langueage for this form name
 
 
-if($var==6 and $language=='en'){$exhibit_title_from_metadata=$value;}//title gia pathway
+                if ($var == 6 and $language == 'en') {
+                    $exhibit_title_from_metadata = $value;
+                }//title gia pathway
 
 
-$maxIdSQL="select * from metadata_element_hierarchy where id=".$var.""; 
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetch();
+                $maxIdSQL = "select * from metadata_element_hierarchy where id=" . $var . "";
+                $exec = $db->query($maxIdSQL);
+                $result_multi = $exec->fetch();
 //$exec=null;
-
 //if($result_multi['max_occurs']>0){ $multi=$var1[1]; } else{$multi=1;}
 
-		
 
 
-		if($var1[0]=='vcard'){ //if is vcard!!!
-			if($var1[1]=='general'){ 
-				$vcard_name=addslashes(htmlspecialchars($_POST[$var1[0].'_name_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				$vcard_surname=addslashes(htmlspecialchars($_POST[$var1[0].'_surname_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				$vcard_email=addslashes(htmlspecialchars($_POST[$var1[0].'_email_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				$vcard_organization=addslashes(htmlspecialchars($_POST[$var1[0].'_organization_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				
-				if(strlen($vcard_name)>0 or strlen($vcard_surname)>0 or strlen($vcard_email)>0 or strlen($vcard_organization)>0){
 
-$chechvcard="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-$execchechvcard=$db->query($chechvcard);
-$result_chechvcard=$execchechvcard->fetch();
-$execchechvcard=null;	
+                if ($var1[0] == 'vcard') { //if is vcard!!!
+                    if ($var1[1] == 'general') {
+                        $vcard_name = addslashes(htmlspecialchars($_POST[$var1[0] . '_name_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
+                        $vcard_surname = addslashes(htmlspecialchars($_POST[$var1[0] . '_surname_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
+                        $vcard_email = addslashes(htmlspecialchars($_POST[$var1[0] . '_email_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
+                        $vcard_organization = addslashes(htmlspecialchars($_POST[$var1[0] . '_organization_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
 
-					if(strlen($result_chechvcard['id'])>0){
-					
-					$maxIdSQL="insert into metadata_element_value SET element_hierarchy=".$var.",value='Vcard Element',language_id='".$language."',record_id=".$record_id.",multi=".$varmulti.",parent_indexer=".$var1[4].",vcard_id=".$result_chechvcard['id']." ON DUPLICATE KEY UPDATE vcard_id=".$result_chechvcard['id']."";	
-					
-					//echo $maxIdSQL."<br>"; 
-					$exec=$db->query($maxIdSQL);
-					$result_multi=$exec->fetch();
-					
-					}else{
-					$chechvcardins="insert into metadata_vcard SET name='".$vcard_name."',surname='".$vcard_surname."',email='".$vcard_email."',organization='".$vcard_organization."'";
-					$execchechvcardins=$db->query($chechvcardins);
-					$result_chechvcardins=$execchechvcardins->fetch();
-					$execchechvcardins=null;
+                        if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
 
-					$chechvcardnew="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-					$execchechvcardnew=$db->query($chechvcardnew);
-					$result_chechvcardnew=$execchechvcardnew->fetch();
-					$execchechvcardnew=null;
-					
-					$maxIdSQL="insert into metadata_element_value SET element_hierarchy=".$var.",value='Vcard Element',language_id='".$language."',record_id=".$record_id.",multi=".$varmulti.",parent_indexer=".$var1[4].",vcard_id=".$result_chechvcardnew['id']." ON DUPLICATE KEY UPDATE vcard_id=".$result_chechvcardnew['id']."";	
-					
-					//echo $maxIdSQL."<br>"; 
-					$exec=$db->query($maxIdSQL);
-					$result_multi=$exec->fetch();
-					
-					}
-					
-				}//if isset one value from vcard
-			}//if is general
-		}else{ //if is vcard!!!		
+                            $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+                            $execchechvcard = $db->query($chechvcard);
+                            $result_chechvcard = $execchechvcard->fetch();
+                            $execchechvcard = null;
 
-if($result_multi['datatype_id']===2){$value='Parent Element';}
+                            if (strlen($result_chechvcard['id']) > 0) {
 
-if(strlen($value)>0){
+                                $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='Vcard Element',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $var1[4] . ",vcard_id=" . $result_chechvcard['id'] . " ON DUPLICATE KEY UPDATE vcard_id=" . $result_chechvcard['id'] . "";
+
+                                //echo $maxIdSQL."<br>"; 
+                                $exec = $db->query($maxIdSQL);
+                                $result_multi = $exec->fetch();
+                            } else {
+                                $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
+                                $execchechvcardins = $db->query($chechvcardins);
+                                $result_chechvcardins = $execchechvcardins->fetch();
+                                $execchechvcardins = null;
+
+                                $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+                                $execchechvcardnew = $db->query($chechvcardnew);
+                                $result_chechvcardnew = $execchechvcardnew->fetch();
+                                $execchechvcardnew = null;
+
+                                $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='Vcard Element',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $var1[4] . ",vcard_id=" . $result_chechvcardnew['id'] . " ON DUPLICATE KEY UPDATE vcard_id=" . $result_chechvcardnew['id'] . "";
+
+                                //echo $maxIdSQL."<br>"; 
+                                $exec = $db->query($maxIdSQL);
+                                $result_multi = $exec->fetch();
+                            }
+                        }//if isset one value from vcard
+                    }//if is general
+                } else { //if is vcard!!!		
+                    if ($result_multi['datatype_id'] === 2) {
+                        $value = 'Parent Element';
+                    }
+
+                    if (strlen($value) > 0) {
 
 
-$maxIdSQL_check_if_voc="select * from metadata_element_hierarchy where id=".$var." ";
+                        $maxIdSQL_check_if_voc = "select * from metadata_element_hierarchy where id=" . $var . " ";
 //echo "<br><br>".$maxIdSQL_check_if_voc."<br>"; 
-$exec_check_if_voc=$db->query($maxIdSQL_check_if_voc);
-$result_check_if_voc=$exec_check_if_voc->fetch(); //echo $result_check_if_voc['datatype_id']."<br>";
-if($result_check_if_voc['datatype_id']==6){ $vocabulary_record_id=$value; $value='NULL'; }
-else{$vocabulary_record_id='NULL'; $value=$value; $value=htmlspecialchars($value); $value=addslashes($value);}
+                        $exec_check_if_voc = $db->query($maxIdSQL_check_if_voc);
+                        $result_check_if_voc = $exec_check_if_voc->fetch(); //echo $result_check_if_voc['datatype_id']."<br>";
+                        if ($result_check_if_voc['datatype_id'] == 6) {
+                            $vocabulary_record_id = $value;
+                            $value = 'NULL';
+                        } else {
+                            $vocabulary_record_id = 'NULL';
+                            $value = $value;
+                            $value = htmlspecialchars($value);
+                            $value = addslashes($value);
+                        }
 
-$maxIdSQL="insert into metadata_element_value SET element_hierarchy=".$var.",value='".$value."',language_id='".$language."',record_id=".$record_id.",multi=".$varmulti.",parent_indexer=".$parent_indexer.",vocabulary_record_id=".$vocabulary_record_id." ON DUPLICATE KEY UPDATE value='".$value."',vocabulary_record_id=".$vocabulary_record_id."";
+                        $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='" . $value . "',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $parent_indexer . ",vocabulary_record_id=" . $vocabulary_record_id . " ON DUPLICATE KEY UPDATE value='" . $value . "',vocabulary_record_id=" . $vocabulary_record_id . "";
 
 //echo $maxIdSQL."<br>"; 
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetch();
-$exec=null;
-}//if strlen >1 if exist value
+                        $exec = $db->query($maxIdSQL);
+                        $result_multi = $exec->fetch();
+                        $exec = null;
+                    }//if strlen >1 if exist value
+                }//if is vcard!!!		
+            }//end not get in if is language name at form    
+        }
+    }
 
-		}//if is vcard!!!		
-
-}//end not get in if is language name at form    
-    
-    
-    
-}
-}
-
-$sqllan="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=7"; //echo $sqllan; break;
-$execlan=$db->query($sqllan);
-$result_multi=$execlan->fetch();
-$execlan=null;
-$sqllan4="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='".$result_multi['value']."'"; //echo $sqllan; break;
-$execlan4=$db->query($sqllan4);
-$result_multi4=$execlan4->fetch();
-$execlan4=null;
-$sqllan2="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
-$execlan2=$db->query($sqllan2);
-$result_multi2=$execlan2->fetch();
-$execlan2=null;
-if(strlen($result_multi4['value'])>0){
-$sqllan3="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='".$result_multi['value']."'"; //echo $sqllan; break;
-}elseif(strlen($result_multi2['value'])>0){
-$sqllan3="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
-}else{
-$sqllan3="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 LIMIT 0,1"; 
-}
+    $sqllan = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=7"; //echo $sqllan; break;
+    $execlan = $db->query($sqllan);
+    $result_multi = $execlan->fetch();
+    $execlan = null;
+    $sqllan4 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
+    $execlan4 = $db->query($sqllan4);
+    $result_multi4 = $execlan4->fetch();
+    $execlan4 = null;
+    $sqllan2 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
+    $execlan2 = $db->query($sqllan2);
+    $result_multi2 = $execlan2->fetch();
+    $execlan2 = null;
+    if (strlen($result_multi4['value']) > 0) {
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
+    } elseif (strlen($result_multi2['value']) > 0) {
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
+    } else {
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 LIMIT 0,1";
+    }
 //echo $sqllan3; break;
-$execlan3=$db->query($sqllan3);
-$result_multi3=$execlan3->fetch();
+    $execlan3 = $db->query($sqllan3);
+    $result_multi3 = $execlan3->fetch();
 
-$exhibit_title_from_metadata=$result_multi3['value'];//title gia pathway
+    $exhibit_title_from_metadata = $result_multi3['value']; //title gia pathway
 
-if(strlen($exhibit_title_from_metadata)>2){$exhibit_title_from_metadata=$exhibit_title_from_metadata;} else{$exhibit_title_from_metadata=$_POST['6_1'];}//title gia pathway
-$path_slug=$_POST['slug'];
-$path_slug=str_replace(" ","-",$path_slug);
-$path_slug=preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
-$countslug=strlen($path_slug); if($countslug<2){$path_slug="Pathway-slug-".$_POST['exhibit_id'];}
+    if (strlen($exhibit_title_from_metadata) > 2) {
+        $exhibit_title_from_metadata = $exhibit_title_from_metadata;
+    } else {
+        $exhibit_title_from_metadata = $_POST['6_1'];
+    }//title gia pathway
+    $path_slug = $_POST['slug'];
+    $path_slug = str_replace(" ", "-", $path_slug);
+    $path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
+    $countslug = strlen($path_slug);
+    if ($countslug < 2) {
+        $path_slug = "Pathway-slug-" . $_POST['exhibit_id'];
+    }
 
-$maxIdSQL="SELECT slug FROM omeka_exhibits WHERE id=".$_POST['exhibit_id']." LIMIT 0,1"; //echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
-$row2=$exec->fetch();
+    $maxIdSQL = "SELECT slug FROM omeka_exhibits WHERE id=" . $_POST['exhibit_id'] . " LIMIT 0,1"; //echo $maxIdSQL;break;
+    $exec = $db->query($maxIdSQL);
+    $row2 = $exec->fetch();
 //$exec=null;
-$maxIdSQL="SELECT id,slug FROM omeka_exhibits WHERE slug='".$path_slug."' LIMIT 0,1";
-$exec=$db->query($maxIdSQL);
-$row=$exec->fetch();
-$slug_id=0;
-$slug_slug=$row["slug"];
-if(isset($row["id"])){$slug_id=$row["id"];}
-$exec=null;
+    $maxIdSQL = "SELECT id,slug FROM omeka_exhibits WHERE slug='" . $path_slug . "' LIMIT 0,1";
+    $exec = $db->query($maxIdSQL);
+    $row = $exec->fetch();
+    $slug_id = 0;
+    $slug_slug = $row["slug"];
+    if (isset($row["id"])) {
+        $slug_id = $row["id"];
+    }
+    $exec = null;
 
-$maxIdSQL="update metadata_record SET date_modified='".$_POST['date_modified']."',validate='".$_POST['public']."' where object_id=".$_POST['exhibit_id']." and object_type='exhibit'";
-$exec=$db->query($maxIdSQL);
+    $maxIdSQL = "update metadata_record SET date_modified='" . $_POST['date_modified'] . "',validate='" . $_POST['public'] . "' where object_id=" . $_POST['exhibit_id'] . " and object_type='exhibit'";
+    $exec = $db->query($maxIdSQL);
 
-if($slug_id>0 and $slug_id!=$_POST['exhibit_id']){$path_slug=$row2["slug"];} //echo $slug_id;break;
-$maxIdSQL="update omeka_exhibits SET title='".addslashes($exhibit_title_from_metadata)."',slug='".addslashes($path_slug)."',public=".$_POST['public'].",date_modified='".$_POST['date_modified']."' where id=".$_POST['exhibit_id']."";
-$exec=$db->query($maxIdSQL);
+    if ($slug_id > 0 and $slug_id != $_POST['exhibit_id']) {
+        $path_slug = $row2["slug"];
+    } //echo $slug_id;break;
+    $maxIdSQL = "update omeka_exhibits SET title='" . addslashes($exhibit_title_from_metadata) . "',slug='" . addslashes($path_slug) . "',public=" . $_POST['public'] . ",date_modified='" . $_POST['date_modified'] . "' where id=" . $_POST['exhibit_id'] . "";
+    $exec = $db->query($maxIdSQL);
 //$result_multi=$exec->fetch();
-$exec=null;
+    $exec = null;
 
 //$result_teaser2=mysql_query("update omeka_exhibits SET title='".$exhibit_title_from_metadata."',slug='".$_POST['slug']."',public=".$_POST['public'].",date_modified='".$_POST['date_modified']."' where id=".$_POST['exhibit_id']."");  //update exhibit table
 
-return $_POST['exhibit_id'];
+    return $_POST['exhibit_id'];
 }
 
+function teaser($ex_eid, $type = 'null', $sec_id) {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-function teaser($ex_eid,$type='null',$sec_id){
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
 
-$maxIdSQL="select * from omeka_teasers where exhibit_id=".$ex_eid." and type!='europeana' and sec_id=".$sec_id;
+    $maxIdSQL = "select * from omeka_teasers where exhibit_id=" . $ex_eid . " and type!='europeana' and sec_id=" . $sec_id;
 //echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetchAll();
-if($result_multi){
-foreach($result_multi as $teaser){
+    $exec = $db->query($maxIdSQL);
+    $result_multi = $exec->fetchAll();
+    if ($result_multi) {
+        foreach ($result_multi as $teaser) {
 
-if(isset($teaser['item_id']) and $teaser['item_id']>1){
+            if (isset($teaser['item_id']) and $teaser['item_id'] > 1) {
 
-$sqlpub="select * from omeka_items where id=".$teaser['item_id']."";
+                $sqlpub = "select * from omeka_items where id=" . $teaser['item_id'] . "";
 //echo $sql;break;
-$execpub=$db->query($sqlpub);
-$resultrecpub=$execpub->fetch();
+                $execpub = $db->query($sqlpub);
+                $resultrecpub = $execpub->fetch();
 
-if($resultrecpub['public']==1){
+                if ($resultrecpub['public'] == 1) {
 
-$sql="select * from metadata_record where object_id=".$teaser['item_id']." and object_type='item' ";
+                    $sql = "select * from metadata_record where object_id=" . $teaser['item_id'] . " and object_type='item' ";
 //echo $sql;break;
-$exec=$db->query($sql);
-$resultrec=$exec->fetch();
+                    $exec = $db->query($sql);
+                    $resultrec = $exec->fetch();
 
-if(isset($resultrec['id']) and $resultrec['id']>1){
-$sql="select * from metadata_element_value where record_id=".$resultrec['id']." and element_hierarchy=6 and language_id='en'";
+                    if (isset($resultrec['id']) and $resultrec['id'] > 1) {
+                        $sql = "select * from metadata_element_value where record_id=" . $resultrec['id'] . " and element_hierarchy=6 and language_id='en'";
 //echo $sql."<br>";
-$exec=$db->query($sql);
-$result=$exec->fetch();
+                        $exec = $db->query($sql);
+                        $result = $exec->fetch();
 
-$sql="select * from metadata_element_value where record_id=".$resultrec['id']." and element_hierarchy=32";
+                        $sql = "select * from metadata_element_value where record_id=" . $resultrec['id'] . " and element_hierarchy=32";
 //echo $sql;break;
-$exec=$db->query($sql);
-$resultloc=$exec->fetch();
+                        $exec = $db->query($sql);
+                        $resultloc = $exec->fetch();
 
 
 
-echo "
+                        echo "
 <div style='float:left;position:relative; width:50px;'>
-<a href='".uri('items/show/')."".$teaser['item_id']."?eidteaser=".$ex_eid."".target($start=0)."'>";
-echo viewhyperlinkthumb($teaser['item_id']);
-echo "</a> </div>";
+<a href='" . uri('items/show/') . "" . $teaser['item_id'] . "?eidteaser=" . $ex_eid . "" . target($start = 0) . "'>";
+                        echo viewhyperlinkthumb($teaser['item_id']);
+                        echo "</a> </div>";
 
-echo "
+                        echo "
 <div style='float:left;position:relative; left:3px; width:170px; text-align:left; vertical-align:middle;'>
-<a href='".uri('items/show/')."".$teaser['item_id']."?eidteaser=".$ex_eid."".target($start=0)."'>".$result['value']." ";
-echo "</a> </div>";
+<a href='" . uri('items/show/') . "" . $teaser['item_id'] . "?eidteaser=" . $ex_eid . "" . target($start = 0) . "'>" . $result['value'] . " ";
+                        echo "</a> </div>";
 
-echo "<br style='clear:both;'><br>";
-echo "<div style='width:100%;text-align:center;'><hr style='width:100px; border-color:#999999;'></div>";
-echo "<br>";
-
-}
-}
-}
-}
-}
-}
-
-function deleteexhibit($ex_eid){
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
-    try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+                        echo "<br style='clear:both;'><br>";
+                        echo "<div style='width:100%;text-align:center;'><hr style='width:100px; border-color:#999999;'></div>";
+                        echo "<br>";
+                    }
+                }
+            }
+        }
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
+}
 
-$maxIdSQL="DELETE from metadata_record where object_id=".$ex_eid." and object_type='exhibit'";
+function deleteexhibit($ex_eid) {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+
+    $maxIdSQL = "DELETE from metadata_record where object_id=" . $ex_eid . " and object_type='exhibit'";
 //echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
+    $exec = $db->query($maxIdSQL);
 //$result_multi=$exec->fetchAll();
-
 /////////////delete teasers that exhibit has//////////////
-$maxIdSQL="DELETE from omeka_teasers where exhibit_id=".$ex_eid."";
+    $maxIdSQL = "DELETE from omeka_teasers where exhibit_id=" . $ex_eid . "";
 //echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
-
+    $exec = $db->query($maxIdSQL);
 }
 
-function sameinstitutionexhibit($exhibit,$user){ 
-	if(($user['role']=='Museum Educators' or $user['role']=='Validator') && strlen($user['institution'])>0 && isset($user['institution'])){
-	$sameinstitution=0;
-	$sqlWhereClause="institution='".$user['institution']."'";
-	$tusers=get_db()->getTable('User')->findBySql($sqlWhereClause);
-		foreach($tusers as $tusers){
-			if($exhibit->wasAddedBy($tusers['entity_id'])){$sameinstitution=1;}
-		}
-	} 
-	return $sameinstitution;
-}
+function sameinstitutionexhibit($exhibit, $user) {
+    $acl = get_acl();
+    $canEditSameInstitution = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editSameInstitution');
+    $sameinstitution = 0;
+    if ($canEditSameInstitution && strlen($user['institution']) > 0 && isset($user['institution'])) {
 
-function return_user_of_exhibit_new($ex_id)
-	{
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
-    try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        $sqlWhereClause = "institution='" . $user['institution'] . "'";
+        $tusers = get_db()->getTable('User')->findBySql($sqlWhereClause);
+        foreach ($tusers as $tusers) {
+            if ($exhibit->wasAddedBy($tusers['entity_id'])) {
+                $sameinstitution = 1;
+            }
+        }
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
-
-$maxIdSQL="SELECT * from omeka_entities_relations where relation_id=".$ex_id." and type='Exhibit' and relationship_id=1";
-//echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetch();
-
-		return $result_multi['entity_id'];
-	}
-
-function return_template_by_id($template_id)  //if template_id=0 then return ALL
-	{
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
-    try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
-    }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
-if($template_id>0){
-
-$maxIdSQL="SELECT * from omeka_exhibits_templates where id=".$template_id."";
-//echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetch();
-$result=$result_multi['name']; //Specific id
-
-}else{
-
-$maxIdSQL="SELECT * from omeka_exhibits_templates";
-//echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetchAll();
-$result=$result_multi; //ALL
+    return $sameinstitution;
 }
-		return $result;
-	}	
+
+function return_user_of_exhibit_new($ex_id) {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+
+    $maxIdSQL = "SELECT * from omeka_entities_relations where relation_id=" . $ex_id . " and type='Exhibit' and relationship_id=1";
+//echo $maxIdSQL;break;
+    $exec = $db->query($maxIdSQL);
+    $result_multi = $exec->fetch();
+
+    return $result_multi['entity_id'];
+}
+
+function return_template_by_id($template_id) {  //if template_id=0 then return ALL
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+    if ($template_id > 0) {
+
+        $maxIdSQL = "SELECT * from omeka_exhibits_templates where id=" . $template_id . "";
+//echo $maxIdSQL;break;
+        $exec = $db->query($maxIdSQL);
+        $result_multi = $exec->fetch();
+        $result = $result_multi['name']; //Specific id
+    } else {
+
+        $maxIdSQL = "SELECT * from omeka_exhibits_templates";
+//echo $maxIdSQL;break;
+        $exec = $db->query($maxIdSQL);
+        $result_multi = $exec->fetchAll();
+        $result = $result_multi; //ALL
+    }
+    return $result;
+}
+
