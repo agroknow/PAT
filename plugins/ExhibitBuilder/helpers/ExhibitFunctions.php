@@ -1115,6 +1115,12 @@ function sections_return_from_template($template) {
             array('Game', 3, 'game', 1),
             array('Reflection', 4, 'reflection', 1)
         );
+    } elseif ($template == 3) {
+        $sections = array(
+            array('Introductory Section', 1, 'to-begin-with', 1),
+            array('Educational', 2, 'educational', 1),
+            array('Assignments', 3, 'assignments', 1)
+        );
     }
 
     return $sections;
@@ -1245,6 +1251,72 @@ function create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPag
 
         if ($v[2] == 'reflection') {
             $db->exec($sectionPageSql, array($last_section_id, '1', 'Reflection-COMMUNICATE EXPLANATION'));
+            $db->exec($sectionPageTextSql);
+        }
+    } elseif ($template == 3) {
+
+        if ($v[2] == 'to-begin-with') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Section 1'));
+            $db->exec($sectionPageTextSql);
+            
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Section 2'));
+            $db->exec($sectionPageTextSql);
+            
+            $db->exec($sectionPageSql, array($last_section_id, '3', 'Section 3'));
+            $db->exec($sectionPageTextSql);
+        }
+        if ($v[2] == 'educational') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Section 1'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Section 2'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '3', 'Section 3'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '4', 'Section 4'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '5', 'Section 5'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '6', 'Section 6'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '7', 'Section 7'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '8', 'Section 8'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '9', 'Section 9'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '10', 'Section 10'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '11', 'Section 11'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '12', 'Section 12'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '13', 'Section 13'));
+            $db->exec($sectionPageTextSql);
+
+            $db->exec($sectionPageSql, array($last_section_id, '14', 'Section 14'));
+            $db->exec($sectionPageTextSql);
+            
+            $db->exec($sectionPageSql, array($last_section_id, '15', 'Section 15'));
+            $db->exec($sectionPageTextSql);
+        }
+
+        if ($v[2] == 'assignments') {
+            $db->exec($sectionPageSql, array($last_section_id, '1', 'Section 1'));
+            $db->exec($sectionPageTextSql);
+            
+            $db->exec($sectionPageSql, array($last_section_id, '2', 'Section 2'));
             $db->exec($sectionPageTextSql);
         }
     }
