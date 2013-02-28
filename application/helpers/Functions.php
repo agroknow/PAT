@@ -440,11 +440,11 @@ function createlomelement($type, $name, $value = NULL, $extra = NULL, $selectval
         $element = '<select ' . $extra . ' ' . $disabled . '  name="' . $name . '">';
         $element.='<option value="">Select </option>';
         foreach ($selectvalues as $selectvalues) {
-            $element.='<option value="' . $selectvalues . '" ';
-            if ($value == $selectvalues) {
+            $element.='<option value="' . $selectvalues[$selectvalueswhich] . '" ';
+            if ($value == $selectvalues[$selectvalueswhich]) {
                 $element.= 'selected=selected';
             }
-            $element.='>' . $selectvalues . '</option>';
+            $element.='>' . $selectvalues[$selectalter] . '</option>';
         }
         $element.='</select>';
     } elseif ($type == 'selectlanstr') {
@@ -516,7 +516,7 @@ function lomradioform($data6, $dataform) {
     return $output;
 }
 
-function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, $record = NULL) {
+function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, $record = NULL, $view_mode = NULL) {
     require_once 'Omeka/Core.php';
     $core = new Omeka_Core;
 
@@ -577,7 +577,7 @@ function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, 
     }
     foreach ($data6 as $datarecord) {
         if ($datarecord['element_hierarchy'] === $dataform['id']) { //select the value for more than one foreach
-            $datarecordvalue = $datarecord['value'];
+            $datarecordvalue = $datarecord['classification_id'];
             $formmulti = $datarecord['multi'];
             $multi = $datarecord['multi'];
             $datarecoreditable = $datarecord['is_editable'];
@@ -593,22 +593,24 @@ function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, 
                 $uri = WEB_ROOT;
                 $xmlvoc = '' . $uri . '/archive/xmlvoc/' . $datavocele['value'] . '.xml';
                 $xml = @simplexml_load_file($xmlvoc, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
-                $xml = objecttosortedarray($xml);
+                $xml = internal_xml('' . $dataform['id'] . '_' . $multi . '_tree', '' . $datavocele['value'] . '', $_SESSION['get_language_for_internal_xml'], $drop_down = 1);
                 //print_r($datarecordvalue);
-                $output.= createlomelement('selectxml', '' . $dataform['id'] . '_' . $formmulti . '', $datarecordvalue, 'id="' . $dataform['id'] . '_' . $formmulti . '" style="width:300px;float:left;" ' . $extra . '', $xml, 'term', 'term', NULL, NULL, '' . $dataform['id'] . '');
-                $output.= '<a href="javascript:void(0)" onclick="toggletree(\'' . $dataform['id'] . '_' . $multi . '_tree\');" style="float:left;margin-left:2px;" id="' . $dataform['id'] . '_' . $multi . '">Browse</a>';
+                $output.= createlomelement('selectxml', '' . $dataform['id'] . '_' . $formmulti . '', $datarecordvalue, 'id="' . $dataform['id'] . '_' . $formmulti . '" style="width:300px;float:left;" ' . $extra . '', $xml, 'id', 'value', NULL, NULL, $view_mode);
+                if ($view_mode != 1) {
+                    $output.= '<a href="javascript:void(0)" onclick="toggletree(\'' . $dataform['id'] . '_' . $multi . '_tree\');" style="float:left;margin-left:2px;" id="' . $dataform['id'] . '_' . $multi . '">Browse</a>';
+                    $output.=internal_xml('' . $dataform['id'] . '_' . $multi . '_tree', '' . $datavocele['value'] . '', $_SESSION['get_language_for_internal_xml'], NULL);
+                }
 
-                $output.=organic_ontology('' . $dataform['id'] . '_' . $multi . '_tree', '' . $datavocele['value'] . '_tree');
-
-
-                //if($dataform['max_occurs']>1){
-                $output.= '<a class="lom-remove" alt="Remove ' . $dataform['labal_name'] . '" title="Remove ' . $dataform['labal_name'] . '" href="#" onClick="removeFormFieldExisted(\'' . $dataform['id'] . '_' . $formmulti . '_field\',\'' . $dataform['id'] . '\',\'' . $datarecord['language_id'] . '\',\'' . $datarecord['record_id'] . '\',\'' . $datarecord['multi'] . '\'); return false;" 
+                if ($view_mode != 1) {
+                    //if($dataform['max_occurs']>1){
+                    $output.= '<a class="lom-remove" alt="Remove ' . $dataform['labal_name'] . '" title="Remove ' . $dataform['labal_name'] . '" href="#" onClick="removeFormFieldExisted(\'' . $dataform['id'] . '_' . $formmulti . '_field\',\'' . $dataform['id'] . '\',\'' . $datarecord['language_id'] . '\',\'' . $datarecord['record_id'] . '\',\'' . $datarecord['multi'] . '\'); return false;" 
                 style="position:relative; left:5px; top:2px;float:left;">Remove</a>';
-                //}//maxoccurs>1
+                    //}//maxoccurs>1
+                } ///if view_mode not display
                 $output.= '<br style="clear:both"><br>';
             } //select and isset vocabulary
             else {
-                $output.= createlomelement('select', '' . $dataform['id'] . '_' . $formcount . '', $datarecordvalue, 'style="width:300px;" ' . $extra . '', $datalan, 'id', 'locale_name', NULL, $datarecoreditable);
+                $output.= createlomelement('select', '' . $dataform['id'] . '_' . $formcount . '', $datarecordvalue, 'style="width:300px;" ' . $extra . '', $datalan, 'id', 'locale_name', NULL, $datarecoreditable, $view_mode);
                 $output.= '<br style="clear:both"><br>';
             }//end else select and isset vocabulary
 
@@ -616,7 +618,7 @@ function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, 
         }
     }//select the value for more than one foreach
     //an den uparxei eggrafh create one empty //////////////////////////////////////////////////////
-    if ($formcount === 0) {
+    if ($formcount === 0 and $view_mode != 1) {
         $formmulti = 1;
         if ($parent_multi > 0) {
             $multi = $parent_multi;
@@ -634,14 +636,14 @@ function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, 
             $uri = WEB_ROOT;
             $xmlvoc = '' . $uri . '/archive/xmlvoc/' . $datavocele['value'] . '.xml';
             $xml = @simplexml_load_file($xmlvoc, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
-            $xml = objecttosortedarray($xml);
+            $xml = internal_xml('' . $dataform['id'] . '_' . $multi . '_tree', '' . $datavocele['value'] . '', $_SESSION['get_language_for_internal_xml'], 1);
             //foreach ($sortedxml as $sortedxml) { echo $sortedxml; }
             //print_r($sortedxml);
             //print_r($xml->term);
-            $output.= createlomelement('selectxml', '' . $dataform['id'] . '_' . $multi . '', '', 'id="' . $dataform['id'] . '_' . $multi . '" style="width:300px;float:left;" ' . $extra . '', $xml, 'term', 'term', NULL, NULL, '' . $dataform['id'] . '');
+            $output.= createlomelement('selectxml', '' . $dataform['id'] . '_' . $multi . '', '', 'id="' . $dataform['id'] . '_' . $multi . '" style="width:300px;float:left;" ' . $extra . '', $xml, 'id', 'value', NULL, NULL, '' . $dataform['id'] . '');
             $output.= '<a href="javascript:void(0)" onclick="toggletree(\'' . $dataform['id'] . '_' . $multi . '_tree\');" style="float:left;margin-left:2px;" id="' . $dataform['id'] . '_' . $multi . '">Browse</a>';
 
-            $output.=organic_ontology('' . $dataform['id'] . '_' . $multi . '_tree', '' . $datavocele['value'] . '_tree');
+            $output.=internal_xml('' . $dataform['id'] . '_' . $multi . '_tree', '' . $datavocele['value'] . '', $_SESSION['get_language_for_internal_xml'], NULL);
             $output.= '<br style="clear:both"><br>';
         } //select and isset vocabulary
         else {
@@ -653,7 +655,7 @@ function lomontology($data6, $dataform, $datalan, $extra, $parent_multi = NULL, 
     $output.= "</div>";
 
 
-    if ($dataform['max_occurs'] > 1) {
+    if ($dataform['max_occurs'] > 1 and $view_mode != 1) {
         $output.='<input name="hdnLine_' . $dataform['id'] . '" id="hdnLine_' . $dataform['id'] . '" type="hidden" value="' . $formmulti . '">
         <div style="position:relative;clear:both;"><a alt="Add ' . $dataform['labal_name'] . '" title="Add ' . $dataform['labal_name'] . '" style="float:left;" class="lom-add-new" href="#" 
        onClick="addFormFieldSelectXmlOntology(\'' . $formmulti . '\',\'' . $dataform['id'] . '\',\'hdnLine_' . $dataform['id'] . '\',\'' . $dataform['vocabulary_id'] . '\'); return false;">Add ' . $dataform['labal_name'] . '</a></div>';
@@ -815,7 +817,7 @@ function lomselectform($data6, $dataform, $datalan, $extra, $parent_multi = NULL
     $output = '';
     if ($dataform['min_occurs'] > 0) {
         $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; width:100%;"  id="' . $dataform['id'] . '" class="mandatory_element">';
-    } elseif ($dataform['is_recommented'] == 1  or $parent_multi>0) {
+    } elseif ($dataform['is_recommented'] == 1 or $parent_multi > 0) {
         $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; width:100%;"  id="' . $dataform['id'] . '" class="recommented_element">';
     } else {
         $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; width:100%;"  id="' . $dataform['id'] . '" class="optional_element">';
@@ -1097,7 +1099,7 @@ function lomtextareaform($data6, $dataform, $datalan, $parent_multi = NULL, $rec
         if ($dataform['min_occurs'] > 0) {
             $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; 
 			width:100%;"  id="' . $dataform['id'] . '" class="mandatory_element">';
-        } elseif ($dataform['is_recommented'] == 1  or $parent_multi>0) {
+        } elseif ($dataform['is_recommented'] == 1 or $parent_multi > 0) {
             $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; 
 			width:100%;"  id="' . $dataform['id'] . '" class="recommented_element">';
         } else {
@@ -1576,7 +1578,7 @@ function lomtextform($data6, $dataform, $datalan, $parent_multi = NULL, $record 
         if ($dataform['min_occurs'] > 0) {
             $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; 
 			width:100%;"  id="' . $dataform['id'] . '" class="mandatory_element">';
-        } elseif ($dataform['is_recommented'] == 1 or $parent_multi>0) {
+        } elseif ($dataform['is_recommented'] == 1 or $parent_multi > 0) {
             $output = '<div style="float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px; 
 			width:100%;"  id="' . $dataform['id'] . '" class="recommented_element">';
         } else {
@@ -2088,25 +2090,25 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
     $uri = WEB_ROOT;
     $xmlvocnew = '' . $uri . '/archive/xmlvoc/' . $datavocelenew['value'] . '.xml';
     $xmlnew = @simplexml_load_file($xmlvocnew, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
-    $xmlnew = objecttosortedarray($xmlnew);
+    $xmlnew = internal_xml(NULL, NULL, $_SESSION['get_language_for_internal_xml'], 1);
 
     foreach ($xmlnew as $xmlnew) {
-        ?>
-
-        <option value='<?php echo $xmlnew; ?>'><?php echo $xmlnew; ?></option>
-    <?php } ?>
+        echo '<option value="' . $xmlnew['id'] . '" ';
+        echo '>' . $xmlnew['value'] . '</option>';
+    }
+    ?>
     </select> 
     <?php
     if ($ontology > 0) {
 
-        echo '<a href="javascript:void(0)" onclick="toggletree(\'' . $_POST['divid'] . '_' . $_POST['id'] . '_tree\');" style="float:left;margin-left:2px;" id="' . $_POST['divid'] . '_' . $_POST['id'] . '">Browse</a>';
+        echo '<a href="javascript:void(0)" onclick="toggletree(\'' . $divid . '_' . $id . '_tree\');" style="float:left;margin-left:2px;" id="' . $divid . '_' . $id . '">Browse</a>';
     }
     ?>
     <a class='lom-remove' style='float:left;' href='#' onClick='removeFormField("#row<?php echo $_POST['id']; ?>"); return false;'>Remove</a><div><br>
         <?php
         if ($ontology > 0) {
 
-            echo organic_ontology('' . $_POST['divid'] . '_' . $_POST['id'] . '_tree', '' . $datavocelenew['value'] . '_tree');
+            echo internal_xml('' . $_POST['divid'] . '_' . $_POST['id'] . '_tree', NULL, $_SESSION['get_language_for_internal_xml'], NULL);
         }
         ?>
 
@@ -2150,7 +2152,7 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
         return $data['id'];
     }
 
-    function organic_ontology($id, $file) {
+    function internal_xml($id, $file, $lang, $drop_down) {
 
         libxml_use_internal_errors(false);
         $uri = WEB_ROOT;
@@ -2160,69 +2162,80 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
         //print_r($xml);
         ?>
         <?php
-        $output = '<div id="' . $id . '"  style="clear:both;height:auto;display:none;">';
+        if ($drop_down == 1) {
+            $result = $xml->xpath("hierarchy/class");
+            //print_r($result); break;
+            $sortedxml = array();
 
-        $output.='<ul>';
+            foreach ($result as $result2) {
 
-
-        foreach ($xml as $xml2) {
-            $xml2name = $xml2->getName();
-            $xml2name = str_replace("_", " ", $xml2name);
-            $xml2nameid = ontology_space_upcs($xml2name);
-            $output.='<li id="' . $xml2nameid . '" class="jstree-closed"><a href="#">' . $xml2name . '</a>';
-            foreach ($xml2 as $xml3) {
-                $xml3name = $xml3->getName();
-                $xml3name = str_replace("_", " ", $xml3name);
-                $xml3nameid = ontology_space_upcs($xml3name);
-                $output.='<ul>';
-                $output.='<li id="' . $xml3nameid . '"><a href="#">' . $xml3name . '</a>';
-                foreach ($xml3 as $xml4) {
-                    $xml4name = $xml4->getName();
-                    $xml4name = str_replace("_", " ", $xml4name);
-                    $xml4nameid = ontology_space_upcs($xml4name);
-                    $output.='<ul>';
-                    $output.='<li id="' . $xml4nameid . '"><a href="#">' . $xml4name . '</a>';
-                    foreach ($xml4 as $xml5) {
-                        $xml5name = $xml5->getName();
-                        $xml5name = str_replace("_", " ", $xml5name);
-                        $xml5nameid = ontology_space_upcs($xml5name);
-                        $output.='<ul>';
-                        $output.='<li id="' . $xml5nameid . '"><a href="#">' . $xml5name . '</a>';
-                        foreach ($xml5 as $xml6) {
-                            $xml6name = $xml6->getName();
-                            $xml6name = str_replace("_", " ", $xml6name);
-                            $xml6nameid = ontology_space_upcs($xml6name);
-                            $output.='<ul>';
-                            $output.='<li id="' . $xml6nameid . '"><a href="#">' . $xml6name . '</a>';
-                            foreach ($xml6 as $xml7) {
-                                $xml7name = $xml7->getName();
-                                $xml7name = str_replace("_", " ", $xml7name);
-                                $xml7nameid = ontology_space_upcs($xml7name);
-                                $output.='<ul>';
-                                $output.='<li id="' . $xml7nameid . '"><a href="#">' . $xml7name . '</a>';
-                                $output.='</li>';
-                                $output.='</ul>';
-                            }
-                            $output.='</li>';
-                            $output.='</ul>';
-                        }
-                        $output.='</li>';
-                        $output.='</ul>';
-                    }
-                    $output.='</li>';
-                    $output.='</ul>';
+                $result3 = (string) $result2->attributes()->id;
+                $result4 = $xml->xpath("instances/instance[@instanceOf='" . $result3 . "' and @lang='" . $lang . "']");
+                if (!strlen($result4[0]) > 0) {
+                    $result4 = $xml->xpath("instances/instance[@instanceOf='" . $result3 . "' and @lang='en']");
                 }
+                if (!strlen($result4[0]) > 0) {
+                    $result4 = $xml->xpath("instances/instance[@instanceOf='" . $result3 . "']");
+                    foreach ($result4 as $result4) {
+                        if (strlen($result4) > 0) {
+                            $result4[0] = $result4;
+                            break;
+                        }
+                    }
+                }
+                //print_r($result4); break;
+                $sortedxml[] = array('value' => (string) $result4[0], 'id' => $result3);
+            }
+
+
+            foreach ($sortedxml as $key => $row) {
+                $volume[$key] = $row['value'];
+            }
+
+// Sort the data with volume descending, edition ascending
+// Add $data as the last parameter, to sort by the common key
+            array_multisort($volume, SORT_ASC, $sortedxml);
+            ////dinstinct values for multi dimensions arrays instead of unique array
+            $sortedxml = array_map("unserialize", array_unique(array_map("serialize", $sortedxml)));
+            return $sortedxml;
+        } else {
+
+            ///////find the root element where all the classes are childs!
+            $resultrootelement2 = $xml->xpath("hierarchy[@rootElement]");
+            foreach ($resultrootelement2 as $c) {
+                $resultrootelement = (string) $c->attributes()->rootElement;
+            }
+
+            $result = $xml->xpath("hierarchy/class[@subClassOf='" . $resultrootelement . "']");
+            $output = '<div id="' . $id . '"  style="clear:both;height:auto;display:none;">';
+            $output.='<ul>';
+
+
+            foreach ($result as $result2) {
+                $result3 = (string) $result2->attributes()->id;
+                $result4 = $xml->xpath("instances/instance[@instanceOf='" . $result3 . "' and @lang='" . $lang . "']");
+                if (!strlen($result4[0]) > 0) {
+                    $result4 = $xml->xpath("instances/instance[@instanceOf='" . $result3 . "' and @lang='en']");
+                }
+                if (!strlen($result4[0]) > 0) {
+                    $result4 = $xml->xpath("instances/instance[@instanceOf='" . $result3 . "']");
+                    foreach ($result4 as $result4) {
+                        if (strlen($result4) > 0) {
+                            $result4[0] = $result4;
+                            break;
+                        }
+                    }
+                }
+                $output.='<li id="' . $result3 . '"><a href="#">' . $result4[0] . '</a>';
+                $output.= ontology_depth_elements($xml, $result3, $lang);
 
                 $output.='</li>';
-                $output.='</ul>';
             }
-            $output.='</li>';
-        }
-        $output.='</ul>';
-        $output.='</div>';
+            $output.='</ul>';
+            $output.='</div>';
 
-        $select_id = str_replace('_tree', '', $id);
-        $output.=' <script type="text/javascript" class="source below">
+            $select_id = str_replace('_tree', '', $id);
+            $output.=' <script type="text/javascript" class="source below">
 jQuery(function () {
 	jQuery("#' . $id . '")
 		.jstree({ "plugins" : ["themes","html_data","ui"] })
@@ -2239,8 +2252,37 @@ jQuery(function () {
 		.delegate("a", "click", function (event, data) { event.preventDefault(); })
 });
 </script>';
+            return $output;
+        }
+    }
 
-        return $output;
+    function ontology_depth_elements($xml, $result3, $lang) {
+        $output2 = '';
+        $resultnew = $xml->xpath("hierarchy/class[@subClassOf='" . $result3 . "']");
+        if ($resultnew) {
+            foreach ($resultnew as $resultnew) {
+                $resultnewid = (string) $resultnew->attributes()->id;
+                $resultnewval = $xml->xpath("instances/instance[@instanceOf='" . $resultnewid . "' and @lang='" . $lang . "']");
+                if (!strlen($resultnewval[0]) > 0) {
+                    $resultnewval = $xml->xpath("instances/instance[@instanceOf='" . $resultnewid . "' and @lang='en']");
+                }
+                if (!strlen($resultnewval[0]) > 0) {
+                    $resultnewval = $xml->xpath("instances/instance[@instanceOf='" . $resultnewid . "']");
+                    foreach ($resultnewval as $resultnewval) {
+                        if (strlen($resultnewval) > 0) {
+                            $resultnewval[0] = $resultnewval;
+                            break;
+                        }
+                    }
+                }
+                $output2.='<ul>';
+                $output2.='<li id="' . $resultnewid . '" class="jstree-leaf"><a href="#">' . $resultnewval[0] . '</a>';
+                $output2.= ontology_depth_elements($xml, $resultnewid, $lang);
+                $output2.='</li>';
+                $output2.='</ul>';
+            }
+        }
+        return $output2;
     }
 
     function ontology_space_upcs($string) {
@@ -2405,6 +2447,31 @@ jQuery(function () {
 
 
         $omekatypearray = array("en" => "en", "de" => "de", "el" => "el", "es" => "es", "fr" => "fr", "it" => "it", "tr" => "tr", "ee" => "ee", "lv" => "lv", "ru" => "ru", "fi" => "fi", "hu" => "hu", "pt" => "pt");
+
+        foreach ($omekatypearray as $key => $omekatypearray) {
+            if ($key == $language_id) {
+                $type = $omekatypearray;
+            }
+        }
+        return $type;
+    }
+
+    function get_language_for_internal_xml() {
+        if (isset($_GET['lang'])) {
+            $get_language = transform_language_id_for_internal_xml($_GET['lang']);
+        } elseif (isset($_SESSION['get_language'])) {
+            $get_language = $_SESSION['get_language'];
+        } else {
+            $get_language = 'en';
+        }
+        //echo $_GET['lang'];
+        return $get_language;
+    }
+
+    function transform_language_id_for_internal_xml($language_id) {
+
+
+        $omekatypearray = array("en" => "en", "de" => "de", "el" => "el", "es" => "es", "fr" => "fr", "it" => "it", "tr" => "tr", "ee" => "et", "lv" => "lv", "ru" => "ru");
 
         foreach ($omekatypearray as $key => $omekatypearray) {
             if ($key == $language_id) {
@@ -2625,7 +2692,6 @@ jQuery(function () {
             </select>
         </form>
         <?php
- 
     }
 
     function show_metadata_info($object_id, $object_type, $language = 'en') {
@@ -2987,7 +3053,7 @@ jQuery(function () {
         } catch (Exception $e) {
             die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
         }
-        
+
         $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
         $execrecordtr = $db->query($sqltr);
         $metadatarecordtr = $execrecordtr->fetch();
@@ -2995,43 +3061,53 @@ jQuery(function () {
         $thereturn_lnstr = '';
         //$thereturn_lnstr.= ''.$metadatarecordtr['labal_name'].': ';
         //echo $language;
-        $final_langstring='';
-        $langstring_en='';
+        $final_langstring = '';
+        $langstring_en = '';
         $multi = 0;
         $previousmulti = 0;
-        $final_langstring_table=  array();
+        $final_langstring_table = array();
         foreach ($datageneral5 as $datageneral51) {
             $multi = $datageneral51['multi'];
-            $langstring='';
-            if(!strlen($final_langstring)>0){$final_langstring=$datageneral51['value'];}
-            if($datageneral51['language_id']==$language){$langstring=$datageneral51['value'];}
-            if($datageneral51['language_id']=='en'){$langstring_en=$datageneral51['value'];}
-            if(strlen($langstring)>0){$final_langstring_table[$multi]['lanstring']=$langstring;}
-            if(strlen($langstring_en)>0){$final_langstring_table[$multi]['english']=$langstring_en;}
-            $final_langstring_table[$multi]['general']=$final_langstring;
-        }  
-            
+            $langstring = '';
+            if (!strlen($final_langstring) > 0) {
+                $final_langstring = $datageneral51['value'];
+            }
+            if ($datageneral51['language_id'] == $language) {
+                $langstring = $datageneral51['value'];
+            }
+            if ($datageneral51['language_id'] == 'en') {
+                $langstring_en = $datageneral51['value'];
+            }
+            if (strlen($langstring) > 0) {
+                $final_langstring_table[$multi]['lanstring'] = $langstring;
+            }
+            if (strlen($langstring_en) > 0) {
+                $final_langstring_table[$multi]['english'] = $langstring_en;
+            }
+            $final_langstring_table[$multi]['general'] = $final_langstring;
+        }
+
         foreach ($datageneral5 as $datageneral51) {
-            $final_langstring='';
+            $final_langstring = '';
             $multi = $datageneral51['multi'];
             if ($multi != $previousmulti) {
-                if(strlen($final_langstring_table[$multi]['lanstring'])>0){
-                    $final_langstring=$final_langstring_table[$multi]['lanstring'];
-                }elseif(strlen($final_langstring_table[$multi]['english'])>0){
-                    $final_langstring=$final_langstring_table[$multi]['english'];
-                }else{
-                    $final_langstring=$final_langstring_table[$multi]['general'];
+                if (strlen($final_langstring_table[$multi]['lanstring']) > 0) {
+                    $final_langstring = $final_langstring_table[$multi]['lanstring'];
+                } elseif (strlen($final_langstring_table[$multi]['english']) > 0) {
+                    $final_langstring = $final_langstring_table[$multi]['english'];
+                } else {
+                    $final_langstring = $final_langstring_table[$multi]['general'];
                 }
-                $thereturn_lnstr.= $metadatarecordtr['labal_name'].': '.$final_langstring.'<br>';
+                $thereturn_lnstr.= $metadatarecordtr['labal_name'] . ': ' . $final_langstring . '<br>';
             }
-            
+
             $previousmulti = $datageneral51['multi'];
         }
-        
 
-        
 
-        
+
+
+
         return $thereturn_lnstr;
     }
 
@@ -3101,13 +3177,12 @@ jQuery(function () {
                         }///if($count_results2>0){
                     }///foreach datageneral6
                     if (strlen($output2) > 0) {
-                $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
-                $execrecordtr = $db->query($sqltr);
-                $metadatarecordtr = $execrecordtr->fetch();
-                $output.= '<strong>' . $metadatarecordtr['labal_name'] . '</strong><br>';
+                        $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
+                        $execrecordtr = $db->query($sqltr);
+                        $metadatarecordtr = $execrecordtr->fetch();
+                        $output.= '<strong>' . $metadatarecordtr['labal_name'] . '</strong><br>';
 
-                        $output.= $output2.'<br>';
-                        
+                        $output.= $output2 . '<br>';
                     }
                 }///foreach datageneral6
             }///if($count_results8>0){
@@ -3155,18 +3230,17 @@ jQuery(function () {
                 $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
                 $execrecordtr = $db->query($sqltr);
                 $metadatarecordtr = $execrecordtr->fetch();
-                
+
                 $output.= '' . $metadatarecordtr['labal_name'] . ': ';
                 //$output.="" . $fullname . "" . $email . "" . $organization . "" . $name . "<br>";
                 $output.="" . $fullname . "" . $email . "" . $organization . "<br>";
-
             }
 
             ///////////////////vocabulary///////////////////////			
         } elseif ($datageneral4['datatype_id'] == 6) {
-$sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
-$execrecordtr = $db->query($sqltr);
-$metadatarecordtr = $execrecordtr->fetch();
+            $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
+            $execrecordtr = $db->query($sqltr);
+            $metadatarecordtr = $execrecordtr->fetch();
 
             foreach ($datageneral5 as $datageneral5) {
                 if ($datageneral5['vocabulary_record_id'] > 0) {
@@ -3174,75 +3248,69 @@ $metadatarecordtr = $execrecordtr->fetch();
                     //echo $sql10;break;
                     $exec10 = $db->query($sql10);
                     $datageneral101 = $exec10->fetch();
-                    $sql10 = "SELECT * FROM  metadata_vocabulary_value WHERE vocabulary_rid=" . $datageneral101['id'] . " and language_id='".$language."';";
+                    $sql10 = "SELECT * FROM  metadata_vocabulary_value WHERE vocabulary_rid=" . $datageneral101['id'] . " and language_id='" . $language . "';";
                     //echo $sql10;break;
                     $exec10 = $db->query($sql10);
                     $datageneral10 = $exec10->fetch();
 
                     if (strlen($datageneral10['source']) > 0) {
                         $output.= '' . $metadatarecordtr['labal_name'] . ': ';
-                        $output.=$datageneral10['label'].'<br>';
-
+                        $output.=$datageneral10['label'] . '<br>';
                     } else {
                         $output.= '' . $metadatarecordtr['labal_name'] . ': ';
-                        $output.=$datageneral10['label'].'<br>';
+                        $output.=$datageneral10['label'] . '<br>';
                     }
                 }//if($datageneral5['vocabulary_record_id']>0){
             }//foreach($datageneral5 as $datageneral5){
             ///////////////////$datetime///////////////////////
         } elseif ($datageneral4['form_type_id'] == 5) {
-$sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
-$execrecordtr = $db->query($sqltr);
-$metadatarecordtr = $execrecordtr->fetch();
+            $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
+            $execrecordtr = $db->query($sqltr);
+            $metadatarecordtr = $execrecordtr->fetch();
             foreach ($datageneral5 as $datageneral5) {
                 $datetime = $datageneral5['value'];
 
                 $output.= '' . $metadatarecordtr['labal_name'] . ': ';
-                $output.=$datetime.'<br>';
-
-
+                $output.=$datetime . '<br>';
             }
 
             ///////////////////Nothing///////////////////////
         } else {
 
-$sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
-$execrecordtr = $db->query($sqltr);
-$metadatarecordtr = $execrecordtr->fetch();
+            $sqltr = "SELECT * FROM metadata_element_label WHERE element_id=" . $datageneral4['elm_id'] . " and language_id='" . $language . "'";
+            $execrecordtr = $db->query($sqltr);
+            $metadatarecordtr = $execrecordtr->fetch();
             foreach ($datageneral5 as $datageneral5) {
                 $datetime = $datageneral5['value'];
 
                 $output.= '' . $metadatarecordtr['labal_name'] . ': ';
-                $output.=$datetime.'<br>';
-
-
+                $output.=$datetime . '<br>';
             }
         }
 
         return $output;
     }
-    
-    function call_cultural_federation($search=NULL,$offset=0){
-        
-$url="http://collections.natural-europe.eu/repository/api/ariadne/restp?json={%22clause%22%3A%20[{%22language%22%3A%20%22VSQL%22%2C%20%22expression%22%3A%20%22".$search."%22}]%2C%20%22resultInfo%22%3A%20%22display%22%2C%20%22resultListOffset%22%3A%20".$offset."%2C%20%22resultListSize%22%3A%2012%2C%20%22idListOffset%22%3A%200%2C%20%22uiLanguage%22%3A%20%22en%22%2C%20%22facets%22%3A%20[%22language%22%2C%20%22lrt%22%2C%20%22format%22%2C%20%22lom.classification.taxonpath.taxon.entry.string%22%2C%20%22rights%22]%2C%20%22idListSize%22%3A%2012%2C%20%22resultFormat%22%3A%20%22json%22%2C%20%22resultSortkey%22%3A%20%22%22}&engine=InMemory&callback=_prototypeJSONPCallback_1";
+
+    function call_cultural_federation($search = NULL, $offset = 0) {
+
+        $url = "http://collections.natural-europe.eu/repository/api/ariadne/restp?json={%22clause%22%3A%20[{%22language%22%3A%20%22VSQL%22%2C%20%22expression%22%3A%20%22" . $search . "%22}]%2C%20%22resultInfo%22%3A%20%22display%22%2C%20%22resultListOffset%22%3A%20" . $offset . "%2C%20%22resultListSize%22%3A%2012%2C%20%22idListOffset%22%3A%200%2C%20%22uiLanguage%22%3A%20%22en%22%2C%20%22facets%22%3A%20[%22language%22%2C%20%22lrt%22%2C%20%22format%22%2C%20%22lom.classification.taxonpath.taxon.entry.string%22%2C%20%22rights%22]%2C%20%22idListSize%22%3A%2012%2C%20%22resultFormat%22%3A%20%22json%22%2C%20%22resultSortkey%22%3A%20%22%22}&engine=InMemory&callback=_prototypeJSONPCallback_1";
 //$context = stream_context_create(array('http'=>array('protocol_version'=>'1.1')));
 //file_get_contents($url, f, $context);
 // If you want to see the json_decode output just uncomment out the next 2 lines
 // $v = var_export($response);
 // echo $v;
 //$ctx = stream_context_create(array('http' => array('timeout' => 5, 'protocol_version' => 1.1)));
-$opts = array(
-            'http'=>array(
-                'protocol_version'=>'1.1',
-                'method'=>'GET'
+        $opts = array(
+            'http' => array(
+                'protocol_version' => '1.1',
+                'method' => 'GET'
             )
         );
 //$context = stream_context_create($opts);
 //$resp = file_get_contents($url, false, $context);
-$resp = file_get_contents($url, false);
-$resp = preg_replace("/ ^[?\w(]+ | [)]+\s*$ /x", "", $resp);
-$resp = json_decode($resp,true);
+        $resp = file_get_contents($url, false);
+        $resp = preg_replace("/ ^[?\w(]+ | [)]+\s*$ /x", "", $resp);
+        $resp = json_decode($resp, true);
 //print_r($resp); // 12
-return $resp;
-    
+        return $resp;
     }

@@ -1258,10 +1258,10 @@ function create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPag
         if ($v[2] == 'to-begin-with') {
             $db->exec($sectionPageSql, array($last_section_id, '1', 'Screen 1'));
             $db->exec($sectionPageTextSql);
-            
+
             $db->exec($sectionPageSql, array($last_section_id, '2', 'Screen 2'));
             $db->exec($sectionPageTextSql);
-            
+
             $db->exec($sectionPageSql, array($last_section_id, '3', 'Screen 3'));
             $db->exec($sectionPageTextSql);
         }
@@ -1307,7 +1307,7 @@ function create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPag
 
             $db->exec($sectionPageSql, array($last_section_id, '14', 'Screen 14'));
             $db->exec($sectionPageTextSql);
-            
+
             $db->exec($sectionPageSql, array($last_section_id, '15', 'Screen 15'));
             $db->exec($sectionPageTextSql);
         }
@@ -1315,7 +1315,7 @@ function create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPag
         if ($v[2] == 'assignments') {
             $db->exec($sectionPageSql, array($last_section_id, '1', 'Screen 1'));
             $db->exec($sectionPageTextSql);
-            
+
             $db->exec($sectionPageSql, array($last_section_id, '2', 'Screen 2'));
             $db->exec($sectionPageTextSql);
         }
@@ -1444,17 +1444,24 @@ function savemetadataexhibit() {
 //echo "<br><br>".$maxIdSQL_check_if_voc."<br>"; 
                         $exec_check_if_voc = $db->query($maxIdSQL_check_if_voc);
                         $result_check_if_voc = $exec_check_if_voc->fetch(); //echo $result_check_if_voc['datatype_id']."<br>";
+
                         if ($result_check_if_voc['datatype_id'] == 6) {
                             $vocabulary_record_id = $value;
                             $value = 'NULL';
+                            $classification_id = 'NULL';
+                        } elseif ($result_check_if_voc['datatype_id'] == 5) {
+                            $vocabulary_record_id = 'NULL';
+                            $classification_id = $value;
+                            $value = 'NULL';
                         } else {
                             $vocabulary_record_id = 'NULL';
+                            $classification_id = 'NULL';
                             $value = $value;
                             $value = htmlspecialchars($value);
                             $value = addslashes($value);
                         }
 
-                        $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='" . $value . "',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $parent_indexer . ",vocabulary_record_id=" . $vocabulary_record_id . " ON DUPLICATE KEY UPDATE value='" . $value . "',vocabulary_record_id=" . $vocabulary_record_id . "";
+                        $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='" . $value . "',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $parent_indexer . ",vocabulary_record_id=" . $vocabulary_record_id . ",classification_id='" . $classification_id . "' ON DUPLICATE KEY UPDATE value='" . $value . "',vocabulary_record_id=" . $vocabulary_record_id . ",classification_id='" . $classification_id . "'";
 
 //echo $maxIdSQL."<br>"; 
                         $exec = $db->query($maxIdSQL);

@@ -15,8 +15,7 @@
  * @param Item|null $item Check for this specific item record (current item if null).
  * @return array
  */
-function current_user_tags_for_item($item=null)
-{
+function current_user_tags_for_item($item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -33,9 +32,8 @@ function current_user_tags_for_item($item=null)
  * @param Item|null $item Check for this specific item record (current item if null).
  * @return string HTML
  */
-function display_files_for_item($options = array(), $wrapperAttributes = array('class'=>'item-file'), $item = null)
-{
-    if(!$item) {
+function display_files_for_item($options = array(), $wrapperAttributes = array('class' => 'item-file'), $item = null) {
+    if (!$item) {
         $item = get_current_item();
     }
 
@@ -53,9 +51,8 @@ function display_files_for_item($options = array(), $wrapperAttributes = array('
  * none with images.
  * @return string HTML
  */
-function display_random_featured_item($withImage = null)
-{
-    $html = '<h2>'. __('Featured Item') .'</h2>';
+function display_random_featured_item($withImage = null) {
+    $html = '<h2>' . __('Featured Item') . '</h2>';
     $html .= display_random_featured_items('1', $withImage);
     return $html;
 }
@@ -67,8 +64,7 @@ function display_random_featured_item($withImage = null)
  * @throws Exception
  * @return Item
  */
-function get_current_item()
-{
+function get_current_item() {
     if (!($item = __v()->item)) {
         throw new Exception(__('An item has not been set to be displayed on this theme page! Please see Omeka documentation for details.'));
     }
@@ -89,8 +85,7 @@ function get_current_item()
  * @param integer $itemId
  * @return Item|null
  */
-function get_item_by_id($itemId)
-{
+function get_item_by_id($itemId) {
     return get_db()->getTable('Item')->find($itemId);
 }
 
@@ -108,8 +103,7 @@ function get_item_by_id($itemId)
  * @param integer $limit The maximum number of items to return.
  * @return array
  */
-function get_items($params = array(), $limit = 10)
-{
+function get_items($params = array(), $limit = 10) {
     return get_db()->getTable('Item')->findBy($params, $limit);
 }
 
@@ -119,8 +113,7 @@ function get_items($params = array(), $limit = 10)
  * @since 0.10
  * @return array
  */
-function get_items_for_loop()
-{
+function get_items_for_loop() {
     return __v()->items;
 }
 
@@ -132,8 +125,7 @@ function get_items_for_loop()
  * @param Item|null Check for this specific item record (current item if null).
  * @return Item|null
  */
-function get_next_item($item=null)
-{
+function get_next_item($item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -146,8 +138,7 @@ function get_next_item($item=null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return Item|null
  */
-function get_previous_item($item=null)
-{
+function get_previous_item($item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -161,8 +152,7 @@ function get_previous_item($item=null)
  * @since 0.10
  * @return boolean
  */
-function has_items()
-{
+function has_items() {
     return (total_items() > 0);
 }
 
@@ -170,8 +160,7 @@ function has_items()
  * @since 0.10
  * @return boolean
  */
-function has_items_for_loop()
-{
+function has_items_for_loop() {
     $view = __v();
     return ($view->items and count($view->items));
 }
@@ -190,8 +179,7 @@ function has_items_for_loop()
  * @param Item|null Check for this specific item record (current item if null).
  * @return string|array|null
  */
-function item($elementSetName, $elementName = null, $options = array(), $item = null)
-{
+function item($elementSetName, $elementName = null, $options = array(), $item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -208,16 +196,15 @@ function item($elementSetName, $elementName = null, $options = array(), $item = 
  * @param Item|null Check for this specific item record (current item if null).
  * @return boolean
  */
-function item_belongs_to_collection($name=null, $item=null)
-{
+function item_belongs_to_collection($name = null, $item = null) {
     //Dependency injection
-    if(!$item) {
+    if (!$item) {
         $item = get_current_item();
     }
 
-     return (($collection = $item->Collection)
-         && (!$name || $collection->name == $name)
-         && ($collection->public || has_permission('Collections', 'showNotPublic')));
+    return (($collection = $item->Collection)
+            && (!$name || $collection->name == $name)
+            && ($collection->public || has_permission('Collections', 'showNotPublic')));
 }
 
 /**
@@ -230,18 +217,17 @@ function item_belongs_to_collection($name=null, $item=null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return string
  */
-function item_citation($item = null)
-{
-    if(!$item) {
+function item_citation($item = null) {
+    if (!$item) {
         $item = get_current_item();
     }
 
-    $creator    = strip_formatting(item('Dublin Core', 'Creator', array(), $item));
-    $title      = strip_formatting(item('Dublin Core', 'Title', array(), $item));
-    $siteTitle  = strip_formatting(settings('site_title'));
-    $itemId     = item('id', null, array(), $item);
+    $creator = strip_formatting(item('Dublin Core', 'Creator', array(), $item));
+    $title = strip_formatting(item('Dublin Core', 'Title', array(), $item));
+    $siteTitle = strip_formatting(settings('site_title'));
+    $itemId = item('id', null, array(), $item);
     $accessDate = date('F j, Y');
-    $uri        = html_escape(abs_item_uri($item));
+    $uri = html_escape(abs_item_uri($item));
 
     $cite = '';
     if ($creator) {
@@ -271,8 +257,7 @@ function item_citation($item = null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return boolean
  */
-function item_field_uses_html($elementSetName, $elementName, $index=0, $item = null)
-{
+function item_field_uses_html($elementSetName, $elementName, $index = 0, $item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -290,8 +275,7 @@ function item_field_uses_html($elementSetName, $elementName, $index=0, $item = n
  * @param integer $index
  * @return string HTML
  */
-function item_fullsize($props = array(), $index = 0, $item = null)
-{
+function item_fullsize($props = array(), $index = 0, $item = null) {
     return item_image('fullsize', $props, $index, $item);
 }
 
@@ -304,9 +288,8 @@ function item_fullsize($props = array(), $index = 0, $item = null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return boolean
  */
-function item_has_files($item=null)
-{
-    if(!$item) {
+function item_has_files($item = null) {
+    if (!$item) {
         $item = get_current_item();
     }
     return $item->hasFiles();
@@ -317,9 +300,8 @@ function item_has_files($item=null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return boolean
  */
-function item_has_tags($item=null)
-{
-    if(!$item) {
+function item_has_tags($item = null) {
+    if (!$item) {
         $item = get_current_item();
     }
     return (count($item->Tags) > 0);
@@ -337,9 +319,8 @@ function item_has_tags($item=null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return boolean
  */
-function item_has_type($name = null, $item = null)
-{
-    if(!$item) {
+function item_has_type($name = null, $item = null) {
+    if (!$item) {
         $item = get_current_item();
     }
 
@@ -354,9 +335,8 @@ function item_has_type($name = null, $item = null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return void
  */
-function item_has_thumbnail($item=null)
-{
-    if(!$item) {
+function item_has_thumbnail($item = null) {
+    if (!$item) {
         $item = get_current_item();
     }
     return $item->hasThumbnail();
@@ -374,8 +354,7 @@ function item_has_thumbnail($item=null)
  * @param Item|null Check for this specific item record (current item if null).
  * @return void
  */
-function item_image($imageType, $props = array(), $index = 0, $item = null)
-{
+function item_image($imageType, $props = array(), $index = 0, $item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -397,9 +376,8 @@ function item_image($imageType, $props = array(), $index = 0, $item = null)
  * @param string $formActionUri
  * @return string
  */
-function items_search_form($props=array(), $formActionUri = null)
-{
-    return __v()->partial('items/advanced-search.php', array('isPartial'=>true, 'formAttributes'=>$props, 'formActionUri'=>$formActionUri));
+function items_search_form($props = array(), $formActionUri = null) {
+    return __v()->partial('items/advanced-search.php', array('isPartial' => true, 'formAttributes' => $props, 'formActionUri' => $formActionUri));
 }
 
 /**
@@ -410,8 +388,7 @@ function items_search_form($props=array(), $formActionUri = null)
  * @param Item $item The item to which the image belongs
  * @return string HTML
  */
-function item_square_thumbnail($props = array(), $index = 0, $item = null)
-{
+function item_square_thumbnail($props = array(), $index = 0, $item = null) {
     return item_image('square_thumbnail', $props, $index, $item);
 }
 
@@ -427,8 +404,7 @@ function item_square_thumbnail($props = array(), $index = 0, $item = null)
  * @param Item $item The item to which the image belongs
  * @return string HTML
  */
-function item_thumbnail($props = array(), $index = 0, $item = null)
-{
+function item_thumbnail($props = array(), $index = 0, $item = null) {
     return item_image('thumbnail', $props, $index, $item);
 }
 
@@ -438,8 +414,7 @@ function item_thumbnail($props = array(), $index = 0, $item = null)
  * @since 0.10
  * @return mixed The current item
  */
-function loop_items()
-{
+function loop_items() {
     return loop_records('items', get_items_for_loop(), 'set_current_item');
 }
 
@@ -450,8 +425,7 @@ function loop_items()
  * @return mixed The current file within the loop.
  * @param Item|null Check for this specific item record (current item if null).
  */
-function loop_files_for_item($item=null)
-{
+function loop_files_for_item($item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -466,8 +440,7 @@ function loop_files_for_item($item=null)
  * @param Item
  * @return void
  */
-function set_current_item(Item $item)
-{
+function set_current_item(Item $item) {
     $view = __v();
     $view->previous_item = $view->item;
     $view->item = $item;
@@ -477,8 +450,7 @@ function set_current_item(Item $item)
  * @since 0.10
  * @param array $items
  */
-function set_items_for_loop($items)
-{
+function set_items_for_loop($items) {
     $view = __v();
     $view->items = $items;
 }
@@ -492,8 +464,7 @@ function set_items_for_loop($items)
  * @param Item|null Check for this specific item record (current item if null).
  * @return string|array
  */
-function show_item_metadata(array $options = array(), $item=null)
-{
+function show_item_metadata(array $options = array(), $item = null) {
     if (!$item) {
         $item = get_current_item();
     }
@@ -506,9 +477,8 @@ function show_item_metadata(array $options = array(), $item=null)
  * @param integer $num The maximum number of recent items to return
  * @return array
  */
-function recent_items($num = 10)
-{
-    return get_db()->getTable('Item')->findBy(array('recent'=>true), $num);
+function recent_items($num = 10) {
+    return get_db()->getTable('Item')->findBy(array('recent' => true), $num);
 }
 
 /**
@@ -520,8 +490,7 @@ function recent_items($num = 10)
  * @param boolean|null $hasImage
  * @return Item
  */
-function random_featured_item($hasImage=null)
-{
+function random_featured_item($hasImage = null) {
     $item = random_featured_items('1', $hasImage);
     return $item[0];
 }
@@ -531,8 +500,7 @@ function random_featured_item($hasImage=null)
  *
  * @return integer
  */
-function total_items()
-{
+function total_items() {
     return get_db()->getTable('Item')->count();
 }
 
@@ -544,13 +512,11 @@ function total_items()
  * @param boolean|null $hasImage
  * @return array $items
  */
-function random_featured_items($num = 5, $hasImage = null)
-{
-    return get_items(array('featured'=>1, 'random' => 1, 'hasImage' => $hasImage), $num);
+function random_featured_items($num = 5, $hasImage = null) {
+    return get_items(array('featured' => 1, 'random' => 1, 'hasImage' => $hasImage), $num);
 }
 
-function display_random_featured_items($num = 5, $hasImage = null)
-{
+function display_random_featured_items($num = 5, $hasImage = null) {
     $html = '';
 
     if ($randomFeaturedItems = random_featured_items($num, $hasImage)) {
@@ -560,1077 +526,1096 @@ function display_random_featured_items($num = 5, $hasImage = null)
             $html .= '<h3>' . link_to_item($itemTitle, array(), 'show', $randomItem) . '</h3>';
 
             if (item_has_thumbnail($randomItem)) {
-                $html .= link_to_item(item_square_thumbnail(array(), 0, $randomItem), array('class'=>'image'), 'show', $randomItem);
+                $html .= link_to_item(item_square_thumbnail(array(), 0, $randomItem), array('class' => 'image'), 'show', $randomItem);
             }
 
-            if ($itemDescription = item('Dublin Core', 'Description', array('snippet'=>150), $randomItem)) {
+            if ($itemDescription = item('Dublin Core', 'Description', array('snippet' => 150), $randomItem)) {
                 $html .= '<p class="item-description">' . $itemDescription . '</p>';
             }
         }
     } else {
-        $html .= '<p>'.__('No featured items are available.').'</p>';
+        $html .= '<p>' . __('No featured items are available.') . '</p>';
     }
 
     return $html;
 }
 
- //////////////////////////  custom code for natural europe		//////////////////////////
- 
- function injestitem(){
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+//////////////////////////  custom code for natural europe		//////////////////////////
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
+function injestitem() {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}
-$db->query("SET NAMES 'utf8'");
+    $db->query("SET NAMES 'utf8'");
 
-$date_modified = date("Y-m-d H:i:s");
-$item_type_id=11;
- if(stripos($_POST['identifier'],".jpg")>0 or $_POST['format']=="IMAGE" or $_POST['format']=="image" or stripos($_POST['format'],"IMAGE")>0 or stripos($_POST['format'],"image")>0 or stripos($_POST['identifier'],".gif")>0 or stripos($_POST['identifier'],".jpeg")>0 or stripos($_POST['identifier'],".png")>0 or stripos($_POST['identifier'],".tiff")>0 or stripos($_POST['identifier'],".tif")>0 or stripos($_POST['identifier'],".bmp")>0 or stripos($_POST['identifier'],"content/thumbs/src")>0 or $dataformatfromvoc['value']=="IMAGE")
-		   {
-	$item_type_id=6;
-}
+    $date_modified = date("Y-m-d H:i:s");
+    $item_type_id = 11;
+    if (stripos($_POST['identifier'], ".jpg") > 0 or $_POST['format'] == "IMAGE" or $_POST['format'] == "image" or stripos($_POST['format'], "IMAGE") > 0 or stripos($_POST['format'], "image") > 0 or stripos($_POST['identifier'], ".gif") > 0 or stripos($_POST['identifier'], ".jpeg") > 0 or stripos($_POST['identifier'], ".png") > 0 or stripos($_POST['identifier'], ".tiff") > 0 or stripos($_POST['identifier'], ".tif") > 0 or stripos($_POST['identifier'], ".bmp") > 0 or stripos($_POST['identifier'], "content/thumbs/src") > 0 or $dataformatfromvoc['value'] == "IMAGE") {
+        $item_type_id = 6;
+    }
 //print_r($_POST);break;
-$mainAttributesSql="INSERT INTO omeka_items (item_type_id ,collection_id,featured,public,added) VALUES (".$item_type_id.",null,'0','0','".$date_modified."')";
-$db->exec($mainAttributesSql);
+    $mainAttributesSql = "INSERT INTO omeka_items (item_type_id ,collection_id,featured,public,added) VALUES (" . $item_type_id . ",null,'0','0','" . $date_modified . "')";
+    $db->exec($mainAttributesSql);
 
-$lastExhibitIdSQL="SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM omeka_items";
-$exec=$db->query($lastExhibitIdSQL);
-$row=$exec->fetch();
-$last_exhibit_id=$row["LAST_EXHIBIT_ID"];
-$exec=null;
+    $lastExhibitIdSQL = "SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM omeka_items";
+    $exec = $db->query($lastExhibitIdSQL);
+    $row = $exec->fetch();
+    $last_exhibit_id = $row["LAST_EXHIBIT_ID"];
+    $exec = null;
 
-$title=$_POST['title'];
-$description=$_POST['description'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
 //$title = mb_convert_encoding($title, "UTF-8"); //echo $title; break;
 //$title = htmlspecialchars_decode($title);
-$title=addslashes($title);
-$description=addslashes($description);
+    $title = addslashes($title);
+    $description = addslashes($description);
 
-$mainAttributesSql="INSERT INTO omeka_element_texts (record_id ,element_id,record_type_id,text) VALUES ('".$last_exhibit_id."',68,2,'".$title."')";
+    $mainAttributesSql = "INSERT INTO omeka_element_texts (record_id ,element_id,record_type_id,text) VALUES ('" . $last_exhibit_id . "',68,2,'" . $title . "')";
 //echo $mainAttributesSql; break;
-$db->exec($mainAttributesSql);
+    $db->exec($mainAttributesSql);
 
 
 
-$metadatarecordSql="INSERT INTO omeka_entities_relations (entity_id,relation_id,relationship_id,type,time) VALUES ('".$_POST['user']."','".$last_exhibit_id."',1,'item','".$date_modified."')";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
+    $metadatarecordSql = "INSERT INTO omeka_entities_relations (entity_id,relation_id,relationship_id,type,time) VALUES ('" . $_POST['user'] . "','" . $last_exhibit_id . "',1,'item','" . $date_modified . "')";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
 
-/*===================================INSERT record for METADATA===================================*/
-$metadatarecordSql="INSERT INTO metadata_record (id, object_id, object_type) VALUES ('', ".$last_exhibit_id.",'item')";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
+    /* ===================================INSERT record for METADATA=================================== */
+    $metadatarecordSql = "INSERT INTO metadata_record (id, object_id, object_type) VALUES ('', " . $last_exhibit_id . ",'item')";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
 
-$lastExhibitIdSQL="SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM metadata_record";
-$exec=$db->query($lastExhibitIdSQL);
-$row=$exec->fetch();
-$last_record_id=$row["LAST_EXHIBIT_ID"];
-$exec=null;
-
-
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id) VALUES ('34','".$_POST['source']."','none',1, ".$last_record_id.")";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $lastExhibitIdSQL = "SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM metadata_record";
+    $exec = $db->query($lastExhibitIdSQL);
+    $row = $exec->fetch();
+    $last_record_id = $row["LAST_EXHIBIT_ID"];
+    $exec = null;
 
 
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id) VALUES ('34','" . $_POST['source'] . "','none',1, " . $last_record_id . ")";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('6','".$title."','en',1, ".$last_record_id.",1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('8','".$description."','en',1, ".$last_record_id.",1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
 
-//libraries/omeka/record.php
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('32','".$_POST['identifier']."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('6','" . $title . "','en',1, " . $last_record_id . ",1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
+
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('8','" . $description . "','en',1, " . $last_record_id . ",1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //libraries/omeka/record.php
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none',272,1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('32','" . $_POST['identifier'] . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+//libraries/omeka/record.php
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none',272,1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('53','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('54','URI','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('53','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','".$_POST['identifier']."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('54','URI','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('60','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','" . $_POST['identifier'] . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('61','Natural_Europe_Schema','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('60','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('62','Natural_Europe_".$last_record_id."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('61','Natural_Europe_Schema','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('63','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('62','Natural_Europe_" . $last_record_id . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('64',NULL,'none',120,1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('63','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
+
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('64',NULL,'none',120,1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //////////////////////rights for coe/////////////////////////////
-/*$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('9','yes','none',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('24','no','none',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('81','Ressource made available for free by the Council of Europe. All rights reserved.','en',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;*/
+    /* $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('9','yes','none',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null;
+      $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('24','no','none',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null;
+      $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('81','Ressource made available for free by the Council of Europe. All rights reserved.','en',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null; */
 
 ///////////////////////vcard///////////////////////////
-$entityuser = current_user(); //print_r($entityuser); break;
-$vcard_name=$entityuser['first_name'];
-				$vcard_surname=$entityuser['last_name'];
-				$vcard_email=$entityuser['email'];
-				$vcard_organization=$entityuser['institution'];
-				
-				if(strlen($vcard_name)>0 or strlen($vcard_surname)>0 or strlen($vcard_email)>0 or strlen($vcard_organization)>0){
+    $entityuser = current_user(); //print_r($entityuser); break;
+    $vcard_name = $entityuser['first_name'];
+    $vcard_surname = $entityuser['last_name'];
+    $vcard_email = $entityuser['email'];
+    $vcard_organization = $entityuser['institution'];
 
-$chechvcard="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-$execchechvcard=$db->query($chechvcard);
-$result_chechvcard=$execchechvcard->fetch();
-$execchechvcard=null;	
+    if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
 
-					if(strlen($result_chechvcard['id'])>0){
-					
-					$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, ".$last_record_id.",1,".$result_chechvcard['id'].",0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+        $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+        $execchechvcard = $db->query($chechvcard);
+        $result_chechvcard = $execchechvcard->fetch();
+        $execchechvcard = null;
 
-					
-					}else{
-					$chechvcardins="insert into metadata_vcard SET name='".$vcard_name."',surname='".$vcard_surname."',email='".$vcard_email."',organization='".$vcard_organization."'";
-					$execchechvcardins=$db->query($chechvcardins);
-					$result_chechvcardins=$execchechvcardins->fetch();
-					$execchechvcardins=null;
+        if (strlen($result_chechvcard['id']) > 0) {
 
-					$chechvcardnew="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-					$execchechvcardnew=$db->query($chechvcardnew);
-					$result_chechvcardnew=$execchechvcardnew->fetch();
-					$execchechvcardnew=null;
-					
-					$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, ".$last_record_id.",1,".$result_chechvcardnew['id'].",0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-					
-					}
-					
-				}//if isset one value from vcard
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, " . $last_record_id . ",1," . $result_chechvcard['id'] . ",0)";
+            $execmetadatarecordSql = $db->query($metadatarecordSql);
+            $exec = null;
+        } else {
+            $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
+            $execchechvcardins = $db->query($chechvcardins);
+            $result_chechvcardins = $execchechvcardins->fetch();
+            $execchechvcardins = null;
 
+            $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+            $execchechvcardnew = $db->query($chechvcardnew);
+            $result_chechvcardnew = $execchechvcardnew->fetch();
+            $execchechvcardnew = null;
+
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, " . $last_record_id . ",1," . $result_chechvcardnew['id'] . ",0)";
+            $execmetadatarecordSql = $db->query($metadatarecordSql);
+            $exec = null;
+        }
+    }//if isset one value from vcard
 ///////////////////////end vcard///////////////////////////
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('66','".$date_modified."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('66','" . $date_modified . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('67','NE AP v1.0','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('67','NE AP v1.0','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
 
-/*===================================INSERT record for METADATA===================================*/
+    /* ===================================INSERT record for METADATA=================================== */
 
 
-return $last_exhibit_id;
-
+    return $last_exhibit_id;
 }
 
-function savemetadataitem(){
+function savemetadataitem() {
 
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
 
-$maxIdSQL="select * from metadata_record where object_id=".$_POST['item_id']." and object_type='item'";
-$exec=$db->query($maxIdSQL);
-$row=$exec->fetch();
-$record_id=$row["id"];
-$exec=null;
-if(isset($_POST['item_url'])){$_POST['55_1']=$_POST['item_url']; $_POST['32_1']=$_POST['item_url'];}
+    $maxIdSQL = "select * from metadata_record where object_id=" . $_POST['item_id'] . " and object_type='item'";
+    $exec = $db->query($maxIdSQL);
+    $row = $exec->fetch();
+    $record_id = $row["id"];
+    $exec = null;
+    if (isset($_POST['item_url'])) {
+        $_POST['55_1'] = $_POST['item_url'];
+        $_POST['32_1'] = $_POST['item_url'];
+    }
 //print_r($_POST);break;
-foreach($_POST as $var => $value)
-{
-if($var!='item_id' and $var!='title' and $var!='delete_files' and $var!='Pages' and $var!='hdnLine' and $var!='hdnLine_group_total' and $var!='hdnLine_group_vcard' and $var!='hdnLine_group_total_parent' and $var!='slug' and $var!='public' and $var!='Sections' and $var!='save_exhibit' and $var!='date_modified' and $var!='save_meta' and $var!='item_url' and $var!='collection_id'){
-$var1=explode("_",$var); //split form name at _
-if($var1[0]=='vcard'){ //if is vcard!!!
-$var=$var1[2];
-$varmulti=$var1[3]; 
-$varlan=NULL; 
-}else{
-$var=$var1[0];
-$varmulti=$var1[1]; 
-$varlan=$var1[3]; 
-} 
+    foreach ($_POST as $var => $value) {
+        if ($var != 'item_id' and $var != 'title' and $var != 'delete_files' and $var != 'Pages' and $var != 'hdnLine' and $var != 'hdnLine_group_total' and $var != 'hdnLine_group_vcard' and $var != 'hdnLine_group_total_parent' and $var != 'slug' and $var != 'public' and $var != 'Sections' and $var != 'save_exhibit' and $var != 'date_modified' and $var != 'save_meta' and $var != 'item_url' and $var != 'collection_id') {
+            $var1 = explode("_", $var); //split form name at _
+            if ($var1[0] == 'vcard') { //if is vcard!!!
+                $var = $var1[2];
+                $varmulti = $var1[3];
+                $varlan = NULL;
+            } else {
+                $var = $var1[0];
+                $varmulti = $var1[1];
+                $varlan = $var1[3];
+            }
 
 
 
-if($varlan!='lan' and $var!='hdnLine'){ //not get in if is language name at form or name is hdnline
+            if ($varlan != 'lan' and $var != 'hdnLine') { //not get in if is language name at form or name is hdnline
+                if (isset($_POST[$var . '_' . $var1[1] . '_' . $var1[2] . '_lan'])) {
+                    $language = $_POST[$var . '_' . $var1[1] . '_' . $var1[2] . '_lan'];
+                    $parent_indexer = 1;
+                } else {
+                    if (isset($var1[2]) and $var1[2] > 0) {
+                        $parent_indexer = $var1[2];
+                    } else {
+                        $parent_indexer = 1;
+                    }
+                    $language = 'none';
+                }//langueage for this form name
 
 
-
-if(isset($_POST[$var.'_'.$var1[1].'_'.$var1[2].'_lan'])){
-$language=$_POST[$var.'_'.$var1[1].'_'.$var1[2].'_lan'];
-$parent_indexer=1;
-} else{
-if(isset($var1[2]) and $var1[2]>0){$parent_indexer=$var1[2];}else{$parent_indexer=1;}
-$language='none';
-}//langueage for this form name
+                if ($var == 6 and $language == 'en') {
+                    $exhibit_title_from_metadata = $value;
+                }//title gia pathway
 
 
-if($var==6 and $language=='en'){$exhibit_title_from_metadata=$value;}//title gia pathway
-
-
-$maxIdSQL="select * from metadata_element_hierarchy where id=".$var.""; 
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetch();
+                $maxIdSQL = "select * from metadata_element_hierarchy where id=" . $var . "";
+                $exec = $db->query($maxIdSQL);
+                $result_multi = $exec->fetch();
 //$exec=null;
-
 //if($result_multi['max_occurs']>0){ $multi=$var1[1]; } else{$multi=1;}
 
-		
 
 
-		if($var1[0]=='vcard'){ //if is vcard!!!
-			if($var1[1]=='general'){ 
-				$vcard_name=addslashes(htmlspecialchars($_POST[$var1[0].'_name_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				$vcard_surname=addslashes(htmlspecialchars($_POST[$var1[0].'_surname_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				$vcard_email=addslashes(htmlspecialchars($_POST[$var1[0].'_email_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				$vcard_organization=addslashes(htmlspecialchars($_POST[$var1[0].'_organization_'.$var1[2].'_'.$var1[3].'_'.$var1[4].'']));
-				
-				if(strlen($vcard_name)>0 or strlen($vcard_surname)>0 or strlen($vcard_email)>0 or strlen($vcard_organization)>0){
 
-$chechvcard="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-$execchechvcard=$db->query($chechvcard);
-$result_chechvcard=$execchechvcard->fetch();
-$execchechvcard=null;	
+                if ($var1[0] == 'vcard') { //if is vcard!!!
+                    if ($var1[1] == 'general') {
+                        $vcard_name = addslashes(htmlspecialchars($_POST[$var1[0] . '_name_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
+                        $vcard_surname = addslashes(htmlspecialchars($_POST[$var1[0] . '_surname_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
+                        $vcard_email = addslashes(htmlspecialchars($_POST[$var1[0] . '_email_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
+                        $vcard_organization = addslashes(htmlspecialchars($_POST[$var1[0] . '_organization_' . $var1[2] . '_' . $var1[3] . '_' . $var1[4] . '']));
 
-					if(strlen($result_chechvcard['id'])>0){
-					
-					$maxIdSQL="insert into metadata_element_value SET element_hierarchy=".$var.",value='Vcard Element',language_id='".$language."',record_id=".$record_id.",multi=".$varmulti.",parent_indexer=".$var1[4].",vcard_id=".$result_chechvcard['id']." ON DUPLICATE KEY UPDATE vcard_id=".$result_chechvcard['id']."";	
-					
-					//echo $maxIdSQL."<br>"; 
-					$exec=$db->query($maxIdSQL);
-					$result_multi=$exec->fetch();
-					
-					}else{
-					$chechvcardins="insert into metadata_vcard SET name='".$vcard_name."',surname='".$vcard_surname."',email='".$vcard_email."',organization='".$vcard_organization."'";
-					$execchechvcardins=$db->query($chechvcardins);
-					$result_chechvcardins=$execchechvcardins->fetch();
-					$execchechvcardins=null;
+                        if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
 
-					$chechvcardnew="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-					$execchechvcardnew=$db->query($chechvcardnew);
-					$result_chechvcardnew=$execchechvcardnew->fetch();
-					$execchechvcardnew=null;
-					
-					$maxIdSQL="insert into metadata_element_value SET element_hierarchy=".$var.",value='Vcard Element',language_id='".$language."',record_id=".$record_id.",multi=".$varmulti.",parent_indexer=".$var1[4].",vcard_id=".$result_chechvcardnew['id']." ON DUPLICATE KEY UPDATE vcard_id=".$result_chechvcardnew['id']."";	
-					
-					//echo $maxIdSQL."<br>"; 
-					$exec=$db->query($maxIdSQL);
-					$result_multi=$exec->fetch();
-					
-					}
-					
-				}//if isset one value from vcard
-			}//if is general
-		}else{ //if is vcard!!!		
+                            $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+                            $execchechvcard = $db->query($chechvcard);
+                            $result_chechvcard = $execchechvcard->fetch();
+                            $execchechvcard = null;
 
-if($result_multi['datatype_id']===2){$value='Parent Element';}
+                            if (strlen($result_chechvcard['id']) > 0) {
 
-if(strlen($value)>0){
+                                $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='Vcard Element',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $var1[4] . ",vcard_id=" . $result_chechvcard['id'] . " ON DUPLICATE KEY UPDATE vcard_id=" . $result_chechvcard['id'] . "";
+
+                                //echo $maxIdSQL."<br>"; 
+                                $exec = $db->query($maxIdSQL);
+                                $result_multi = $exec->fetch();
+                            } else {
+                                $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
+                                $execchechvcardins = $db->query($chechvcardins);
+                                $result_chechvcardins = $execchechvcardins->fetch();
+                                $execchechvcardins = null;
+
+                                $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+                                $execchechvcardnew = $db->query($chechvcardnew);
+                                $result_chechvcardnew = $execchechvcardnew->fetch();
+                                $execchechvcardnew = null;
+
+                                $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='Vcard Element',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $var1[4] . ",vcard_id=" . $result_chechvcardnew['id'] . " ON DUPLICATE KEY UPDATE vcard_id=" . $result_chechvcardnew['id'] . "";
+
+                                //echo $maxIdSQL."<br>"; 
+                                $exec = $db->query($maxIdSQL);
+                                $result_multi = $exec->fetch();
+                            }
+                        }//if isset one value from vcard
+                    }//if is general
+                } else { //if is vcard!!!		
+                    if ($result_multi['datatype_id'] === 2) {
+                        $value = 'Parent Element';
+                    }
+
+                    if (strlen($value) > 0) {
 
 
-$maxIdSQL_check_if_voc="select * from metadata_element_hierarchy where id=".$var." ";
+                        $maxIdSQL_check_if_voc = "select * from metadata_element_hierarchy where id=" . $var . " ";
 //echo "<br><br>".$maxIdSQL_check_if_voc."<br>"; 
-$exec_check_if_voc=$db->query($maxIdSQL_check_if_voc);
-$result_check_if_voc=$exec_check_if_voc->fetch(); //echo $result_check_if_voc['datatype_id']."<br>";
-if($result_check_if_voc['datatype_id']==6){ $vocabulary_record_id=$value; $value='NULL'; }
-else{$vocabulary_record_id='NULL'; $value=$value; $value=htmlspecialchars($value); $value=addslashes($value);}
+                        $exec_check_if_voc = $db->query($maxIdSQL_check_if_voc);
+                        $result_check_if_voc = $exec_check_if_voc->fetch(); //echo $result_check_if_voc['datatype_id']."<br>";
+                        if ($result_check_if_voc['datatype_id'] == 6) {
+                            $vocabulary_record_id = $value;
+                            $value = 'NULL';
+                            $classification_id = 'NULL';
+                        } elseif ($result_check_if_voc['datatype_id'] == 5) {
+                            $vocabulary_record_id = 'NULL';
+                            $classification_id = $value;
+                            $value = 'NULL';
+                        } else {
+                            $vocabulary_record_id = 'NULL';
+                            $classification_id = 'NULL';
+                            $value = $value;
+                            $value = htmlspecialchars($value);
+                            $value = addslashes($value);
+                        }
 
-$maxIdSQL="insert into metadata_element_value SET element_hierarchy=".$var.",value='".$value."',language_id='".$language."',record_id=".$record_id.",multi=".$varmulti.",parent_indexer=".$parent_indexer.",vocabulary_record_id=".$vocabulary_record_id." ON DUPLICATE KEY UPDATE value='".$value."',vocabulary_record_id=".$vocabulary_record_id."";
+                        $maxIdSQL = "insert into metadata_element_value SET element_hierarchy=" . $var . ",value='" . $value . "',language_id='" . $language . "',record_id=" . $record_id . ",multi=" . $varmulti . ",parent_indexer=" . $parent_indexer . ",vocabulary_record_id=" . $vocabulary_record_id . ",classification_id='" . $classification_id . "' ON DUPLICATE KEY UPDATE value='" . $value . "',vocabulary_record_id=" . $vocabulary_record_id . ",classification_id='" . $classification_id . "'";
 
 //echo $maxIdSQL."<br>"; 
-$exec=$db->query($maxIdSQL);
-$result_multi=$exec->fetch();
-$exec=null;
-}//if strlen >1 if exist value
-
-		}//if is vcard!!!		
-
-}//end not get in if is language name at form 
-}
-}
-$sqllan="SELECT b.value FROM metadata_element_value as a inner join metadata_vocabulary_record as b on b.id=a.vocabulary_record_id WHERE a.record_id=".$record_id." and element_hierarchy=7  "; //echo $sqllan; break;
-$execlan=$db->query($sqllan);
-$result_multi=$execlan->fetch();
-$execlan=null;
-$sqllan4="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='".$result_multi['value']."'"; //echo $sqllan; break;
-$execlan4=$db->query($sqllan4);
-$result_multi4=$execlan4->fetch();
-$execlan4=null;
-$sqllan2="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
-$execlan2=$db->query($sqllan2);
-$result_multi2=$execlan2->fetch();
-$execlan2=null;
-if(strlen($result_multi4['value'])>0){
-$sqllan3="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='".$result_multi['value']."'"; //echo $sqllan; break;
-}elseif(strlen($result_multi2['value'])>0){
-$sqllan3="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
-}else{
-$sqllan3="SELECT * FROM metadata_element_value WHERE record_id=".$record_id." and element_hierarchy=6 LIMIT 0,1"; 
-}
+                        $exec = $db->query($maxIdSQL);
+                        $result_multi = $exec->fetch();
+                        $exec = null;
+                    }//if strlen >1 if exist value
+                }//if is vcard!!!		
+            }//end not get in if is language name at form 
+        }
+    }
+    $sqllan = "SELECT b.value FROM metadata_element_value as a inner join metadata_vocabulary_record as b on b.id=a.vocabulary_record_id WHERE a.record_id=" . $record_id . " and element_hierarchy=7  "; //echo $sqllan; break;
+    $execlan = $db->query($sqllan);
+    $result_multi = $execlan->fetch();
+    $execlan = null;
+    $sqllan4 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
+    $execlan4 = $db->query($sqllan4);
+    $result_multi4 = $execlan4->fetch();
+    $execlan4 = null;
+    $sqllan2 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
+    $execlan2 = $db->query($sqllan2);
+    $result_multi2 = $execlan2->fetch();
+    $execlan2 = null;
+    if (strlen($result_multi4['value']) > 0) {
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
+    } elseif (strlen($result_multi2['value']) > 0) {
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 and language_id='en'"; //echo $sqllan; break;
+    } else {
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=6 LIMIT 0,1";
+    }
 //echo $sqllan3; break;
-$execlan3=$db->query($sqllan3);
-$result_multi3=$execlan3->fetch();
+    $execlan3 = $db->query($sqllan3);
+    $result_multi3 = $execlan3->fetch();
 
-$exhibit_title_from_metadata=$result_multi3['value'];//title gia pathway
+    $exhibit_title_from_metadata = $result_multi3['value']; //title gia pathway
 
 
-$maxIdSQL="update omeka_element_texts SET text='".addslashes($exhibit_title_from_metadata)."' where record_id=".$_POST['item_id']."";
+    $maxIdSQL = "update omeka_element_texts SET text='" . addslashes($exhibit_title_from_metadata) . "' where record_id=" . $_POST['item_id'] . "";
 //echo $maxIdSQL."<br>"; 
-$exec=$db->query($maxIdSQL);
+    $exec = $db->query($maxIdSQL);
 
-$maxIdSQL="update metadata_record SET date_modified='".$_POST['date_modified']."',validate='".$_POST['public']."' where object_id=".$_POST['item_id']." and object_type='item'";
-$exec=$db->query($maxIdSQL);
+    $maxIdSQL = "update metadata_record SET date_modified='" . $_POST['date_modified'] . "',validate='" . $_POST['public'] . "' where object_id=" . $_POST['item_id'] . " and object_type='item'";
+    $exec = $db->query($maxIdSQL);
 
-$maxIdSQL="update omeka_items SET public=".$_POST['public'].",modified='".$_POST['date_modified']."' where id=".$_POST['item_id']."";
-$exec=$db->query($maxIdSQL); //break;
+    $maxIdSQL = "update omeka_items SET public=" . $_POST['public'] . ",modified='" . $_POST['date_modified'] . "' where id=" . $_POST['item_id'] . "";
+    $exec = $db->query($maxIdSQL); //break;
 //$result_multi=$exec->fetch();
-$exec=null;
+    $exec = null;
 
 //$result_teaser2=mysql_query("update omeka_exhibits SET title='".$exhibit_title_from_metadata."',slug='".$_POST['slug']."',public=".$_POST['public'].",date_modified='".$_POST['date_modified']."' where id=".$_POST['exhibit_id']."");  //update exhibit table
 
-return $_POST['item_id'];
+    return $_POST['item_id'];
 }
 
-function savenewitem($itid,$formtype){
+function savenewitem($itid, $formtype) {
 
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
 
 
-$itemtdb=$db->Items;
+    $itemtdb = $db->Items;
 
-$maxIdSQL="SELECT MAX(id) AS MAX_ID FROM ". $itemtdb." LIMIT 0,1";
-$exec=$db->query($maxIdSQL);
-$row=$exec->fetch();
-$max_id=$row["MAX_ID"];
-$exec=null;
+    $maxIdSQL = "SELECT MAX(id) AS MAX_ID FROM " . $itemtdb . " LIMIT 0,1";
+    $exec = $db->query($maxIdSQL);
+    $row = $exec->fetch();
+    $max_id = $row["MAX_ID"];
+    $exec = null;
 
 //print_r($_FILES['file']['type']['0']); break; 
 
-if(strlen($_POST['title'])>0){$_POST['Elements']['68']['0']['text']=$_POST['title'];}
-if(strlen($_POST['Elements']['68']['0']['text'])>0){$path_title=addslashes($_POST['Elements']['68']['0']['text']);} else{$path_title="resource-title-".$max_id.""; $_POST['Elements']['68']['0']['text']="resource-title-".$max_id."";}
-if($_POST['description']){$path_description=addslashes($_POST['description']);} else{$path_description="";}
-if($_POST['link']){$path_url=$_POST['link'];} else{$path_url="";}
-if($_POST['type']){$formtype=$_POST['type'];} else{$formtype="0";}
-if($formtype==11){$formetypetext='text/html'; $formetypetext=find_voc_rec_id($formetypetext,21);} elseif(isset($_FILES['file']['type']['0'])){
-$formetypetext=FiletypeMapping($_FILES['file']['type']['0']);
-if(stripos(' '.$_FILES['file']['type']['0'],"image")>0){$formtype=6;}else{$formtype=20;}
-} else{$formetypetext="";}
+    if (strlen($_POST['title']) > 0) {
+        $_POST['Elements']['68']['0']['text'] = $_POST['title'];
+    }
+    if (strlen($_POST['Elements']['68']['0']['text']) > 0) {
+        $path_title = addslashes($_POST['Elements']['68']['0']['text']);
+    } else {
+        $path_title = "resource-title-" . $max_id . "";
+        $_POST['Elements']['68']['0']['text'] = "resource-title-" . $max_id . "";
+    }
+    if ($_POST['description']) {
+        $path_description = addslashes($_POST['description']);
+    } else {
+        $path_description = "";
+    }
+    if ($_POST['link']) {
+        $path_url = $_POST['link'];
+    } else {
+        $path_url = "";
+    }
+    if ($_POST['type']) {
+        $formtype = $_POST['type'];
+    } else {
+        $formtype = "0";
+    }
+    if ($formtype == 11) {
+        $formetypetext = 'text/html';
+        $formetypetext = find_voc_rec_id($formetypetext, 21);
+    } elseif (isset($_FILES['file']['type']['0'])) {
+        $formetypetext = FiletypeMapping($_FILES['file']['type']['0']);
+        if (stripos(' ' . $_FILES['file']['type']['0'], "image") > 0) {
+            $formtype = 6;
+        } else {
+            $formtype = 20;
+        }
+    } else {
+        $formetypetext = "";
+    }
 //if($_POST['Elements']['68']['0']['text']){$path_title=addslashes($_POST['Elements']['68']['0']['text']);} else{$path_title="resource-title-".$max_id."";}
-if($_POST['public']){$path_public=$_POST['public'];} else{$path_public="0";}
+    if ($_POST['public']) {
+        $path_public = $_POST['public'];
+    } else {
+        $path_public = "0";
+    }
 
-$date_modified = date("Y-m-d H:i:s");
-$mainAttributesSql="INSERT INTO $itemtdb (featured,item_type_id,public,modified,added) VALUES (0,".$formtype.",'".$_POST['public']."','".$date_modified."','".$date_modified."')";
+    $date_modified = date("Y-m-d H:i:s");
+    $mainAttributesSql = "INSERT INTO $itemtdb (featured,item_type_id,public,modified,added) VALUES (0," . $formtype . ",'" . $_POST['public'] . "','" . $date_modified . "','" . $date_modified . "')";
 //echo $mainAttributesSql; break;
-$db->exec($mainAttributesSql);
+    $db->exec($mainAttributesSql);
 
 
 
-$lastExhibitIdSQL="SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM ". $itemtdb;
-$exec=$db->query($lastExhibitIdSQL);
-$row=$exec->fetch();
-$last_exhibit_id=$row["LAST_EXHIBIT_ID"];
-$exec=null;
+    $lastExhibitIdSQL = "SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM " . $itemtdb;
+    $exec = $db->query($lastExhibitIdSQL);
+    $row = $exec->fetch();
+    $last_exhibit_id = $row["LAST_EXHIBIT_ID"];
+    $exec = null;
 
-$entitiesRelationsdb=$db->EntitiesRelations;
-$entity_id = current_user();
-$entitiesRelationsSql="INSERT INTO ".$entitiesRelationsdb." (entity_id, relation_id, relationship_id, type, time) VALUES (".$entity_id->entity_id.", ".$last_exhibit_id.",1,'Item','".date("Y-m-d H:i:s")."')";
-$exec=$db->query($entitiesRelationsSql);
+    $entitiesRelationsdb = $db->EntitiesRelations;
+    $entity_id = current_user();
+    $entitiesRelationsSql = "INSERT INTO " . $entitiesRelationsdb . " (entity_id, relation_id, relationship_id, type, time) VALUES (" . $entity_id->entity_id . ", " . $last_exhibit_id . ",1,'Item','" . date("Y-m-d H:i:s") . "')";
+    $exec = $db->query($entitiesRelationsSql);
 
-$path_title=htmlspecialchars($path_title);
-$path_title=addslashes($path_title);
-$path_description=htmlspecialchars($path_description);
-$path_description=addslashes($path_description);
-$path_url=htmlspecialchars($path_url);
-$path_url=addslashes($path_url);
+    $path_title = htmlspecialchars($path_title);
+    $path_title = addslashes($path_title);
+    $path_description = htmlspecialchars($path_description);
+    $path_description = addslashes($path_description);
+    $path_url = htmlspecialchars($path_url);
+    $path_url = addslashes($path_url);
 
 
-$mainAttributesSql="INSERT INTO omeka_element_texts (record_id ,record_type_id ,element_id,text) VALUES (".$last_exhibit_id.",2,68,'".$path_title."')";
+    $mainAttributesSql = "INSERT INTO omeka_element_texts (record_id ,record_type_id ,element_id,text) VALUES (" . $last_exhibit_id . ",2,68,'" . $path_title . "')";
 //echo $mainAttributesSql;break;
-$db->exec($mainAttributesSql);
+    $db->exec($mainAttributesSql);
 
-$mainAttributesSql="INSERT INTO omeka_element_texts (record_id ,record_type_id ,element_id,text) VALUES (".$last_exhibit_id.",2,59,'".$path_description."')";
+    $mainAttributesSql = "INSERT INTO omeka_element_texts (record_id ,record_type_id ,element_id,text) VALUES (" . $last_exhibit_id . ",2,59,'" . $path_description . "')";
 //echo $mainAttributesSql;break;
-$db->exec($mainAttributesSql);
+    $db->exec($mainAttributesSql);
 
 
-$mainAttributesSql="INSERT INTO omeka_element_texts (record_id ,record_type_id ,element_id,text) VALUES (".$last_exhibit_id.",2,28,'".$path_url."')";
+    $mainAttributesSql = "INSERT INTO omeka_element_texts (record_id ,record_type_id ,element_id,text) VALUES (" . $last_exhibit_id . ",2,28,'" . $path_url . "')";
 //echo $mainAttributesSql;break;
-$db->exec($mainAttributesSql);
+    $db->exec($mainAttributesSql);
 
-/*===================================INSERT record for METADATA===================================*/
-$metadatarecordSql="INSERT INTO metadata_record (id, object_id, object_type,date_modified) VALUES ('', ".$last_exhibit_id.",'item','".$date_modified."')";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-
-
-$lastExhibitIdSQL="SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM metadata_record";
-$exec=$db->query($lastExhibitIdSQL);
-$row=$exec->fetch();
-$last_record_id=$row["LAST_EXHIBIT_ID"];
-$exec=null;
+    /* ===================================INSERT record for METADATA=================================== */
+    $metadatarecordSql = "INSERT INTO metadata_record (id, object_id, object_type,date_modified) VALUES ('', " . $last_exhibit_id . ",'item','" . $date_modified . "')";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('6','".$path_title."','en',1, ".$last_record_id.",1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $lastExhibitIdSQL = "SELECT LAST_INSERT_ID() AS LAST_EXHIBIT_ID FROM metadata_record";
+    $exec = $db->query($lastExhibitIdSQL);
+    $row = $exec->fetch();
+    $last_record_id = $row["LAST_EXHIBIT_ID"];
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('8','".$path_description."','en',1, ".$last_record_id.",1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('6','" . $path_title . "','en',1, " . $last_record_id . ",1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
+
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES ('8','" . $path_description . "','en',1, " . $last_record_id . ",1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //libraries/omeka/record.php
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('32','".$path_url."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('32','" . $path_url . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //libraries/omeka/record.php
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none','".$formetypetext."',1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none','" . $formetypetext . "',1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, ".$last_record_id.",1,1)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, " . $last_record_id . ",1,1)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('53','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('53','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('54','URI','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('54','URI','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','".$path_url."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','" . $path_url . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('60','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('60','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('61','Natural_Europe_Schema','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('61','Natural_Europe_Schema','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('62','Natural_Europe_".$last_record_id."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('62','Natural_Europe_" . $last_record_id . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('63','Parent Element','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('63','Parent Element','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('64',NULL,'none',120,1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('64',NULL,'none',120,1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 //////////////////////rights for coe/////////////////////////////
-/*$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('9','yes','none',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('24','no','none',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('81','Ressource made available for free by the Council of Europe. All rights reserved.','en',1, ".$last_record_id.",1,NULL)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;*/
+    /* $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('9','yes','none',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null;
+      $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('24','no','none',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null;
+      $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('81','Ressource made available for free by the Council of Europe. All rights reserved.','en',1, ".$last_record_id.",1,NULL)";
+      $execmetadatarecordSql=$db->query($metadatarecordSql);
+      $exec=null; */
 
 ///////////////////////vcard///////////////////////////
-$entityuser = current_user(); //print_r($entityuser); break;
-$vcard_name=$entityuser['first_name'];
-				$vcard_surname=$entityuser['last_name'];
-				$vcard_email=$entityuser['email'];
-				$vcard_organization=$entityuser['institution'];
-				
-				if(strlen($vcard_name)>0 or strlen($vcard_surname)>0 or strlen($vcard_email)>0 or strlen($vcard_organization)>0){
+    $entityuser = current_user(); //print_r($entityuser); break;
+    $vcard_name = $entityuser['first_name'];
+    $vcard_surname = $entityuser['last_name'];
+    $vcard_email = $entityuser['email'];
+    $vcard_organization = $entityuser['institution'];
 
-$chechvcard="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-$execchechvcard=$db->query($chechvcard);
-$result_chechvcard=$execchechvcard->fetch();
-$execchechvcard=null;	
+    if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
 
-					if(strlen($result_chechvcard['id'])>0){
-					
-					$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, ".$last_record_id.",1,".$result_chechvcard['id'].",0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+        $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+        $execchechvcard = $db->query($chechvcard);
+        $result_chechvcard = $execchechvcard->fetch();
+        $execchechvcard = null;
 
-					
-					}else{
-					$chechvcardins="insert into metadata_vcard SET name='".$vcard_name."',surname='".$vcard_surname."',email='".$vcard_email."',organization='".$vcard_organization."'";
-					$execchechvcardins=$db->query($chechvcardins);
-					$result_chechvcardins=$execchechvcardins->fetch();
-					$execchechvcardins=null;
+        if (strlen($result_chechvcard['id']) > 0) {
 
-					$chechvcardnew="select * from metadata_vcard WHERE name='".$vcard_name."' and surname='".$vcard_surname."' and email='".$vcard_email."' and organization='".$vcard_organization."'";
-					$execchechvcardnew=$db->query($chechvcardnew);
-					$result_chechvcardnew=$execchechvcardnew->fetch();
-					$execchechvcardnew=null;
-					
-					$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, ".$last_record_id.",1,".$result_chechvcardnew['id'].",0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
-					
-					}
-					
-				}//if isset one value from vcard
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, " . $last_record_id . ",1," . $result_chechvcard['id'] . ",0)";
+            $execmetadatarecordSql = $db->query($metadatarecordSql);
+            $exec = null;
+        } else {
+            $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
+            $execchechvcardins = $db->query($chechvcardins);
+            $result_chechvcardins = $execchechvcardins->fetch();
+            $execchechvcardins = null;
 
+            $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+            $execchechvcardnew = $db->query($chechvcardnew);
+            $result_chechvcardnew = $execchechvcardnew->fetch();
+            $execchechvcardnew = null;
+
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES ('65','creator','none',1, " . $last_record_id . ",1," . $result_chechvcardnew['id'] . ",0)";
+            $execmetadatarecordSql = $db->query($metadatarecordSql);
+            $exec = null;
+        }
+    }//if isset one value from vcard
 ///////////////////////end vcard///////////////////////////
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('66','".$date_modified."','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('66','" . $date_modified . "','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
-$metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('67','NE AP v1.0','none',1, ".$last_record_id.",1,0)";
-$execmetadatarecordSql=$db->query($metadatarecordSql);
-$exec=null;
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('67','NE AP v1.0','none',1, " . $last_record_id . ",1,0)";
+    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $exec = null;
 
 
 
 
-return $last_exhibit_id;
+    return $last_exhibit_id;
 }
 
-function deleteitemlomid($item_eid){
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+function deleteitemlomid($item_eid) {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
-    }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
+        $db = $core->getDb();
 
-$maxIdSQL="DELETE from metadata_record where object_id=".$item_eid." and object_type='item'";
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+
+    $maxIdSQL = "DELETE from metadata_record where object_id=" . $item_eid . " and object_type='item'";
 //echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
+    $exec = $db->query($maxIdSQL);
 //$result_multi=$exec->fetchAll();
-
 }
 
-function deleteteasers($item_eid){
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+function deleteteasers($item_eid) {
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
-    } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
-    }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
+        $db = $core->getDb();
 
-$maxIdSQL="DELETE from omeka_teasers where item_id=".$item_eid." ";
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+
+    $maxIdSQL = "DELETE from omeka_teasers where item_id=" . $item_eid . " ";
 //echo $maxIdSQL;break;
-$exec=$db->query($maxIdSQL);
+    $exec = $db->query($maxIdSQL);
 //$result_multi=$exec->fetchAll();
-
 }
 
+function return_user_of_item($it_id) {
+    require_once 'Zend/Db.php';
 
-function return_user_of_item($it_id)
-	{
-require_once 'Zend/Db.php';	
+    $configSQL = new Zend_Config_Ini('./db.ini', 'database');
 
-$configSQL = new Zend_Config_Ini('./db.ini', 'database');
-
-$params = array(
-'host' => $configSQL->host,
-'dbname' => $configSQL->name,
-'username'=> $configSQL->username,
-'password'=> $configSQL->password,
-'charset'   => $configSQL->charset);
-$db = Zend_Db::factory('Mysqli',$params);
-$db->query("SET NAMES 'utf8'");
+    $params = array(
+        'host' => $configSQL->host,
+        'dbname' => $configSQL->name,
+        'username' => $configSQL->username,
+        'password' => $configSQL->password,
+        'charset' => $configSQL->charset);
+    $db = Zend_Db::factory('Mysqli', $params);
+    $db->query("SET NAMES 'utf8'");
 
 
-$select = $db->select();
-$select->from(array('f'=>'omeka_entities_relations'),array('entity_id','id'));
-$select->join(array('sec'=>'omeka_entities'),'f.entity_id=sec.id',array('first_name','last_name'));
-$select->where('f.relation_id = ?',$it_id);
-$select->where('f.type = ?','Item');
-$select->where('f.relationship_id = ?','1');
-$select->order(array('f.id ASC'));
-$rowset = $db->fetchRow($select);
-		$name= $rowset['last_name']." ".$rowset['first_name'];
-		return $name;
-	}
- 
+    $select = $db->select();
+    $select->from(array('f' => 'omeka_entities_relations'), array('entity_id', 'id'));
+    $select->join(array('sec' => 'omeka_entities'), 'f.entity_id=sec.id', array('first_name', 'last_name'));
+    $select->where('f.relation_id = ?', $it_id);
+    $select->where('f.type = ?', 'Item');
+    $select->where('f.relationship_id = ?', '1');
+    $select->order(array('f.id ASC'));
+    $rowset = $db->fetchRow($select);
+    $name = $rowset['last_name'] . " " . $rowset['first_name'];
+    return $name;
+}
 
- function saveomekasql($sql){
+function saveomekasql($sql) {
 
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
 
 //echo $sql; break;
-$exec=$db->query($sql);
-$exec=null;
-
+    $exec = $db->query($sql);
+    $exec = null;
 }
 
- function viewhyperlinkthumb($item_id,$widththumb=50){
+function viewhyperlinkthumb($item_id, $widththumb = 50) {
 
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
 
-$sqlit="SELECT * FROM omeka_items WHERE id=".$item_id."";
-		$execrecordit=$db->query($sqlit);
-		$datarecordit=$execrecordit->fetch();
+    $sqlit = "SELECT * FROM omeka_items WHERE id=" . $item_id . "";
+    $execrecordit = $db->query($sqlit);
+    $datarecordit = $execrecordit->fetch();
 
-		$sql="SELECT * FROM metadata_record WHERE object_id=".$item_id." and object_type='item'";
-		$execrecord=$db->query($sql);
-		$datarecord=$execrecord->fetch();
-		
-		$sql="SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
+    $sql = "SELECT * FROM metadata_record WHERE object_id=" . $item_id . " and object_type='item'";
+    $execrecord = $db->query($sql);
+    $datarecord = $execrecord->fetch();
 
-		WHERE a.record_id=".$datarecord['id']." and a.element_hierarchy=32";
-$exec5=$db->query($sql);
-$data51=$exec5->fetch();
+    $sql = "SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
 
-$sql="SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
-		WHERE a.record_id=".$datarecord['id']." and a.element_hierarchy=34";
-$exec5=$db->query($sql);
-$data52=$exec5->fetch();
+		WHERE a.record_id=" . $datarecord['id'] . " and a.element_hierarchy=32";
+    $exec5 = $db->query($sql);
+    $data51 = $exec5->fetch();
+
+    $sql = "SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
+		WHERE a.record_id=" . $datarecord['id'] . " and a.element_hierarchy=34";
+    $exec5 = $db->query($sql);
+    $data52 = $exec5->fetch();
 
 
-$sql="SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
-		WHERE a.record_id=".$datarecord['id']." and a.element_hierarchy=33";
-$exec5=$db->query($sql);
-$dataformat=$exec5->fetch();
-if($dataformat['vocabulary_record_id']>0){
-$sql2 = "SELECT * FROM metadata_vocabulary_record WHERE id=" . $dataformat['vocabulary_record_id'] . " ";
-$exec2 = $db->query($sql2);
-$dataformatfromvoc = $exec2->fetch();
+    $sql = "SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
+		WHERE a.record_id=" . $datarecord['id'] . " and a.element_hierarchy=33";
+    $exec5 = $db->query($sql);
+    $dataformat = $exec5->fetch();
+    if ($dataformat['vocabulary_record_id'] > 0) {
+        $sql2 = "SELECT * FROM metadata_vocabulary_record WHERE id=" . $dataformat['vocabulary_record_id'] . " ";
+        $exec2 = $db->query($sql2);
+        $dataformatfromvoc = $exec2->fetch();
+    }
+
+    $uri = WEB_ROOT;
+    if (stripos($data51['value'], ".jpg") > 0 or stripos($data51['value'], ".gif") > 0 or $datarecordit['item_type_id'] == 6 or stripos($data51['value'], ".jpeg") > 0 or stripos($data51['value'], ".png") > 0 or stripos($data51['value'], ".bmp") > 0 or stripos($data51['value'], "content/thumbs/src") > 0 or $dataformatfromvoc['value'] == "IMAGE") {
+
+        $string = '<img src="' . $data51['value'] . '" style=" width:' . $widththumb . 'px; max-height:' . $widththumb . 'px;"/><br>';
+    } elseif (stripos($data51['value'], ".pdf") > 0) {
+
+        $string = '<img src="' . $uri . '/application/views/scripts/images/files-icons/pdf.png" width="' . $widththumb . 'px; max-height:' . $widththumb . 'px;"/><br>';
+    } elseif (stripos($data51['value'], ".tiff") > 0 or stripos($data51['value'], ".tif") > 0) {
+
+        //http://education.natural-europe.eu/natural_europe/custom/phpThumb/phpThumb.php?src=/natural_europe/archive/files/riekko-ansasta2_72a2f5e439.tif&w=135
+        $string = '<img src="' . $uri . '/custom/phpThumb/phpThumb.php?src=' . $data51['value'] . '"  width="' . $widththumb . 'px; max-height:' . $widththumb . 'px;"/><br>';
+    } elseif (stripos($data51['value'], ".doc") > 0 or stripos($data51['value'], "docx") > 0 or stripos($dataformatfromvoc['value'], "word") > 0) {
+
+        $string = '<img src="' . $uri . '/application/views/scripts/images/files-icons/word.png" width="' . $widththumb . 'px; max-height:' . $widththumb . 'px;"/><br>';
+    } elseif (stripos($data51['value'], ".ppt") > 0 or stripos($data51['value'], ".pptx") > 0 or stripos($data51['value'], ".pps") > 0 or stripos($dataformatfromvoc['value'], "powerpoint") > 0) {
+
+        $string = '<img src="' . $uri . '/application/views/scripts/images/files-icons/powerpoint.png" width="' . $widththumb . 'px; max-height:' . $widththumb . 'px;"/><br>';
+    } elseif (stripos($data51['value'], "html") > 0 or stripos($data51['value'], "htm") > 0 or stripos($data51['value'], "asp") > 0 or stripos($dataformatfromvoc['value'], "HTML") > 0 or stripos($dataformatfromvoc['value'], "Html") > 0 or $dataformatfromvoc['value'] == 'html' or $dataformatfromvoc['value'] == 'html/text' or $dataformatfromvoc['value'] == 'HTML') {
+
+        $string = '<img src="http://open.thumbshots.org/image.aspx?url=' . $data51['value'] . '" style=" width:' . $widththumb . 'px; max-height:' . $widththumb . 'px;"><br>';
+        // echo ''.$data51['value'].'<br>';
+    } elseif (stripos($data51['value'], ".emf") > 0) {
+        
+    } else {
+
+        $string = '<img src="http://open.thumbshots.org/image.aspx?url=' . $data51['value'] . '" style=" width:' . $widththumb . 'px; max-height:' . $widththumb . 'px; "><br>';
+    }
+    return $string;
 }
 
-$uri=WEB_ROOT;	
-  if(stripos($data51['value'],".jpg")>0 or stripos($data51['value'],".gif")>0 or $datarecordit['item_type_id']==6 or stripos($data51['value'],".jpeg")>0 or stripos($data51['value'],".png")>0 or stripos($data51['value'],".bmp")>0 or stripos($data51['value'],"content/thumbs/src")>0 or $dataformatfromvoc['value']=="IMAGE"){
-		   
-		   $string= '<img src="'.$data51['value'].'" style=" width:'.$widththumb.'px; max-height:'.$widththumb.'px;"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".pdf")>0){
-		   
-		   $string= '<img src="'.$uri.'/application/views/scripts/images/files-icons/pdf.png" width="'.$widththumb.'px; max-height:'.$widththumb.'px;"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".tiff")>0 or stripos($data51['value'],".tif")>0){
-		   
-		   //http://education.natural-europe.eu/natural_europe/custom/phpThumb/phpThumb.php?src=/natural_europe/archive/files/riekko-ansasta2_72a2f5e439.tif&w=135
-		   $string= '<img src="'.$uri.'/custom/phpThumb/phpThumb.php?src='.$data51['value'].'"  width="'.$widththumb.'px; max-height:'.$widththumb.'px;"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".doc")>0  or stripos($data51['value'],"docx")>0  or stripos($dataformatfromvoc['value'],"word")>0){
-		   
-		   $string= '<img src="'.$uri.'/application/views/scripts/images/files-icons/word.png" width="'.$widththumb.'px; max-height:'.$widththumb.'px;"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".ppt")>0 or stripos($data51['value'],".pptx")>0 or stripos($data51['value'],".pps")>0 or stripos($dataformatfromvoc['value'],"powerpoint")>0){
-		   
-		   $string= '<img src="'.$uri.'/application/views/scripts/images/files-icons/powerpoint.png" width="'.$widththumb.'px; max-height:'.$widththumb.'px;"/><br>';
-		   
-		   
-		   }elseif(stripos($data51['value'],"html")>0 or stripos($data51['value'],"htm")>0 or stripos($data51['value'],"asp")>0 or stripos($dataformatfromvoc['value'],"HTML")>0 or stripos($dataformatfromvoc['value'],"Html")>0 or $dataformatfromvoc['value']=='html' or $dataformatfromvoc['value']=='html/text' or $dataformatfromvoc['value']=='HTML'){
-		   
-		   $string= '<img src="http://open.thumbshots.org/image.aspx?url='.$data51['value'].'" style=" width:'.$widththumb.'px; max-height:'.$widththumb.'px;"><br>';
-		   // echo ''.$data51['value'].'<br>';
-		   
-		   }elseif(stripos($data51['value'],".emf")>0 ){
-		   
-		   } else{ 
-		   
-		   $string= '<img src="http://open.thumbshots.org/image.aspx?url='.$data51['value'].'" style=" width:'.$widththumb.'px; max-height:'.$widththumb.'px; "><br>';
-		   	
-		   
-		   }
-		   return $string;
+function viewhyperlinkimage($item_id) {
 
- }
- 
- function viewhyperlinkimage($item_id){
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
-require_once 'Omeka/Core.php';
-$core = new Omeka_Core;
-
-try {
-    $db = $core->getDb();
-    
-    //Force the Zend_Db to make the connection and catch connection errors
     try {
-        $mysqli = $db->getConnection()->getConnection();
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
     } catch (Exception $e) {
-        throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-} catch (Exception $e) {
-	die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
-}	
 
-$sqlit="SELECT * FROM omeka_items WHERE id=".$item_id."";
-		$execrecordit=$db->query($sqlit);
-		$datarecordit=$execrecordit->fetch();
+    $sqlit = "SELECT * FROM omeka_items WHERE id=" . $item_id . "";
+    $execrecordit = $db->query($sqlit);
+    $datarecordit = $execrecordit->fetch();
 
-		$sql="SELECT * FROM metadata_record WHERE object_id=".$item_id." and object_type='item'";
-		$execrecord=$db->query($sql);
-		$datarecord=$execrecord->fetch();
-		
-		$sql="SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
-		WHERE a.record_id=".$datarecord['id']." and a.element_hierarchy=32";
-$exec5=$db->query($sql);
-$data51=$exec5->fetch();
+    $sql = "SELECT * FROM metadata_record WHERE object_id=" . $item_id . " and object_type='item'";
+    $execrecord = $db->query($sql);
+    $datarecord = $execrecord->fetch();
 
-$sql="SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
-		WHERE a.record_id=".$datarecord['id']." and a.element_hierarchy=34";
-$exec5=$db->query($sql);
-$data52=$exec5->fetch();
+    $sql = "SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
+		WHERE a.record_id=" . $datarecord['id'] . " and a.element_hierarchy=32";
+    $exec5 = $db->query($sql);
+    $data51 = $exec5->fetch();
+
+    $sql = "SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
+		WHERE a.record_id=" . $datarecord['id'] . " and a.element_hierarchy=34";
+    $exec5 = $db->query($sql);
+    $data52 = $exec5->fetch();
 
 
-$sql="SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
-		WHERE a.record_id=".$datarecord['id']." and a.element_hierarchy=33";
-$exec5=$db->query($sql);
-$dataformat=$exec5->fetch();
-if($dataformat['vocabulary_record_id']>0){
-$sql2 = "SELECT * FROM metadata_vocabulary_record WHERE id=" . $dataformat['vocabulary_record_id'] . " ";
-$exec2 = $db->query($sql2);
-$dataformatfromvoc = $exec2->fetch();
+    $sql = "SELECT a.* FROM metadata_element_value a join metadata_element_hierarchy b ON b.id=a.element_hierarchy 
+		WHERE a.record_id=" . $datarecord['id'] . " and a.element_hierarchy=33";
+    $exec5 = $db->query($sql);
+    $dataformat = $exec5->fetch();
+    if ($dataformat['vocabulary_record_id'] > 0) {
+        $sql2 = "SELECT * FROM metadata_vocabulary_record WHERE id=" . $dataformat['vocabulary_record_id'] . " ";
+        $exec2 = $db->query($sql2);
+        $dataformatfromvoc = $exec2->fetch();
+    }
+    $uri = WEB_ROOT;
+    if (stripos($data51['value'], ".jpg") > 0 or stripos($data51['value'], ".gif") > 0 or $datarecordit['item_type_id'] == 6 or stripos($data51['value'], ".jpeg") > 0 or stripos($data51['value'], ".png") > 0 or stripos($data51['value'], ".bmp") > 0 or stripos($data51['value'], "content/thumbs/src") > 0 or $dataformatfromvoc['value'] == "IMAGE") {
+
+        $string = '<img src="' . $data51['value'] . '" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
+    } elseif (stripos($data51['value'], ".tiff") > 0 or stripos($data51['value'], ".tif") > 0) {
+
+        //http://education.natural-europe.eu/natural_europe/custom/phpThumb/phpThumb.php?src=/natural_europe/archive/files/riekko-ansasta2_72a2f5e439.tif&w=135
+        $string = '<img src="' . $uri . '/custom/phpThumb/phpThumb.php?src=' . $data51['value'] . '" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
+    } elseif (stripos($data51['value'], ".pdf") > 0) {
+
+        $string = '<img src="' . $uri . '/application/views/scripts/images/files-icons/pdf.png" width="40px"/><br>';
+    } elseif (stripos($data51['value'], ".doc") > 0 or stripos($data51['value'], "docx") > 0 or stripos($dataformatfromvoc['value'], "word") > 0) {
+
+        $string = '<img src="' . $uri . '/application/views/scripts/images/files-icons/word.png" width="40px"/><br>';
+    } elseif (stripos($data51['value'], ".ppt") > 0 or stripos($data51['value'], ".pptx") > 0 or stripos($data51['value'], ".pps") > 0 or stripos($dataformatfromvoc['value'], "powerpoint") > 0) {
+
+        $string = '<img src="' . $uri . '/application/views/scripts/images/files-icons/powerpoint.png" width="40px"/><br>';
+    } elseif (stripos($data51['value'], "html") > 0 or stripos($data51['value'], "htm") > 0 or stripos($data51['value'], "asp") > 0 or stripos($dataformatfromvoc['value'], "HTML") > 0 or stripos($dataformatfromvoc['value'], "Html") > 0 or $dataformatfromvoc['value'] == 'html' or $dataformatfromvoc['value'] == 'html/text' or $dataformatfromvoc['value'] == 'HTML') {
+
+        $string = '<img src="http://open.thumbshots.org/image.aspx?url=' . $data51['value'] . '" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
+        // echo ''.$data51['value'].'<br>';
+    } elseif (stripos($data51['value'], ".emf") > 0) {
+        
+    } else {
+
+        $string = '<img src="http://open.thumbshots.org/image.aspx?url=' . $data51['value'] . '" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
+    }
+    return $string;
 }
-$uri=WEB_ROOT;	
-  if(stripos($data51['value'],".jpg")>0 or stripos($data51['value'],".gif")>0  or $datarecordit['item_type_id']==6 or stripos($data51['value'],".jpeg")>0 or stripos($data51['value'],".png")>0 or stripos($data51['value'],".bmp")>0 or stripos($data51['value'],"content/thumbs/src")>0 or $dataformatfromvoc['value']=="IMAGE"){
-		   
-		   $string= '<img src="'.$data51['value'].'" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".tiff")>0 or stripos($data51['value'],".tif")>0){
-		   
-		   //http://education.natural-europe.eu/natural_europe/custom/phpThumb/phpThumb.php?src=/natural_europe/archive/files/riekko-ansasta2_72a2f5e439.tif&w=135
-		   $string= '<img src="'.$uri.'/custom/phpThumb/phpThumb.php?src='.$data51['value'].'" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".pdf")>0){
-		   
-		   $string= '<img src="'.$uri.'/application/views/scripts/images/files-icons/pdf.png" width="40px"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".doc")>0  or stripos($data51['value'],"docx")>0  or stripos($dataformatfromvoc['value'],"word")>0){
-		   
-		   $string= '<img src="'.$uri.'/application/views/scripts/images/files-icons/word.png" width="40px"/><br>';
-		   
-		   }elseif(stripos($data51['value'],".ppt")>0 or stripos($data51['value'],".pptx")>0 or stripos($data51['value'],".pps")>0 or stripos($dataformatfromvoc['value'],"powerpoint")>0){
-		   
-		   $string= '<img src="'.$uri.'/application/views/scripts/images/files-icons/powerpoint.png" width="40px"/><br>';
-		   
-		   
-		   }elseif(stripos($data51['value'],"html")>0 or stripos($data51['value'],"htm")>0 or stripos($data51['value'],"asp")>0 or stripos($dataformatfromvoc['value'],"HTML")>0 or stripos($dataformatfromvoc['value'],"Html")>0 or $dataformatfromvoc['value']=='html' or $dataformatfromvoc['value']=='html/text' or $dataformatfromvoc['value']=='HTML'){
-		   
-		   $string= '<img src="http://open.thumbshots.org/image.aspx?url='.$data51['value'].'" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
-		   // echo ''.$data51['value'].'<br>';
-		   
-		   }elseif(stripos($data51['value'],".emf")>0 ){
-		   
-		   		   
-		   } else{ 
-		   
-		   $string= '<img src="http://open.thumbshots.org/image.aspx?url='.$data51['value'].'" style=" max-width:500px; max-height:400px; height:auto;"/><br>';
-		   	
-		   
-		   }
-		   return $string;
-		   
 
- }
+function ingest_search_total_block($search_item, $search_type = 1) {
 
- function ingest_search_total_block($search_item,$search_type=1){
- 
- libxml_use_internal_errors(false);
+    libxml_use_internal_errors(false);
 
 
 /////////////////////////general//////////////////
-if(isset($search_item)){$europeanatext= $search_item;
-$search_item=str_replace(' ','+', $search_item);}
+    if (isset($search_item)) {
+        $europeanatext = $search_item;
+        $search_item = str_replace(' ', '+', $search_item);
+    }
 /////////////////////////general//////////////////
-
 /////////////////////europeana/////////////////////
-if(isset($_POST['bytype'])){$europenana_type= "+europeana_type:*".$_POST['bytype']."*";} else{$europenana_type="";}
- $feedURL = @simplexml_load_file('http://api.europeana.eu/api/opensearch.rss?searchTerms=text:"'.$europeanatext.'*"'.$europenana_type.'&startPage=1&wskey=IIRTOOIRNG', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
- 
-      // read feed into SimpleXML object
-      //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
-      
-      // get summary counts from opensearch: namespace
-     // print_r($sxmlyou);
-	 $europeana_child1=$feedURL->children();
-	 $europeana_child2=$europeana_child1->children();
+    if (isset($_POST['bytype'])) {
+        $europenana_type = "+europeana_type:*" . $_POST['bytype'] . "*";
+    } else {
+        $europenana_type = "";
+    }
+    $feedURL = @simplexml_load_file('http://api.europeana.eu/api/opensearch.rss?searchTerms=text:"' . $europeanatext . '*"' . $europenana_type . '&startPage=1&wskey=IIRTOOIRNG', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
 
-      $counts = $europeana_child1->children('http://a9.com/-/spec/opensearch/1.1/');
-     $total_euroepana = $counts->totalResults; //break;
-	  
+    // read feed into SimpleXML object
+    //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+    // get summary counts from opensearch: namespace
+    // print_r($sxmlyou);
+    $europeana_child1 = $feedURL->children();
+    $europeana_child2 = $europeana_child1->children();
+
+    $counts = $europeana_child1->children('http://a9.com/-/spec/opensearch/1.1/');
+    $total_euroepana = $counts->totalResults; //break;
 ///////////////////////euroepana////////////////////////
-
 /////////////////////Natural Europe/////////////////////
-if(isset($_POST['bytype'])){$bytypeforurl= "type:".$_POST['bytype']." AND ";} else{$bytypeforurl="";}
-if(isset($_POST['dataProvider'])){$dataProviderforurl= "dataProvider:".$_POST['dataProvider']." AND ";} else{$dataProviderforurl="";}
- //$naturaleuropexml = @simplexml_load_file('http://collections.natural-europe.eu/cmss/search?query='.$bytypeforurl.''.$dataProviderforurl.'text:'.$europeanatext.'&start='.$startPageurl.'', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
- 
-      // read feed into SimpleXML object
-      //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
-      
-      // get summary counts from opensearch: namespace
-     // print_r($sxmlyou);
-	 //$naturaleurope_child1=$naturaleuropexml->children();
-	 //$naturaleurope_child2=$naturaleurope_child1->children();
-
-     // $counts = $naturaleurope_child1->children('http://a9.com/-/spec/opensearch/1.1/');
+    if (isset($_POST['bytype'])) {
+        $bytypeforurl = "type:" . $_POST['bytype'] . " AND ";
+    } else {
+        $bytypeforurl = "";
+    }
+    if (isset($_POST['dataProvider'])) {
+        $dataProviderforurl = "dataProvider:" . $_POST['dataProvider'] . " AND ";
+    } else {
+        $dataProviderforurl = "";
+    }
+    //$naturaleuropexml = @simplexml_load_file('http://collections.natural-europe.eu/cmss/search?query='.$bytypeforurl.''.$dataProviderforurl.'text:'.$europeanatext.'&start='.$startPageurl.'', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+    // read feed into SimpleXML object
+    //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+    // get summary counts from opensearch: namespace
+    // print_r($sxmlyou);
+    //$naturaleurope_child1=$naturaleuropexml->children();
+    //$naturaleurope_child2=$naturaleurope_child1->children();
+    // $counts = $naturaleurope_child1->children('http://a9.com/-/spec/opensearch/1.1/');
     // $total_naturaleurope = $counts->totalResults; //break;
-$europeanatext_forcultural=urlencode($europeanatext);
-            $resp = call_cultural_federation($europeanatext_forcultural);
+    $europeanatext_forcultural = urlencode($europeanatext);
+    $resp = call_cultural_federation($europeanatext_forcultural);
 
-            if ($resp) {
+    if ($resp) {
 
-                foreach ($resp as $key => $resp1) {
-                    //echo $key . '<br>';
-                    foreach ($resp1 as $key2 => $resp2) {
-                        if ($key2 == 'nrOfResults') {
-                            $total_naturaleurope = $resp2;
-                        }
-                        //echo $key2 . ':' . $resp2 . '<br>';
-                    }
+        foreach ($resp as $key => $resp1) {
+            //echo $key . '<br>';
+            foreach ($resp1 as $key2 => $resp2) {
+                if ($key2 == 'nrOfResults') {
+                    $total_naturaleurope = $resp2;
                 }
+                //echo $key2 . ':' . $resp2 . '<br>';
             }
-	  
-///////////////////////Natural Europe////////////////////////
+        }
+    }
 
+///////////////////////Natural Europe////////////////////////
 /////////////////////ariadne/////////////////////
 
- $feedURL2 = @simplexml_load_file('http://ariadne.cs.kuleuven.be/ariadne-partners/api/sqitarget?query="'.$europeanatext.'"&start=1&size=12&lang=plql1&format=lom', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
- 
-      // read feed into SimpleXML object
-      //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
-      
-      // get summary counts from opensearch: namespace
-     // print_r($sxmlyou);
+    $feedURL2 = @simplexml_load_file('http://ariadne.cs.kuleuven.be/ariadne-partners/api/sqitarget?query="' . $europeanatext . '"&start=1&size=12&lang=plql1&format=lom', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
 
-      //$counts = $europeana_child1->children('http://a9.com/-/spec/opensearch/1.1/');
-     $total_ariadne = $feedURL2['cardinality']; //break;
-	  
+    // read feed into SimpleXML object
+    //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+    // get summary counts from opensearch: namespace
+    // print_r($sxmlyou);
+    //$counts = $europeana_child1->children('http://a9.com/-/spec/opensearch/1.1/');
+    $total_ariadne = $feedURL2['cardinality']; //break;
 ///////////////////////ariadne////////////////////////
- 
- ?>
-   <script>
-  function GoPage(iPage) {
-  
-    document.form2.startPage.value = iPage;
-	document.form2.submit();
-}
-  function submitform() {
-	  
-	
-		document.formnatural.submit();
-	}
-  function submitform2() {
-	  
-		
-		document.formeuropeana.submit();
-	}
-	function submitform3() {
-	  
-		
-		document.formariadne.submit();
-	}
-
-  </script>
-
-  <form action="naturaleurope" method="post" name="formnatural" style=" float:left; margin-top:10px; ">
-  <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-  <input type="hidden" name="startPage" value="1">
-<input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-<?php if(isset($_POST['bytype'])){?> <input type="hidden" name="bytype" value="<?php echo $_POST['bytype']; ?>"> <?php } ?>
-<a href="#" onclick="submitform();" <?php if($search_type==1){ echo 'style=" font-weight:bold; text-decoration:underline;"';} ?>> Natural Europe (<?php echo $total_naturaleurope; ?>)</a><br>
-</form>
-<br>
-  <form action="europeana" method="post" name="formeuropeana" style=" float:left; margin-top:10px; ">
-  <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-  <input type="hidden" name="startPage" value="1">
-<input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-<?php if(isset($_POST['bytype'])){?> <input type="hidden" name="bytype" value="<?php echo $_POST['bytype']; ?>"> <?php } ?>
-<a href="#" onclick="submitform2();" <?php if($search_type==2){ echo 'style=" font-weight:bold; text-decoration:underline;"';} ?>>Europeana (<?php echo $total_euroepana; ?>)  </a><br>
-</form>
-<br>
-  <form action="ariadne" method="post" name="formariadne" style=" float:left; margin-top:10px; ">
-  <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-  <input type="hidden" name="startPage" value="1">
-<input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-<a href="#" onclick="submitform3();" <?php if($search_type==3){ echo 'style=" font-weight:bold; text-decoration:underline;"';} ?>>Ariadne (<?php echo $total_ariadne; ?>)  </a>
-
-</form>
- 
- <?php
- }
-
-
- 
- function ingest_search_providers($search_item,$dataProvider=NULL){
- 
- libxml_use_internal_errors(false);
-
-
-/////////////////////////general//////////////////
-if(isset($search_item)){$europeanatext= $search_item;
-$search_item=str_replace(' ','+', $search_item);}
-/////////////////////////general//////////////////
-
-
-/////////////////////Natural Europe/////////////////////
-if(isset($_POST['bytype'])){$bytypeforurl= "type:".$_POST['bytype']." AND ";} else{$bytypeforurl="";}
-$search_type=0;
-
-if(isset($_POST['dataProvider']) and $_POST['dataProvider']==$dataProvider){$search_type=1;}//echo $search_type;
-//$dataProvider="nhmc";
-if(isset($dataProvider)){$dataProviderforurl= "dataProvider:".$dataProvider." AND ";} else{$dataProviderforurl="";}
- $naturaleuropexml = simplexml_load_file('http://collections.natural-europe.eu/cmss/search?query='.$bytypeforurl.''.$dataProviderforurl.'text:'.$europeanatext.'&start='.$startPageurl.'', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
- 
-      // read feed into SimpleXML object
-      //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+    ?>
+    <script>
+        function GoPage(iPage) {
       
-      // get summary counts from opensearch: namespace
-     // print_r($sxmlyou);
-	 $naturaleurope_child1=$naturaleuropexml->children();
-	 $naturaleurope_child2=$naturaleurope_child1->children();
+            document.form2.startPage.value = iPage;
+            document.form2.submit();
+        }
+        function submitform() {
+    	  
+    	
+            document.formnatural.submit();
+        }
+        function submitform2() {
+    	  
+    		
+            document.formeuropeana.submit();
+        }
+        function submitform3() {
+    	  
+    		
+            document.formariadne.submit();
+        }
 
-      $counts = $naturaleurope_child1->children('http://a9.com/-/spec/opensearch/1.1/');
-     $total_naturaleurope = $counts->totalResults; //break;
-	  
+    </script>
+
+    <form action="naturaleurope" method="post" name="formnatural" style=" float:left; margin-top:10px; ">
+        <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+        <input type="hidden" name="startPage" value="1">
+        <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+    <?php if (isset($_POST['bytype'])) { ?> <input type="hidden" name="bytype" value="<?php echo $_POST['bytype']; ?>"> <?php } ?>
+        <a href="#" onclick="submitform();" <?php if ($search_type == 1) {
+        echo 'style=" font-weight:bold; text-decoration:underline;"';
+    } ?>> Natural Europe (<?php echo $total_naturaleurope; ?>)</a><br>
+    </form>
+    <br>
+    <form action="europeana" method="post" name="formeuropeana" style=" float:left; margin-top:10px; ">
+        <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+        <input type="hidden" name="startPage" value="1">
+        <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+    <?php if (isset($_POST['bytype'])) { ?> <input type="hidden" name="bytype" value="<?php echo $_POST['bytype']; ?>"> <?php } ?>
+        <a href="#" onclick="submitform2();" <?php if ($search_type == 2) {
+        echo 'style=" font-weight:bold; text-decoration:underline;"';
+    } ?>>Europeana (<?php echo $total_euroepana; ?>)  </a><br>
+    </form>
+    <br>
+    <form action="ariadne" method="post" name="formariadne" style=" float:left; margin-top:10px; ">
+        <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+        <input type="hidden" name="startPage" value="1">
+        <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+        <a href="#" onclick="submitform3();" <?php if ($search_type == 3) {
+        echo 'style=" font-weight:bold; text-decoration:underline;"';
+    } ?>>Ariadne (<?php echo $total_ariadne; ?>)  </a>
+
+    </form>
+
+    <?php
+}
+
+function ingest_search_providers($search_item, $dataProvider = NULL) {
+
+    libxml_use_internal_errors(false);
+
+
+/////////////////////////general//////////////////
+    if (isset($search_item)) {
+        $europeanatext = $search_item;
+        $search_item = str_replace(' ', '+', $search_item);
+    }
+/////////////////////////general//////////////////
+/////////////////////Natural Europe/////////////////////
+    if (isset($_POST['bytype'])) {
+        $bytypeforurl = "type:" . $_POST['bytype'] . " AND ";
+    } else {
+        $bytypeforurl = "";
+    }
+    $search_type = 0;
+
+    if (isset($_POST['dataProvider']) and $_POST['dataProvider'] == $dataProvider) {
+        $search_type = 1;
+    }//echo $search_type;
+//$dataProvider="nhmc";
+    if (isset($dataProvider)) {
+        $dataProviderforurl = "dataProvider:" . $dataProvider . " AND ";
+    } else {
+        $dataProviderforurl = "";
+    }
+    $naturaleuropexml = simplexml_load_file('http://collections.natural-europe.eu/cmss/search?query=' . $bytypeforurl . '' . $dataProviderforurl . 'text:' . $europeanatext . '&start=' . $startPageurl . '', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+
+    // read feed into SimpleXML object
+    //$sxmlyou = simplexml_load_file($feedURL, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+    // get summary counts from opensearch: namespace
+    // print_r($sxmlyou);
+    $naturaleurope_child1 = $naturaleuropexml->children();
+    $naturaleurope_child2 = $naturaleurope_child1->children();
+
+    $counts = $naturaleurope_child1->children('http://a9.com/-/spec/opensearch/1.1/');
+    $total_naturaleurope = $counts->totalResults; //break;
 ///////////////////////Natural Europe////////////////////////
+    ?>
 
 
- ?>
-
-
-<?php if($total_naturaleurope>0){ ?>
-<br><br>
-  <form action="#" method="post" name="<?php echo $dataProvider; ?>form" style=" float:left; margin-top:10px; ">
-  <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-  <input type="hidden" name="startPage" value="1">
-<input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
-<input type="hidden" name="dataProvider" value="<?php echo $dataProvider; ?>">
-<?php if(isset($_POST['bytype'])){?> <input type="hidden" name="bytype" value="<?php echo $_POST['bytype']; ?>"> <?php } ?>
+    <?php if ($total_naturaleurope > 0) { ?>
+        <br><br>
+        <form action="#" method="post" name="<?php echo $dataProvider; ?>form" style=" float:left; margin-top:10px; ">
+            <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+            <input type="hidden" name="startPage" value="1">
+            <input type="hidden" name="europeanatext" value="<?php echo $europeanatext; ?>">
+            <input type="hidden" name="dataProvider" value="<?php echo $dataProvider; ?>">
+        <?php if (isset($_POST['bytype'])) { ?> <input type="hidden" name="bytype" value="<?php echo $_POST['bytype']; ?>"> <?php } ?>
 
 
 
-<a href="#" style="text-transform:uppercase;<?php if($search_type==1){ echo 'font-weight:bold; text-decoration:underline;';} ?>" onclick="document.<?php echo $dataProvider; ?>form.submit();return false;"> <?php echo $dataProvider; ?> (<?php echo $total_naturaleurope; ?>)</a>
+            <a href="#" style="text-transform:uppercase;<?php if ($search_type == 1) {
+            echo 'font-weight:bold; text-decoration:underline;';
+        } ?>" onclick="document.<?php echo $dataProvider; ?>form.submit();return false;"> <?php echo $dataProvider; ?> (<?php echo $total_naturaleurope; ?>)</a>
 
-</form>
-<?php } ?>
+        </form>
+    <?php } ?>
 
 
- <?php
- }
+    <?php
+}
 ?>
