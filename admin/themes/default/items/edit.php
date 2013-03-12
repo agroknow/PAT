@@ -11,7 +11,7 @@
 <h1><?php echo $itemTitle; ?></h1>
 <?php echo delete_button(null, 'delete-item', __('Delete this Item'), array(), 'delete-record-form'); ?>
 <div>
-<a style="position:relative; float:right; right:0px;" id="show_optional">Enrich Metadata</a>
+<a style="position:relative; float:right; right:0px;cursor: hand; cursor: pointer;" id="show_optional">Enrich Metadata</a>
 </div>
 <br style="clear:both;">
 
@@ -31,11 +31,13 @@ jQuery(function(){
 			 if(value=='none'){
 				 jQuery('.optional_element').css("display", "block"); 
 				  jQuery('#show_optional').css("background-color", "#FFFFFF");
+                                   jQuery('#show_optional').text("Only recommended");
 
  
 			 }else{
 				 jQuery('.optional_element').css("display", "none"); 
 				  jQuery('#show_optional').css("background-color", "#F4F3EB");
+                                   jQuery('#show_optional').text("Enrich Metadata");
 
 
 			 }

@@ -6,6 +6,31 @@ head(array('title'=>$title, 'bodyclass'=>'exhibits'));
 <?php if (has_permission('ExhibitBuilder_Exhibits','add')): ?>
     <p id="add-exhibit" class="add-button"><a class="add" href="<?php echo html_escape(uri('exhibits/add')); ?>"><?php echo __('Add Pathway'); ?></a></p>
 <?php endif; ?>
+    <script>
+        function showloader() { 
+
+            document.getElementById('loadertoopenpage_div').style.display='block';
+            document.getElementById('loadertoopenpage_img').style.display='block';
+
+        }
+
+        function hideloader() { 
+
+            document.getElementByID('loadertoopenpage').style.display='none';
+
+        }
+    </script>
+    <div id="loadertoopenpage_div" style="display: none; position: fixed; top: 0px; left: 0px; width:100%; height: 100%;  text-align: center; 
+         background-color: silver;
+         opacity:0.3;
+         filter:alpha(opacity=30);">
+    </div>
+    <div id="loadertoopenpage_img" style="display: none; position: fixed; top: 0px; left: 0px; width:100%; height: 100%;  text-align: center; 
+         background-image: url(<?php echo uri('themes/default/images/loader.gif') ?>);
+         background-position: center center;
+         background-repeat: no-repeat; z-index: 1000;">
+
+    </div>
 <div id="primary">
     
 <?php if (!count($exhibits)): ?> 
@@ -79,7 +104,7 @@ if($user['id']==1 or $user['role']=='super'){ ?>
         </td> */?>
         <td>
         <?php if (exhibit_builder_user_can_edit($exhibit)): ?>
-        <?php echo link_to($exhibit, 'edit', __('Edit'), array('class'=>'edit')); ?>
+        <?php echo link_to($exhibit, 'edit', __('Edit'), array('class'=>'edit','onclick'=>'showloader();')); ?>
         <?php endif; ?>
         </td>
         <td>
