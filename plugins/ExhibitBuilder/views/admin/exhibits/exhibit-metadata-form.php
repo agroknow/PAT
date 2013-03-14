@@ -235,10 +235,10 @@ if ($exhibit->title) {
             if (isset($exhibit['id'])) {
                 ?>
 
-                <div class="field">
-                    <?php echo text(array('name' => 'slug', 'id' => 'slug', 'class' => 'textinput'), $exhibit->slug, 'Pathway Slug (' . __('no spaces or special characters') . ')'); ?>
-                    <?php echo form_error('slug'); ?>
-                </div>
+                <?PHP /*<div class="field">
+                    <?php //echo text(array('name' => 'slug', 'id' => 'slug', 'class' => 'textinput'), $exhibit->slug, 'Pathway Slug (' . __('no spaces or special characters') . ')'); ?>
+                    <?php //echo form_error('slug'); ?>
+                </div> */ ?>
                 <?php if (has_permission('ExhibitBuilder_Exhibits', 'makepublic')) { ?>
                     <div class="field">
                         <label for="featured"><?php echo __('Pathway ready for validation'); ?>:</label>

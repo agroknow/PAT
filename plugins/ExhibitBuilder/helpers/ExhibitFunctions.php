@@ -872,11 +872,13 @@ function bypass() {
     $exec = null;
 
     if ($_POST['slug']) {
-        $path_slug = $_POST['slug'];
+        $path_slug = toSlug($_POST['slug']);
     } else {
-        $path_slug = str_replace(" ", "-", $_POST['title']);
-        $path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
-        $path_slug = str_replace(" ", "-", $path_slug);
+        
+        $path_slug = toSlug($_POST['title']);
+        //$path_slug = str_replace(" ", "-", $_POST['title']);
+        //$path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
+        //$path_slug = str_replace(" ", "-", $path_slug);
         $countslug = strlen($path_slug);
         if ($countslug < 2) {
             $path_slug = "Pathway-slug-" . $max_id;
@@ -1503,35 +1505,35 @@ function savemetadataexhibit() {
     } else {
         $exhibit_title_from_metadata = $_POST['6_1'];
     }//title gia pathway
-    $path_slug = $_POST['slug'];
-    $path_slug = str_replace(" ", "-", $path_slug);
-    $path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
-    $countslug = strlen($path_slug);
-    if ($countslug < 2) {
-        $path_slug = "Pathway-slug-" . $_POST['exhibit_id'];
-    }
+    //$path_slug = $_POST['slug'];
+    //$path_slug = str_replace(" ", "-", $path_slug);
+    //$path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
+    //$countslug = strlen($path_slug);
+    //if ($countslug < 2) {
+    //    $path_slug = "Pathway-slug-" . $_POST['exhibit_id'];
+    //}
 
-    $maxIdSQL = "SELECT slug FROM omeka_exhibits WHERE id=" . $_POST['exhibit_id'] . " LIMIT 0,1"; //echo $maxIdSQL;break;
-    $exec = $db->query($maxIdSQL);
-    $row2 = $exec->fetch();
+    //$maxIdSQL = "SELECT slug FROM omeka_exhibits WHERE id=" . $_POST['exhibit_id'] . " LIMIT 0,1"; //echo $maxIdSQL;break;
+    //$exec = $db->query($maxIdSQL);
+    //$row2 = $exec->fetch();
 //$exec=null;
-    $maxIdSQL = "SELECT id,slug FROM omeka_exhibits WHERE slug='" . $path_slug . "' LIMIT 0,1";
-    $exec = $db->query($maxIdSQL);
-    $row = $exec->fetch();
-    $slug_id = 0;
-    $slug_slug = $row["slug"];
-    if (isset($row["id"])) {
-        $slug_id = $row["id"];
-    }
-    $exec = null;
+    //$maxIdSQL = "SELECT id,slug FROM omeka_exhibits WHERE slug='" . $path_slug . "' LIMIT 0,1";
+    //$exec = $db->query($maxIdSQL);
+    //$row = $exec->fetch();
+    //$slug_id = 0;
+    //$slug_slug = $row["slug"];
+    //if (isset($row["id"])) {
+    //    $slug_id = $row["id"];
+    //}
+    //$exec = null;
 
     $maxIdSQL = "update metadata_record SET date_modified='" . $_POST['date_modified'] . "',validate='" . $_POST['public'] . "' where object_id=" . $_POST['exhibit_id'] . " and object_type='exhibit'";
     $exec = $db->query($maxIdSQL);
 
-    if ($slug_id > 0 and $slug_id != $_POST['exhibit_id']) {
-        $path_slug = $row2["slug"];
-    } //echo $slug_id;break;
-    $maxIdSQL = "update omeka_exhibits SET title='" . addslashes($exhibit_title_from_metadata) . "',slug='" . addslashes($path_slug) . "',public=" . $_POST['public'] . ",date_modified='" . $_POST['date_modified'] . "' where id=" . $_POST['exhibit_id'] . "";
+    //if ($slug_id > 0 and $slug_id != $_POST['exhibit_id']) {
+    //    $path_slug = $row2["slug"];
+    //} //echo $slug_id;break;
+    $maxIdSQL = "update omeka_exhibits SET title='" . addslashes($exhibit_title_from_metadata) . "',public=" . $_POST['public'] . ",date_modified='" . $_POST['date_modified'] . "' where id=" . $_POST['exhibit_id'] . "";
     $exec = $db->query($maxIdSQL);
 //$result_multi=$exec->fetch();
     $exec = null;
@@ -1714,5 +1716,16 @@ function return_template_by_id($template_id) {  //if template_id=0 then return A
         $result = $result_multi; //ALL
     }
     return $result;
+}
+function toSlug($string,$space="-") { 
+    if (function_exists('iconv')) {
+        $string = iconv('utf-8', 'ascii//TRANSLIT//IGNORE', $string);
+    }
+    $string = strtolower($string);
+    $string = preg_replace("/[^a-zA-Z0-9 -]/", "", $string);
+    //Clean multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    $string = str_replace(" ", $space, $string);
+    return $string;
 }
 
