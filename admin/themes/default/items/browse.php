@@ -13,7 +13,7 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
 <script>
     function showloader() { 
         document.body.onclick = function (e) {
-            if (!e.ctrlKey) {
+            if (!(e.ctrlKey || e.which==2)) {
                 document.getElementById('loadertoopenpage_div').style.display='block';
                 document.getElementById('loadertoopenpage_img').style.display='block';
             }
