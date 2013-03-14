@@ -881,7 +881,7 @@ function bypass() {
         //$path_slug = str_replace(" ", "-", $path_slug);
         $countslug = strlen($path_slug);
         if ($countslug < 2) {
-            $path_slug = "Pathway-slug-" . $max_id;
+            $path_slug = "Pathway-" . $max_id;
         }
     }
     $maxIdSQL = "SELECT id FROM " . $exhibitdb . " WHERE slug='" . $path_slug . "' LIMIT 0,1";
@@ -893,7 +893,7 @@ function bypass() {
     }
     $exec = null;
     if ($slug_id > 0) {
-        $path_slug = "Pathway-slug-" . $max_id;
+        $path_slug = "Pathway-" . $max_id;
     } //echo $slug_id;break;
     if ($_POST['title']) {
         $path_title = addslashes($_POST['title']);

@@ -12,9 +12,13 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
 <?php endif; ?>
 <script>
     function showloader() { 
+        document.body.onclick = function (e) {
+            if (!e.ctrlKey) {
+                document.getElementById('loadertoopenpage_div').style.display='block';
+                document.getElementById('loadertoopenpage_img').style.display='block';
+            }
+        }
 
-        document.getElementById('loadertoopenpage_div').style.display='block';
-        document.getElementById('loadertoopenpage_img').style.display='block';
 
     }
 
@@ -189,14 +193,14 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
                             $uri = WEB_ROOT;
                             $uri = explode('http://', $uri);
                             echo '<a href="http://' . $uri[1] . '/oai?verb=GetRecordOnlyLom&metadataPrefix=oai_lom&identifier=oai:' . $uri[1] . '/:' . $item->id . ':item" target="_blank">XML</a>';
-                            ?></li>
+                                    ?></li>
 
                                     <?php if (has_permission($item, 'edit')): ?>
                                         <li><?php echo link_to_item(__('Edit'), array('onclick' => 'showloader();'), 'edit'); ?></li>
                                     <?php endif; ?>
                                     <?php if (has_permission($item, 'delete')): ?>
                                         <li><?php echo link_to_item(__('Delete'), array('class' => 'delete-confirm'), 'delete-confirm'); ?></li>
-            <?php echo '<div id="' . $item->id . '_trans" title="' . __('Please select language to translate:') . '"></div>'; ?>
+                                        <?php echo '<div id="' . $item->id . '_trans" title="' . __('Please select language to translate:') . '"></div>'; ?>
                                         <script type="text/javascript" charset="utf-8">
                                             function translatediv(name,item_id){
 
@@ -221,9 +225,9 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
                                             }
                                         </script>
 
-                                <?php endif; ?>
+                                    <?php endif; ?>
                                 </ul>
-                                    <?php fire_plugin_hook('admin_append_to_items_browse_simple_each'); ?>
+                                <?php fire_plugin_hook('admin_append_to_items_browse_simple_each'); ?>
                                 <div class="item-details">
                                     <?php
                                     if (item_has_thumbnail()) {
@@ -231,22 +235,22 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
                                         echo link_to_item(item_square_thumbnail(), array('class' => 'square-thumbnail'));
                                     }
                                     ?>
-                                        <?php echo snippet_by_word_count(strip_formatting(item('Dublin Core', 'Description')), 40); ?>
+                                    <?php echo snippet_by_word_count(strip_formatting(item('Dublin Core', 'Description')), 40); ?>
                                     <ul>
-                                    <?php /* ?> <li><strong><?php echo __('Collection'); ?>:</strong> <?php if (item_belongs_to_collection()) echo link_to_collection_for_item(); else echo __('No Collection'); ?></li>
-                                      <li><strong><?php echo __('Tags'); ?>:</strong> <?php if ($tags = item_tags_as_string()) echo $tags; else echo __('No Tags'); ?></li><?php */ ?>
+                                        <?php /* ?> <li><strong><?php echo __('Collection'); ?>:</strong> <?php if (item_belongs_to_collection()) echo link_to_collection_for_item(); else echo __('No Collection'); ?></li>
+                                          <li><strong><?php echo __('Tags'); ?>:</strong> <?php if ($tags = item_tags_as_string()) echo $tags; else echo __('No Tags'); ?></li><?php */ ?>
                                     </ul>
-                            <?php fire_plugin_hook('admin_append_to_items_browse_detailed_each'); ?>
+                                    <?php fire_plugin_hook('admin_append_to_items_browse_detailed_each'); ?>
                                 </div>
                             </td>
-                                <?php /* ?><td><?php echo strip_formatting(item('Dublin Core', 'Creator')); ?></td><?php */ ?>
+                            <?php /* ?><td><?php echo strip_formatting(item('Dublin Core', 'Creator')); ?></td><?php */ ?>
                             <td><?php
-                        echo ($typeName = __(item('Item Type Name'))) ? __($typeName) : '<em>' . __(item('Dublin Core', 'Type', array('snippet' => 35))) . '</em>';
-                                ?></td>
+                    echo ($typeName = __(item('Item Type Name'))) ? __($typeName) : '<em>' . __(item('Dublin Core', 'Type', array('snippet' => 35))) . '</em>';
+                            ?></td>
                             <td>
                                 <?php if ($item->public): ?>
                                     <img src="<?php echo img('silk-icons/tick.png'); ?>" alt="<?php echo __('Public'); ?>"/>
-                            <?php endif; ?>
+                                <?php endif; ?>
                             </td>
                             <?php /* ?><td>
                               <?php if($item->featured): ?>
@@ -255,7 +259,7 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
                               </td><?php */ ?>
                             <td><?php echo format_date(item('Date Added')); ?></td>
                         </tr>
-    <?php endwhile; ?>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
             <div class="group">
@@ -263,7 +267,7 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
                     <?php /* ?><div class="batch-edit-option">
                       <input type="submit" class="submit" name="submit" value="<?php echo __('Edit Selected Items'); ?>" />
                       </div><?php */ ?>
-    <?php endif; ?>
+                <?php endif; ?>
                 <div class="pagination"><?php echo pagination_links(); ?></div>
             </div>
         </form>
@@ -273,23 +277,23 @@ head(array('title' => $pageTitle, 'content_class' => 'horizontal-nav', 'bodyclas
           <?php echo output_format_list(false, ' · '); ?>
           </div><?php */ ?>
 
-<?php elseif (!total_items()): ?>
+    <?php elseif (!total_items()): ?>
         <div id="no-items">
             <p><?php echo __('There are no items in the archive yet.'); ?>
 
-            <?php if (has_permission('Items', 'add')): ?>
-        <?php echo link_to('items', 'add', __('Add an item.')); ?></p>
-        <?php endif; ?>
+                <?php if (has_permission('Items', 'add')): ?>
+                    <?php echo link_to('items', 'add', __('Add an item.')); ?></p>
+            <?php endif; ?>
         </div>
 
     <?php else: ?>
-        <p><?php echo __('The query searched %s items and returned no results.', total_items()); ?> <?php //echo __('Would you like to %s?', link_to_advanced_search(__('refine your search')));  ?></p>
+        <p><?php echo __('The query searched %s items and returned no results.', total_items()); ?> <?php //echo __('Would you like to %s?', link_to_advanced_search(__('refine your search')));   ?></p>
 
-<?php endif; ?>
+    <?php endif; ?>
 
 
 
-<?php fire_plugin_hook('admin_append_to_items_browse_primary', $items); ?>
+    <?php fire_plugin_hook('admin_append_to_items_browse_primary', $items); ?>
 
 </div>
 <?php foot(); ?>
