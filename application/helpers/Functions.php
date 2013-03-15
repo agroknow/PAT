@@ -1952,7 +1952,7 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
         }
         $xml = NULL;
         $size_of_objects = sizeof($new_xml_id);
-        for ($x = 0; $x < $size_of_objects; $x++) {
+        for ($x = 0; $x <= $size_of_objects; $x++) {
             $result2 = & $new_xml_id[$x];
             $result3 = & $new_xml_subClassOf[$x];
             
@@ -1982,7 +1982,7 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
         
         $output.='<ul>';
         $size_of_objects = sizeof($new_xml_id);
-        for ($x = 0; $x < $size_of_objects; $x++) {
+        for ($x = 0; $x <= $size_of_objects; $x++) {
             $result2 = & $new_xml_id[$x];
             $result3 = & $new_xml_subClassOf[$x];
 
@@ -2058,7 +2058,7 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
         $output2 = '';
         $output2.='<ul>';
         $size_of_objects = sizeof($new_xml_id2);
-        for ($x = 0; $x < $size_of_objects; $x++) {
+        for ($x = 0; $x <= $size_of_objects; $x++) {
             $result22 = & $new_xml_id2[$x];
             $result32 = & $new_xml_subClassOf[$x];
 
