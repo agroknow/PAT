@@ -3045,7 +3045,7 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
 
     function call_cultural_federation($search = NULL, $offset = 0) {
 
-        $url = "http://collections.natural-europe.eu/repository/api/ariadne/restp?json={%22clause%22%3A%20[{%22language%22%3A%20%22VSQL%22%2C%20%22expression%22%3A%20%22" . $search . "%22}]%2C%20%22resultInfo%22%3A%20%22display%22%2C%20%22resultListOffset%22%3A%20" . $offset . "%2C%20%22resultListSize%22%3A%2012%2C%20%22idListOffset%22%3A%200%2C%20%22uiLanguage%22%3A%20%22en%22%2C%20%22facets%22%3A%20[%22language%22%2C%20%22lrt%22%2C%20%22format%22%2C%20%22lom.classification.taxonpath.taxon.entry.string%22%2C%20%22rights%22]%2C%20%22idListSize%22%3A%2012%2C%20%22resultFormat%22%3A%20%22json%22%2C%20%22resultSortkey%22%3A%20%22%22}&engine=InMemory&callback=_prototypeJSONPCallback_1";
+        $url = "http://collections.natural-europe.eu/repositoryV0/api/ariadne/restp?json={%22clause%22%3A%20[{%22language%22%3A%20%22VSQL%22%2C%20%22expression%22%3A%20%22" . $search . "%22}]%2C%20%22resultInfo%22%3A%20%22display%22%2C%20%22resultListOffset%22%3A%20" . $offset . "%2C%20%22resultListSize%22%3A%2012%2C%20%22idListOffset%22%3A%200%2C%20%22uiLanguage%22%3A%20%22en%22%2C%20%22facets%22%3A%20[%22language%22%2C%20%22lrt%22%2C%20%22format%22%2C%20%22lom.classification.taxonpath.taxon.entry.string%22%2C%20%22rights%22]%2C%20%22idListSize%22%3A%2012%2C%20%22resultFormat%22%3A%20%22json%22%2C%20%22resultSortkey%22%3A%20%22%22}&engine=InMemory&callback=_prototypeJSONPCallback_1";
 //$context = stream_context_create(array('http'=>array('protocol_version'=>'1.1')));
 //file_get_contents($url, f, $context);
 // If you want to see the json_decode output just uncomment out the next 2 lines
