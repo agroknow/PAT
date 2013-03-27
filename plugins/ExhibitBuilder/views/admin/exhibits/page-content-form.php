@@ -196,7 +196,8 @@ while ($data2=$exec2->fetch()){
     <fieldset>
 		<p id="exhibit-builder-save-changes">
             <input id="section_form" name="section_form" type="submit" value="<?php echo __('Save and Return to Section'); ?>" /> <?php echo __('or'); ?> 
-            <input id="page_form" name="page_form" type="submit" value="<?php echo __('Save and Add Another Page'); ?>" /> <?php echo __('or'); ?>
+            <input id="section_form" name="section_form_ret_to_path" type="submit" value="<?php echo __('Save and Return to Pathway'); ?>" /> <?php echo __('or'); ?> 
+            <?php /*<input id="page_form" name="page_form" type="submit" value="<?php echo __('Save and Add Another Page'); ?>" /> <?php echo __('or'); ?> */?>
             <a href="<?php echo html_escape(uri(array('module'=>'exhibit-builder', 'controller'=>'exhibits', 'action'=>'edit-section', 'id'=>$exhibitPage->section_id))); ?>"><?php echo __('Cancel'); ?></a>
 		</p>
 	</fieldset>

@@ -751,7 +751,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
 
         $success = $this->processPageForm($exhibitPage, 'Edit', $exhibitSection, $exhibit);
 
-        if ($success and array_key_exists('section_form', $_POST)) {
+        if ($success and (array_key_exists('section_form', $_POST) or array_key_exists('section_form_ret_to_path', $_POST))) {
             //Return to the section form
             // return $this->redirect->goto('edit-section', null, null, array('id'=>$exhibitSection->id));
         } else if ($success and array_key_exists('section_form_return', $_POST)) {
@@ -765,8 +765,13 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
 
         $this->view->layoutName = $layoutName;
         $this->view->layoutDescription = $layoutDescription;
-
-        $this->render('page-content-form');
+        
+        if(array_key_exists('section_form_ret_to_path', $_POST)){
+           $this->redirect->gotoRoute(array('action' => 'edit', 'id' => $exhibit->id), 'exhibitStandard');
+        }else{
+          $this->render('page-content-form');  
+        }
+        
     }
 
     public function editPageMetadataAction() {
