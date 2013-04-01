@@ -18,12 +18,12 @@
 	if($keyword != '') {
 	$query=" select a.id, f.text from omeka_items a JOIN omeka_entities_relations b ON a.id=b.relation_id JOIN omeka_entities c ON c.id=b.entity_id 
 		JOIN omeka_users d ON c.id=d.entity_id JOIN omeka_element_texts f ON a.id=f.record_id  where f.text like '%".$keyword."%'"."
-		  and b.relationship_id=1 and a.public=1  and f.element_id=68";
+		  and b.relationship_id=1 and a.public=1 and b.entity_id=".$_GET['user_id']."  and f.element_id=68";
 		
 }
 	else {
 	    $query = " select a.id, f.text from omeka_items a JOIN omeka_entities_relations b ON a.id=b.relation_id JOIN omeka_entities c ON c.id=b.entity_id 
-		JOIN omeka_users d ON c.id=d.entity_id JOIN omeka_element_texts f ON a.id=f.record_id  where b.relationship_id=1 and a.public=1  and f.element_id=68";	
+		JOIN omeka_users d ON c.id=d.entity_id JOIN omeka_element_texts f ON a.id=f.record_id  where b.relationship_id=1 and a.public=1 and b.entity_id=".$_GET['user_id']."  and f.element_id=68";	
 }
 	$result = mysql_query($query);
 	
