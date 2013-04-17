@@ -2331,7 +2331,7 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
         return $isolanguage;
     }
 
-    function translatexerox($targetLanguage = NULL, $text = NULL, $sourceLanguage) {
+function translatexerox($targetLanguage = NULL, $text = NULL, $sourceLanguage) {
 //echo $targetLanguage."123";
 //echo $sourceLanguage."123<br><br>";
         //$targetLanguage = 'es_ES';
@@ -2351,12 +2351,11 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
 //            $page = file_get_contents("https://services.open.xerox.com/Auth.svc/OAuth2", false, $context);
 //            $obj = json_decode($page);
 //            $token = $obj->access_token;
-
             //$token = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name=gkista&http://open.xerox.com/LLTokenId=41&Issuer=https://open.xerox.com&Audience=https://open.xerox.com&ExpiresOn=1355443200&HMACSHA256=EbgxS4cjiu2uCugubzyn64MO9nsrOV%2byPNG2SmiEzw0%3d";
             /////until february 2015!!!!!!
             $token = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name=gkista&http://open.xerox.com/LLTokenId=50&Issuer=https://open.xerox.com&Audience=https://open.xerox.com&ExpiresOn=1425081600&HMACSHA256=eWdmtuu%2b6o2XjPb9lxm3Gh52Fny0NEWu6YxGltvgtJI%3d";
 
-
+            $text = htmlentities($text, ENT_QUOTES, 'UTF-8'); //////add this for characters not ascii ”
             $header = 'Content-Type: application/json' . "\r\n";
             $header.= 'Host: services.open.xerox.com' . "\r\n";
             $header.= 'Authorization: WRAP access_token="' . $token . '"' . "\r\n";
@@ -2388,7 +2387,21 @@ function createnew_xml_selectbox($id, $divid, $vocabulary_id, $ontology = NULL) 
 //echo $_POST['dividtext'];
 //return 'Original text: '.$_POST['dividtext'].' <br> Translated text: '.$obj5;
                                 //return $obj5."".$sourceLanguage."";
-                                return $obj5;
+                                if (is_string($obj5)) {
+                                    return $obj5;
+                                } else {
+                                    //print_r($obj5);
+                                    foreach ($obj5 as $key => $obj51) {
+                                        if ($key == '#text') {
+                                            $obj511='';
+                                            foreach($obj51 as $obj51){
+                                                $obj511.=$obj51;
+                                            }
+                                            return $obj511;
+                                        }
+                                    }
+                                }
+                                //
                             }
                         }
                     }
