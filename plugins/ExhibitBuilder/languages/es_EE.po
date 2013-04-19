@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <kadrihaugas@gmail.com>, 2012.
+# tnhm <kadrihaugas@gmail.com>, 2012
+# tnhm <kadrihaugas@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2012-11-21 17:39+0000\n"
+"PO-Revision-Date: 2013-04-10 18:21+0000\n"
 "Last-Translator: tnhm <kadrihaugas@gmail.com>\n"
 "Language-Team: Estonian (Estonia) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/et_EE/)\n"
 "MIME-Version: 1.0\n"
@@ -176,7 +177,7 @@ msgstr "Esiletoodud õpiteed puuduvad."
 
 #: helpers/ExhibitPageFunctions.php:155
 msgid "Next Page &rarr;"
-msgstr "Järgmine lehekülg &rarr"
+msgstr "Järgmine lehekülg &rarr;"
 
 #: helpers/ExhibitPageFunctions.php:189
 msgid "&larr; Previous Page"

@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <kadrihaugas@gmail.com>, 2012.
-# Kristiina Rattasepp <kristiina@miksike.ee>, 2012.
-# Milla Pilv <ljuda@miksike.ee>, 2012.
+# tnhm <kadrihaugas@gmail.com>, 2012
+# tnhm <kadrihaugas@gmail.com>, 2013
+# Kristiina Rattasepp <kristiina@miksike.ee>, 2012
+# Milla Pilv <ljuda@miksike.ee>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2012-11-19 11:34+0000\n"
+"PO-Revision-Date: 2013-04-10 18:17+0000\n"
 "Last-Translator: tnhm <kadrihaugas@gmail.com>\n"
 "Language-Team: Estonian (Estonia) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/et_EE/)\n"
 "MIME-Version: 1.0\n"
@@ -312,7 +313,7 @@ msgstr "Kogujad"
 #: admin/themes/default/items/browse.php:134
 #: application/views/scripts/files/show.php:57
 msgid "Date Added"
-msgstr "Kuupäev lisatud"
+msgstr "Lisamiskuupäev"
 
 #: admin/themes/default/collections/browse.php:22
 #: admin/themes/default/collections/show.php:39
@@ -2912,7 +2913,7 @@ msgstr "ALUSTA!"
 
 #: admingeneral!
 msgid "Pathways"
-msgstr "Õpiteed"
+msgstr "Õpiteed 123"
 
 #: admingeneral!
 msgid "Natural Europe Project website"
