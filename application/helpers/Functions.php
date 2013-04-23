@@ -422,7 +422,7 @@ function createlomelement($type, $name, $value = NULL, $extra = NULL, $selectval
         $element.='</select>';
     } elseif ($type == 'selectxml') {
         $element = '<select ' . $extra . ' ' . $disabled . '  name="' . $name . '">';
-        $element.='<option value="">Select </option>';
+        $element.='<option value="">'.__("Select").' </option>';
         
         $size_of_objects = sizeof($selectvalues);
         for ($x = 0; $x < $size_of_objects; $x++) {
