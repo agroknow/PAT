@@ -60,7 +60,6 @@ class Omeka_Controller_Action_Helper_SearchItems extends Zend_Controller_Action_
 		//print_r($options); break;
 		if(isset($options['user']) and $options['user']!=1 and !has_permission('Items', 'browseAll')){$params['user']=$options['user'];}
 		if(isset($options['type'])){$params['type']=$options['type'];}
-                if(isset($options['isTemplate'])){$params['isTemplate']=$options['isTemplate'];}///if is template
 		//print_r($params); break;
 		
         try {            
@@ -165,7 +164,7 @@ class Omeka_Controller_Action_Helper_SearchItems extends Zend_Controller_Action_
         $itemsPerPage = $this->getItemsPerPage();
         
         //Retrieve the items themselves
-        $items = $itemTable->findBy($params, $itemsPerPage, $resultPage); 
+        $items = $itemTable->findBy($params, $itemsPerPage, $resultPage);
         
         return array(
             'items'=>$items, 
