@@ -811,5 +811,14 @@ require_once 'Omeka/Core.php';
 
         $this->_helper->redirector->goto('browse', 'items');
     }
+    public function translationanalyticsAction() {
+        
+//$lastexid=bypass($lastexid);
+        $this->getResponse()->setHeader('Content-Type', 'application/vnd.ms-excel');
+        $this->getResponse()->setHeader('Expires', '0');
+        $this->getResponse()->setHeader('Cache-Control', 'must-revalidate, post-check=0, pre-check=0');
+        $this->getResponse()->setHeader('Content-Disposition', 'attachment; filename=analytics_for_translation' . date( "Y-m-d" ) . '.xls');
+        $this->render('export-analytics-for-translation-service');
+    }
 
 }
