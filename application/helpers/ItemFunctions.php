@@ -1057,8 +1057,8 @@ function savenewitem($itid, $formtype) {
     $execmetadatarecordSql = null;
 
 //libraries/omeka/record.php
-    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('33',NULL,'none','" . $formetypetext . "',1, " . $last_record_id . ",1,1)";
-    $execmetadatarecordSql = $db->query($metadatarecordSql);
+    $metadatarecordSql="INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?,?)";
+    $execmetadatarecordSql=$db->query($metadatarecordSql, array(33,NULL,'none',$formetypetext,1, $last_record_id,1,1));
     $execmetadatarecordSql = null;
 
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES ('68',NULL,'none','305',1, " . $last_record_id . ",1,1)";
