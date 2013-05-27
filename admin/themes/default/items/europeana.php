@@ -50,7 +50,7 @@ color:#ffffff;
 //echo $xml->asXML();
 if(isset($_POST['europeanatext'])){$europeanatext= $_POST['europeanatext'];
 $_POST['europeanatext']=str_replace(' ','+', $_POST['europeanatext']);
-if(isset($_POST['startPage'])){$startPage= $_POST['startPage'];} else{$startPage=1;}
+if(isset($_POST['startPage'])){$startPage= $_POST['startPage']; $startPageurl= $_POST['startPage']*12-11;} else{$startPageurl=1; $startPage=1;}
 if(isset($_POST['bytype'])){$europenana_type= "+europeana_type:*".$_POST['bytype']."*";} else{$europenana_type="";}
 //print_r($_POST);break;
 //echo 'http://api.europeana.eu/api/opensearch.rss?searchTerms='.$europeanatext.''.$europenana_type.'&startPage='.$startPage.'&wskey=IIRTOOIRNG';
@@ -88,7 +88,8 @@ if(isset($_POST['bytype'])){$europenana_type= "+europeana_type:*".$_POST['bytype
 </div>
 <?php 
 libxml_use_internal_errors(false);
-$xml = @simplexml_load_file('http://api.europeana.eu/api/opensearch.rss?searchTerms=text:"'.$europeanatext.'*"'.$europenana_type.'&startPage='.$startPage.'&wskey=IIRTOOIRNG', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+//echo 'http://api.europeana.eu/api/opensearch.rss?searchTerms=text:"'.$europeanatext.'*"'.$europenana_type.'&startPage='.$startPageurl.'&wskey=IIRTOOIRNG';
+$xml = @simplexml_load_file('http://api.europeana.eu/api/opensearch.rss?searchTerms=text:"'.$europeanatext.'*"'.$europenana_type.'&startPage='.$startPageurl.'&wskey=IIRTOOIRNG', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
 if($xml === false){ echo "An Error occured. Please try again later. Thank you!";}
 if($xml){
 $xml->getName() . "<br />";
@@ -106,8 +107,8 @@ $opensearch = $child1->children('http://a9.com/-/spec/opensearch/1.1/');
   print "".__('Total results')." : ".$opensearch->totalResults; 
  // print "<br />startIndex : ".$opensearch->startIndex;
   $pages=$opensearch->totalResults/12;
-  $pages2=round($pages); 
-  if($pages2>$pages){$pages=$pages2;}else{$pages=$pages2+1;}
+  echo $pages2=round($pages); 
+  if($pages2>=$pages){$pages=$pages2;}else{$pages=$pages2+1;}
   if($pages>0){ 
 
   //print $opensearch->itemsPerPage;

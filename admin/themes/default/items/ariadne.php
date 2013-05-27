@@ -74,7 +74,7 @@ $xml->getName() . "<br />";
  // print "<br />startIndex : ".$opensearch->startIndex;
   $pages=$xml['cardinality']/12;
   $pages2=round($pages); 
-  if($pages2>$pages){$pages=$pages2;}else{$pages=$pages2+1;}
+  if($pages2>=$pages){$pages=$pages2;}else{$pages=$pages2+1;}
   if($pages>0){ 
 
   //print $opensearch->itemsPerPage;
