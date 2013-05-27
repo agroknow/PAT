@@ -240,8 +240,11 @@ $opensearch = $child1->children('http://a9.com/-/spec/opensearch/1.1/');
 		  
 ///////////////////////////////parse second xml metadata/////////////////////
 $metadataxml=$child->link;
-$xmlmetadata = simplexml_load_file(''.$metadataxml.'', NULL, LIBXML_NOERROR | LIBXML_NOWARNING, 'srw', true) or die("invalid feed!");
-$dc = $xmlmetadata->records->record->recordData->children('http://purl.org/dc/elements/1.1/');
+$xmlmetadata = @simplexml_load_file(''.$metadataxml.'', NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+if($xmlmetadata){
+$dc =$xmlmetadata->records->children('http://www.loc.gov/zing/srw/')->record->recordData->children('http://purl.org/dc/elements/1.1/');
+//print_r($dc);
+//$dc = $xmlmetadata->records->record->recordData->children('http://purl.org/dc/elements/1.1/');
 //echo $dc->dc->description;
 //if($xmlmetadata){ break;}
 ///////////////////////////////parse second xml metadata/////////////////////
@@ -249,7 +252,7 @@ $dc = $xmlmetadata->records->record->recordData->children('http://purl.org/dc/el
 		  $descrip=$dc->dc->description;
 		  $descrip=preg_replace('/(["\'])/ie', '',$descrip);
 		   print  "". $descrip."<br />";		  
-
+}else{$descrip='';}
 		   //Use that namespace
 $europenana = $child2->children('http://www.europeana.eu');
 
