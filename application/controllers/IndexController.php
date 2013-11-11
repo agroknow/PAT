@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Roy Rosenzweig Center for History and New Media, 2007-2010
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
@@ -17,11 +18,16 @@
  * @author CHNM
  * @copyright Roy Rosenzweig Center for History and New Media, 2007-2010
  */
-class IndexController extends Omeka_Controller_Action
-{
-    public function indexAction()
-    {
-        //$this->_helper->viewRenderer->renderScript('index.php');
-        $this->_redirect('http://www.natural-europe.eu/educational/');
+class IndexController extends Omeka_Controller_Action {
+
+    public function indexAction() {
+        $findme = "admin";
+        $pos = stripos($_SERVER['REQUEST_URI'], $findme);
+        if ($pos > 0) {
+            $this->_helper->viewRenderer->renderScript('index.php');
+        } else {
+            $this->_redirect('http://www.natural-europe.eu/educational/');
+        }
     }
+
 }

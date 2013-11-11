@@ -1,3 +1,5 @@
+<?php //header('Location: http://www.natural-europe.eu/educational/');?>
+<?php /*
 <?php head(); ?>
 <div id="page-body" class="one_column">
     <?php include ("common/menu.php"); ?>
@@ -265,3 +267,5 @@
 <div class="clear"></div><!--clear DIV NEEDS TO BE ADDED TO ALL TEMPLATES-->
 </div><!--end page-container div-->
 <?php foot(); ?>
+ * 
+ */?>

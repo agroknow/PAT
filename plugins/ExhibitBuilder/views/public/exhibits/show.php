@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -25,24 +25,24 @@
         <![endif]-->
 
         <link href='http://fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>css/jquery.ad-gallery.css" />
-        <link rel="stylesheet" href="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>css/tabulous.css" />
-        <link rel="stylesheet" href="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>css/jquery.fancybox.css" />
+            <link rel="stylesheet" href="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>css/jquery.ad-gallery.css" />
+            <link rel="stylesheet" href="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>css/tabulous.css" />
+            <link rel="stylesheet" href="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>css/jquery.fancybox.css" />
 
-        <script src="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>javascript/modernizr-1.7.min.js"></script>
-        <script type="text/javascript">
+            <script src="<?php echo uri('plugins/ExhibitBuilder/views/public/exhibits/'); ?>javascript/modernizr-1.7.min.js"></script>
+            <script type="text/javascript">
 
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-28875549-1']);
-            _gaq.push(['_trackPageview']);
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-28875549-1']);
+                _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
 
-        </script>
+            </script>
     </head>
 
     <body>
@@ -407,6 +407,43 @@
                             imgInText.lb += '<span><b>'+file.metadata.lom.technical.label+':</b> '+file.metadata.lom.technical.format.value+'</span>';
                         }
 						
+                        if(file.metadata.lom.relation!=undefined) {
+							
+                            relationString = '<section class="vcard">';
+                            var relationLabel = "";
+                            if (file.metadata.lom.relation.relation instanceof Array) {
+								
+                                $.each( file.metadata.lom.relation.relation, function(ck,cv) {
+                                    relationLabel = file.metadata.lom.relation.label;
+                                    if (cv.kind.value!=undefined) {
+                                        relationString += '<span><b>'+cv.kind.value+':</b></span>';
+									
+                                    }
+                                    if (cv.kind.value!=undefined) {
+                                        relationString += '<span> '+cv.entry.value+'</span>';
+									
+                                    }
+									
+                                });
+								
+                            } else {
+                                if (file.metadata.lom.relation.relation.kind.value!=undefined) {
+                                    relationString += '<span><b>'+file.metadata.lom.relation.relation.kind.value+':</b></span>';
+									
+                                }
+                                if (file.metadata.lom.relation.relation.kind.value!=undefined) {
+                                    relationString += '<span> '+file.metadata.lom.relation.relation.entry.value+'</span>';
+									
+                                }
+                                relationLabel = file.metadata.lom.relation.label;
+                            }
+							
+                            imgInText.lb += '<span><b>'+relationLabel+':</b>';
+                            imgInText.lb += relationString;
+                            imgInText.lb += '</section>';
+                            imgInText.lb += '</span>';
+                        }
+
                         if(file.metadata.lom.classification!=undefined) {
 							
                             classificationString = '<section class="vcard">';
@@ -628,11 +665,11 @@
                                     var section = '';
                                     if (v.item  instanceof Array) {
                                         $.each( v.item, function(ks,vs) {
-                                             if (vs!=undefined) {section += setSectionContent(vs, resArray);}
+                                            if (vs!=undefined) {section += setSectionContent(vs, resArray);}
 												
                                         });
                                     } else {
-                                          if (v.item!=undefined) {section += setSectionContent(v.item, resArray);}
+                                        if (v.item!=undefined) {section += setSectionContent(v.item, resArray);}
                                     }
                                     tabsBody += section+'</div>';
 										
@@ -645,7 +682,7 @@
                                 var galList = galWrapper.find("ul.ad-thumb-list");
                                 $.each( gallery, function( key, imgObj ) {
                                     var thumb ="http://images.weserv.nl/?url="+imgObj.path.replace("http://","")+"&w=90&h=60&t=square&a=t";
-                                    galList.append('<li><a href="'+imgObj.path+'"><img src="'+thumb+'" title="'+imgObj.title+'" alt="'+imgObj.description+'" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'width\',\'90\');this.setAttribute(\'height\',\'60\');this.setAttribute(\'onerror\',\'null\');" data-img="'+imgObj.path+'"></a></li>');
+                                    galList.append('<li><a href="'+imgObj.path+'"><img style="width:90px; height:60px;" src="'+thumb+'" title="'+imgObj.title+'" alt="'+imgObj.description+'" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'width\',\'90\');this.setAttribute(\'height\',\'60\');this.setAttribute(\'onerror\',\'null\');" data-img="'+imgObj.path+'"></a></li>');
                                 });
                                 var galleries = $('#ad-gallery').adGallery({update_window_hash:false});
                             }else {
@@ -1074,17 +1111,17 @@
                                     });
 										
                                 }else{
-					var cv = j.metadata.lom.classification;						
-                                        if (cv.taxonPath!=undefined) {
-                                            if (cv.taxonPath instanceof Array) {
-                                                $.each( cv.taxonPath, function(tk,tv) {
-                                                    cText += '<div><span>'+tv.source.string+':</span>'+tv.taxon.entry.string+'</div>';
-                                                });	
-                                            } else {
-                                                cText += '<div><span>'+cv.taxonPath.source.string+':</span>'+cv.taxonPath.taxon.entry.string+'</div>';
-                                            }
-												
+                                    var cv = j.metadata.lom.classification;						
+                                    if (cv.taxonPath!=undefined) {
+                                        if (cv.taxonPath instanceof Array) {
+                                            $.each( cv.taxonPath, function(tk,tv) {
+                                                cText += '<div><span>'+tv.source.string+':</span>'+tv.taxon.entry.string+'</div>';
+                                            });	
+                                        } else {
+                                            cText += '<div><span>'+cv.taxonPath.source.string+':</span>'+cv.taxonPath.taxon.entry.string+'</div>';
                                         }
+												
+                                    }
 											
    
                                 }
