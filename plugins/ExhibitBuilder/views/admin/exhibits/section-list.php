@@ -14,7 +14,7 @@
 
     		</div>
     		<div class="section-pages-info">
-    		<h4>Pages:</h4>
+    		<h4><?php echo __('Pages'); ?>:</h4>
             <ul class="page-list"><?php
                     if (exhibit_builder_section_has_pages($exhibitSection)):
                         $fromExhibitPage = true;

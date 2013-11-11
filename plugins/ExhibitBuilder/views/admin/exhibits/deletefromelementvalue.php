@@ -23,8 +23,8 @@ $execrec=null;
 
 
 $result_multi=get_db()->getTable('Exhibit')->find($result_rec['object_id']);
-
-if($user['id']==1 or $user['role']=='super' or $result_multi->wasAddedBy(current_user()) or has_permission($result_multi, 'edit')){  //if he has add the exhibit 
+$result_sqlexhibit2=exhibit_builder_get_exhibit_by_id($result_rec['object_id']);
+if($user['id']==1 or $user['role']=='super' or $result_sqlexhibit2->wasAddedBy(current_user()) or has_permission('ExhibitBuilder_Exhibits', 'editAll')  or sameinstitutionexhibit($result_sqlexhibit2, $user)){  //if he has add the exhibit 
 
 if(isset($_POST['allvalues']) and $_POST['allvalues']==1){
 
@@ -49,8 +49,8 @@ $sql="SELECT * FROM metadata_element_hierarchy WHERE id=".$_POST['element_hierar
 			$dataform=$exec->fetch();
 			$exec=NULL;
 
-$sqlchele="SELECT c.*,b.* FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
-			ON c.element_id = b.id WHERE c.pelement_id=".$dataform['id']."";
+$sqlchele="SELECT c.* FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
+			ON c.element_id = b.id WHERE c.pelement_id=".$dataform['element_id']."";
 			$execchele=$db->query($sqlchele); 
 			$childelements=$execchele->fetchAll();
 			$execchele=NULL;
@@ -58,8 +58,9 @@ $sqlchele="SELECT c.*,b.* FROM  metadata_element b  LEFT JOIN metadata_element_h
 			$parent_multi=$_POST['multi'];
 			if($childelementscount>0){
 foreach($childelements as $childelements){
-$sqllan="DELETE  FROM metadata_element_value WHERE element_hierarchy=".$childelements['id']." and language_id='none' and record_id=".$_POST['record_id']." and multi=".$_POST['multi'].""; //echo $sqllan;// break;
+$sqllan="DELETE  FROM metadata_element_value WHERE element_hierarchy=".$childelements['id']." and language_id='none' and record_id=".$_POST['record_id']." and multi=".$_POST['multi'].""; //echo $sqllan.'<br>';// break;
 $execlan=$db->query($sqllan);
+}//forech child
 if($execlan){
 
 $sqllan="DELETE  FROM metadata_element_value WHERE element_hierarchy=".$_POST['element_hierarchy']." and language_id='none' and record_id=".$_POST['record_id']." and multi=".$_POST['multi'].""; //echo $sqllan;// break;
@@ -68,7 +69,6 @@ if($execlan){
 return true; } else{ return false; }
 
  } else{ return false; }
-}//forech child
 
 }//if($childelementscount>0)
 

@@ -101,14 +101,14 @@
                                 $result_teaser_id = mysql_fetch_array($result_teaser);
                                 ?>
                                 <script language=JavaScript>
-                                    window.close();
+                                    //window.close();
                                     window.opener.document.getElementById('text_supporting').innerHTML += "<?php echo "<div style='padding-top:6px;'><a href='javascript:deleteObject(" . $result_teaser_id['LAST_ID'] . ")' class='delete'><span class='section-delete'>&nbsp;</span></a><a style='padding-left:10px;' target='_new' href='" . $urllinkbase . "admin/items/edit/" . $_POST['select_item'] . "'>" . $result_item_js['text'] . "</a></div>"; ?>";
                                 </script>
                             <?php }//if $_POST['select_item']>0 
                             else {
                                 ?>
                                 <script language=JavaScript>
-                                    window.close();
+                                    //window.close();
                                 </script>
                             <?php }//else $_POST['select_item']>0 ?>
                         <?php
@@ -122,7 +122,7 @@
                         echo "<br style='clear:both;'><div>All Items: </div>";
                         echo '<select name="select_item" id="select_item" style="width:336px;">';
 
-                        echo $query_item = "select a.id, f.text from omeka_items a JOIN omeka_entities_relations b ON a.id=b.relation_id JOIN omeka_entities c ON c.id=b.entity_id 
+                        $query_item = "select a.id, f.text from omeka_items a JOIN omeka_entities_relations b ON a.id=b.relation_id JOIN omeka_entities c ON c.id=b.entity_id 
 		JOIN omeka_users d ON c.id=d.entity_id JOIN omeka_element_texts f ON a.id=f.record_id  where 
 		b.relationship_id=1 and b.entity_id=" . $user_id . " and a.public=1  and f.element_id=68 order by a.added desc";
                         /// echo $query_item; break;

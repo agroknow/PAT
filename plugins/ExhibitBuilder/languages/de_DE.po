@@ -1,0 +1,1071 @@
+# Translation for the Exhibit Builder plugin for Omeka.
+# Copyright (C) 2011 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+# MusPaed_JME <Haas@jura-museum.de>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Pathway Authoring Tool\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
+"POT-Creation-Date: 2012-01-09 21:49-0500\n"
+"PO-Revision-Date: 2013-09-13 11:37+0000\n"
+"Last-Translator: MusPaed_JME <Haas@jura-museum.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Gallery Full Left"
+msgstr "Galerie ganz links"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider left column for 1 full-size"
+" image and text block."
+msgstr "Zeigt eine Galerie von 8 Miniaturen, mit einer breiteren linken Spalte für ein Bild in voller Größe und einen Textblock."
+
+msgid "Gallery Full Right"
+msgstr "Galerie ganz rechts"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider right column for 1 full-"
+"size image and text block."
+msgstr "Zeigt eine Galerie von 8 Miniaturen, mit einer breiteren rechten Spalte für 1 Bild in voller Größe und einen Textblock."
+
+msgid "Gallery Thumbnails Text Bottom"
+msgstr "Gallery Thumbnails Text Bottom"
+
+msgid "Displays a block of text below a gallery of up to 12 items."
+msgstr "Zeigt einen Textblock unter einer Galerie von bis zu 12 Elementen."
+
+msgid "Gallery Thumbnails Text Top"
+msgstr "Gallery Thumbnails Text Top"
+
+msgid "Displays a block of text above a gallery of up to 12 items."
+msgstr "Zeigt einen Textblock über einer Galerie von bis zu 12 Elementen."
+
+msgid "Gallery Thumbnails"
+msgstr "Galerie Index"
+
+msgid "Displays a gallery of up to 16 items."
+msgstr "Zeigt eine Galerie von bis zu 16 Elementen."
+
+msgid "Image List Left Thumbs"
+msgstr "Image List Left Thumbs"
+
+msgid ""
+"Displays up to 8 thumbnails on the left with up to 8 text blocks on the "
+"right."
+msgstr "Zeigt bis zu 8 Miniaturansichten auf der linken Seite mit bis zu 8 Textblöcke auf der rechten Seite."
+
+msgid "Image List Left"
+msgstr "Bildliste links"
+
+msgid ""
+"Displays up to 8 full-size images on the left with up to 8 text blocks on "
+"the right."
+msgstr "Zeigt bis zu 8 Bilder (full-size) auf der linken Seite mit bis zu 8 Textblöcke auf der rechten Seite."
+
+msgid "Image List Right Thumbs"
+msgstr "Bildliste rechts (Minibilder)"
+
+msgid ""
+"Displays up to 8 thumbnails on the right with up to 8 text blocks on the "
+"left."
+msgstr "Zeigt bis zu 8 Miniaturen auf der rechten Seite mit bis zu 8 Textblöcken auf der linken Seite."
+
+msgid "Image List Right"
+msgstr "Bildliste rechts"
+
+msgid ""
+"Displays up to 8 full-size images on the right with up to 8 text blocks on "
+"the left."
+msgstr "Zeigt bis zu 8 Bilder in voller Größe auf der rechten Seite mit bis zu 8 Textblöcken auf der linken Seite."
+
+msgid "Text Image Left"
+msgstr "Text Bild links"
+
+msgid "Displays a full page of text, with a full-size image floated left."
+msgstr "Zeigt eine ganze Seite Text, mit einem Bild in voller Größe linksbündig."
+
+msgid "Text Image Right"
+msgstr "Text Bild rechts"
+
+msgid "Displays a full page of text, with a full-size image floated right."
+msgstr "Zeigt eine ganze Seite Text, mit einem Bild in voller Größe rechtsbündig."
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Displays a full page of text without items."
+msgstr "Zeigt eine ganze Seite Text ohne Elemente"
+
+#: config_form.php:3
+msgid "Use Exhibit Browse Page For Homepage?"
+msgstr "Use Exhibit Browse Page For Homepage?"
+
+#: config_form.php:9
+msgid "If checked, Omeka will use the exhibit browse page for the homepage."
+msgstr "If checked, Omeka will use the exhibit browse page for the homepage."
+
+#: config_form.php:14
+msgid "Sorting Exhibits"
+msgstr "Sortierung der Exponate"
+
+#: config_form.php:19
+msgid ""
+"The default method by which you wish to sort the listing of exhibits on the "
+"exhibits/browse page. Default is 'Date Added'."
+msgstr "The default method by which you wish to sort the listing of exhibits on the exhibits/browse page. Default is 'Date Added'."
+
+#: controllers/ExhibitsController.php:87
+msgid "This item is not used within this exhibit."
+msgstr "This item is not used within this exhibit."
+
+#: controllers/ExhibitsController.php:254
+msgid "You must specifically select a theme in order to configure it."
+msgstr "Sie müssen gezielt ein Thema wählen, um es zu konfigurieren."
+
+#: functions.php:212 functions.php:244
+#: views/admin/exhibits/exhibit-metadata-form.php:87
+#: views/admin/exhibits/page-content-form.php:87
+#: views/admin/exhibits/page-metadata-form.php:48
+#: views/admin/exhibits/section-metadata-form.php:43
+msgid "Exhibits"
+msgstr "Exponate"
+
+#: functions.php:215 functions.php:231 views/admin/exhibits/browse.php:2
+#: views/public/exhibits/browse.php:2
+msgid "Browse Exhibits"
+msgstr "Exponate durchsehen"
+
+#: functions.php:216
+msgid "Create an Exhibit"
+msgstr "Ein Exponat erstellen"
+
+#: functions.php:218
+msgid "Create and manage exhibits that display items from the archive."
+msgstr "Erstellen und verwalten von Exponaten, die Elemente aus dem Archiv zeigen."
+
+#: functions.php:440
+msgid "Search by Exhibit"
+msgstr "Nach Exponaten suchen"
+
+#: helpers/ExhibitFunctions.php:219
+msgid "There is no item attached."
+msgstr "Es existieren keine Objekte, die angezeigt werden können."
+
+#: helpers/ExhibitFunctions.php:221
+#: views/admin/exhibits/page-content-form.php:57
+msgid "Attach an Item"
+msgstr "Ein Objekt hinzufügen"
+
+#: helpers/ExhibitFunctions.php:272
+msgid "Caption"
+msgstr "Titel"
+
+#: helpers/ExhibitFunctions.php:441
+msgid "Featured Exhibit"
+msgstr "Hervorgehobenes Objekt"
+
+#: helpers/ExhibitFunctions.php:446
+msgid "You have no featured exhibits."
+msgstr "Es sind keine Exponate ausgewählt"
+
+#: helpers/ExhibitPageFunctions.php:155
+msgid "Next Page &rarr;"
+msgstr "Nächste Seite &rarr;"
+
+#: helpers/ExhibitPageFunctions.php:189
+msgid "&larr; Previous Page"
+msgstr "&larr; Vorangehende Seite"
+
+#: models/Exhibit.php:38
+msgid "An exhibit must be given a title."
+msgstr "Exponate müssen eine Bezeichnung erhalten."
+
+#: models/Exhibit.php:42
+msgid "The title for an exhibit must be 255 characters or less."
+msgstr "Ein Titel darf höchsten 255 Zeichen lang sein"
+
+#: models/Exhibit.php:46
+msgid "The name of your theme must be 30 characters or less."
+msgstr "Der Kurzbegriff darf höchsten 30 Zeichen lang sein"
+
+#: models/Exhibit.php:66
+msgid "Exhibits must be given a valid slug."
+msgstr "Exponate müssen einen gültigen slug haben"
+
+#: models/Exhibit.php:67 models/ExhibitPage.php:31
+#: models/ExhibitSection.php:33
+msgid "A slug must be 30 characters or less."
+msgstr "Ein Kurzbegriff darf höchsten 30 Zeichen lang sein"
+
+#: models/Exhibit.php:68
+msgid ""
+"Your URL slug is already in use by another exhibit.  Please choose another."
+msgstr "Die URL-Kurzbezeihnung wird bereits benutzt. Bitte wählen Sie eine anderen"
+
+#: models/ExhibitPage.php:30
+msgid "A slug must be given for each page of an exhibit."
+msgstr "Ein Kurzname muss für jede Seite eines Exponats eingegeben werden"
+
+#: models/ExhibitPage.php:32
+msgid ""
+"This page slug has already been used in this section.  Please modify the "
+"slug so that it is unique."
+msgstr "Dieser Seiten-Kurzname wurde bereits in dieser Sektion benutzt. Bitte ändern!"
+
+#: models/ExhibitPage.php:47
+msgid "A layout must be provided for each exhibit page."
+msgstr "Für jedes Exponat muss ein Layout vorgesehen werden"
+
+#: models/ExhibitPage.php:51
+msgid "Exhibit pages must be given a title."
+msgstr "Seiten für Exponate müssen einen Titel haben"
+
+#: models/ExhibitSection.php:32
+msgid "A slug must be given for each section of an exhibit."
+msgstr "Jede Sektion eines Exponats muss einen Kurznamen (slug) erhalten"
+
+#: models/ExhibitSection.php:34
+msgid ""
+"This section slug has already been used in this exhibit.  Please modify the "
+"slug so that it is unique."
+msgstr "Dieser Sektions-Kurzname wurde bereits für dieses Exponat benutzt. Bitte ändern!"
+
+#: models/ExhibitSection.php:40
+msgid "Sections of an exhibit must be given a title."
+msgstr "Sektionen eines Exponats müssen einen Titel haben"
+
+#: views/admin/exhibits/browse.php:7
+#: views/admin/exhibits/exhibit-metadata-form.php:5
+msgid "Add Exhibit"
+msgstr "Exponate hinzufügen"
+
+#: views/admin/exhibits/browse.php:13
+msgid "There are no exhibits yet."
+msgstr "Es existieren noch keine Objekte in diesem Archiv."
+
+#: views/admin/exhibits/browse.php:16
+msgid "Add an exhibit."
+msgstr "Ein Objekt hinzufügen"
+
+#: views/admin/exhibits/browse.php:35
+#: views/admin/exhibits/exhibit-metadata-form.php:125
+msgid "Theme"
+msgstr "Thema"
+
+#: views/admin/exhibits/browse.php:39
+msgid "Delete?"
+msgstr "Löschen?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:3
+#, php-format
+msgid "Edit Exhibit: \"%s\""
+msgstr "Exponate bearbeiten: \"%s\""
+
+#: views/admin/exhibits/exhibit-metadata-form.php:5
+msgid "Edit Exhibit"
+msgstr "Dieses Objekt bearbeiten"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:22
+msgid "Are you sure you want to delete this section?"
+msgstr "Sind Sie sicher, dass Sie diese Sektion löschen wollen?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:36
+#: views/admin/exhibits/section-metadata-form.php:18
+msgid "Are you sure you want to delete this page?"
+msgstr "Sind Sie sicher, dass Sie diese Seite löschen wollen?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:96
+msgid "Exhibit Metadata"
+msgstr "Objekt-Metadaten"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:102
+#: views/admin/exhibits/page-metadata-form.php:59
+#: views/admin/exhibits/section-metadata-form.php:58
+msgid "Slug"
+msgstr "Slug"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:103
+#: views/admin/exhibits/page-metadata-form.php:60
+#: views/admin/exhibits/section-metadata-form.php:59
+msgid "No spaces or special characters allowed."
+msgstr "Es sind nur alphanumerische Zeichen erlaubt."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:107
+#: views/public/exhibits/summary.php:9
+msgid "Credits"
+msgstr "Credits"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:126
+msgid "Current Public Theme"
+msgstr "Aktuelle Dateien"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:133
+msgid "Sections and Pages"
+msgstr "Sektionen und Seiten"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:136
+msgid "There are no sections."
+msgstr "Heir sind keine Sektionen enthalten"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:138
+msgid ""
+"To reorder sections or pages, click and drag the section or page up or down "
+"to the preferred location."
+msgstr "Um die Sektionen und Seiten zu reorganisieren, können Sie diese anklicken und nach oben oder unten verschieben"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:145
+#: views/admin/exhibits/section-metadata-form.php:5
+msgid "Add Section"
+msgstr "Sektion hinzufügen"
+
+#: views/admin/exhibits/items.php:1
+msgid "Show Search Form"
+msgstr "Das Suchformular anzeigen"
+
+#: views/admin/exhibits/items.php:21
+#, php-format
+msgid "There are no items to choose from.  Please refine your search or %s."
+msgstr "Kein Ausstellungsstücke gefunden. Bitte die Sucheinstellung verfeinern %s"
+
+#: views/admin/exhibits/items.php:21
+msgid "add some items"
+msgstr "Objekte hinzufügen."
+
+#: views/admin/exhibits/page-content-form.php:2
+#, php-format
+msgid "Edit Page Content: \"%s\""
+msgstr "Den Seiteninhalt \"%s\" bearbeiten "
+
+#: views/admin/exhibits/page-content-form.php:25
+msgid "Remove This Item"
+msgstr "Dieses Objekt löschen"
+
+#: views/admin/exhibits/page-content-form.php:60
+msgid "Attach Selected Item"
+msgstr "Ausgewählte Objekte hinzufügen"
+
+#: views/admin/exhibits/page-content-form.php:100
+msgid "Page Layout"
+msgstr "Seiten Layout"
+
+#: views/admin/exhibits/page-content-form.php:112
+#: views/admin/exhibits/page-metadata-form.php:2
+msgid "Edit Page"
+msgstr "Bearbeiten"
+
+#: views/admin/exhibits/page-content-form.php:116
+msgid "Page Content"
+msgstr "Seiteninhalt"
+
+#: views/admin/exhibits/page-content-form.php:124
+msgid "Save and Return to Section"
+msgstr "Speichern und zurückkehren"
+
+#: views/admin/exhibits/page-content-form.php:125
+msgid "Save and Add Another Page"
+msgstr "speichern und eine weitere Seite hinzufügen"
+
+#: views/admin/exhibits/page-metadata-form.php:2
+#: views/admin/exhibits/section-metadata-form.php:77
+msgid "Add Page"
+msgstr "Seite hinzufügen"
+
+#: views/admin/exhibits/page-metadata-form.php:55
+msgid "Page Metadata"
+msgstr "Seiten-Metadaten"
+
+#: views/admin/exhibits/page-metadata-form.php:65
+msgid "Layouts"
+msgstr "Layouts"
+
+#: views/admin/exhibits/page-metadata-form.php:72
+msgid "Choose a layout by selecting a thumbnail on the right."
+msgstr "Wähle ein Layout aus den Pictogrammen auf der rechten Seite aus"
+
+#: views/admin/exhibits/section-list.php:10
+#: views/admin/exhibits/section-metadata-form.php:5
+msgid "Edit Section"
+msgstr "Diese Abteilung bearbeiten"
+
+#: views/admin/exhibits/section-list.php:11
+msgid "Delete Section"
+msgstr "Diese Abteilung löschen"
+
+#: views/admin/exhibits/section-list.php:25
+msgid "Add a Page"
+msgstr "Seite hinzufügen"
+
+#: views/admin/exhibits/section-metadata-form.php:3
+#, php-format
+msgid "Edit Section: \"%s\""
+msgstr "Abteilung #%s bearbeiten"
+
+#: views/admin/exhibits/section-metadata-form.php:55
+msgid "Section Metadata"
+msgstr "Abteilungs-Metadata"
+
+#: views/admin/exhibits/section-metadata-form.php:64
+msgid "Pages in this Section"
+msgstr "Seiten in dieser Abteilung"
+
+#: views/admin/exhibits/section-metadata-form.php:66
+msgid ""
+"To reorder pages, click and drag the page thumbnail up or down to the "
+"preferred location."
+msgstr "Um die Seiten zu reorganisieren, können Sie diese anklicken und nach oben oder unten verschieben"
+
+#: views/admin/exhibits/section-metadata-form.php:68
+msgid "There are no pages in this section."
+msgstr "Es existieren keine Seiten in dieser Abteilung."
+
+#: views/admin/exhibits/tags.php:2 views/public/exhibits/tags.php:2
+msgid "Browse Exhibits by Tag"
+msgstr "Durchsuche die Exponate nach Schlagwörtern (tags)"
+
+#: views/admin/exhibits/tags.php:14
+msgid "There are no tags to display. You must first tag some exhibits."
+msgstr "Es können keine Schlagwörter angezeigt werden. Sie müssen zuerst einige Objekte verschlagworten."
+
+#: views/public/exhibits/browse.php:30
+msgid "There are no exhibits available yet."
+msgstr " Es sind keine neuen Objekte vorhanden."
+
+#: views/public/exhibits/summary.php:14
+msgid "Sections"
+msgstr "Abteilungen"
+
+#: views/shared/exhibit_layouts/gallery-full-left/form.php:4
+#: views/shared/exhibit_layouts/gallery-full-right/form.php:4
+msgid "Primary"
+msgstr "primär"
+
+#: views/shared/exhibit_layouts/gallery-full-left/form.php:11
+#: views/shared/exhibit_layouts/gallery-full-right/form.php:12
+msgid "Secondary"
+msgstr "sekundär"
+
+#: admingeneral!
+msgid "Pathways"
+msgstr "Lernpfade"
+
+#: admingeneral!
+msgid "Browse Pathways"
+msgstr "Lernpfade durchsuchen"
+
+#: admingeneral!
+msgid "Create a Pathway"
+msgstr "Lernpfad erstellen"
+
+#: admingeneral!
+msgid " Add Pathway"
+msgstr "Lernpfad hinzufügen"
+
+#: admingeneral!
+msgid "Add a Pathway"
+msgstr "Einen Lernpfad hinzufügen"
+
+#: admingeneral!
+msgid "Create and manage Pathways"
+msgstr "Lernpfade erstellen und bearbeiten"
+
+#: admingeneral!
+msgid "Search by Pathway"
+msgstr "Nach Lernpfaden suchen"
+
+#: admingeneral!
+msgid "Attach a Resource"
+msgstr "Material hinzufügen"
+
+#: admingeneral!
+msgid "Click to attach a resource from your collection."
+msgstr "Anklicken, um eine Datei aus Deiner Sammlung hinzuzufügen"
+
+#: admingeneral!
+msgid "Introduction"
+msgstr "Einführung"
+
+#: admingeneral!
+msgid "Pre-visit Phase"
+msgstr "Vorbereitung"
+
+#: admingeneral!
+msgid "Visit Phase"
+msgstr "Durchführung der Aktion"
+
+#: admingeneral!
+msgid "Post-visit Phase"
+msgstr "Nachbereitung"
+
+#: admingeneral!
+msgid "Introductory section and preparatory"
+msgstr "Einleitung und Vorbereitung"
+
+#: admingeneral!
+msgid "Engagement"
+msgstr "Engagement"
+
+#: admingeneral!
+msgid "Game"
+msgstr "Spiel"
+
+#: admingeneral!
+msgid "Reflection"
+msgstr "Rückblick"
+
+#: admingeneral!
+msgid "Guidance for preparation"
+msgstr "Hilfe für die Vorbereitung"
+
+#: admingeneral!
+msgid "Connection with curriculum"
+msgstr "Lehrplanbezug"
+
+#: admingeneral!
+msgid "Provoke curiosity"
+msgstr "Interesse wecken"
+
+#: admingeneral!
+msgid "Define questions from current knowledge"
+msgstr "Fragen bzgl. dem Wissensstand stellen"
+
+#: admingeneral!
+msgid "Propose preliminary explanations or hypotheses"
+msgstr "Vorläufige Erklärungen oder Hypothesen vorschlagen"
+
+#: admingeneral!
+msgid "Plan and conduct simple investigation"
+msgstr "Planung und Durchführung einfacher Untersuchungen/Beobachtungen"
+
+#: admingeneral!
+msgid "Gather evidence from observation"
+msgstr "Beobachten und Beweise sammeln"
+
+#: admingeneral!
+msgid "Explanation based on evidence"
+msgstr "Erklärungen, die auf Beweisen beruhen"
+
+#: admingeneral!
+msgid "Consider other explanations"
+msgstr "andere Erklärungen in Betracht ziehen"
+
+#: admingeneral!
+msgid "Communicate explanation"
+msgstr "Reden wir über die Erklärungen! Erfahrungen anwenden"
+
+#: admingeneral!
+msgid "Follow-up activities and materials"
+msgstr "weitere Aktivitäten und Materialien"
+
+#: admingeneral!
+msgid "Sustainable contact"
+msgstr "Kontakperson"
+
+#: admingeneral!
+msgid "Curiosity Provocation"
+msgstr "Neugierde wecken"
+
+#: admingeneral!
+msgid "Abstract Conceptulization"
+msgstr "Abstrakte Konceptulization"
+
+#: admingeneral!
+msgid "Active Experimentation1"
+msgstr "Experiment 1"
+
+#: admingeneral!
+msgid "Active Experimentation2"
+msgstr "Experiment 2"
+
+#: admingeneral!
+msgid "Active Experimentation3"
+msgstr "Experiment 3"
+
+#: admingeneral!
+msgid "Active Experimentation4"
+msgstr "Experiment 4"
+
+#: admingeneral!
+msgid "Active Experimentation5"
+msgstr "Experiment 5"
+
+#: admingeneral!
+msgid "Active Experimentation6"
+msgstr "Experiment 6"
+
+#: admingeneral!
+msgid "Active Experimentation7"
+msgstr "Experiment 7"
+
+#: admingeneral!
+msgid "Active Experimentation8"
+msgstr "Experiment 8"
+
+#: admingeneral!
+msgid "Active Experimentation9"
+msgstr "Experiment 9"
+
+#: admingeneral!
+msgid "Active Experimentation10"
+msgstr "Experiment 10"
+
+#: admingeneral!
+msgid "Active Experimentation11"
+msgstr "Experiment 11"
+
+#: admingeneral!
+msgid "Active Experimentation12"
+msgstr "Experiment 12"
+
+#: admingeneral!
+msgid "Active Experimentation13"
+msgstr "Experiment 13"
+
+#: admingeneral!
+msgid "Active Experimentation14"
+msgstr "Experiment 14"
+
+#: admingeneral!
+msgid "Active Experimentation15"
+msgstr "Experiment  15"
+
+#: admingeneral!
+msgid "Reflection-COMMUNICATE EXPLANATION"
+msgstr "Reflektion: Reden wir über die Erklärungen! Erfahrungen anwenden"
+
+#: admingeneral!
+msgid "Last Modified:"
+msgstr "Änderungsdatum"
+
+#: admingeneral!
+msgid "Supporting Materials"
+msgstr "Hilfsmaterialien"
+
+#: admingeneral!
+msgid "Add your tag"
+msgstr "Schlagwort hinzufügen"
+
+#: admingeneral!
+msgid "Given Metadata"
+msgstr "angegebene Metadaten"
+
+#: admingeneral!
+msgid "There are no pathways yet."
+msgstr "Hier sind noch keine Lernpfade vorhanden"
+
+#: admingeneral!
+msgid "Educational Pathways"
+msgstr "Lernpfade"
+
+#: admingeneral!
+msgid "GO NOW!"
+msgstr "Los geht's"
+
+#: admingeneral!
+msgid "Creator"
+msgstr "Ersteller"
+
+#: admingeneral!
+msgid "You are here"
+msgstr "Sie sind hier"
+
+#: admingeneral!
+msgid "Edit Pathway: %s"
+msgstr "Den Lernpfad %s bearbeiten"
+
+#: admingeneral!
+msgid "Edit Pathway"
+msgstr "Den Lernpfad bearbeiten"
+
+#: admingeneral!
+msgid "Preview Pathway"
+msgstr "Den Lernpfad ansehen"
+
+#: admingeneral!
+msgid "Quality Criteria for Natural Europe Pathways"
+msgstr "Qualitätskriterien für Natural Europe Lernpfade"
+
+#: admingeneral!
+msgid "Description"
+msgstr "Beschreibung"
+
+#: admingeneral!
+msgid "Language"
+msgstr "Sprache"
+
+#: admingeneral!
+msgid "Pathway Title"
+msgstr "Lernpfadtitel"
+
+#: admingeneral!
+msgid "no spaces or special characters"
+msgstr "Keine Sonderzeichen!"
+
+#: admingeneral!
+msgid "Pathway ready for validation"
+msgstr "Lernpfad fertig zur Validierung"
+
+#: admingeneral!
+msgid "Pathway Metadata"
+msgstr "Metadaten des Lernpfades"
+
+#: admingeneral!
+msgid "Save and Finish"
+msgstr "Speichern und fertig"
+
+#: admingeneral!
+msgid "Save Changes"
+msgstr "Änderungen übernehmen"
+
+#: admingeneral!
+msgid "Select Pathway Template"
+msgstr "Wählen Sie ein Lernpfad-Formular aus"
+
+#: admingeneral!
+msgid "There are no sections"
+msgstr "Hier sind keine Abteilungen"
+
+#: admingeneral!
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: admingeneral!
+msgid "Click to add Supporting Materials"
+msgstr "Klicken, um unterstützendes Material hinzuzufügen"
+
+#: admingeneral!
+msgid ""
+"Resources that will be added here serve as <br> complementary to the items "
+"attached on the pathway"
+msgstr "Resources that will be added here serve as <br> complementary to the items attached on the pathway"
+
+#: admingeneral!
+msgid "Select an object to add"
+msgstr "Wählen Sie ein Objekt, das hinzugefügt werden soll:"
+
+#: admingeneral!
+msgid "All Items: "
+msgstr "Alle Objekte anzeigen"
+
+#: admingeneral!
+msgid "Insert"
+msgstr "einfügen"
+
+#: admingeneral!
+msgid "No items"
+msgstr "Keine Objekte"
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Ein neues Bild Ihrer Sammlung hinzufügen"
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Geführter Lernpfad"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Spielerischer Lernpfad"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Lernpfad für eine interaktive Installation"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "Autorisch"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "Beschreiben Sie Ihren Lernpfad"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Seiten"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Fügen Sie aus Ihren Materialien Hilfsmaterialien für diese Seite hinzu. "
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Hilfsmaterialien hinzufügen"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Hilfsmaterial einsetzen"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Eine neue Datei Ihrer Sammlung hinzufügen"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Einen neuen Hyperlink der Sammlung hinzufügen"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Ein Bild einsetzen"
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "Das ausgewählte Bild einsetzen"
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Wichtige Information: Vor dem Einsetzen externer Materialien unbedingt den Lernpfad sichern"
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Beim Einsetzen neuer externer Materialien wird die Seite neu geladen und alle ungesicherten Veränderungen gehen verloren!!"
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Einführungsabschnitt"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Billdungs"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Aufgaben"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "Bildschirmseite 1"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "Bildschirmseite 2"
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "Bildschirmseite 3"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "Bildschirmseite 4"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "Bildschirmseite 5"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "Bildschirmseite 6"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "Bildschirmseite 7"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "Bildschirmseite 8"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "Bildschirmseite 9"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "Bildschirmseite 10"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "Bildschirmseite 11"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "Bildschirmseite 12"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "Bildschirmseite 13"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "Bildschirmseite 14"
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "Bildschirmseite 15"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "Über das Benutzerkonto findet man eine Auflistung aller verfügbaren Lernwege."
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Um mehr über die Lernwege zu erfahren, klicken Sie auf den Titellink."
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Sie können auch neue Lernwege hinzufügen und bestehende bearbeiten oder löschen."
+
+#: admingeneral!
+msgid "Guided pathway: Addressed to school communities"
+msgstr "Geführte Lernwege: Dieses Angebot richtet sich an Schulen."
+
+#: admingeneral!
+msgid ""
+"Open Pathway: Addressed to lifelong learners and especially families"
+msgstr "Lernpfad für Familien: Dieses Angebot richtet sich an Erwachsene und insbesondere Familien."
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Lernweg mit interaktiven Installationen zur Benutzung mit dem Werkzeug für interaktive Installationen"
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Veröffentlichen Sie Ihren Lernweg."
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "In diesem Bereich können Sie Ihren Lernweg anlegen."
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Speichern und auf der gleichen Seite bleiben"
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Speichern und und zur Hauptseite des Lernwegs zurückkehren"
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Änderungen speichern und auf der Hauptseite des Lernwegs bleiben"
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Speichern und zur Liste der Lernwege gehen"
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Stellen Sie Informationen zu Ihrem Lernweg zur Verfügung und machen Sie ihn für Suchmaschinen auffindbar."
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Informationen zu notwendigen Vorkehrungen, die interessierte Lehrer treffen sollten, bevor sie die beschriebenen und/oder nachfolgend angebotenen Aktivitäten freischalten"
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "Stellen Sie einen Lehr-/Lernplan zur Verfügung, der direkt über das Vorwissen der teilnehmenden Schüler informiert."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Beschreiben Sie die Medien und Materialien, die in der Klasse benutzt werden, um die Aufmerksamkeit der Schüler zu unterstützen."
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Richten Sie Fragen ein, die den Schülern für eine vertiefte Auseinandersetzung mit dem Lernziel dienen, ausgehend vom bestehenden Kenntnisniveau."
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Beschreiben Sie, wie Schüler darin unterstützt werden können, mögliche Erklärungen zu den Fragen der vorhergehenden Aktivität zur Verfügung zu stellen."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Beschreiben Sie Medien und Materialien, die benutzt werden können, um den Schülern die Konzentration auf Beweise als Quelle wissenschaftlicher Erkenntnis zu erleichtern."
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Lokalisieren Sie geeignete Ressourcen und/oder die tatsächliche Ausstellung. Beschreiben Sie, wie die Schüler Hinweise zu den Fragen in den vorangegangenen Abschnitten erhalten können."
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Die einzelnen Phasen des Bildungsprogramms erklären"
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Erklären Sie, wie die Schülergruppen ihre eigenen Erklärungen überprüfen können."
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Details zu den Möglichkeiten eines Berichts, der die Erkenntnisse der Schüler anderen Gruppen und dem Lehrer präsentiert und begründet"
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Beschreiben Sie den Kontext der weiterführenden Aktivitäten und Materialien."
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "Kontaktinformationen zu den Personen und Institutionen, die mit dem Lernweg zusammenhängen"
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "Beschreiben Sie den Lernweg grundlegend: Medien, Materialien, Altersgruppe etc."
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "Richten Sie die Lernumgebung so ein, dass die Aufmerksamkeit von Teilnehmern erregt wird."
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Geben Sie Hinweise, wie die Teilnehmer z.B. Fragebögen ausfüllen können."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Nennen Sie die unterschiedlichen Spiele wie Kreuzworträtsel, Auswahlfragen etc. Erklären Sie, wie sie allein oder in Gruppen gespielt werden können."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "Überprüfen Sie die Ergebnisse der Spiele, gratulieren Sie dem Gewinner und erklären Sie, welche Belohnung er auf welchem Wege erhält."
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Lernpfad für Familien"

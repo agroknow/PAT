@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# Alexios Dimitropoulos <alexios.dimitropoulos@gmail.com>, 2012.
-# Organic.Lingua  <info@organic-lingua.eu>, 2012.
-# stauros gkinis <gkista@yahoo.gr>, 2012.
-# Stoitsis Giannis <>, 2012.
-#   <valia.7t@gmail.com>, 2012.
-#   <vprot@agroknow.gr>, 2012.
+# Alexios Dimitropoulos <alexios.dimitropoulos@gmail.com>, 2012
+# elkoko <elenakokoliou@agroknow.gr>, 2013
+# Organic.Lingua <info@organic-lingua.eu>, 2012
+# stauros gkinis <gkista@yahoo.gr>, 2012
+# Stoitsis Giannis <>, 2012
+# valia <valia.7t@gmail.com>, 2012
+# vprot <vprot@agroknow.gr>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2012-11-16 12:19+0000\n"
-"Last-Translator: valia <valia.7t@gmail.com>\n"
+"PO-Revision-Date: 2013-08-29 07:56+0000\n"
+"Last-Translator: elkoko <elenakokoliou@agroknow.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3049,3 +3050,259 @@ msgstr "Επικυρώστε"
 #: admin/applications/Functions.phpgeneral!
 msgid "Choose language"
 msgstr "Επιλέξτε γλώσσα"
+
+#: admingeneral!
+msgid "Delete Resource"
+msgstr "Διαγραφή Αντικειμένου"
+
+#: admingeneral!
+msgid "Delete Pathway"
+msgstr "Διαγραφή Εκπαιδευτικού Μονοπατιού"
+
+#: admingeneral!
+msgid "Add it to my Repository"
+msgstr "Πρόσθεσε το στο αποθετήριο μου"
+
+#: admingeneral!
+msgid "Save and Return to Pathway"
+msgstr "Αποθήκευση και επιστροφή στο Εκπαιδευτικό μονοπάτι"
+
+#: admingeneral!
+msgid "Portuguese"
+msgstr "Πορτογαλικά"
+
+#: admingeneral!
+msgid "Hungarian"
+msgstr "Ουγγρικά"
+
+#: admingeneral!
+msgid "Russian"
+msgstr "Ρώσικα"
+
+#: admingeneral!
+msgid "Finnish"
+msgstr "Φιλανδικά"
+
+#: admingeneral!
+msgid "Estonian"
+msgstr "Εσθονικά"
+
+#: admingeneral!
+msgid "Spanish"
+msgstr "Ισπανικά"
+
+#: admingeneral!
+msgid "Greek"
+msgstr "Ελληνικά"
+
+#: admingeneral!
+msgid "German"
+msgstr "Γερμανικά"
+
+#: admingeneral!
+msgid "English"
+msgstr "Αγγλικά"
+
+#: admingeneral!
+msgid "Organization"
+msgstr "Οργανισμός"
+
+#: admingeneral!
+msgid "Surname"
+msgstr "Επώνυμο"
+
+#: admingeneral!
+msgid "Add new"
+msgstr "Προσθήκη καινούργιου"
+
+#: admingeneral!
+msgid "Remove Language"
+msgstr "Αφαίρεση γλώσσας"
+
+#: admingeneral!
+msgid "Add Language"
+msgstr "Προσθήκη γλώσσας"
+
+#: admingeneral!
+msgid "Browse"
+msgstr "Περιήγηση"
+
+#: admingeneral!
+msgid "No"
+msgstr "Όχι"
+
+#: admingeneral!
+msgid "Yes, if others share alike"
+msgstr "Ναι, αν και οι άλλοι το μοιράζονται εξίσου"
+
+#: admingeneral!
+msgid "Yes"
+msgstr "Ναι"
+
+#: admingeneral!
+msgid "Insert new image to your collection"
+msgstr "Εισαγωγή νέας εικόνας στη συλλογή σας"
+
+#: admingeneral!
+msgid "Insert Image"
+msgstr "Εισαγωγή εικόνας"
+
+#: admingeneral!
+msgid "Keep in mind that you didn't select a file to upload."
+msgstr "Προσοχή, δεν επέλεξες αρχείο για ν' ανεβάσεις."
+
+#: admingeneral!
+msgid "You must fill all the mandatory fields (*)"
+msgstr "Πρέπει να συμπληρώσεις όλα τα υποχρεωτικά πεδία (*)"
+
+#: admingeneral!
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: admingeneral!
+msgid "Only recommended"
+msgstr "Μόνο τα προτεινόμενα"
+
+#: admingeneral!
+msgid "Enrich Metadata"
+msgstr "Εμπλουτισμός των μεταδεδομένων"
+
+#: admingeneral!
+msgid "Filter results by type"
+msgstr "Φιλτράρισμα των αποτελεσμάτων ανά τύπο"
+
+#: admingeneral!
+msgid "Report a problem"
+msgstr "Αναφορά ενός προβλήματος"
+
+#: admingeneral!
+msgid "Add Resource"
+msgstr "Προσθήκη Αντικειμένου"
+
+#: admingeneral!
+msgid "Add File"
+msgstr "Προσθήκη Αρχείου"
+
+#: admingeneral!
+msgid "Add Pathway"
+msgstr "Προσθήκη Εκπαιδευτικού μονοπατιού"
+
+#: admingeneral!
+msgid "easier to downoad"
+msgstr "πιο εύκολο να κατεβάσετε"
+
+#: admingeneral!
+msgid "Getting Started with Natural Europe Pathway Authoring Tool"
+msgstr "Ξεκινώντας με το Natural Europe Pathway Authoring Tool"
+
+#: admingeneral!
+msgid ""
+"Are you sure you want to CHANGE the language? This action will be SAVED!"
+msgstr "Είστε σίγουροι ότι θέλετε ν' ΑΛΛΑΞΕΤΕ τη γλώσσα; Αυτή η ενέργεια θα ΣΩΘΕΙ!"
+
+#: admingeneral!
+msgid "Are you sure you want to DELETE it?"
+msgstr "Είστε σίγουροι ότι θέλετε να το διαγράψετε?"
+
+#: admingeneral!
+msgid "evolution (biology)"
+msgstr "εξέλιξη (βιολογία)"
+
+#: admingeneral!
+msgid "mechanics (physics)"
+msgstr "μηχανική (φυσική)"
+
+#: admingeneral!
+msgid "reproduction (biology)"
+msgstr "αναπαραγωγή (βιολογία)"
+
+#: admingeneral!
+msgid ""
+"Τhe Dashboard of the Pathway Authoring Tool provides you with an overview of"
+" what is available on the site."
+msgstr "Ο Πίνακας του Pathway Authoring Tool σας παρέχει μια επισκόπηση του τι είναι διαθέσιμο στην ιστοσελίδα."
+
+#: admingeneral!
+msgid ""
+"You can either access Resources and Pathway sections from the toolbar or "
+"from the links provided right below the toolbar."
+msgstr "Μπορείτε να έχετε πρόσβαση στα Αντικείμενα και στα Εκπαιδευτικά μέρη είτε από τη γραμμή εργαλείων ή από τους συνδέσμους που παρέχονται ακριβώς κάτω από τη γραμμή εργαλείων."
+
+#: admingeneral!
+msgid "Moreover, you can find guidelines and overview of the site."
+msgstr "Επίσης μπορείτε να βρείτε οδηγίες και επισκόπηση της ιστοσελίδας."
+
+#: admingeneral!
+msgid ""
+"The Resources area consists of Resources Management options such as Ingest a"
+" Resource, Add a Hyperlink, Add a File."
+msgstr "Η περιοχή Αντικείμενα αποτελείται από επιλογές Διαχείρισης Αντικειμένων όπως την Ενσωμάτωση Αντικειμένου, την Προσθήκη Συνδέσμου την Προσθήκη Αρχείου."
+
+#: admingeneral!
+msgid "It also offers the list of all the resources and the option of Search."
+msgstr "Επίσης προσφέρει τη λίστα όλων των αντικειμένων και την επιλογή της Αναζήτησης."
+
+#: admingeneral!
+msgid ""
+"A quick filter option allows for a faster choice between different modes of "
+"resources."
+msgstr "Μια γρήγορη επιλογή φιλτραρίσματος επιτρέπει τη ταχύτερη επιλογή μεταξύ διαφορετικών τρόπων παρουσίασης των αντικειμένων."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from external repositories."
+msgstr "Προσθέστε ένα καινούργιο αντικείμενο στη συλλογή σας από εξωτερικά αποθετήρια."
+
+#: admingeneral!
+msgid ""
+"Add in your collection a new resource found online by providing its URL."
+msgstr "Προσθέστε ένα καινούργιο αντικείμενο στη συλλογή σας από το διαδίκτυο, παρέχοντας το URL του."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from your local disk."
+msgstr "Προσθέστε ένα καινούργιο αντικείμενο στη συλλογή σας απο το τοπικό σας δίσκο."
+
+#: admingeneral!
+msgid "Sort alphabetically the resources based on Title"
+msgstr "Ταξινόμηση των αντικειμένων αλφαβητικά  με βάση τον τίτλο."
+
+#: admingeneral!
+msgid "Sort the resources based on their status (public – private)."
+msgstr "Ταξινόμηση των αντικειμένων με βάση την κατάσταση τους (δημόσια - ιδιωτικά)."
+
+#: admingeneral!
+msgid "Sort the resources based on the Date Added."
+msgstr "Ταξινόμηση των αντικειμένων με βάση την ημερομηνία προσθήκης."
+
+#: admingeneral!
+msgid "Search using keywords through your resources."
+msgstr "Αναζήτηση στο περιεχόμενο των αντικειμένων χρησιμοποιώντας λέξεις-κλειδιά. "
+
+#: admingeneral!
+msgid "Describe your resource providing the information requested bellow."
+msgstr "Περιγράψτε το αντικείμενο σας παρέχοντας τις πληροφορίες που ζητούνται παρακάτω."
+
+#: admingeneral!
+msgid ""
+"Make your resource public and visible in your pathway by clicking the Public"
+" button."
+msgstr "Κάντε το αντικείμενο σας δημόσιο και ορατό στο εκπαιδευτικό σας μονοπάτι κάνοντας κλικ στο κουμπί \"Public\"."
+
+#: admingeneral!
+msgid "Use of more elements to describe your pathway"
+msgstr "Χρησιμοποιήστε περισσότερα πεδία για να περιγράψετε το εκπαιδευτικό σας μονοπάτι."
+
+#: admingeneral!
+msgid "Basic elements for describe your pathway."
+msgstr "Βασικά πεδία για τη περιγραφή του εκπαιδευτικού μονοπατιού."
+
+#: admingeneral!
+msgid "Use of more elements to describe your resource"
+msgstr "Χρησιμοποιήστε περισσότερα πεδία για να περιγράψετε το αντικείμενο σας."
+
+#: admingeneral!
+msgid "Basic elements for describe your resource."
+msgstr "Βασικά πεδία για τη περιγραφή του αντικειμένου σας."
+
+#: admingeneral!
+msgid "Pathway last saved at"
+msgstr "Πιό πρόσφατη αποθήκευση περιεχομένου"

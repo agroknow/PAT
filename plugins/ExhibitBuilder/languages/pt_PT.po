@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <gkista@agroknow.gr>, 2012.
+# testaccount_grnet <gkista@agroknow.gr>, 2012
+# testaccount_grnet <gkista@agroknow.gr>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2012-11-27 15:46+0000\n"
+"PO-Revision-Date: 2013-09-09 13:56+0000\n"
 "Last-Translator: testaccount_grnet <gkista@agroknow.gr>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,7 @@ msgstr "Galeria completa à esquerda"
 msgid ""
 "Displays a gallery of 8 thumbnails, with a wider left column for 1 full-size"
 " image and text block."
-msgstr "Apresenta uma de 8 separdores, com uma coluna à esquerdapara uma imagem de tamanho real e caixa de texto."
+msgstr "Apresenta uma de 8 separadores, com uma coluna à esquerda para uma imagem de tamanho real e caixa de texto."
 
 msgid "Gallery Full Right"
 msgstr "Galeria completa à direita"
@@ -104,7 +105,7 @@ msgstr "Apresenta uma página completa de texto com itens."
 
 #: config_form.php:3
 msgid "Use Exhibit Browse Page For Homepage?"
-msgstr "Usar a página do reoteiro como página inicial"
+msgstr "Usar a página de procura do roteiro como página inicial"
 
 #: config_form.php:9
 msgid "If checked, Omeka will use the exhibit browse page for the homepage."
@@ -139,7 +140,7 @@ msgstr "Roteiro"
 #: functions.php:215 functions.php:231 views/admin/exhibits/browse.php:2
 #: views/public/exhibits/browse.php:2
 msgid "Browse Exhibits"
-msgstr "Procurar roteiro "
+msgstr "Explorar roteiro "
 
 #: functions.php:216
 msgid "Create an Exhibit"
@@ -176,11 +177,11 @@ msgstr "Não salientou o roteiro"
 
 #: helpers/ExhibitPageFunctions.php:155
 msgid "Next Page &rarr;"
-msgstr "Página seguinte"
+msgstr "Página seguinte &rarr;"
 
 #: helpers/ExhibitPageFunctions.php:189
 msgid "&larr; Previous Page"
-msgstr "Página anterior"
+msgstr "&larr; Página anterior"
 
 #: models/Exhibit.php:38
 msgid "An exhibit must be given a title."
@@ -188,7 +189,7 @@ msgstr "É necessário atribuir um título ao roteiro."
 
 #: models/Exhibit.php:42
 msgid "The title for an exhibit must be 255 characters or less."
-msgstr "O título do roteiro  deve ter até 255 caracteres."
+msgstr "O título do roteiro deve ter até 255 caracteres."
 
 #: models/Exhibit.php:46
 msgid "The name of your theme must be 30 characters or less."
@@ -216,7 +217,7 @@ msgstr "É necessário atribuir um slug a cada página do roteiro."
 msgid ""
 "This page slug has already been used in this section.  Please modify the "
 "slug so that it is unique."
-msgstr "O slug desta página já foi usado nesta secção - Por favor modifique para que seja única. "
+msgstr "O slug desta página já foi usado nesta secção. Por favor modifique para que seja única. "
 
 #: models/ExhibitPage.php:47
 msgid "A layout must be provided for each exhibit page."
@@ -260,7 +261,7 @@ msgstr "Tema"
 
 #: views/admin/exhibits/browse.php:39
 msgid "Delete?"
-msgstr "Apagar"
+msgstr "Apagar?"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:3
 #, php-format
@@ -426,7 +427,7 @@ msgstr "Não existe página nesta secção."
 
 #: views/admin/exhibits/tags.php:2 views/public/exhibits/tags.php:2
 msgid "Browse Exhibits by Tag"
-msgstr " Procurar roteiro por Tag"
+msgstr " Explorar roteiro por etiqueta"
 
 #: views/admin/exhibits/tags.php:14
 msgid "There are no tags to display. You must first tag some exhibits."
@@ -456,7 +457,7 @@ msgstr "Roteiros"
 
 #: admingeneral!
 msgid "Browse Pathways"
-msgstr "Procurar roteiro"
+msgstr "Explorar roteiro"
 
 #: admingeneral!
 msgid "Create a Pathway"
@@ -484,7 +485,7 @@ msgstr "Anexar um recurso"
 
 #: admingeneral!
 msgid "Click to attach a resource from your collection."
-msgstr "Click para anexar um recurso da sua coleção."
+msgstr "Clique para anexar um recurso da sua coleção."
 
 #: admingeneral!
 msgid "Introduction"
@@ -528,7 +529,7 @@ msgstr "Relação com o currículo"
 
 #: admingeneral!
 msgid "Provoke curiosity"
-msgstr "Provocar a curiosidade"
+msgstr "Provocar Curiosidade"
 
 #: admingeneral!
 msgid "Define questions from current knowledge"
@@ -560,11 +561,11 @@ msgstr "Comunicar resultados"
 
 #: admingeneral!
 msgid "Follow-up activities and materials"
-msgstr "Atividades e ampliação de conhecimentos"
+msgstr "Atividades de ampliação de conhecimentos e materiais"
 
 #: admingeneral!
 msgid "Sustainable contact"
-msgstr "Contacto"
+msgstr "Contactos"
 
 #: admingeneral!
 msgid "Curiosity Provocation"
@@ -759,3 +760,313 @@ msgstr "Inserir"
 #: admingeneral!
 msgid "No items"
 msgstr "Sem items"
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Insira uma nova imagem à sua coleção"
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Roteiro orientado"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Roteiro baseado num jogo"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Instalação interativa do roteiro"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "Criação"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "Descreva o seu roteiro"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Página"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Adicione um dos seus recursos nos materiais de apoio para esta página. Os Recursos adicionados servem como complemento ao iten adicionado ao roteiro. "
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Adicione Materiais de Apoio"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Inserir Materiais de Apoio"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Inserir um novo ficheiro na coleção"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Adicionar um novo hiperlink à coleção"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Inserir imagem: o ficheiro da imagem aqui adicionada vai parecer no corpo do roteiro. "
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "Inserir imagem selecionada"
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Informação importante: Quando inserir um recurso externo certifique-se que gravou todas  as alterações que fez no roteiro. "
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Insira um novo recurso externo e volte ao seu roteiro e todas as alterações realizadas serão perdidas. "
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Seção introdutória"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Educativo"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Designações"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "Ecrã 1"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "Ecrã 2 "
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "Ecrã 3"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "Ecrã 4"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "Ecrã 5"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "Ecrã 6"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "Ecrã 7"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "Ecrã 8"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "Ecrã 9"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "Ecrã 10"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "Ecrã 11"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "Ecrã 12"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "Ecrã 13"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "Ecrã 14"
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "Ecrã 15"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "A área dos roteiros proporciona a lista de roteiros disponíveis na conta do utilizador. "
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Para ler mais acerca deste Roteiro, clique no link do título. "
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Também pode adicionar, Editar e apagar um Roteiro."
+
+#: admingeneral!
+msgid "Guided pathway: Addressed to school communities"
+msgstr "Roteiros para estudos na escola e no museu: Direcionado para a comunidade escolar"
+
+#: admingeneral!
+msgid ""
+"Open Pathway: Addressed to lifelong learners and especially families"
+msgstr "Roteiros para jogos nas exposições: Direcionado para o público em geral, especialmente famílias."
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Roteiro interativo: Para usar com a ferramenta interativa IIT (Interactive Installation Tool). "
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Torne o seu roteiro publico."
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "Nesta área pode criar o seu Roteiro. "
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Guardar e manter-me na mesma página. "
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Guardar e voltar para a página principal do roteiro"
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Guardar as alterações e permanecer na página principal do roteiro"
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Guardar e ir para a lista de roteiros"
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Adicione mais informação acerca do seu roteiro e torne-o pesquisável. "
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Informações sobre a preparação necessária ao professor interessado antes de iniciar as atividades descritas e / ou propostas nas seções seguintes."
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "Dê o currículo relevante para que os alunos tenham um conhecimento prévio para participar no percurso educativo."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Descreva os meios e materiais que seriam usados ​​dentro da sala de aula para atrair a atenção do aluno."
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Formule questões a serem apresentadas aos alunos para reforçar ainda mais o seu compromisso de pensar sobre o tema em estudo com base no seu conhecimento existente."
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Descreva a forma de estimular os alunos a propor possíveis explicações para as perguntas que surgiram a partir da atividade anterior."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Descreva os meios e materiais que serão utilizados para facilitar os alunos a concentrar-se em evidências como uma fonte de respostas para as questões científicas."
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Localize o recurso apropriado e / ou a exposição. Dê detalhes sobre a forma que os alunos irão utilizar para reunir evidências de acordo com as perguntas feitas nas etapas anteriores."
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Explique as fases do progrma educacional"
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Explique como é que os grupos de alunos vão avaliar as suas próprias explicações."
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Detalhes sobre como produzir um relatório com os resultados dos alunos, apresentando e justificando as explicações propostas para os outros grupos e para o professor."
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Descreva o constexto das atividades de ampliação de conhecimentos e materiais"
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "Indique o contacto das pessoas e organização realacionadas com o roteiro. "
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "Indique uma descrição simples acerca do roteiro educacional. Os meios que serão utilizados, faixa etária, etc"
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "Defina o contexto da atividade de uma forma adequada, a fim de atrair a atenção dos participantes."
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Dê orientações sobre como os participantes irão preencher, por exemplo, os questionários."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Dê diferentes tipos de jogos como palavras cruzadas, questões de escolha múltipla, etc.  Explique como jogar, em grupos ou individualmente."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "Avaliar os resultados dos jogos, felicitar o vencedor e explicar-lhe qual o prémio e como pode recebê-lo."
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Open Pathway"

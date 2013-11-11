@@ -552,13 +552,21 @@ abstract class Omeka_Record implements ArrayAccess
 		//print_r($data_to_save);
 		$uri=WEB_ROOT;
 		if(isset($data_to_save['archive_filename'])){
-		
-		savelomelement(32,''.$uri.'/archive/files/'.$data_to_save['archive_filename'].'',''.$data_to_save['item_id'].'','item','1');
-		$formetypetext=FiletypeMapping($data_to_save['mime_os']);
-		savelomelement(33,NULL,''.$data_to_save['item_id'].'','item','1',$formetypetext);
-		savelomelement(54,'URI',''.$data_to_save['item_id'].'','item','1');
-		savelomelement(55,''.$uri.'/archive/files/'.$data_to_save['archive_filename'].'',''.$data_to_save['item_id'].'','item','1');
-		if(stripos(' '.$data_to_save['mime_os'],"image")>0){$formtype=6;}else{$formtype=20;}
+		$metadataFile= Zend_Registry::get('metadataFile');/////read metadata file
+                if($metadataFile[metadata_schema_resources][element_hierarchy_location]!=false){
+		savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_location],''.$uri.'/archive/files/'.$data_to_save['archive_filename'].'',''.$data_to_save['item_id'].'','item','1');
+                }
+                $formetypetext=FiletypeMapping($data_to_save['mime_os']);
+                if($metadataFile[metadata_schema_resources][element_hierarchy_format]!=false){
+		savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_format],NULL,''.$data_to_save['item_id'].'','item','1',$formetypetext);
+                }
+                if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog]!=false){
+                savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog],'URI',''.$data_to_save['item_id'].'','item','1');
+                }
+                if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry]!=false){
+                savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry],''.$uri.'/archive/files/'.$data_to_save['archive_filename'].'',''.$data_to_save['item_id'].'','item','1');
+                }
+                if(stripos(' '.$data_to_save['mime_os'],"image")>0){$formtype=6;}else{$formtype=20;}
 		saveomekasql('UPDATE omeka_items SET item_type_id='.$formtype.' where id='.$data_to_save['item_id'].'');
 		
 		}

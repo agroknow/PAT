@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# Matti Lassila <matti.lassila@gmail.com>, 2012.
-#   <veera.kallunki@helsinki.fi>, 2012.
+# akaasine <arja.kaasinen@helsinki.fi>, 2013
+# Matti Lassila <matti.lassila@gmail.com>, 2012
+# vkallunk <veera.kallunki@helsinki.fi>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2012-11-19 12:47+0000\n"
-"Last-Translator: vkallunk <veera.kallunki@helsinki.fi>\n"
+"PO-Revision-Date: 2013-09-23 12:20+0000\n"
+"Last-Translator: akaasine <arja.kaasinen@helsinki.fi>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -760,3 +761,313 @@ msgstr "Lisää"
 #: admingeneral!
 msgid "No items"
 msgstr "Ei kohteita"
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Lisää uusi kuva kokoelmaasi"
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Ohjattu opetuskokonaisuus"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Peliin perustuva opetuskokonaisuus"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Vuorovaikutteisesti asennettava opetuskokonaisuus"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "KIRJOITUS"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "KUVAILE OPETUSKOKONAISUUTTASI"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Sivut"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Lisää yksi resurssisi tukiaineistoksi tälle sivulle. Tähän lisättävät resurssit täydentävät opetuskokonaisuuteen liitettyjä teoksia"
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Lisää tukiaineistoa"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Lisää tukiaineistoa"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Lisää uusi tiedosto kokoelmaasi"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Lisää uusi hyperlinkki kokoelmaasi"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Lisää kuva: tässä lisättävät kuvatiedostot näkyvät opetuskokonaisuutesi korpuksessa."
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "Lisää valittu kuva"
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Kun olet lisäämässä uutta ulkoista resurssia, varmista että olet tallentanut kaikki muutokset opetuskokonaisuuteesi."
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Uuden ulkoisen resurssin lisääminen saa opetuskokonaisuuden sivun latautumaan uudestaan ja kaikki tallentamattomat muutokset katoavat."
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Johdanto-osa"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Opetuksellinen"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Tehtävät"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "Ruutu 1"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "Ruutu 2"
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "Ruutu 3"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "Ruutu 4"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "Ruutu 5"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "Ruutu 6"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "Ruutu 7"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "Ruutu 8"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "Ruutu 9"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "Ruutu 10"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "Ruutu 11"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "Ruutu 12"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "Ruutu 13"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "Ruutu 14"
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "Ruutu 15"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "Opetuskokonaisuusalueella on luettelo opetuskokonaisuuksista, jotka ovat saatavissa käyttäjän tilillä."
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Voit lukea lisää kustakin opetuskokonaisuudesta klikkaamalla otsikkolinkkiä."
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Voit myös lisätä uuden opetuskokonaisuuden ja muokata ja poistaa opetuskokonaisuuksia."
+
+#: admingeneral!
+msgid "Guided pathway: Addressed to school communities"
+msgstr "Ohjattu opetuskokonaisuus: Suunnattu kouluyhteisöille."
+
+#: admingeneral!
+msgid ""
+"Open Pathway: Addressed to lifelong learners and especially families"
+msgstr "Avoin oppimispolku: Suunnattu elinikäisille oppijoille ja erityisesti perheille."
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Vuorovaikutteisesti asennettava opetuskokonaisuus: Käytetään vuorovaikutteisen asennustyökalun kanssa"
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Tee opetuskokonaisuudestasi julkinen"
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "Tällä alueella voit luoda oman opetuskokonaisuutesi."
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Tallenna ja pysy samalla sivulla"
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Tallenna ja palaa opetuskokonaisuuden pääsivulle"
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Tallenna muutokset ja pysy opetuskokonaisuuden pääsivulla."
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Tallenna ja mene opetuskokonaisuuksien luetteloon"
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Anna tietoja opetuskokonaisuudestasi ja tee mahdolliseksi löytää hakutoiminnolla. "
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Tietoa asianomaisen opettajan tarvitsemista järjestelyistä ennen seuraavissa osissa kuvattujen ja/tai ehdotettujen toimenpiteiden käynnistämistä."
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "Anna asianomainen opetussuunnitelma, jossa kerrotaan suoraan, mitä tietoja oppilailla on oltava, jotta he voivat osallistua opetuskokonaisuuteen.\" "
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Kuvaile keinoja ja aineistoja, joita käytettäisiin luokkahuoneessa herättämään oppilaiden kiinnostusta."
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Muodosta oppilaille esitettäviä kysymyksiä, joiden avulla he voivat pohtia syvällisemmin kohteena olevaa aihepiiriä olemassa olevien tietojensa pohjalta."
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Kuvaile miten oppilaita voidaan kannustaa ehdottamaan mahdollisia selityksiä kysymyksiin, jotka ovat heränneet edellisen toiminnan aikana."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Kuvaile keinoja ja aineistoja, joilla autetaan oppilaita hakemaan vastauksia tieteellisiin kysymyksiin todistusaineiston pohjalta."
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Paikallista sopiva resurssi ja/tai varsinainen näyttely. Selvitä tarkemmin, kuinka oppilaat kokoavat todistusaineistoa edellisissä vaiheissa esitettyjen kysymysten mukaisesti."
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Selitä opetusohjelman eri vaiheet."
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Selitä kuinka oppilasryhmät arvioivat omia selityksiään."
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Yksityiskohtaiset ohjeet kuinka laatia oppilaiden löydöksiä kuvaava raportti, jossa ehdotetut selitykset esitetään ja perustellaan toisille ryhmille ja opettajalle."
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Kuvaile seurantatoimenpiteiden ja -aineistojen kontekstia"
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "Anna tähän opetuskokonaisuuteen liittyvien henkilöiden ja organisaation yhteystiedot."
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "Kuvaile yleisesti opetuskokonaisuutta. Siinä käytettävät keinot, ikähaarukka jne."
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "Yhdistä toiminta sopivaan asiayhteyteen osallistujien huomion herättämiseksi."
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Anna osallistujille ohjeita mm. siitä kuinka kysymyslomakkeet täytetään."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Anna oppilaille erilaisia pelejä, kuten esimerkiksi ristisanatehtäviä ja monivalintakysymyksiä. Selitä kuinka niillä pelataan ryhmässä tai yksin."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "Arvioi pelien tulokset, onnittele voittajaa ja selitä hänelle, mikä hänen palkintonsa on ja kuinka hän voi saada sen."
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Avoin oppimispolku"

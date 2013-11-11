@@ -63,14 +63,19 @@ if (empty($pathToConvert) && has_permission('Settings', 'edit')): ?>
     <div class="error">The path to Image Magick has not been set. No derivative images will be created. If you would like Omeka to create derivative images, please add the path to your settings form.</div>
 <?php endif; ?>
 <?php if ( item_has_files() ){ ?>
-    <h3>Current Files</h3>
+    <h3><?php echo __('Current Files'); ?></h3>
     <div id="file-list">
     <table>
         <thead>
             <tr>
-                <th>File Name</th>
+                <th><?php echo __('File Name'); ?></th>
                 <!-- <th>Edit File Metadata</th> -->
-                <th>Delete?</th>
+                <?php
+                $action123 = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+                if($action123!='show'){
+                ?>
+                <th><?php echo __('Delete'); ?>?</th>
+                <?php } ?>
             </tr>
         </thead>
         <tbody>
@@ -80,9 +85,13 @@ if (empty($pathToConvert) && has_permission('Settings', 'edit')): ?>
             <!-- <td class="file-link">
                 <?php //echo link_to($file, 'edit', 'Edit', array('class'=>'edit')); ?>
             </td>  -->
+            <?php
+                if($action123!='show'){
+                ?>
             <td class="delete-link">
                 <?php echo checkbox(array('name'=>'delete_files[]'),false,$file->id); ?>
             </td>   
+             <?php } ?>
         </tr>
 
     <?php endforeach; ?>
@@ -90,6 +99,9 @@ if (empty($pathToConvert) && has_permission('Settings', 'edit')): ?>
     </table>
     </div>
 <?php }else{ ?>
+    <?php
+                if($action123!='show'){
+                ?>
 <h3 style="font-weight:bold;"><?php echo __('Upload a File'); ?></h3>
 
 <!--<div id="add-more-files">
@@ -112,6 +124,7 @@ if (empty($pathToConvert) && has_permission('Settings', 'edit')): ?>
     </div>
     <?php //endfor; ?>
 </div>
+<?php } //if action = show ?>
 <?php fire_plugin_hook('admin_append_to_items_form_files', $item); ?>
 <?php } ?>
 

@@ -94,8 +94,8 @@ if (empty($errors)) { //if no errors
 
 
 
-    $output .= '<metadata>' . "\n";
-    $output .= '<imsmd:lom>' . "\n";
+    $output .= '<metadata>';
+    $output .= '<imsmd:lom>';
 
 //query for creating general elements pelement=0		 
     $sql3 = "SELECT c.*,b.machine_name,b.id as elm_id2 FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
@@ -122,7 +122,7 @@ if (empty($errors)) { //if no errors
         if ($datageneral3['machine_name'] == 'rights') { ///////if RIGHTS
             $output2.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
         } elseif ($datageneral3['machine_name'] == 'classification') { ///////if CLASSIFICATION
-            //$output.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
+            $output.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
         } elseif ($datageneral3['machine_name'] == 'relation') { ///////if RELATION
             $output2.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
         } else { ///the rest parent elements///////////////////////////////
@@ -159,7 +159,7 @@ if (empty($errors)) { //if no errors
         ////////////////echo the result of all parent element if exist
         if (strlen($output2) > 0) {
 
-            $output.= '<imsmd:' . $datageneral3['machine_name'] . '>' . "\n";
+            $output.= '<imsmd:' . $datageneral3['machine_name'] . '>';
             $output.= $output2;
             $output.= '</imsmd:' . $datageneral3['machine_name'] . '>' . "\n";
         }
@@ -183,9 +183,9 @@ if (empty($errors)) { //if no errors
     $sections = $ehibitsections->fetchAll();
 
 
-    $output .= '<organizations default="ORG-Pathway">' . "\n";
-    $output .= '<organization identifier="ORG-' . $omekaitem['id'] . '" structure="hierarchical">' . "\n";
-    $output .= '<title>' . "\n"; ///for pathway
+    $output .= '<organizations default="ORG-Pathway">';
+    $output .= '<organization identifier="ORG-' . $omekaitem['id'] . '" structure="hierarchical">';
+    $output .= '<title>'; ///for pathway
     $output .= '<![CDATA[' . $omekaitem['title'] . ']]>'; ///for pathway
     $output .= '</title>' . "\n";
     foreach ($sections as $sections2) {
@@ -195,13 +195,13 @@ if (empty($errors)) { //if no errors
         $sectionpages = $db->query($sqlsectionpages);
         $pages = $sectionpages->fetchAll();
 
-        $output .= '<item identifier="ITEM-' . $sections2['id'] . '" isvisible="true">' . "\n";
-        $output .= '<title>' . "\n"; //for section
+        $output .= '<item identifier="ITEM-' . $sections2['id'] . '" isvisible="true">';
+        $output .= '<title>'; //for section
         $output .= $sections2['title']; ///for section
         $output .= '</title>' . "\n";
         foreach ($pages as $pages) {
-            $output .= '<item identifier="ITEM-' . $sections2['id'] . '-' . $pages['id'] . '" identifierref="RES-' . $sections2['id'] . '-' . $pages['id'] . '" isvisible="true">' . "\n";
-            $output .= '<title>' . "\n"; //for page
+            $output .= '<item identifier="ITEM-' . $sections2['id'] . '-' . $pages['id'] . '" identifierref="RES-' . $sections2['id'] . '-' . $pages['id'] . '" isvisible="true">';
+            $output .= '<title>'; //for page
             $output .= $pages['title']; ///for page
             $output .= '</title>' . "\n";
             $output .= '</item>' . "\n";
@@ -235,7 +235,7 @@ if (empty($errors)) { //if no errors
 		 -->';
 
 
-    $output .= '<resources>' . "\n";
+    $output .= '<resources>';
     $output .= '<!-- A resource element in its most rich form containing activity metadata and <files> with metadata defining the characteristics
 		of appropriate supporting material for this activity-->';
 
@@ -247,17 +247,17 @@ if (empty($errors)) { //if no errors
         $pages = $sectionpages->fetchAll();
 
         foreach ($pages as $pages) {
-            $output .= '<resource identifier="RES-' . $sections2['id'] . '-' . $pages['id'] . '" >' . "\n";
-            $output .= '<metadata>' . "\n";
-            $output .= '<imsmd:lom>' . "\n";
-            $output .= '<imsmd:general>' . "\n";
-            $output .= '<imsmd:title>' . "\n";
-            $output .= '<imsmd:string>' . "\n";
+            $output .= '<resource identifier="RES-' . $sections2['id'] . '-' . $pages['id'] . '" >';
+            $output .= '<metadata>';
+            $output .= '<imsmd:lom>';
+            $output .= '<imsmd:general>';
+            $output .= '<imsmd:title>';
+            $output .= '<imsmd:string>';
             $output .= $pages['title']; ///for page
             $output .= '</imsmd:string>' . "\n";
             $output .= '</imsmd:title>' . "\n";
-            $output .= '<imsmd:description>' . "\n";
-            $output .= '<imsmd:string>' . "\n";
+            $output .= '<imsmd:description>';
+            $output .= '<imsmd:string>';
             $output .= '<![CDATA[';
             $sqlpagestext = "select * from omeka_items_section_pages where page_id=" . $pages['id'] . " ORDER BY `order` ASC";
 //echo $sqlmetadatarecord; //break;
@@ -280,6 +280,7 @@ if (empty($errors)) { //if no errors
 
 
             foreach ($pagestext2 as $pagestext3) {
+                
                 if ($pagestext3['item_id'] > 0) {
 
 
@@ -295,7 +296,7 @@ if (empty($errors)) { //if no errors
 
 
                     if ($metadatarecord['id'] > 0) {
-                        $output .= '<file inText="yes">' . "\n";
+                        $output .= '<file inText="yes">';
                         $sqlmetadatarecordvalue = "select * from metadata_element_value where record_id=" . $metadatarecord['id'] . " ORDER BY element_hierarchy ASC";
                         $exec = $db->query($sqlmetadatarecordvalue);
                         $metadatarecordvalue_res = $exec->fetchAll();
@@ -305,8 +306,8 @@ if (empty($errors)) { //if no errors
 
 
 
-                        $output .= '<metadata>' . "\n";
-                        $output .= '<imsmd:lom>' . "\n";
+                        $output .= '<metadata>';
+                        $output .= '<imsmd:lom>';
 
 //query for creating general elements pelement=0		 
                         $sql3 = "SELECT c.*,b.machine_name,b.id as elm_id2 FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
@@ -333,7 +334,7 @@ if (empty($errors)) { //if no errors
                             if ($datageneral3['machine_name'] == 'rights') { ///////if RIGHTS
                                 $output2.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
                             } elseif ($datageneral3['machine_name'] == 'classification') { ///////if CLASSIFICATION
-                                //$output.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
+                                $output.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
                             } elseif ($datageneral3['machine_name'] == 'relation') { ///////if RELATION
                                 $output2.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
                             } else { ///the rest parent elements///////////////////////////////
@@ -370,7 +371,7 @@ if (empty($errors)) { //if no errors
                             ////////////////echo the result of all parent element if exist
                             if (strlen($output2) > 0) {
 
-                                $output.= '<imsmd:' . $datageneral3['machine_name'] . '>' . "\n";
+                                $output.= '<imsmd:' . $datageneral3['machine_name'] . '>';
                                 $output.= $output2;
                                 $output.= '</imsmd:' . $datageneral3['machine_name'] . '>' . "\n";
                             }
@@ -415,9 +416,9 @@ if (empty($errors)) { //if no errors
 //$metadatarecordvalue=mysql_fetch_array($metadatarecordvalue_res);
 
 
-                        $output .= '<file>' . "\n";
-                        $output .= '<metadata>' . "\n";
-                        $output .= '<imsmd:lom>' . "\n";
+                        $output .= '<file>';
+                        $output .= '<metadata>';
+                        $output .= '<imsmd:lom>';
 
 //query for creating general elements pelement=0		 
                         $sql3 = "SELECT c.*,b.machine_name,b.id as elm_id2 FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
@@ -444,7 +445,7 @@ if (empty($errors)) { //if no errors
                             if ($datageneral3['machine_name'] == 'rights') { ///////if RIGHTS
                                 $output2.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
                             } elseif ($datageneral3['machine_name'] == 'classification') { ///////if CLASSIFICATION
-                                //$output.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
+                                $output.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
                             } elseif ($datageneral3['machine_name'] == 'relation') { ///////if RELATION
                                 $output2.= preview_elements($datageneral4, NULL, $metadatarecord, $datageneral3);
                             } else { ///the rest parent elements///////////////////////////////
@@ -481,7 +482,7 @@ if (empty($errors)) { //if no errors
                             ////////////////echo the result of all parent element if exist
                             if (strlen($output2) > 0) {
 
-                                $output.= '<imsmd:' . $datageneral3['machine_name'] . '>' . "\n";
+                                $output.= '<imsmd:' . $datageneral3['machine_name'] . '>';
                                 $output.= $output2;
                                 $output.= '</imsmd:' . $datageneral3['machine_name'] . '>' . "\n";
                             }

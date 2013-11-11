@@ -97,7 +97,7 @@ $xml->getName() . "<br />";
   
    <?php 
   if($pages<10){
-  while($i<$pages){echo "<a href='javascript:GoPage(".$i.")'   ";
+  while($i<=$pages){echo "<a href='javascript:GoPage(".$i.")'   ";
   	if($i==$startPage){echo "id='active'";}
   	echo " >".$i."</a> ";  $i+=1;}
   
@@ -180,7 +180,7 @@ $xml->getName() . "<br />";
 										$format=$child2->format;
 										
 										if($child2->format=='text/html'){
-										$preview='<img src="http://open.thumbshots.org/image.aspx?url='.$child2->location.'"/>';
+										$preview='<img src="http://img.bitpixels.com/getthumbnail?code=29089&size=200&url='.$child2->location.'"/>';
 										$identifier=$child2->location;
 										}
 										elseif($child2->format=='application/pdf'){
@@ -209,7 +209,7 @@ $xml->getName() . "<br />";
 										$identifier=$child2->location;
 										}
 										else{
-										$preview='<img src="http://open.thumbshots.org/image.aspx?url='.$child2->location.'"/>';
+										$preview='<img src="http://img.bitpixels.com/getthumbnail?code=29089&size=200&url='.$child2->location.'"/>';
 										$identifier=$child2->location;
 										}
 			
@@ -284,10 +284,10 @@ $xml->getName() . "<br />";
 	//echo '</div>';
 
 		
-	echo '<form method="post" name="'.$cb.'" action="'.uri("items/addinjestitem").'">';
+	echo '<form method="post" target="_blank" name="'.$cb.'" action="'.uri("items/addinjestitem").'">';
 
-echo '<input type="hidden" name="title" value="'.$title.'">';
-echo '<input type="hidden" name="description" value="'.$description.'">';
+echo '<input type="hidden" name="title" value="'.base64_encode(json_encode($title)).'">';
+echo '<input type="hidden" name="description" value="'.base64_encode(json_encode($description)).'">';
 echo '<input type="hidden" name="source" value="Ariadne">';
 echo '<input type="hidden" name="format" value="'.$format.'">';
 echo '<input type="hidden" name="identifier" value="'.$identifier.'">';
@@ -322,7 +322,7 @@ echo '</form>';
    <?php 
    $i=1;
   if($pages<10){
-  while($i<$pages){echo "<a href='javascript:GoPage2(".$i.")'   ";
+  while($i<=$pages){echo "<a href='javascript:GoPage2(".$i.")'   ";
   	if($i==$startPage){echo "id='active'";}
   	echo " >".$i."</a> ";  $i+=1;}
   

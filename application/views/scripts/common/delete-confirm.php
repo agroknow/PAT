@@ -1,6 +1,16 @@
 <?php
 $class = get_class($record);
-$pageTitle = 'Delete ' . Inflector::titleize($class);
+if(Inflector::titleize($class)=='Exhibit'){
+ $boxname='Delete Pathway';  
+ $pageTitle = __($boxname);
+}elseif(Inflector::titleize($class)=='Item'){
+   $boxname='Delete Resource'; 
+   $pageTitle = __($boxname);
+}else{
+   $boxname=Inflector::titleize($class); 
+   $pageTitle = __('Delete %s', __($boxname));
+}
+
 
 if (!$isPartial):
 head(array('title' => $pageTitle));
@@ -9,8 +19,8 @@ head(array('title' => $pageTitle));
 <div id="primary">   
 <?php endif; ?>
 <div title="<?php echo $pageTitle; ?>">
-<h2>Are you sure?</h2>
-<?php echo nls2p(html_escape($confirmMessage)); ?>
+<h2><?php echo __('Are you sure?'); ?></h2>
+<?php echo nls2p(html_escape(__($confirmMessage))); ?>
 <?php echo $form; ?>
 </div>
 <?php if (!$isPartial): ?>

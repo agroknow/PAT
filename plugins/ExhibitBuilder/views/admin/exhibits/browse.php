@@ -36,7 +36,11 @@ head(array('title' => $title, 'bodyclass' => 'exhibits'));
 
 </div>
 <div id="primary">
-
+ <p class="help_text">
+            <?php echo __('The Pathway area provides a list of the Pathways available on the users account.'); ?><br>
+            <?php echo __('To read more about each Pathway, click on the Title link.'); ?><br>
+            <?php echo __('Also you can add a new Pathway, edit and delete Pathways.'); ?>
+            </p>
     <?php if (!count($exhibits)): ?> 
         <div id="no-exhibits">
             <p><?php echo __('There are no pathways yet.'); ?>
@@ -87,7 +91,10 @@ head(array('title' => $title, 'bodyclass' => 'exhibits'));
 
                         <?php if ($user['id'] == 1 or $user['role'] == 'super' or $exhibit->wasAddedBy(current_user()) or sameinstitutionexhibit($exhibit, $user)) {  //if he has add the exhibit ?>       
                         <tr class="exhibit <?php if ($key % 2 == 1) echo ' even'; else echo ' odd'; ?>">
-                            <td><a href="<?php echo html_escape(exhibit_builder_exhibit_uri($exhibit)); ?>/to-begin-with"><?php echo html_escape($exhibit->title); ?></a></td>
+                            <td>
+                                <?php echo link_to($exhibit, 'edit', html_escape($exhibit->title), array('class' => 'edit', 'onclick' => 'showloader();')); ?>
+                                <?php /* <a href="<?php echo html_escape(exhibit_builder_exhibit_uri($exhibit)); ?>/to-begin-with"><?php echo html_escape($exhibit->title); ?></a> */ ?>
+                            </td>
                             <?php /* <td><?php echo tag_string($exhibit, uri('exhibits/browse/tag/')); ?></td> */ ?>
                             <?php /*
                               if ($exhibit->theme==null) {

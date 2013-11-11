@@ -220,7 +220,7 @@ div.field {position:relative; border-bottom:1px dotted #eee; padding: 18px 0;}
 .primary .vertical-nav #primary .textinput, .primary .vertical-nav #primary select {}
 
 /* .primary-secondary */
-.primary-secondary #primary, .vertical-nav #primary {float:left; width: 598px;}
+.primary-secondary #primary, .vertical-nav #primary {float:left; width: 798px;}
 .primary-secondary #secondary {float:right; width: 224px;}
 
 /* .primary-secondary-tertiary */
@@ -451,7 +451,7 @@ body {font:62.5% "Lucida Grande",Verdana, Arial, Helvetica, sans-serif; backgrou
     #upgrade-database-link:hover {background-color: #6B9CA8; border-color: #6B9CA8;}
 
 /* == Header == */
-#header {background:#251e16; padding-top: 0;clear:both;}
+#header {background:#251e16; padding-top: 0;clear:both; min-width: 1136px;}
 
     #site-title {margin:18px 0;margin-left:36px;float:left; width: auto;}
     #site-title a {text-decoration:none; color:#fff;}
@@ -824,7 +824,7 @@ body#login h2 {clear: both;}
 body#login .error, body#login .success {clear:both; margin-bottom:0.5em;}
 
 /* Header */
-body#login #header {width: 414px; padding:18px; margin:0 auto 0; }
+body#login #header {width: 414px; padding:18px; margin:0 auto 0; min-width: 414px;}
 body#login #site-title {float:none;}
 /* Content */
 body#login #content {background:#fff; width: 414px;padding:18px; clear:both;margin:0 auto; float:none;}
@@ -883,13 +883,13 @@ body#login #footer {padding:18px; margin:0 auto;width: 414px;}
 }
 
 .optional_element{
-	display:none; !important
+	display:none;
 	
 }
 
 #show_optional{
 background-color: #F4F3EB;
-    color: #CC5500; !important;
+    color: #CC5500 !important;
     padding-bottom: 10px;
     padding-right: 25px;
     padding-top: 10px;	
@@ -898,4 +898,34 @@ background-color: #F4F3EB;
 	font-size:11px;
 	}
 	
-
+                    
+#tertiary-nav #stepbutton2 a {
+    background-image: url("../images/second-inactive-grey.gif");
+}
+#tertiary-nav #stepbutton2 a.current {
+    background-image: url("../images/second-active.png");
+}
+#tertiary-nav a {
+    background-color: #EEEEEE;
+    background-position: 6px 50%;
+    background-repeat: no-repeat;
+    color: #999999;
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    margin-right: 1px;
+    padding: 0.5em 15px 0.5em 36px;
+    text-transform: uppercase;
+    min-width: 244px;
+    text-decoration: none;
+}
+#tertiary-nav #stepbutton1 a.current {
+    background-image: url("../images/first-active.png");
+}
+#tertiary-nav #stepbutton1 a {
+    background-image: url("../images/first-inactive-grey.gif");
+}
+#tertiary-nav a.current {
+    background-color: #6D8E1D;
+    color: #FFFFFF;
+}

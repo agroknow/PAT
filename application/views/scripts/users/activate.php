@@ -2,6 +2,15 @@
 $pageTitle = __('User Activation');
 head(array('title' => $pageTitle), $header);
 ?>
+<style>
+    #loginform .textinput{
+        width:100px !important;
+    }
+    #loginform .inputs{
+        width:150px !important;
+    }
+</style>
+<div style=" float: left; width: 340px; margin-left: 20px;" id="loginform">
 <h1><?php echo $pageTitle; ?></h1>
 
 <?php echo flash(); ?>
@@ -26,5 +35,5 @@ head(array('title' => $pageTitle), $header);
     <input type="submit" class="submit" name="submit" value="<?php echo __('Activate'); ?>"/>
     </div>
 </form>
-
+</div>
 <?php foot(array(), $footer); ?>

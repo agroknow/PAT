@@ -1,0 +1,1072 @@
+# Translation for the Exhibit Builder plugin for Omeka.
+# Copyright (C) 2011 Roy Rosenzweig Center for History and New Media
+# This file is distributed under the same license as the Omeka package.
+# 
+# Translators:
+# tnhm <kadrihaugas@gmail.com>, 2012
+# tnhm <kadrihaugas@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Pathway Authoring Tool\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
+"POT-Creation-Date: 2012-01-09 21:49-0500\n"
+"PO-Revision-Date: 2013-09-22 15:26+0000\n"
+"Last-Translator: tnhm <kadrihaugas@gmail.com>\n"
+"Language-Team: Estonian (Estonia) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/et_EE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: et_EE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Gallery Full Left"
+msgstr "Täissuuruses galerii vasakul"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider left column for 1 full-size"
+" image and text block."
+msgstr "Kuvab 8-osalise pisipildi galerii koos laiema vasakpoolse tulbaga 1 täissuuruses pildi ja tekstiosa tarvis."
+
+msgid "Gallery Full Right"
+msgstr "Täissuuruses galerii paremal"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider right column for 1 full-"
+"size image and text block."
+msgstr "Kuvab 8-osalise pisipildi galerii koos laiema parempoolse tulbaga 1 täissuuruses pildi ja tekstiosa tarvis."
+
+msgid "Gallery Thumbnails Text Bottom"
+msgstr "Galerii eelvaade lehe lõpus"
+
+msgid "Displays a block of text below a gallery of up to 12 items."
+msgstr "Kuvab tekstiosa kuni 8-osalise galerii all."
+
+msgid "Gallery Thumbnails Text Top"
+msgstr "Galerii eelvaade lehe alguses"
+
+msgid "Displays a block of text above a gallery of up to 12 items."
+msgstr "Kuvab tekstiosa kuni 12-osalise galerii peal."
+
+msgid "Gallery Thumbnails"
+msgstr "Galerii pisipildid"
+
+msgid "Displays a gallery of up to 16 items."
+msgstr "Kuvab kuni 16-osalise pildigalerii."
+
+msgid "Image List Left Thumbs"
+msgstr "Pisipildiloetelu vasakul"
+
+msgid ""
+"Displays up to 8 thumbnails on the left with up to 8 text blocks on the "
+"right."
+msgstr "Kuvab kuni 8 pisipilti pilti vasakul koos kuni 8 tekstiosaga paremal."
+
+msgid "Image List Left"
+msgstr "Pildiloetelu vasakul "
+
+msgid ""
+"Displays up to 8 full-size images on the left with up to 8 text blocks on "
+"the right."
+msgstr "Kuvab kuni 8 täissuuruses pilti vasakul koos kuni 8 tekstiosaga paremal."
+
+msgid "Image List Right Thumbs"
+msgstr "Pisiildiloetelu paremal"
+
+msgid ""
+"Displays up to 8 thumbnails on the right with up to 8 text blocks on the "
+"left."
+msgstr "Kuvab kuni 8 pisipilti pilti paremal koos kuni 8 tekstiosaga vasakul."
+
+msgid "Image List Right"
+msgstr "Pildiloetelu paremal"
+
+msgid ""
+"Displays up to 8 full-size images on the right with up to 8 text blocks on "
+"the left."
+msgstr "Kuvab kuni 8 täissuuruses pilti parema koos kuni 8 tekstiosaga vasakul."
+
+msgid "Text Image Left"
+msgstr "Teksti pilt vasakul"
+
+msgid "Displays a full page of text, with a full-size image floated left."
+msgstr "Kuvab teksti koos täissuuruses pildiga vasakul."
+
+msgid "Text Image Right"
+msgstr "Teksti pilt paremal"
+
+msgid "Displays a full page of text, with a full-size image floated right."
+msgstr "Kuvab teksti koos täissuuruses pildiga paremal."
+
+msgid "Text"
+msgstr "Tekst"
+
+msgid "Displays a full page of text without items."
+msgstr "Kuvab teksti ilma õppematerjalita."
+
+#: config_form.php:3
+msgid "Use Exhibit Browse Page For Homepage?"
+msgstr "Kas soovite õpitee brauserit kasutada kodulehena?"
+
+#: config_form.php:9
+msgid "If checked, Omeka will use the exhibit browse page for the homepage."
+msgstr "Omeka muudab õpitee lehe pealeheks."
+
+#: config_form.php:14
+msgid "Sorting Exhibits"
+msgstr "Õpiteede sorteerimine"
+
+#: config_form.php:19
+msgid ""
+"The default method by which you wish to sort the listing of exhibits on the "
+"exhibits/browse page. Default is 'Date Added'."
+msgstr "Vaikimisi meetod, mille alusel soovite sortida õpiteede loetelu õpiteede/lehitsemise lehel. Vaikimisi \"Lisamiskuupäev\"."
+
+#: controllers/ExhibitsController.php:87
+msgid "This item is not used within this exhibit."
+msgstr "See õppematerjal ei ole antud õpitee juures kasutusel."
+
+#: controllers/ExhibitsController.php:254
+msgid "You must specifically select a theme in order to configure it."
+msgstr "konfigureerimiseks valige teema."
+
+#: functions.php:212 functions.php:244
+#: views/admin/exhibits/exhibit-metadata-form.php:87
+#: views/admin/exhibits/page-content-form.php:87
+#: views/admin/exhibits/page-metadata-form.php:48
+#: views/admin/exhibits/section-metadata-form.php:43
+msgid "Exhibits"
+msgstr "Õpiteed"
+
+#: functions.php:215 functions.php:231 views/admin/exhibits/browse.php:2
+#: views/public/exhibits/browse.php:2
+msgid "Browse Exhibits"
+msgstr "Õpiteede sirvimine"
+
+#: functions.php:216
+msgid "Create an Exhibit"
+msgstr "Õpiteede loomine"
+
+#: functions.php:218
+msgid "Create and manage exhibits that display items from the archive."
+msgstr "Õpiteede, mis kuvavad õppematerjale arhiivist, loomine ja haldamine"
+
+#: functions.php:440
+msgid "Search by Exhibit"
+msgstr "Otsing õpiteede järgi"
+
+#: helpers/ExhibitFunctions.php:219
+msgid "There is no item attached."
+msgstr "Õppematerjale ei ole lisatud."
+
+#: helpers/ExhibitFunctions.php:221
+#: views/admin/exhibits/page-content-form.php:57
+msgid "Attach an Item"
+msgstr "Õppematerjali lisamine"
+
+#: helpers/ExhibitFunctions.php:272
+msgid "Caption"
+msgstr "Pealkiri"
+
+#: helpers/ExhibitFunctions.php:441
+msgid "Featured Exhibit"
+msgstr "Esile toodud õpitee"
+
+#: helpers/ExhibitFunctions.php:446
+msgid "You have no featured exhibits."
+msgstr "Esiletoodud õpiteed puuduvad."
+
+#: helpers/ExhibitPageFunctions.php:155
+msgid "Next Page &rarr;"
+msgstr "Järgmine lehekülg &rarr;"
+
+#: helpers/ExhibitPageFunctions.php:189
+msgid "&larr; Previous Page"
+msgstr "&larr; Eelmine lehekülg"
+
+#: models/Exhibit.php:38
+msgid "An exhibit must be given a title."
+msgstr "Õpiteele peab lisama pealkirja."
+
+#: models/Exhibit.php:42
+msgid "The title for an exhibit must be 255 characters or less."
+msgstr "Õpitee pealkiri võib olla kuni 255 tähemärki."
+
+#: models/Exhibit.php:46
+msgid "The name of your theme must be 30 characters or less."
+msgstr "Teema nimetus võib olla kuni 30 tähemärki."
+
+#: models/Exhibit.php:66
+msgid "Exhibits must be given a valid slug."
+msgstr "Õpiteedele peab andma kehtiva URL-teksti."
+
+#: models/Exhibit.php:67 models/ExhibitPage.php:31
+#: models/ExhibitSection.php:33
+msgid "A slug must be 30 characters or less."
+msgstr "URL-tekst saab olla kuni 30 tähemärki."
+
+#: models/Exhibit.php:68
+msgid ""
+"Your URL slug is already in use by another exhibit.  Please choose another."
+msgstr "URL-tekst on kasutusel teise õpitee poolt. Palun valige uus."
+
+#: models/ExhibitPage.php:30
+msgid "A slug must be given for each page of an exhibit."
+msgstr "URL-tekst on kohustuslik õpitee igal lehel."
+
+#: models/ExhibitPage.php:32
+msgid ""
+"This page slug has already been used in this section.  Please modify the "
+"slug so that it is unique."
+msgstr "Lehe URL-tekst on juba selles lõigus kasutuses. Palun muutke URL-tekst unikaalseks."
+
+#: models/ExhibitPage.php:47
+msgid "A layout must be provided for each exhibit page."
+msgstr "Igale õpitee lehele peab valima paigutuse."
+
+#: models/ExhibitPage.php:51
+msgid "Exhibit pages must be given a title."
+msgstr "Õpitee lehele peab lisama pealkirja."
+
+#: models/ExhibitSection.php:32
+msgid "A slug must be given for each section of an exhibit."
+msgstr "Õpitee igale lõigule peab kirjutama URL-teksti."
+
+#: models/ExhibitSection.php:34
+msgid ""
+"This section slug has already been used in this exhibit.  Please modify the "
+"slug so that it is unique."
+msgstr "Lõigu URL-tekst on juba selle õpitee juures kasutusel. Palun muutke URL-teksti, et see oleks ainulaadne."
+
+#: models/ExhibitSection.php:40
+msgid "Sections of an exhibit must be given a title."
+msgstr "Õpitee lõikudele peab lisama pealkirja."
+
+#: views/admin/exhibits/browse.php:7
+#: views/admin/exhibits/exhibit-metadata-form.php:5
+msgid "Add Exhibit"
+msgstr "Õpitee lisamine"
+
+#: views/admin/exhibits/browse.php:13
+msgid "There are no exhibits yet."
+msgstr "Õpiteed puuduvad"
+
+#: views/admin/exhibits/browse.php:16
+msgid "Add an exhibit."
+msgstr "Õpitee lisamine"
+
+#: views/admin/exhibits/browse.php:35
+#: views/admin/exhibits/exhibit-metadata-form.php:125
+msgid "Theme"
+msgstr "Teema"
+
+#: views/admin/exhibits/browse.php:39
+msgid "Delete?"
+msgstr "Kustuta?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:3
+#, php-format
+msgid "Edit Exhibit: \"%s\""
+msgstr "Õpitee muutmine: \"%s\""
+
+#: views/admin/exhibits/exhibit-metadata-form.php:5
+msgid "Edit Exhibit"
+msgstr "Õpitee muutmine"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:22
+msgid "Are you sure you want to delete this section?"
+msgstr "Kas olete kindel, et soovite seda lõiku kustutada?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:36
+#: views/admin/exhibits/section-metadata-form.php:18
+msgid "Are you sure you want to delete this page?"
+msgstr "Kas olete kindel, et soovite seda lehekülge kustutada?"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:96
+msgid "Exhibit Metadata"
+msgstr "Õpitee metadata"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:102
+#: views/admin/exhibits/page-metadata-form.php:59
+#: views/admin/exhibits/section-metadata-form.php:58
+msgid "Slug"
+msgstr "URL-tekst"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:103
+#: views/admin/exhibits/page-metadata-form.php:60
+#: views/admin/exhibits/section-metadata-form.php:59
+msgid "No spaces or special characters allowed."
+msgstr "Tühikud ja erimärgid on keelatud."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:107
+#: views/public/exhibits/summary.php:9
+msgid "Credits"
+msgstr "Autorid"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:126
+msgid "Current Public Theme"
+msgstr "Praegune avalik teema"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:133
+msgid "Sections and Pages"
+msgstr "Lõigud ja leheküljed"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:136
+msgid "There are no sections."
+msgstr "Lõigud puuduvad"
+
+#: views/admin/exhibits/exhibit-metadata-form.php:138
+msgid ""
+"To reorder sections or pages, click and drag the section or page up or down "
+"to the preferred location."
+msgstr "Lõikude ümberpaigutamiseks klikkige ja vedage lõik üles- või allapoole eelistatud kohale."
+
+#: views/admin/exhibits/exhibit-metadata-form.php:145
+#: views/admin/exhibits/section-metadata-form.php:5
+msgid "Add Section"
+msgstr "Lõigu lisamine"
+
+#: views/admin/exhibits/items.php:1
+msgid "Show Search Form"
+msgstr "Otsinguvormi vaade"
+
+#: views/admin/exhibits/items.php:21
+#, php-format
+msgid "There are no items to choose from.  Please refine your search or %s."
+msgstr "Valitavad materjalid puuduvad. Palun täiendage otsingut või %s."
+
+#: views/admin/exhibits/items.php:21
+msgid "add some items"
+msgstr "Õppematerjalide lisamine"
+
+#: views/admin/exhibits/page-content-form.php:2
+#, php-format
+msgid "Edit Page Content: \"%s\""
+msgstr "Lehe sisu muutmine: \"%s\""
+
+#: views/admin/exhibits/page-content-form.php:25
+msgid "Remove This Item"
+msgstr "Õppematerjali eemaldamine"
+
+#: views/admin/exhibits/page-content-form.php:60
+msgid "Attach Selected Item"
+msgstr "Valitud õppematerjali lisamine"
+
+#: views/admin/exhibits/page-content-form.php:100
+msgid "Page Layout"
+msgstr "Lehe asetus"
+
+#: views/admin/exhibits/page-content-form.php:112
+#: views/admin/exhibits/page-metadata-form.php:2
+msgid "Edit Page"
+msgstr "Lehe muutmine"
+
+#: views/admin/exhibits/page-content-form.php:116
+msgid "Page Content"
+msgstr "Lehe sisu"
+
+#: views/admin/exhibits/page-content-form.php:124
+msgid "Save and Return to Section"
+msgstr "Salvesta ja pöördu lõigu juurde tagasi"
+
+#: views/admin/exhibits/page-content-form.php:125
+msgid "Save and Add Another Page"
+msgstr "Salvesta ja lisa uus leht"
+
+#: views/admin/exhibits/page-metadata-form.php:2
+#: views/admin/exhibits/section-metadata-form.php:77
+msgid "Add Page"
+msgstr "Lehe lisamine"
+
+#: views/admin/exhibits/page-metadata-form.php:55
+msgid "Page Metadata"
+msgstr "Lehe metadata"
+
+#: views/admin/exhibits/page-metadata-form.php:65
+msgid "Layouts"
+msgstr "Asetused"
+
+#: views/admin/exhibits/page-metadata-form.php:72
+msgid "Choose a layout by selecting a thumbnail on the right."
+msgstr "Valige asetus valides paremalt pisipilt."
+
+#: views/admin/exhibits/section-list.php:10
+#: views/admin/exhibits/section-metadata-form.php:5
+msgid "Edit Section"
+msgstr "Lõigu muutmine"
+
+#: views/admin/exhibits/section-list.php:11
+msgid "Delete Section"
+msgstr "Lõigu kustutamine"
+
+#: views/admin/exhibits/section-list.php:25
+msgid "Add a Page"
+msgstr "Lõigu lisamine"
+
+#: views/admin/exhibits/section-metadata-form.php:3
+#, php-format
+msgid "Edit Section: \"%s\""
+msgstr "Lõigu muutmine: \"%s\""
+
+#: views/admin/exhibits/section-metadata-form.php:55
+msgid "Section Metadata"
+msgstr "Lõigu metadata"
+
+#: views/admin/exhibits/section-metadata-form.php:64
+msgid "Pages in this Section"
+msgstr "Lehed selles lõigus"
+
+#: views/admin/exhibits/section-metadata-form.php:66
+msgid ""
+"To reorder pages, click and drag the page thumbnail up or down to the "
+"preferred location."
+msgstr "Lehtede ümberpaigutamiseks klikkige ja vedage lehe pisipilt eelistatud kohale."
+
+#: views/admin/exhibits/section-metadata-form.php:68
+msgid "There are no pages in this section."
+msgstr "Selles lõigus puuduvad lehed."
+
+#: views/admin/exhibits/tags.php:2 views/public/exhibits/tags.php:2
+msgid "Browse Exhibits by Tag"
+msgstr "Õpiteede sirvimine sildi järgi"
+
+#: views/admin/exhibits/tags.php:14
+msgid "There are no tags to display. You must first tag some exhibits."
+msgstr "Ühtegi silti ei ole. Esmalt sildistage õpitee."
+
+#: views/public/exhibits/browse.php:30
+msgid "There are no exhibits available yet."
+msgstr "Ühtegi õpiteed ei ole veel saadaval."
+
+#: views/public/exhibits/summary.php:14
+msgid "Sections"
+msgstr "Lõigud"
+
+#: views/shared/exhibit_layouts/gallery-full-left/form.php:4
+#: views/shared/exhibit_layouts/gallery-full-right/form.php:4
+msgid "Primary"
+msgstr "Esmane"
+
+#: views/shared/exhibit_layouts/gallery-full-left/form.php:11
+#: views/shared/exhibit_layouts/gallery-full-right/form.php:12
+msgid "Secondary"
+msgstr "Teisejärguline"
+
+#: admingeneral!
+msgid "Pathways"
+msgstr "Õpiteed"
+
+#: admingeneral!
+msgid "Browse Pathways"
+msgstr "Õpiteede sirvimine"
+
+#: admingeneral!
+msgid "Create a Pathway"
+msgstr "Õpitee loomine"
+
+#: admingeneral!
+msgid " Add Pathway"
+msgstr "Õpitee lisamine"
+
+#: admingeneral!
+msgid "Add a Pathway"
+msgstr "Õpitee lisamine"
+
+#: admingeneral!
+msgid "Create and manage Pathways"
+msgstr "Õpiteede loomine ja haldamine"
+
+#: admingeneral!
+msgid "Search by Pathway"
+msgstr "Otsing õpitee järgi"
+
+#: admingeneral!
+msgid "Attach a Resource"
+msgstr "Õppematerjali lisamine"
+
+#: admingeneral!
+msgid "Click to attach a resource from your collection."
+msgstr "Kliki õppematerjali lisamiseks oma kollektsioonist"
+
+#: admingeneral!
+msgid "Introduction"
+msgstr "Sissejuhatus"
+
+#: admingeneral!
+msgid "Pre-visit Phase"
+msgstr "Häälestus"
+
+#: admingeneral!
+msgid "Visit Phase"
+msgstr "Avastus"
+
+#: admingeneral!
+msgid "Post-visit Phase"
+msgstr "Peegeldus"
+
+#: admingeneral!
+msgid "Introductory section and preparatory"
+msgstr "Sissejuhatuse ja ettevalmistuse lõik"
+
+#: admingeneral!
+msgid "Engagement"
+msgstr "Pühendumine"
+
+#: admingeneral!
+msgid "Game"
+msgstr "Mäng"
+
+#: admingeneral!
+msgid "Reflection"
+msgstr "Kajastus"
+
+#: admingeneral!
+msgid "Guidance for preparation"
+msgstr "Soovitused ettevalmistuseks"
+
+#: admingeneral!
+msgid "Connection with curriculum"
+msgstr "Õppekava valdkond"
+
+#: admingeneral!
+msgid "Provoke curiosity"
+msgstr "Uudishimu äratamine"
+
+#: admingeneral!
+msgid "Define questions from current knowledge"
+msgstr "Eelnevate teadmistele aktiveerimine "
+
+#: admingeneral!
+msgid "Propose preliminary explanations or hypotheses"
+msgstr "Võimalike lahenduskäikude või hüpoteeside välja pakkumine "
+
+#: admingeneral!
+msgid "Plan and conduct simple investigation"
+msgstr "Lihtsa uurimuse planeerimine/läbiviimine "
+
+#: admingeneral!
+msgid "Gather evidence from observation"
+msgstr "Vaatluse põhjal tõendusmaterjali kogumine "
+
+#: admingeneral!
+msgid "Explanation based on evidence"
+msgstr "Tõendusmaterjali põhjal seletuste leidmine "
+
+#: admingeneral!
+msgid "Consider other explanations"
+msgstr "Teiste võimalike seletustega arvestamine "
+
+#: admingeneral!
+msgid "Communicate explanation"
+msgstr "Selgituste jagamine "
+
+#: admingeneral!
+msgid "Follow-up activities and materials"
+msgstr "Lisaülesanded ja materjalid "
+
+#: admingeneral!
+msgid "Sustainable contact"
+msgstr "Õpitee koostaja kontaktid "
+
+#: admingeneral!
+msgid "Curiosity Provocation"
+msgstr "Uudishimu tekitamine"
+
+#: admingeneral!
+msgid "Abstract Conceptulization"
+msgstr "Abstraktne lähenemine"
+
+#: admingeneral!
+msgid "Active Experimentation1"
+msgstr "Katse1"
+
+#: admingeneral!
+msgid "Active Experimentation2"
+msgstr "Katse2"
+
+#: admingeneral!
+msgid "Active Experimentation3"
+msgstr "Katse3"
+
+#: admingeneral!
+msgid "Active Experimentation4"
+msgstr "Katse4"
+
+#: admingeneral!
+msgid "Active Experimentation5"
+msgstr "Katse5"
+
+#: admingeneral!
+msgid "Active Experimentation6"
+msgstr "Katse6"
+
+#: admingeneral!
+msgid "Active Experimentation7"
+msgstr "Katse7"
+
+#: admingeneral!
+msgid "Active Experimentation8"
+msgstr "Katse8"
+
+#: admingeneral!
+msgid "Active Experimentation9"
+msgstr "Katse9"
+
+#: admingeneral!
+msgid "Active Experimentation10"
+msgstr "Katse10"
+
+#: admingeneral!
+msgid "Active Experimentation11"
+msgstr "Katse11"
+
+#: admingeneral!
+msgid "Active Experimentation12"
+msgstr "Katse12"
+
+#: admingeneral!
+msgid "Active Experimentation13"
+msgstr "Katse13"
+
+#: admingeneral!
+msgid "Active Experimentation14"
+msgstr "Katse14"
+
+#: admingeneral!
+msgid "Active Experimentation15"
+msgstr "Katse15"
+
+#: admingeneral!
+msgid "Reflection-COMMUNICATE EXPLANATION"
+msgstr "Peegeldus-SELGITUSTE JAGAMINE"
+
+#: admingeneral!
+msgid "Last Modified:"
+msgstr "Viimati muudetud:"
+
+#: admingeneral!
+msgid "Supporting Materials"
+msgstr "Lisamaterjalid"
+
+#: admingeneral!
+msgid "Add your tag"
+msgstr "Sildi lisamine"
+
+#: admingeneral!
+msgid "Given Metadata"
+msgstr "Antud metadata"
+
+#: admingeneral!
+msgid "There are no pathways yet."
+msgstr "Ühtegi õpiteed ei ole veel."
+
+#: admingeneral!
+msgid "Educational Pathways"
+msgstr "Õpiteed"
+
+#: admingeneral!
+msgid "GO NOW!"
+msgstr "ALUSTAN!"
+
+#: admingeneral!
+msgid "Creator"
+msgstr "Koostaja"
+
+#: admingeneral!
+msgid "You are here"
+msgstr "Teie asukoht"
+
+#: admingeneral!
+msgid "Edit Pathway: %s"
+msgstr "Õpitee muutmine: %s"
+
+#: admingeneral!
+msgid "Edit Pathway"
+msgstr "Muuda õpiteed"
+
+#: admingeneral!
+msgid "Preview Pathway"
+msgstr "Õpitee eelvaade"
+
+#: admingeneral!
+msgid "Quality Criteria for Natural Europe Pathways"
+msgstr "Natural Europe kvaliteedikriteeriumid"
+
+#: admingeneral!
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: admingeneral!
+msgid "Language"
+msgstr "Keel"
+
+#: admingeneral!
+msgid "Pathway Title"
+msgstr "Õpitee pealkiri"
+
+#: admingeneral!
+msgid "no spaces or special characters"
+msgstr "Tühikud ja erimärgid ei ole lubatud"
+
+#: admingeneral!
+msgid "Pathway ready for validation"
+msgstr "Õpitee on kinnitamiseks valmis"
+
+#: admingeneral!
+msgid "Pathway Metadata"
+msgstr "Õpitee metadata"
+
+#: admingeneral!
+msgid "Save and Finish"
+msgstr "Salvesta ja lõpeta"
+
+#: admingeneral!
+msgid "Save Changes"
+msgstr "Salvesta muudatused"
+
+#: admingeneral!
+msgid "Select Pathway Template"
+msgstr "Vali õpitee mall"
+
+#: admingeneral!
+msgid "There are no sections"
+msgstr "Lõigud puuduvad"
+
+#: admingeneral!
+msgid "Cancel"
+msgstr "Tühista"
+
+#: admingeneral!
+msgid "Click to add Supporting Materials"
+msgstr "Kliki lisamaterjalide lisamiseks"
+
+#: admingeneral!
+msgid ""
+"Resources that will be added here serve as <br> complementary to the items "
+"attached on the pathway"
+msgstr "Siia lisatud materjalid täiendavad <br> õpiteele lisatud õppematerjale"
+
+#: admingeneral!
+msgid "Select an object to add"
+msgstr "Vali lisatav objekt"
+
+#: admingeneral!
+msgid "All Items: "
+msgstr "Kõik kirjed"
+
+#: admingeneral!
+msgid "Insert"
+msgstr "Sisesta"
+
+#: admingeneral!
+msgid "No items"
+msgstr "Kirjed puuduvad"
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Sisesta uus pilt "
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Juhendatud õpitee"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Mängupõhine õpitee"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Interaktiivse installatsiooni õpitee"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "AUTORISEERIMINE"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "ÕPITEE KIRJELDAMINE"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Leheküljed"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Lisa vahend. Lisatud vahendid on õpitee materjalidele täienduseks."
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Lisa toetavaid materjale"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Sisesta toetavaid materjale"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Lisa kollektsioonile uus fail"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Lisa kollektsioonile uus hüperlink"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Sisesta pilt: siia lisatud pildifailid ilmuvad seespool õpitee korpust."
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "Sisesta valitud pilt"
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Tähtis info: Uute väliste materjalide lisamisel palun veendu, et kõik õpitee muudatused oleksid salvestatud."
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Uute väliste materjalide lisamisel taaslaaditakse õpitee lehekülg ja salvestamata muudatused lähevad kaduma."
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Sissejuhatav lõik"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Hariduslik"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Ülesanded"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "Ekraan 1"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "Ekraan 2"
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "Ekraan 3"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "Ekraan 4"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "Ekraan 5"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "Ekraan 6"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "Ekraan 7"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "Ekraan 8"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "Ekraan 9"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "Ekraan 10"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "Ekraan 11"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "Ekraan 12"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "Ekraan 13"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "Ekraan 14"
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "Ekraan 15"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "Kasutajate kontol asuv õpitee ala pakub loetelu kättesaadavatest õpiteedest. "
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Et lugeda rohkem iga õpitee kohta, klõpsake Pealkirja lingile."
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Samuti saate õpiteid redigeerida, kustutada ja lisada uusi õpiteid."
+
+#: admingeneral!
+msgid "Guided pathway: Addressed to school communities"
+msgstr "Juhendatud õpitee: mõeldud koolidele"
+
+#: admingeneral!
+msgid ""
+"Open Pathway: Addressed to lifelong learners and especially families"
+msgstr "Avatud õpitee: mõeldud elukestvaks õppeks, eriti peredele"
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Interaktiivse installatsiooni õpitee: kasutamiseks Interaktiivse tööriista abil.  "
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Muutke õpitee avalikuks"
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "Siin saate luua oma õpitee"
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Salvestage ja jääge samale lehele"
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Salvestage ja minge tagasi õpitee pealehele"
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Salvestage muudatused ja jääge õpitee pealehele"
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Salvestage ja minge õpitee nimekirja juurde"
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Esitage õpitee kohta teavet ja tehke otsingusüsteemis leitavaks."
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Info vajalike meetmete kohta, mida vajavad õpetajad enne kirjeldatud ja/või järgmistes osades kavandatud tegevuste käivitamist."
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "Kirjeldage õpitees osalevate õpilaste eeldatavaid teadmisi."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Kirjeldage, viise ja materjale, mida kasutatada klassiruumis õpilaste tähelepanu köitmiseks."
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Moodustage küsimusi, mida esitatada õpilastele tõstmaks nende mõtteaktiivsust teemal, mis põhineb nende olemasolevatel teadmistel."
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Kirjeldage, kuidas õpilasi julgustada välja pakkuma võimalikke selgitusi eelmises tegevuses tekkinud küsimustele."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Kirjeldage viise ja materjale, mida kasutatada lihtsustamaks õpilaste keskendumist tõenditele, mis on teaduslike küsimuste vastuste allikaks.  "
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Leidke sobiv materjal ja/või eksponaat. Täpsustage, kuidas õpilased saavad koguda tõendeid eelmises etapis esitatud küsimustele."
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Kirjeldage õppeprogrammi etappe."
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Selgitage, kuidas õpilaste rühmad saavad oma selgitusi hinnata."
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Andmed selle kohta, kuidas luua aruanne õpilaste järeldustest, esitada ja põhjendada nende pakutud selgitusi teistele rühmadele ning õpetajale."
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Kirjelda lisaülesannete ja -materjalide sisu"
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "Andke õpiteedega seotud inimeste ja organisatsioonide kontaktinfo."
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "Andke õpitee põhikirjeldus. Kasutatavad vahendid, vanusepiir jne."
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "Määrake tegevuse kontekst asjakohasel viisil, et köita osalejate tähelepanu. "
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Andke suunised, kuidas täita näiteks küsimustikke."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Pakkuge erinevaid mänge: ristsõnu, valikvastustega küsimusi jne. Selgitage, kuidas nendega mängida, gruppides või individuaalselt."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "Hinnake mängude tulemusi, õnnitlege võitjat ja selgitage, mis ta kingituseks on ja kuidas ta saab selle vastu võtta."
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Avatud õpitee"

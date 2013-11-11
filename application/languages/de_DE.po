@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# Dominik Kowald <dominik.kowald@gmail.com>, 2012.
+# Dominik Kowald <dominik.kowald@gmail.com>, 2012
+# MusPaed_JME <Haas@jura-museum.de>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2012-11-15 14:15+0000\n"
-"Last-Translator: stauros gkinis <gkista@yahoo.gr>\n"
+"PO-Revision-Date: 2013-09-25 10:33+0000\n"
+"Last-Translator: MusPaed_JME <Haas@jura-museum.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2850,7 +2851,7 @@ msgstr "Omeka Installation"
 
 #: admin/themes/default/items/browse.php:8
 msgid "Add a Hyperlink"
-msgstr "Fügen sie einen Querverweis hinzu"
+msgstr "Fügen sie einen Link hinzu"
 
 #: admin/themes/default/items/files-form.php:93
 msgid "Upload a File"
@@ -2862,7 +2863,7 @@ msgstr "Hinzufügen"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Pathway Authoring Tool"
-msgstr ""
+msgstr "Autorenwerkzeug für Lernpfade"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Translate"
@@ -2886,7 +2887,7 @@ msgstr "Fotos"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Add a new hyperlink to your archive"
-msgstr "Fügen sie einen neuen Querverweis zu ihrem Archiv hinzu"
+msgstr "Fügen sie einen neuen Link zu ihrem Archiv hinzu"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Please select language to translate:"
@@ -2902,140 +2903,140 @@ msgstr "Speichern sie die Übersetzungen"
 
 #: admingeneral!
 msgid "Educational Pathways"
-msgstr ""
+msgstr "Lernpfade"
 
 #: admingeneral!
 msgid "GO NOW!"
-msgstr ""
+msgstr "Los geht's"
 
 #: admingeneral!
 msgid "Pathways"
-msgstr ""
+msgstr "Pfad"
 
 #: admingeneral!
 msgid "Natural Europe Project website"
-msgstr ""
+msgstr "Natural Europe Projekt Seite"
 
 #: admingeneral!
 msgid "Natural Europe Pathway Authoring and Metadata Tool.  &copy; 2011"
-msgstr ""
+msgstr "Natural Europe Autorenwerkzeuge für Lernpfade und Metadaten. "
 
 #: admingeneral!
 msgid "You are here"
-msgstr ""
+msgstr "Sie sind hier"
 
 #: admingeneral!
 msgid "Access the Resource"
-msgstr ""
+msgstr "Auf die Materialien zugreifen"
 
 #: admingeneral!
 msgid "Given Metadata"
-msgstr ""
+msgstr "angegebene Metadaten"
 
 #: admingeneral!
 msgid "Sign-in"
-msgstr ""
+msgstr "eintragen"
 
 #: admingeneral!
 msgid "Return to Pathway"
-msgstr ""
+msgstr "zurück zum Lernpfad"
 
 #: admingeneral!
 msgid "Resources"
-msgstr ""
+msgstr "Materialien"
 
 #: admingeneral!
 msgid "Browse Resources"
-msgstr ""
+msgstr "Die Materialien durchsehen"
 
 #: admingeneral!
 msgid "Ingest a Resource"
-msgstr ""
+msgstr "Material einsetzen"
 
 #: admingeneral!
 msgid "Ingest a Resource from Natural Europe federation"
-msgstr ""
+msgstr "Material aus der Liste der Natural Europe Gruppe übernehmen"
 
 #: admingeneral!
 msgid "Search in Natural Europe"
-msgstr ""
+msgstr "In Natural Europe suchen"
 
 #: admingeneral!
 msgid "Access to the resource"
-msgstr ""
+msgstr "Zugriff auf das Material"
 
 #: admingeneral!
 msgid "View Metadata"
-msgstr ""
+msgstr "Metadaten anzeigen"
 
 #: admingeneral!
 msgid "Ingest a Resource from Europeana federation"
-msgstr ""
+msgstr "Material aus der Liste von Europeana übernehmen"
 
 #: admingeneral!
 msgid "IMAGE"
-msgstr ""
+msgstr "Bild"
 
 #: admingeneral!
 msgid "TEXT"
-msgstr ""
+msgstr "Text"
 
 #: admingeneral!
 msgid "VIDEO"
-msgstr ""
+msgstr "Video"
 
 #: admingeneral!
 msgid "SOUND"
-msgstr ""
+msgstr "Tonaufzeichnung"
 
 #: admingeneral!
 msgid "Access resource at Europeana"
-msgstr ""
+msgstr "Auf die Materialien von Europeana zugreifen"
 
 #: admingeneral!
 msgid "Provider"
-msgstr ""
+msgstr "Provider"
 
 #: admingeneral!
 msgid "Ingest a Resource from Ariadne federation"
-msgstr ""
+msgstr "Material aus der Liste von Ariadne einsetzen"
 
 #: admingeneral!
 msgid "Search in Ariadne"
-msgstr ""
+msgstr "In Ariadne suchen"
 
 #: admingeneral!
 msgid "Search in Europeana"
-msgstr ""
+msgstr "In Europeana suchen"
 
 #: admingeneral!
 msgid "You search"
-msgstr ""
+msgstr "Du suchst"
 
 #: admingeneral!
 msgid "Total results"
-msgstr ""
+msgstr "Gesamtmenge"
 
 #: admingeneral!
 msgid "Guidelines"
-msgstr ""
+msgstr "Richtlinien"
 
 #: admingeneral!
 msgid "Natural Europe Handbook"
-msgstr ""
+msgstr "Natural Europe Handbuch"
 
 #: admingeneral!
 msgid "Natural Europe Manual"
-msgstr ""
+msgstr "Natural Europe Anleitung"
 
 #: admingeneral!
 msgid "Quality Criteria for Natural Europe Pathways"
-msgstr ""
+msgstr "Qualitätskriterien für Natural Europe Lernpfade"
 
 #: admin/themes/default/index.php:85
 #, php-format
 msgid "<em>%1$s</em> contains %2$s resources. There are %5$s users."
-msgstr ""
+msgstr "<em>%1$s</em> contains %2$s resources. There are %5$s users."
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Validate"
@@ -3043,4 +3044,260 @@ msgstr "Bestätigen"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Choose language"
-msgstr "Wählen Sie Sprache"
+msgstr "Wählen Sie Ihre Sprache"
+
+#: admingeneral!
+msgid "Delete Resource"
+msgstr "Resource löschen"
+
+#: admingeneral!
+msgid "Delete Pathway"
+msgstr "Lehrpfad  löschen"
+
+#: admingeneral!
+msgid "Add it to my Repository"
+msgstr "Meinen Materialien hinzufügen"
+
+#: admingeneral!
+msgid "Save and Return to Pathway"
+msgstr "Speichern und zum Lehrpfad zurückkehren"
+
+#: admingeneral!
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+#: admingeneral!
+msgid "Hungarian"
+msgstr "Ungarisch"
+
+#: admingeneral!
+msgid "Russian"
+msgstr "Russisch"
+
+#: admingeneral!
+msgid "Finnish"
+msgstr "Finnisch"
+
+#: admingeneral!
+msgid "Estonian"
+msgstr "Estländisch"
+
+#: admingeneral!
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: admingeneral!
+msgid "Greek"
+msgstr "Griechisch"
+
+#: admingeneral!
+msgid "German"
+msgstr "Deutsch"
+
+#: admingeneral!
+msgid "English"
+msgstr "Englisch"
+
+#: admingeneral!
+msgid "Organization"
+msgstr "Organisation"
+
+#: admingeneral!
+msgid "Surname"
+msgstr "Nachname"
+
+#: admingeneral!
+msgid "Add new"
+msgstr "Neues hinzufügen"
+
+#: admingeneral!
+msgid "Remove Language"
+msgstr "Die Sprache entfernen"
+
+#: admingeneral!
+msgid "Add Language"
+msgstr "Sprache hinzufügen"
+
+#: admingeneral!
+msgid "Browse"
+msgstr "Durchsuchen"
+
+#: admingeneral!
+msgid "No"
+msgstr "Nein"
+
+#: admingeneral!
+msgid "Yes, if others share alike"
+msgstr "Ja, Weitergabe unter gleichen Bedingungen"
+
+#: admingeneral!
+msgid "Yes"
+msgstr "Ja"
+
+#: admingeneral!
+msgid "Insert new image to your collection"
+msgstr "Ein neues Bild Ihrer Sammlung hinzufügen"
+
+#: admingeneral!
+msgid "Insert Image"
+msgstr "Das Bild einsetzen"
+
+#: admingeneral!
+msgid "Keep in mind that you didn't select a file to upload."
+msgstr "Bitte beachten: es ist kein Bild zum hochladen ausgewählt"
+
+#: admingeneral!
+msgid "You must fill all the mandatory fields (*)"
+msgstr "Alle obligatorischen Felder müssen ausgefüllt sein"
+
+#: admingeneral!
+msgid "Save"
+msgstr "Speichern"
+
+#: admingeneral!
+msgid "Only recommended"
+msgstr "Nur empfohlene"
+
+#: admingeneral!
+msgid "Enrich Metadata"
+msgstr "Mehr Meta Daten eingeben"
+
+#: admingeneral!
+msgid "Filter results by type"
+msgstr "Filter entsprechend dem Typ"
+
+#: admingeneral!
+msgid "Report a problem"
+msgstr "Ein Problem mitteilen"
+
+#: admingeneral!
+msgid "Add Resource"
+msgstr "Material hinzufügen"
+
+#: admingeneral!
+msgid "Add File"
+msgstr "Eine Datei hinzufügen"
+
+#: admingeneral!
+msgid "Add Pathway"
+msgstr "Lernpfad hinzufügen"
+
+#: admingeneral!
+msgid "easier to downoad"
+msgstr "Einfacher für den Download"
+
+#: admingeneral!
+msgid "Getting Started with Natural Europe Pathway Authoring Tool"
+msgstr "Mit dem  Natural Europe Pathway Authoring Tool starten"
+
+#: admingeneral!
+msgid ""
+"Are you sure you want to CHANGE the language? This action will be SAVED!"
+msgstr "Sind Sie sicher, dass sie die Sprache ändern wollen? Dieser Vorgang wird gespeichert!"
+
+#: admingeneral!
+msgid "Are you sure you want to DELETE it?"
+msgstr "Wollen Sie das wirklich LÖSCHEN?"
+
+#: admingeneral!
+msgid "evolution (biology)"
+msgstr "Evolution (Biologie)"
+
+#: admingeneral!
+msgid "mechanics (physics)"
+msgstr "Mechanik (Physik)"
+
+#: admingeneral!
+msgid "reproduction (biology)"
+msgstr "Reproduktion (Biologie)"
+
+#: admingeneral!
+msgid ""
+"Τhe Dashboard of the Pathway Authoring Tool provides you with an overview of"
+" what is available on the site."
+msgstr "Das Cockpit des Pathway Authoring Tools bietet einen Überblick über die Funktionen der Seite. "
+
+#: admingeneral!
+msgid ""
+"You can either access Resources and Pathway sections from the toolbar or "
+"from the links provided right below the toolbar."
+msgstr "Sie können auf Ressourcen und Lernwege entweder über die Werkzeugleiste oder die Links unterhalb der Leiste zugreifen."
+
+#: admingeneral!
+msgid "Moreover, you can find guidelines and overview of the site."
+msgstr "Darüber hinaus finden Sie Anleitungen und einen Überblick über die Seite."
+
+#: admingeneral!
+msgid ""
+"The Resources area consists of Resources Management options such as Ingest a"
+" Resource, Add a Hyperlink, Add a File."
+msgstr "Der Ressourcen-Bereich beinhaltet Optionen für die Verwaltung von Ressourcen, z.B. Ressourcen aufnehmen, Links hinzufügen, Dateien hinzufügen."
+
+#: admingeneral!
+msgid "It also offers the list of all the resources and the option of Search."
+msgstr "Er umfasst zudem eine Liste aller Ressourcen und eine Suchmöglichkeit."
+
+#: admingeneral!
+msgid ""
+"A quick filter option allows for a faster choice between different modes of "
+"resources."
+msgstr "Eine Schnell-Filter-Option ermöglicht eine schnelle Auswahl verschiedener Ressourcen-Typen."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from external repositories."
+msgstr "Fügen Sie Ihrer Sammlung eine neue Ressource aus externen Quellen hinzu."
+
+#: admingeneral!
+msgid ""
+"Add in your collection a new resource found online by providing its URL."
+msgstr "Fügen Sie Ihrer Sammlung eine neue Online-Ressource hinzu, indem Sie die URL zur Verfügung stellen."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from your local disk."
+msgstr "Fügen Sie Ihrer Sammlung eine neue Ressource von Ihrer lokalen Festplatte hinzu."
+
+#: admingeneral!
+msgid "Sort alphabetically the resources based on Title"
+msgstr "Sortieren Sie die Ressourcen alphabetisch nach Titeln."
+
+#: admingeneral!
+msgid "Sort the resources based on their status (public – private)."
+msgstr "Sortieren Sie die Ressourcen nach ihrem Veröffentlichungs-Status (öffentlich/privat)."
+
+#: admingeneral!
+msgid "Sort the resources based on the Date Added."
+msgstr "Sortieren Sie die Ressourcen nach dem Datum der Aufnahme in die Sammlung."
+
+#: admingeneral!
+msgid "Search using keywords through your resources."
+msgstr "Durchsuchen Sie Ihre Ressourcen, indem Sie Schlüsselwörter eingeben."
+
+#: admingeneral!
+msgid "Describe your resource providing the information requested bellow."
+msgstr "Beschreiben Sie Ihre Ressource, indem Sie die nachstehend erfragten Informationen zur Verfügung stellen."
+
+#: admingeneral!
+msgid ""
+"Make your resource public and visible in your pathway by clicking the Public"
+" button."
+msgstr "Machen Sie Ihre Ressource im Lernweg öffentlich und sichtbar, indem Sie auf publizieren klicken."
+
+#: admingeneral!
+msgid "Use of more elements to describe your pathway"
+msgstr "Weitere Elemente zur Beschreibung des Lernwegs benutzen"
+
+#: admingeneral!
+msgid "Basic elements for describe your pathway."
+msgstr "Grundlegende Elemente zur Beschreibung des Lernwegs"
+
+#: admingeneral!
+msgid "Use of more elements to describe your resource"
+msgstr "Weitere Elemente zur Beschreibung Ihrer Ressource nutzen"
+
+#: admingeneral!
+msgid "Basic elements for describe your resource."
+msgstr "Grundlegende Elemente zur Beschreibung der Ressource"
+
+#: admingeneral!
+msgid "Pathway last saved at"
+msgstr "Der Lernpfad wurde zueltzt gesichert am"

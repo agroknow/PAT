@@ -18,16 +18,16 @@ if(isset($_POST['insert'])){ //if click add to pathway
 <div style="text-align:center; width:850px;">
 <form action="#" method="post" style="text-align:center;">
 
-<div style="text-align:center;">
+<div style="text-align:left;">
 <img src="<?php echo uri('themes/default/items/images/europeana-logo-en.png'); ?>"><br>
 <?php echo __('Search in Europeana'); ?>:
 </div>
-<div style="text-align:center;">
+<div style="text-align:left;">
 <input type="text" name="europeanatext"> 
 <input type="submit" class="button" value="<?php echo __('Search'); ?>" style="float:none;">
 </div>
 </form>
-
+<iframe width="350" height="200" src="//www.youtube.com/embed/7Au-mYd7jHE" frameborder="0" allowfullscreen style="position: absolute; left: 310px; top: 60px;"></iframe>
 <style>
 a {
 color:black;
@@ -55,7 +55,7 @@ if(isset($_POST['bytype'])){$europenana_type= "+europeana_type:*".$_POST['bytype
 //print_r($_POST);break;
 //echo 'http://api.europeana.eu/api/opensearch.rss?searchTerms='.$europeanatext.''.$europenana_type.'&startPage='.$startPage.'&wskey=IIRTOOIRNG';
 ?>
-<div><em><strong>Filter results by type: </strong></em><br> 
+<div><em><strong><?php echo __('Filter results by type'); ?>: </strong></em><br> 
   <script>
   function GoType(type){
   document.form4.bytype.value=''+type+'';
@@ -107,7 +107,7 @@ $opensearch = $child1->children('http://a9.com/-/spec/opensearch/1.1/');
   print "".__('Total results')." : ".$opensearch->totalResults; 
  // print "<br />startIndex : ".$opensearch->startIndex;
   $pages=$opensearch->totalResults/12;
-  echo $pages2=round($pages); 
+  $pages2=round($pages); 
   if($pages2>=$pages){$pages=$pages2;}else{$pages=$pages2+1;}
   if($pages>0){ 
 
@@ -136,7 +136,7 @@ $opensearch = $child1->children('http://a9.com/-/spec/opensearch/1.1/');
 
   <?php 
   if($pages<10){
-  while($i<$pages){
+  while($i<=$pages){
   	
   	echo "<a href='javascript:GoPage(".$i.")' ";
   	if($i==$startPage){echo "id='active'";}
@@ -254,9 +254,13 @@ $dc =$xmlmetadata->records->children('http://www.loc.gov/zing/srw/')->record->re
 		  $descrip=preg_replace('/(["\'])/ie', '',$descrip);
 		   print  "". $descrip."<br />";		  
 }else{$descrip='';}
+
+$creator=$dc->dc->creator;
+
 		   //Use that namespace
 $europenana = $child2->children('http://www.europeana.eu');
-
+$itemlanguage=$europenana->language;
+$itemlanguage=strtolower($itemlanguage);
 		$format=$europenana->type;
 		$format=preg_replace('/(["\'])/ie', '',$format);
   if(strlen($europenana->rights)>7){print "<strong>".__('Rights')." :</strong> <a href='".$europenana->rights."' target='_blank'>".$europenana->rights."</a><br />";} 
@@ -264,7 +268,8 @@ $europenana = $child2->children('http://www.europeana.eu');
   echo "<a href='". $link1."' target='_new'>".__('Access resource at Europeana')."</a><br>";
 
 		   //print  "<br><a href='". $child->link."' target='_new'>View Metadata</a>";
-	
+  $keywords=$dc->dc->subject;
+  //print_r($keywords);
 	
 	$user = current_user();
 $params=array('title'=>$title,
@@ -273,15 +278,21 @@ $params=array('title'=>$title,
 			  'format'=>$format,
 			  'identifier'=>$source,
 			  'user'=>$user['entity_id']);
-echo '<form method="post" name="'.$cb.'" action="'.uri("items/addinjestitem").'">';
+echo '<form method="post" target="_blank" name="'.$cb.'" action="'.uri("items/addinjestitem").'">';
 
 $title = preg_replace('/(["\'])/ie', '',  $title);
 $descrip = preg_replace('/(["\'])/ie', '',  $descrip);
-echo '<input type="hidden" name="title" value="'.$title.'">';
-echo '<input type="hidden" name="description" value="'.$descrip.'">';
+
+echo '<input type="hidden" name="title" value="'.base64_encode(json_encode($title)).'">';
+echo '<input type="hidden" name="description" value="'.base64_encode(json_encode($descrip)).'">';
 echo '<input type="hidden" name="source" value="'.$identifier.'">';
 echo '<input type="hidden" name="format" value="'.$format.'">';
 echo '<input type="hidden" name="identifier" value="'.$source.'">';
+echo '<input type="hidden" name="keywords" value="'.base64_encode(json_encode($keywords)).'">';
+echo '<input type="hidden" name="itemlanguage" value="'.$itemlanguage.'">';
+echo '<input type="hidden" name="creator" value="'.$creator.'">';
+echo '<input type="hidden" name="provider" value="'.$creator.'">';
+echo '<input type="hidden" name="rights" value="'.$europenana->rights.'">';
 echo '<input type="hidden" name="user" value="'.$user['entity_id'].'">';
 		   
 		  // echo '<br><div style="position:relative; top:2px;height:40px;">
@@ -336,7 +347,7 @@ echo '</form>';
   <?php 
   $i=1;
   if($pages<10){
-  while($i<$pages){
+  while($i<=$pages){
   	
   	echo "<a href='javascript:GoPage2(".$i.")' ";
   	if($i==$startPage){echo "id='active'";}

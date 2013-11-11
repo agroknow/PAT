@@ -240,7 +240,7 @@ function oai_exit() {
     exit();
 }
 
-function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datageneral3) {
+function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datageneral3, $elementPrefix='imsmd:') {
 
     require_once 'Omeka/Core.php';
     $core = new Omeka_Core;
@@ -285,55 +285,55 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
                 } elseif ($datageneral_right['element_hierarchy'] == 9) {  /////rights for adding source value element_id=9
                     if (strlen($datageneral_right['value']) > 0) {
 
-                        $thereturn.= '<imsmd:' . $datageneral4['machine_name'] . '>' . "\n";
-                        $thereturn .= xmlformat('LOMv1.0', 'imsmd:source', '', $indent);
-                        $thereturn .= xmlformat($datageneral_right['value'], 'imsmd:value', '', $indent);
-                        $thereturn.= '</imsmd:' . $datageneral4['machine_name'] . '>' . "\n";
+                        $thereturn.= '<'.$elementPrefix.'' . $datageneral4['machine_name'] . '>' . "\n";
+                        $thereturn .= xmlformat('LOMv1.0', ''.$elementPrefix.'source', '', $indent);
+                        $thereturn .= xmlformat($datageneral_right['value'], ''.$elementPrefix.'value', '', $indent);
+                        $thereturn.= '</'.$elementPrefix.'' . $datageneral4['machine_name'] . '>' . "\n";
                     }
                 } elseif ($datageneral_right['element_hierarchy'] == 24) {  /////rights for adding source value element_id=24
                     if (strlen($datageneral_right['value']) > 0) {
 
-                        $thereturn.= '<imsmd:' . $datageneral4['machine_name'] . '>' . "\n";
-                        $thereturn .= xmlformat('LOMv1.0', 'imsmd:source', '', $indent);
-                        $thereturn .= xmlformat($datageneral_right['value'], 'imsmd:value', '', $indent);
-                        $thereturn.= '</imsmd:' . $datageneral4['machine_name'] . '>' . "\n";
+                        $thereturn.= '<'.$elementPrefix.'' . $datageneral4['machine_name'] . '>' . "\n";
+                        $thereturn .= xmlformat('LOMv1.0', ''.$elementPrefix.'source', '', $indent);
+                        $thereturn .= xmlformat($datageneral_right['value'], ''.$elementPrefix.'value', '', $indent);
+                        $thereturn.= '</'.$elementPrefix.'' . $datageneral4['machine_name'] . '>' . "\n";
                     }
                 } elseif ($datageneral_right['element_hierarchy'] == 81) {  ////if isset description instead of creative commons
                     if (strlen($datageneral_right['value']) > 0) {
                         $right3 = $datageneral_right['value'];
                     }
                 } else {
-                    $thereturn.=preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord); //else echo the element
+                    $thereturn.=preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix); //else echo the element
                 }
             }///if($count_results>0){ 
         }//foreach datageneral4 afou exei perasei oles tis times...
         //////////////diadikasia gia echo to creative commons h to description an uparxei auto.////////////////
         if (strlen($right3) > 0) {
-            $thereturn.=preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+            $thereturn.=preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
         } elseif ($right1 == 'yes' and $right2 == 'yes') {
-            $thereturn .= '<imsmd:description>' . "\n";
-            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by/3.0', 'imsmd:string', '', $indent);
-            $thereturn .= '</imsmd:description>' . "\n";
+            $thereturn .= '<'.$elementPrefix.'description>' . "\n";
+            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by/3.0', ''.$elementPrefix.'string', '', $indent);
+            $thereturn .= '</'.$elementPrefix.'description>' . "\n";
         } elseif ($right1 == 'yes' and $right2 == 'no') {
-            $thereturn .= '<imsmd:description>' . "\n";
-            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nd/3.0', 'imsmd:string', '', $indent);
-            $thereturn .= '</imsmd:description>' . "\n";
+            $thereturn .= '<'.$elementPrefix.'description>' . "\n";
+            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nd/3.0', ''.$elementPrefix.'string', '', $indent);
+            $thereturn .= '</'.$elementPrefix.'description>' . "\n";
         } elseif ($right1 == 'yes' and $right2 == 'Yes, if others share alike') {
-            $thereturn .= '<imsmd:description>' . "\n";
-            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-sa/3.0', 'imsmd:string', '', $indent);
-            $thereturn .= '</imsmd:description>' . "\n";
+            $thereturn .= '<'.$elementPrefix.'description>' . "\n";
+            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-sa/3.0', ''.$elementPrefix.'string', '', $indent);
+            $thereturn .= '</'.$elementPrefix.'description>' . "\n";
         } elseif ($right1 == 'no' and $right2 == 'yes') {
-            $thereturn .= '<imsmd:description>' . "\n";
-            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nc/3.0', 'imsmd:string', '', $indent);
-            $thereturn .= '</imsmd:description>' . "\n";
+            $thereturn .= '<'.$elementPrefix.'description>' . "\n";
+            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nc/3.0', ''.$elementPrefix.'string', '', $indent);
+            $thereturn .= '</'.$elementPrefix.'description>' . "\n";
         } elseif ($right1 == 'no' and $right2 == 'no') {
-            $thereturn .= '<imsmd:description>' . "\n";
-            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nc-nd/3.0', 'imsmd:string', '', $indent);
-            $thereturn .= '</imsmd:description>' . "\n";
+            $thereturn .= '<'.$elementPrefix.'description>' . "\n";
+            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nc-nd/3.0', ''.$elementPrefix.'string', '', $indent);
+            $thereturn .= '</'.$elementPrefix.'description>' . "\n";
         } elseif ($right1 == 'no' and $right2 == 'Yes, if others share alike') {
-            $thereturn .= '<imsmd:description>' . "\n";
-            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nc-sa/3.0', 'imsmd:string', '', $indent);
-            $thereturn .= '</imsmd:description>' . "\n";
+            $thereturn .= '<'.$elementPrefix.'description>' . "\n";
+            $thereturn .= xmlformat('http://www.creativecommons.org/licenses/by-nc-sa/3.0', ''.$elementPrefix.'string', '', $indent);
+            $thereturn .= '</'.$elementPrefix.'description>' . "\n";
         }
     } elseif ($datageneral3['machine_name'] == 'classification') { ///////if CLASSIFICATION
         $thereturn = '';
@@ -351,7 +351,7 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
                 $thereturnonto = '';
                 foreach ($datageneral8 as $datageneral8) {
 
-                    $sql6 = "SELECT c.*,b.machine_name,b.id as elm_id FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
+                    $sql6 = "SELECT c.*,b.machine_name,b.id as elm_id,b.vocabulary_id as vocabulary_id FROM  metadata_element b  LEFT JOIN metadata_element_hierarchy c 
 			ON c.element_id = b.id  WHERE c.pelement_id=" . $datageneral4['elm_id'] . " and c.is_visible=1 ;";
                     //echo $sql6."<br>";
                     $exec6 = $db->query($sql6);
@@ -371,8 +371,25 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
 
 
                             foreach ($datageneral5 as $datageneral5) {
-
+                                $ontology2_en_value_string='';
                                 if ($datageneral6['datatype_id'] == 5) {
+                                    if (strlen($datageneral5['classification_id']) > 0) {
+
+                                        $sqlfindxml = "SELECT * FROM  metadata_vocabulary_record WHERE vocabulary_id=" . $datageneral6['vocabulary_id'] . "";
+                                        //echo $sqlfindxml;
+                                        $execfindxml = $db->query($sqlfindxml);
+                                        $findxml = $execfindxml->fetch();
+                                        libxml_use_internal_errors(false);
+                                        $uri = WEB_ROOT;
+                                        $file = $findxml['value'];
+                                        $xmlvoc = '' . $uri . '/archive/xmlvoc/' . $file . '.xml';
+                                        $xml = @simplexml_load_file($xmlvoc, NULL, LIBXML_NOERROR | LIBXML_NOWARNING);
+                                        $resultnewval = $xml->xpath("instances/instance[@instanceOf='" . $datageneral5['classification_id'] . "' and @lang='en']");
+
+                                        $ontology2_en_value_string = $resultnewval[0];
+                                        $ontology2 = $datageneral5['classification_id'];
+                                    }
+                                
                                     if (strlen($datageneral5['value']) > 0) {
 
                                         $ontology2 = $datageneral5['value'];
@@ -387,6 +404,9 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
                                         $datageneral_ont = $exec_ont->fetch();
                                         $ontology1 = $datageneral_ont['value'];
                                     }
+                                }
+                                if ($datageneral6['form_type_id'] == 2) {
+                                        $ontology3 = $datageneral5['value'];
                                 }
                             }//foreach($datageneral5 as $datageneral5){
                         }//if($count_results5>0){
@@ -428,6 +448,25 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
                         }
                     }
                     ////////////for CoE/////////////////
+                     if ($schema['name'] == 'NE') {
+                        ////////////for NE/////////////////
+
+                        $taxon_entry = $ontology1 . "" . $ontology2_en_value_string . "";
+                        $taxon_id_value = ' ';
+                        if ($datageneral4['machine_name'] == 'purpose_educational_level') {
+                            $class_source = 'educational level';
+                        } elseif ($datageneral4['machine_name'] == 'purpose_discipline') {
+                            $class_source = 'LRE thesaurus';
+                        } elseif ($datageneral4['machine_name'] == 'purpose_educational_objective') {
+                            $class_source = "Revised Bloom's Taxonomy";
+                            $taxon_id_value = $ontology1;
+                            $taxon_entry=$ontology3;
+                        } else {
+                            $class_source = '';
+                        }
+                        
+                    }
+                    ////////////for NE/////////////////
                     ////////////////////create puprose value from element machine name//////////////////////
                     $for_purpose = $datageneral4['machine_name'];
                     $for_purpose = explode('purpose_', $for_purpose);
@@ -437,29 +476,29 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
 
 
                     if (strlen($ontology1) > 0 or strlen($ontology2) > 0) {
-                        $thereturnonto .= '<taxonPath>' . "\n";
-                        $thereturnonto .= '<source>' . "\n";
-                        $thereturnonto .= xmlformat($class_source, 'string', ' language="en"', $indent);
-                        $thereturnonto .= '</source>' . "\n";
-                        $thereturnonto .= '<taxon>' . "\n";
-                        $thereturnonto .= xmlformat($taxon_id_value, 'id', '', $indent);
-                        $thereturnonto .= '<entry>' . "\n";
-                        $thereturnonto .= xmlformat($taxon_entry, 'string', '', $indent);
-                        $thereturnonto .= '</entry>' . "\n";
-                        $thereturnonto .= '</taxon>' . "\n";
-                        $thereturnonto .= '</taxonPath>' . "\n";
+                        $thereturnonto .= '<'.$elementPrefix.'taxonPath>' . "\n";
+                        $thereturnonto .= '<'.$elementPrefix.'source>' . "\n";
+                        $thereturnonto .= xmlformat($class_source, ''.$elementPrefix.'string', ' language="en"', $indent);
+                        $thereturnonto .= '</'.$elementPrefix.'source>' . "\n";
+                        $thereturnonto .= '<'.$elementPrefix.'taxon>' . "\n";
+                        $thereturnonto .= xmlformat($taxon_id_value, ''.$elementPrefix.'id', '', $indent);
+                        $thereturnonto .= '<'.$elementPrefix.'entry>' . "\n";
+                        $thereturnonto .= xmlformat($taxon_entry, ''.$elementPrefix.'string', '', $indent);
+                        $thereturnonto .= '</'.$elementPrefix.'entry>' . "\n";
+                        $thereturnonto .= '</'.$elementPrefix.'taxon>' . "\n";
+                        $thereturnonto .= '</'.$elementPrefix.'taxonPath>' . "\n";
                     }
                 }//foreach($datageneral8 as $datageneral8){
 
 
                 if (strlen($thereturnonto) > 0) {
-                    $thereturn .= '<classification>' . "\n";
-                    $thereturn .= '<purpose>' . "\n";
-                    $thereturn .= xmlformat('LOMv1.0', 'source', '', $indent);
-                    $thereturn .= xmlformat($for_purpose, 'value', '', $indent);
-                    $thereturn .= '</purpose>' . "\n";
+                    $thereturn .= '<'.$elementPrefix.'classification>' . "\n";
+                    $thereturn .= '<'.$elementPrefix.'purpose>' . "\n";
+                    $thereturn .= xmlformat('LOMv1.0', ''.$elementPrefix.'source', '', $indent);
+                    $thereturn .= xmlformat($for_purpose, ''.$elementPrefix.'value', '', $indent);
+                    $thereturn .= '</'.$elementPrefix.'purpose>' . "\n";
                     $thereturn .=$thereturnonto;
-                    $thereturn .= '</classification>' . "\n";
+                    $thereturn .= '</'.$elementPrefix.'classification>' . "\n";
                 }
             }//if($count_results8>0){
         }//foreach datageneral4
@@ -473,51 +512,51 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
 
             if ($count_results > 0) {
                 if ($datageneral4['machine_name'] == 'identifier') {
-                    $thereturn.= '<imsmd:resource>' . "\n";
+                    $thereturn.= '<'.$elementPrefix.'resource>' . "\n";
                 }
                 $thereturn.=preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
                 if ($datageneral4['machine_name'] == 'identifier') {
-                    $thereturn.= '</imsmd:resource>' . "\n";
+                    $thereturn.= '</'.$elementPrefix.'resource>' . "\n";
                 }
             }
         }
     } elseif ($datageneral3['machine_name'] == 'general') { ///////if general
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     } elseif ($datageneral3['machine_name'] == 'lifeCycle') { ///////if lifeCycle
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     } elseif ($datageneral3['machine_name'] == 'technical') { ///////if technical
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     } elseif ($datageneral3['machine_name'] == 'educational') { ///////if educational
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     } elseif ($datageneral3['machine_name'] == 'annotation') { ///////if annotation
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     } elseif ($datageneral3['machine_name'] == 'metaMetadata') { ///////if metaMetadata
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     } else {
-        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord);
+        $thereturn = preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, NULL, $elementPrefix);
     }
 
     return $thereturn;
 }
 
-function langstring_for_oai($machine_name, $datageneral5, $multi, $previousmulti) {
+function langstring_for_oai($machine_name, $datageneral5, $multi, $previousmulti, $elementPrefix='imsmd:') {
     $thereturn_lnstr = '';
-    $thereturn_lnstr.= '<imsmd:' . $machine_name . '>' . "\n";
+    $thereturn_lnstr.= '<'.$elementPrefix.'' . $machine_name . '>';
     foreach ($datageneral5 as $datageneral5) {
         $multi = $datageneral5['multi'];
         if ($multi != $previousmulti and $previousmulti != 0) {
-            $thereturn_lnstr.= '</imsmd:' . $machine_name . '>' . "\n";
-            $thereturn_lnstr.= '<imsmd:' . $machine_name . '>' . "\n";
+            $thereturn_lnstr.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
+            $thereturn_lnstr.= '<'.$elementPrefix.'' . $machine_name . '>';
         }
-        $thereturn_lnstr.=xmlformat($datageneral5['value'], 'imsmd:string', 'language="' . $datageneral5['language_id'] . '" ', $indent);
+        $thereturn_lnstr.=xmlformat($datageneral5['value'], ''.$elementPrefix.'string', 'language="' . $datageneral5['language_id'] . '" ', $indent);
         $previousmulti = $datageneral5['multi'];
     }
-    $thereturn_lnstr.= '</imsmd:' . $machine_name . '>' . "\n";
+    $thereturn_lnstr.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
 
     return $thereturn_lnstr;
 }
 
-function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, $parent_machine_name = NULL) {
+function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatarecord, $parent_machine_name = NULL, $elementPrefix='imsmd:') {
     require_once 'Omeka/Core.php';
     $core = new Omeka_Core;
 
@@ -549,7 +588,7 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
 
     if ($datageneral4['datatype_id'] == 1) {
 
-        $output.=langstring_for_oai($machine_name, $datageneral5, $multi, $previousmulti);
+        $output.=langstring_for_oai($machine_name, $datageneral5, $multi, $previousmulti, $elementPrefix);
 
 
         ///////////////////Parent Element///////////////////////
@@ -582,13 +621,13 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
 
                     if ($count_results2 > 0) {
 
-                        $output2.=preview_elements_from_datatype($datageneral6, $datageneral7, $metadatarecord);
+                        $output2.=preview_elements_from_datatype($datageneral6, $datageneral7, $metadatarecord, NULL, $elementPrefix);
                     }///if($count_results2>0){
                 }///foreach datageneral6
                 if (strlen($output2) > 0) {
-                    $output.= '<imsmd:' . $machine_name . '>' . "\n";
+                    $output.= '<'.$elementPrefix.'' . $machine_name . '>' . "\n";
                     $output.= $output2;
-                    $output.= '</imsmd:' . $machine_name . '>' . "\n";
+                    $output.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
                 }
             }///foreach datageneral6
         }///if($count_results8>0){
@@ -634,9 +673,9 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
             }
 
 
-            $output.= '<imsmd:' . $machine_name . '>' . "\n";
+            $output.= '<'.$elementPrefix.'' . $machine_name . '>' . "\n";
             $output.="<![CDATA[BEGIN:VCARD\r\n" . $fullname . "" . $email . "" . $organization . "" . $name . "VERSION:3.0\r\nEND:VCARD]]>";
-            $output.= '</imsmd:' . $machine_name . '>' . "\n";
+            $output.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
         }
 
         ///////////////////vocabulary///////////////////////			
@@ -651,16 +690,16 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
                 $datageneral10 = $exec10->fetch();
 
                 if (strlen($datageneral10['source']) > 0) {
-                    $output.= '<imsmd:' . $machine_name . '>' . "\n";
-                    $output.=xmlformat($datageneral10['source'], 'imsmd:source', '', $indent);
-                    $output.=xmlformat($datageneral10['value'], 'imsmd:value', '', $indent);
-                    $output.= '</imsmd:' . $machine_name . '>' . "\n";
+                    $output.= '<'.$elementPrefix.'' . $machine_name . '>' . "\n";
+                    $output.=xmlformat($datageneral10['source'], ''.$elementPrefix.'source', '', $indent);
+                    $output.=xmlformat($datageneral10['value'], ''.$elementPrefix.'value', '', $indent);
+                    $output.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
                 } elseif ($datageneral4['id'] == 78) { ////////////////////coverage which is string
-                    $output.= '<imsmd:' . $machine_name . '>' . "\n";
-                    $output.=xmlformat($datageneral10['value'], 'imsmd:string', 'language="en" ', $indent);
-                    $output.= '</imsmd:' . $machine_name . '>' . "\n";
+                    $output.= '<'.$elementPrefix.'' . $machine_name . '>' . "\n";
+                    $output.=xmlformat($datageneral10['value'], ''.$elementPrefix.'string', 'language="en" ', $indent);
+                    $output.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
                 } else {
-                    $output.=xmlformat($datageneral10['value'], "imsmd:".$machine_name, '', $indent);
+                    $output.=xmlformat($datageneral10['value'], ''.$elementPrefix.''.$machine_name, '', $indent);
                 }
             }//if($datageneral5['vocabulary_record_id']>0){
         }//foreach($datageneral5 as $datageneral5){
@@ -670,16 +709,16 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
         foreach ($datageneral5 as $datageneral5) {
             $datetime = returndatetime($datageneral5['value']);
 
-            $output.= '<imsmd:' . $machine_name . '>' . "\n";
-            $output.=xmlformat($datetime, 'imsmd:dateTime', '', $indent);
-            $output.= '</imsmd:' . $machine_name . '>' . "\n";
+            $output.= '<'.$elementPrefix.'' . $machine_name . '>' . "\n";
+            $output.=xmlformat($datetime, ''.$elementPrefix.'dateTime', '', $indent);
+            $output.= '</'.$elementPrefix.'' . $machine_name . '>' . "\n";
         }
 
         ///////////////////Nothing///////////////////////
     } else {
 
         foreach ($datageneral5 as $datageneral5) {
-            $output.=xmlformat($datageneral5['value'], "imsmd:".$machine_name, '', $indent);
+            $output.=xmlformat($datageneral5['value'], ''.$elementPrefix.''.$machine_name, '', $indent);
         }
     }
 

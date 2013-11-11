@@ -5,7 +5,8 @@ $JVAL_PATH="js/jvalidate/";
 $AUTO_BASE="js/autocomplete/";
 $SELECT_BOXES_BASE="js/";
 $CUSTOM_SCRIPTS_BASE="js/";
-$urllinkbase="http://education.natural-europe.eu/green/";
+$scriptname=explode('/',$_SERVER['PHP_SELF']);
+$urllinkbase="http://".$_SERVER['SERVER_NAME']."/".$scriptname[1]."/";
 
 
 //PHPMailer Config

@@ -21,17 +21,7 @@ class IndexController extends Omeka_Controller_Action
 {
     public function indexAction()
     {
-	//custom code for loop all exhibits that are public
-		//$menuexhibits = exhibit_builder_get_exhibits(array('public' => '1'));
-		$params = $this->_getAllParams();
-		
-		//$params['user']=1;
-		$params['public']=1;
-		$params['sort']='recent';
-		$menuexhibits=get_db()->getTable('Exhibit')->findBy($params);
-		//print_r($params);
-		$this->view->assign(compact('menuexhibits'));
-		
-        $this->_helper->viewRenderer->renderScript('index.php');
+        //$this->_helper->viewRenderer->renderScript('index.php');
+        $this->_redirect('http://www.natural-europe.eu/educational/');
     }
 }

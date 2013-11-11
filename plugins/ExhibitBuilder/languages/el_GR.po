@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# stauros gkinis <gkista@yahoo.gr>, 2012.
-# Stoitsis Giannis <>, 2012.
-#   <valia.7t@gmail.com>, 2012.
-#   <vmarkaki@ea.gr>, 2012.
+# elkoko <elenakokoliou@agroknow.gr>, 2013
+# stauros gkinis <gkista@yahoo.gr>, 2012
+# Stoitsis Giannis <>, 2012
+# valia <valia.7t@gmail.com>, 2012
+# Vassiliki_Markaki_EA <vmarkaki@ea.gr>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2012-11-16 19:44+0000\n"
-"Last-Translator: valia <valia.7t@gmail.com>\n"
+"PO-Revision-Date: 2013-08-29 07:36+0000\n"
+"Last-Translator: elkoko <elenakokoliou@agroknow.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -511,7 +512,7 @@ msgstr "Εισαγωγικός τομέας και προκαταρτική φά
 
 #: admingeneral!
 msgid "Engagement"
-msgstr ""
+msgstr "Εμπλοκή"
 
 #: admingeneral!
 msgid "Game"
@@ -579,63 +580,63 @@ msgstr "Αφηρημένη Αντίληψη Εννοιών"
 
 #: admingeneral!
 msgid "Active Experimentation1"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 1"
 
 #: admingeneral!
 msgid "Active Experimentation2"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 2"
 
 #: admingeneral!
 msgid "Active Experimentation3"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 3"
 
 #: admingeneral!
 msgid "Active Experimentation4"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 4"
 
 #: admingeneral!
 msgid "Active Experimentation5"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 5"
 
 #: admingeneral!
 msgid "Active Experimentation6"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 6"
 
 #: admingeneral!
 msgid "Active Experimentation7"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 7"
 
 #: admingeneral!
 msgid "Active Experimentation8"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 8"
 
 #: admingeneral!
 msgid "Active Experimentation9"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 9"
 
 #: admingeneral!
 msgid "Active Experimentation10"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 10"
 
 #: admingeneral!
 msgid "Active Experimentation11"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 11"
 
 #: admingeneral!
 msgid "Active Experimentation12"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 12"
 
 #: admingeneral!
 msgid "Active Experimentation13"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 13"
 
 #: admingeneral!
 msgid "Active Experimentation14"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 14"
 
 #: admingeneral!
 msgid "Active Experimentation15"
-msgstr ""
+msgstr "Ενεργός Πειραματισμός 15"
 
 #: admingeneral!
 msgid "Reflection-COMMUNICATE EXPLANATION"
@@ -647,7 +648,7 @@ msgstr "Τελευταία Τροποποίηση:"
 
 #: admingeneral!
 msgid "Supporting Materials"
-msgstr "Υποστηρικτικά Υλικά"
+msgstr "Υποστηρικτικό Υλικό"
 
 #: admingeneral!
 msgid "Add your tag"
@@ -762,3 +763,313 @@ msgstr "Εισαγωγή"
 #: admingeneral!
 msgid "No items"
 msgstr "Κανένα στοιχείο"
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Εισαγωγή νέας εικόνας στη συλλογή σας"
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Καθοδηγούμενο Εκπαιδευτικό μονοπάτι"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Εκπαιδευτικό μονοπάτι βασισμένο στο παιχνίδι"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Εκπαιδευτικό μονοπάτι διαδραστικής εγκατάστασης"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "ΣΥΓΓΡΑΦΙΚΟ"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "ΠΕΡΙΓΡΑΨΤΕ ΤΟ ΕΚΠΑΙΔΕΥΤΙΚΟ ΣΑΣ ΜΟΝΟΠΑΤΙ"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Σελίδες"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Προσθέστε ένα από τα αντικείμενα σας ως υποστηρικτικό υλικό γι'αυτή τη σελίδα. Αντικείμενα που θα προστεθούν εδώ χρησιμεύουν ως συμπληρωματικά στα αντικείμενα που επισυνάπτονται στο εκπαιδευτικό μονοπάτι."
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Προσθήκη υποστηρικτικού υλικού"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Εισαγωγή υποστηρικτικού υλικού"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Εισαγωγή νέου αρχείου στη συλλογή σας"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Εισαγωγή νέου συνδέσμου στη συλλογή σας"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Εισαγωγή εικόνας: τα αρχεία εικόνων που θα προστεθούν εδώ θα εμφανιστούν μέσα στο σώμα του εκπαιδευτικού σας μονοπατιού."
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "Εισαγωγή επιλεγμένης εικόνας"
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Σημαντική πληροφορία: Όταν εισάγετε ένα νέο εξωτερικό αντικείμενο παρακαλώ βεβαιωθείτε ότι σώσατε όλες τις αλλαγές στο εκπαιδευτικό σας μονοπάτι."
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Εισάγοντας ένα νέο εξωτερικό αντικείμενο θα επαναφορτώσετε τη σελίδα του εκπαιδευτικού σας μονοπατιού και όλες οι μη αποθηκευμένες αλλαγές θα χαθούν."
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Εισαγωγικό τμήμα"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Εκπαιδευτικός"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Αναθέσεις"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "Οθόνη 1"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "Οθόνη 2"
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "Οθόνη 3"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "Οθόνη 4"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "Οθόνη 5"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "Οθόνη 6"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "Οθόνη 7"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "Οθόνη 8"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "Οθόνη 9"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "Οθόνη 10"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "Οθόνη 11"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "Οθόνη 12"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "Οθόνη 13"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "Οθόνη 14"
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "Οθόνη 15"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "Η περιοχή του Εκπαιδευτικού μονοπατιού παρέχει διαθέσιμη στο λογαριασμό των χρηστών μια λίστα των Εκπαιδευτικών μονοπατιών."
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Για να διαβάσετε περισσότερα για κάθε εκπαιδευτικό μονοπάτι, κάντε κλικ στο σύνδεσμο του τίτλου."
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Επίσης μπορείτε να προσθέσετε ένα καινούργιο Εκπαιδευτικό μονοπάτι, να επεξεργαστείτε και να διαγράψετε Εκπαιδευτικά μονοπάτια."
+
+#: admingeneral!
+msgid "Guided pathway: Addressed to school communities"
+msgstr "Καθοδηγούμενο Εκπαιδευτικό μονοπάτι: Απευθύνεται στις σχολικές κοινότητες"
+
+#: admingeneral!
+msgid ""
+"Open Pathway: Addressed to lifelong learners and especially families"
+msgstr "Ανοιχτή Εκπαιδευτική Διαδρομή: Απευθύνεται στους εκπαιδευόμενους δια βίου μάθησης και ειδικά στις οικογένειες "
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Εκπαιδευτικό μονοπάτι διαδραστικής εγκατάστασης: Για να τα χρησιμοποιήσετε σε Διαδραστικό Εργαλείο Εγκατάστασης"
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Κάντε το Εκπαιδευτικό σας μονοπάτι δημόσιο"
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "Αυτή είναι η περιοχή που μπορείτε να δημιουργήσετε το εκπαιδευτικό σας μονοπάτι"
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Αποθήκευση και παραμονή στην ίδια σελίδα"
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Αποθήκευση και επιστροφή στη κύρια σελίδα του εκπαιδευτικού μονοπατιού"
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Αποθήκευση των αλλαγών και παραμονή στη κύρια σελίδα του εκπαιδευτικού μονοπατιού"
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Αποθήκευση και έξοδος από τη λίστα του εκπαιδευτικού μονοπατιού"
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Δώστε πληροφορίες για το εκπαιδευτικό σας μονοπάτι και κάντε το αναζητήσιμο μέσω των ανιχνευτών. "
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Πληροφορίες σχετικά με τις αναγκαίες ρυθμίσεις που απαιτούνται από τον ενδιαφερόμενο δάσκαλο πριν από την έναρξη των δραστηριοτήτων που περιγράφονται ή / και προτείνονται στις παρακάτω ενότητες."
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "Δώστε το σχετικό αναλυτικό πρόγραμμα εκπαίδευσης που ενημερώνει με άμεσο τρόπο για την γνώση που οι μαθητές προϋποθέτει να έχουν για να συμμετάσχουν στο εκπαιδευτικό μονοπάτι."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Περιγράψτε τα μέσα και το υλικό που θα χρησιμοποιηθεί στη τάξη για να προσελκύσει την προσοχή των μαθητών."
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Σχηματίστε ερωτήσεις που θα παρουσιαστούν στους μαθητές για την περαιτέρω βελτίωση της εμπλοκής τους στον τρόπο σκέψης σχετικά με το θέμα-στόχο βασισμένες στις υπάρχουσες γνώσεις τους."
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Περιγράψτε τον τρόπο με τον οποίο οι μαθητές μπορούν να ενθαρρύνονται να προτείνουν πιθανές εξηγήσεις στα ερωτήματα που προέκυψαν από την προηγούμενη δραστηριότητα."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Περιγράψτε τα μέσα και τα υλικά που θα χρησιμοποιηθούν για να διευκολύνουν τους μαθητές να επικεντρωθούν σε στοιχεία ως πηγή απαντήσεων σε επιστημονικά ερωτήματα."
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Εντοπίστε το κατάλληλο αντικείμενο ή / και το πραγματικό έκθεμα. Δώστε λεπτομέρειες σχετικά με τον τρόπο με τον οποίο οι μαθητές θα συγκεντρώσουν αποδεικτικά στοιχεία σύμφωνα με τα ερωτήματα που τέθηκαν στα προηγούμενα στάδια."
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Εξηγήστε τις φάσεις του εκπαιδευτικού προγράμματος."
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Εξηγήστε πώς οι ομάδες των μαθητών θα αξιολογήσουν τις δικές τους εξηγήσεις."
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Λεπτομέρειες για το πώς να παράγουν μια έκθεση με τα ευρήματα των μαθητών, παρουσιάζοντας και αιτιολογώντας τις προτεινόμενες εξηγήσεις τους σε άλλες ομάδες, και στο δάσκαλο."
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Περιγράψτε το πλαίσιο των δραστηριοτήτων μεταπαρακολούθησης και των υλικών"
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "Δώστε τα στοιχεία επικοινωνίας των προσώπων και του οργανισμού που σχετίζονται με αυτό το εκπαιδευτικό μονοπάτι."
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "Δώστε μια βασική περιγραφή του εκπαιδευτικού μονοπατιού. Τα μέσα που θα χρησιμοποιηθούν, το εύρος ηλικίας κτλ."
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "Ρυθμίστε το πλαίσιο δραστηριότητας με κατάλληλο τρόπο προκειμένου να προσελκύσετε την προσοχή των συμμετεχόντων."
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Δώστε οδηγίες για το πώς οι συμμετέχοντες θα συμπληρώσουν για παράδειγμα τα ερωτηματολόγια."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Δώστε τα διαφορετικά είδη των παιχνιδιών όπως σταυρόλεξα, ερωτήσεις πολλαπλής επιλογής, κλπ. Εξηγήστε πώς να παίξουν με αυτά, σε ομάδες ή ατομικά."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "Αξιολογείστε τα αποτελέσματα των παιχνιδιών, συγχαρείτε το νικητή και εξηγήστε του ποιο είναι το δώρο του και πώς μπορεί να το παραλάβει."
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Ανοιχτή Εκπαιδευτική Διαδρομή"

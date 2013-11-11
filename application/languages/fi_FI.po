@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-# Matti Lassila <matti.lassila@gmail.com>, 2012.
-#   <veera.kallunki@helsinki.fi>, 2012.
+# akaasine <arja.kaasinen@helsinki.fi>, 2013
+# Matti Lassila <matti.lassila@gmail.com>, 2012
+# vkallunk <veera.kallunki@helsinki.fi>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2012-11-20 09:14+0000\n"
-"Last-Translator: vkallunk <veera.kallunki@helsinki.fi>\n"
+"PO-Revision-Date: 2013-09-23 12:00+0000\n"
+"Last-Translator: akaasine <arja.kaasinen@helsinki.fi>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3045,3 +3046,259 @@ msgstr "Vahvista"
 #: admin/applications/Functions.phpgeneral!
 msgid "Choose language"
 msgstr "Valitse kieli"
+
+#: admingeneral!
+msgid "Delete Resource"
+msgstr "Poista resurssi"
+
+#: admingeneral!
+msgid "Delete Pathway"
+msgstr "Poista opetuskokonaisuus"
+
+#: admingeneral!
+msgid "Add it to my Repository"
+msgstr "Lisää se varastooni "
+
+#: admingeneral!
+msgid "Save and Return to Pathway"
+msgstr "Tallenna ja palaa opetuskokonaisuuteen"
+
+#: admingeneral!
+msgid "Portuguese"
+msgstr "Portugalin kieli"
+
+#: admingeneral!
+msgid "Hungarian"
+msgstr "Unkarin kieli"
+
+#: admingeneral!
+msgid "Russian"
+msgstr "Venäjän kieli"
+
+#: admingeneral!
+msgid "Finnish"
+msgstr "Suomen kieli"
+
+#: admingeneral!
+msgid "Estonian"
+msgstr "Viron kieli"
+
+#: admingeneral!
+msgid "Spanish"
+msgstr "Espanjan kieli"
+
+#: admingeneral!
+msgid "Greek"
+msgstr "Kreikan kieli"
+
+#: admingeneral!
+msgid "German"
+msgstr "Saksan kieli"
+
+#: admingeneral!
+msgid "English"
+msgstr "Englannin kieli"
+
+#: admingeneral!
+msgid "Organization"
+msgstr "Organisaatio"
+
+#: admingeneral!
+msgid "Surname"
+msgstr "Sukunimi"
+
+#: admingeneral!
+msgid "Add new"
+msgstr "Lisää uusi"
+
+#: admingeneral!
+msgid "Remove Language"
+msgstr "Poista kieli"
+
+#: admingeneral!
+msgid "Add Language"
+msgstr "Lisää kieli"
+
+#: admingeneral!
+msgid "Browse"
+msgstr "Selaa"
+
+#: admingeneral!
+msgid "No"
+msgstr "Ei"
+
+#: admingeneral!
+msgid "Yes, if others share alike"
+msgstr "Kyllä, jos toiset jakavat samalla lailla"
+
+#: admingeneral!
+msgid "Yes"
+msgstr "Kyllä"
+
+#: admingeneral!
+msgid "Insert new image to your collection"
+msgstr "Lisää uusi kuva kokoelmaasi"
+
+#: admingeneral!
+msgid "Insert Image"
+msgstr "Lisää kuva"
+
+#: admingeneral!
+msgid "Keep in mind that you didn't select a file to upload."
+msgstr "Pidä mielessä, että et ole valinnut siirrettävää tiedostoa"
+
+#: admingeneral!
+msgid "You must fill all the mandatory fields (*)"
+msgstr "Sinun on täytettävä kaikki pakolliset kentät (*)"
+
+#: admingeneral!
+msgid "Save"
+msgstr "Tallenna"
+
+#: admingeneral!
+msgid "Only recommended"
+msgstr "Vain suositus"
+
+#: admingeneral!
+msgid "Enrich Metadata"
+msgstr "Rikasta metatiedot"
+
+#: admingeneral!
+msgid "Filter results by type"
+msgstr "Suodata tulokset lajeittain"
+
+#: admingeneral!
+msgid "Report a problem"
+msgstr "Ilmoita ongelmasta"
+
+#: admingeneral!
+msgid "Add Resource"
+msgstr "Lisää resurssi"
+
+#: admingeneral!
+msgid "Add File"
+msgstr "Lisää tiedosto"
+
+#: admingeneral!
+msgid "Add Pathway"
+msgstr "Lisää opetuskokonaisuus"
+
+#: admingeneral!
+msgid "easier to downoad"
+msgstr "helpompi ladata"
+
+#: admingeneral!
+msgid "Getting Started with Natural Europe Pathway Authoring Tool"
+msgstr "Natural Europe -projektin opetuskokonaisuuksien kirjoitustyökaluun tutustuminen"
+
+#: admingeneral!
+msgid ""
+"Are you sure you want to CHANGE the language? This action will be SAVED!"
+msgstr "Haluatko varmasti VAIHTAA kieltä? Tämä toimenpide TALLENNETAAN!"
+
+#: admingeneral!
+msgid "Are you sure you want to DELETE it?"
+msgstr "Oletko varma, että haluat poistaa sen?"
+
+#: admingeneral!
+msgid "evolution (biology)"
+msgstr "evoluutio (biologia)"
+
+#: admingeneral!
+msgid "mechanics (physics)"
+msgstr "mekaniikka (fysiikka)"
+
+#: admingeneral!
+msgid "reproduction (biology)"
+msgstr "lisääntyminen (biologia)"
+
+#: admingeneral!
+msgid ""
+"Τhe Dashboard of the Pathway Authoring Tool provides you with an overview of"
+" what is available on the site."
+msgstr "Opetuskokonaisuuksien kirjoitustyökalun ohjausnäkymä tarjoaa yleiskatsauksen sivuston sisällöstä."
+
+#: admingeneral!
+msgid ""
+"You can either access Resources and Pathway sections from the toolbar or "
+"from the links provided right below the toolbar."
+msgstr "Resursseihin ja opetuskokonaisuuksien osa-alueisiin pääsee työkalupalkista tai palkin alapuolella olevista linkeistä."
+
+#: admingeneral!
+msgid "Moreover, you can find guidelines and overview of the site."
+msgstr "Voit lisäksi löytää sivustoa koskevia ohjeita ja yleiskatsauksen."
+
+#: admingeneral!
+msgid ""
+"The Resources area consists of Resources Management options such as Ingest a"
+" Resource, Add a Hyperlink, Add a File."
+msgstr "Resurssialue käsittää resurssien hallintaan liittyviä vaihtoehtoja kuten imuroi resurssi, lisää hyperlinkki tai lisää tiedosto."
+
+#: admingeneral!
+msgid "It also offers the list of all the resources and the option of Search."
+msgstr "Se tarjoaa myös luettelon kaikista resursseista ja hakumahdollisuuden."
+
+#: admingeneral!
+msgid ""
+"A quick filter option allows for a faster choice between different modes of "
+"resources."
+msgstr "Pikasuodattimen avulla voidaan tehdä nopeampi valinta resurssien eri tilojen välillä."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from external repositories."
+msgstr "Lisää kokoelmaasi uusi resurssi ulkoisista varastoista. "
+
+#: admingeneral!
+msgid ""
+"Add in your collection a new resource found online by providing its URL."
+msgstr "Lisää kokoelmaasi verkosta löytämäsi uusi resurssi antamalla sen URL-osoite."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from your local disk."
+msgstr "Lisää kokoelmaasi uusi resurssi paikalliselta levyltäsi."
+
+#: admingeneral!
+msgid "Sort alphabetically the resources based on Title"
+msgstr "Lajittele resurssit otsikon mukaiseen aakkosjärjestykseen."
+
+#: admingeneral!
+msgid "Sort the resources based on their status (public – private)."
+msgstr "Lajittele resurssit niiden tilan perusteella (julkinen tai yksityinen)."
+
+#: admingeneral!
+msgid "Sort the resources based on the Date Added."
+msgstr "Lajittele resurssit luontipäivän perusteella."
+
+#: admingeneral!
+msgid "Search using keywords through your resources."
+msgstr "Hae resursseista avainsanojen avulla."
+
+#: admingeneral!
+msgid "Describe your resource providing the information requested bellow."
+msgstr "Kuvaile resurssiasi antamalla alla pyydetyt tiedot."
+
+#: admingeneral!
+msgid ""
+"Make your resource public and visible in your pathway by clicking the Public"
+" button."
+msgstr "Tee resurssistasi julkinen ja näkyvä opetuskokonaisuudessasi klikkaamalla painiketta Julkinen."
+
+#: admingeneral!
+msgid "Use of more elements to describe your pathway"
+msgstr "Käytä lisää elementtejä opetuskokonaisuutesi kuvaamiseen."
+
+#: admingeneral!
+msgid "Basic elements for describe your pathway."
+msgstr "Peruselementit opetuskokonaisuutesi kuvaamiseen."
+
+#: admingeneral!
+msgid "Use of more elements to describe your resource"
+msgstr "Käytä lisää elementtejä resurssisi kuvaamiseen."
+
+#: admingeneral!
+msgid "Basic elements for describe your resource."
+msgstr "Peruselementit resurssisi kuvaamiseen."
+
+#: admingeneral!
+msgid "Pathway last saved at"
+msgstr "Oppimispolku tallennettu"

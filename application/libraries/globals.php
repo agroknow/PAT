@@ -807,7 +807,7 @@ function __($string)
 {
     // Avoid getting the translate object more than once.
     static $translate;
-    
+
     if (!isset($translate)) {
         try {
             $translate = Zend_Registry::get('Zend_Translate');
@@ -817,7 +817,7 @@ function __($string)
         }
     }
 
-    if ($translate) {
+    if ($translate) { 
         $string = $translate->translate($string);
     }
 

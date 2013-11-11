@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <daniel.takacs@gmail.com>, 2012.
-#   <holler@mttm.hu>, 2012.
-# Imre Juhász <juhasz.imr@gmail.com>, 2012.
-#   <madarasz.csaba@gmail.com>, 2012.
-# Miklos Rajczy <rajczy@nhmus.hu>, 2013.
-#   <rajczy@nhmus.hu>, 2012-2013.
-# Sándor Koroknai <koroknaisandor@gmail.com>, 2012.
-#   <vas.zoltan@gmail.com>, 2012.
+# danieltakacs <daniel.takacs@gmail.com>, 2012
+# holler <holler@mttm.hu>, 2012
+# Imre Juhász <juhasz.imr@gmail.com>, 2012
+# holler <holler@mttm.hu>, 2013
+# madaraszcsaba <madarasz.csaba@gmail.com>, 2012
+# rajczym <rajczy@nhmus.hu>, 2013
+# rajczym <rajczy@nhmus.hu>, 2012-2013
+# Sándor Koroknai <koroknaisandor@gmail.com>, 2012
+# vas.zoltan <vas.zoltan@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2013-02-07 14:48+0000\n"
-"Last-Translator: rajczym <rajczy@nhmus.hu>\n"
+"PO-Revision-Date: 2013-09-15 20:57+0000\n"
+"Last-Translator: holler <holler@mttm.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -295,7 +296,7 @@ msgstr "Gyűjtemények böngészése"
 #: application/views/scripts/items/browse.php:8
 #, php-format
 msgid "(%s total)"
-msgstr "(%s összesen)"
+msgstr "(összesen %s)"
 
 #: admin/themes/default/collections/browse.php:18
 msgid "ID"
@@ -317,7 +318,7 @@ msgstr "Gyűjtők"
 #: admin/themes/default/items/browse.php:134
 #: application/views/scripts/files/show.php:57
 msgid "Date Added"
-msgstr "Hozzáadott dátum"
+msgstr "A feltöltés dátuma"
 
 #: admin/themes/default/collections/browse.php:22
 #: admin/themes/default/collections/show.php:39
@@ -714,7 +715,7 @@ msgstr "Kimeneti formátumok"
 
 #: admin/themes/default/index.php:2
 msgid "Dashboard"
-msgstr "Munkafelület"
+msgstr "Nyitóoldal"
 
 #: admin/themes/default/index.php:12
 msgid "A new version of Omeka is available for download."
@@ -2780,7 +2781,7 @@ msgstr "Omeka frissítése sikeres"
 
 #: application/views/scripts/upgrade/migrate.php:22
 msgid "Return to Dashboard"
-msgstr "Visszatérés a kezelőfelülethez"
+msgstr "Visszatérés a nyitóoldalra"
 
 #: application/views/scripts/users/activate.php:2
 msgid "User Activation"
@@ -2869,7 +2870,7 @@ msgstr "Hozzáad"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Pathway Authoring Tool"
-msgstr "Tanösvényszerkesztő Eszköz"
+msgstr "Tanösvény-szerkesztő Program"
 
 #: admin/applications/Functions.phpgeneral!
 msgid "Translate"
@@ -2925,7 +2926,7 @@ msgstr "A Natural Europe Projekt honlapja"
 
 #: admingeneral!
 msgid "Natural Europe Pathway Authoring and Metadata Tool.  &copy; 2011"
-msgstr "Natural Europe tanösvényszerkesztő és metaadatoló eszköz. &copy; 2011"
+msgstr "Natural Europe tanösvény-szerkesztő és metaadatoló eszköz. &copy; 2011"
 
 #: admingeneral!
 msgid "You are here"
@@ -3051,3 +3052,259 @@ msgstr "Érvényesít"
 #: admin/applications/Functions.phpgeneral!
 msgid "Choose language"
 msgstr "Nyelv választása"
+
+#: admingeneral!
+msgid "Delete Resource"
+msgstr "Segédanyag törlése"
+
+#: admingeneral!
+msgid "Delete Pathway"
+msgstr "Tanösvény törlése"
+
+#: admingeneral!
+msgid "Add it to my Repository"
+msgstr "Hozzáadom a segédanyagaimhoz"
+
+#: admingeneral!
+msgid "Save and Return to Pathway"
+msgstr "Mentés és vissza a szakaszokhoz"
+
+#: admingeneral!
+msgid "Portuguese"
+msgstr "Portugál"
+
+#: admingeneral!
+msgid "Hungarian"
+msgstr "Magyar"
+
+#: admingeneral!
+msgid "Russian"
+msgstr "Orosz"
+
+#: admingeneral!
+msgid "Finnish"
+msgstr "Finn"
+
+#: admingeneral!
+msgid "Estonian"
+msgstr "Észt"
+
+#: admingeneral!
+msgid "Spanish"
+msgstr "Spanyol"
+
+#: admingeneral!
+msgid "Greek"
+msgstr "Görög"
+
+#: admingeneral!
+msgid "German"
+msgstr "Német"
+
+#: admingeneral!
+msgid "English"
+msgstr "Angol"
+
+#: admingeneral!
+msgid "Organization"
+msgstr "Intézmény"
+
+#: admingeneral!
+msgid "Surname"
+msgstr "Vezetéknév"
+
+#: admingeneral!
+msgid "Add new"
+msgstr "Új hozzáadása"
+
+#: admingeneral!
+msgid "Remove Language"
+msgstr "Nyelv törlése"
+
+#: admingeneral!
+msgid "Add Language"
+msgstr "Nyelv hozzáadása"
+
+#: admingeneral!
+msgid "Browse"
+msgstr "Böngészés"
+
+#: admingeneral!
+msgid "No"
+msgstr "Nem"
+
+#: admingeneral!
+msgid "Yes, if others share alike"
+msgstr "Igen, ha ugyanilyen módon teszik közzé."
+
+#: admingeneral!
+msgid "Yes"
+msgstr "Igen"
+
+#: admingeneral!
+msgid "Insert new image to your collection"
+msgstr "Új kép felvétele a saját gyűjteménybe"
+
+#: admingeneral!
+msgid "Insert Image"
+msgstr "Kép beillesztése"
+
+#: admingeneral!
+msgid "Keep in mind that you didn't select a file to upload."
+msgstr "Nem választotta ki a feltöltésre szánt fájlt."
+
+#: admingeneral!
+msgid "You must fill all the mandatory fields (*)"
+msgstr "Az összes kötelező mezőt ki kell töltenie (*)"
+
+#: admingeneral!
+msgid "Save"
+msgstr "Mentés"
+
+#: admingeneral!
+msgid "Only recommended"
+msgstr "Csak az ajánlottak"
+
+#: admingeneral!
+msgid "Enrich Metadata"
+msgstr "Valamennyi metaadat"
+
+#: admingeneral!
+msgid "Filter results by type"
+msgstr "A keresés eredményei típusonként"
+
+#: admingeneral!
+msgid "Report a problem"
+msgstr "Probléma jelzése"
+
+#: admingeneral!
+msgid "Add Resource"
+msgstr "Segédanyag hozzáadása"
+
+#: admingeneral!
+msgid "Add File"
+msgstr "Fájl hozzáadása"
+
+#: admingeneral!
+msgid "Add Pathway"
+msgstr "Tanösvény hozzáadása"
+
+#: admingeneral!
+msgid "easier to downoad"
+msgstr "letölteni könnyebb"
+
+#: admingeneral!
+msgid "Getting Started with Natural Europe Pathway Authoring Tool"
+msgstr "Tanösvények és segédanyagok böngészése, létrehozása"
+
+#: admingeneral!
+msgid ""
+"Are you sure you want to CHANGE the language? This action will be SAVED!"
+msgstr "Biztos, hogy meg akarja VÁLTOZTATNI a nyelvet? "
+
+#: admingeneral!
+msgid "Are you sure you want to DELETE it?"
+msgstr "Biztosan törölni kívánja?"
+
+#: admingeneral!
+msgid "evolution (biology)"
+msgstr "evolúció (biológia)"
+
+#: admingeneral!
+msgid "mechanics (physics)"
+msgstr "mechanika (fizika)"
+
+#: admingeneral!
+msgid "reproduction (biology)"
+msgstr "szaporodás (biológia)"
+
+#: admingeneral!
+msgid ""
+"Τhe Dashboard of the Pathway Authoring Tool provides you with an overview of"
+" what is available on the site."
+msgstr "A tanösvényszerkesztő nyitólapjáról a program valamennyi egysége elérhető."
+
+#: admingeneral!
+msgid ""
+"You can either access Resources and Pathway sections from the toolbar or "
+"from the links provided right below the toolbar."
+msgstr "A segédanyagok és a tanösvények szerkesztő felülete a videó alatti linkekkel érhető el."
+
+#: admingeneral!
+msgid "Moreover, you can find guidelines and overview of the site."
+msgstr "Az útmutatók és a honlap áttekintése jobb oldalon található."
+
+#: admingeneral!
+msgid ""
+"The Resources area consists of Resources Management options such as Ingest a"
+" Resource, Add a Hyperlink, Add a File."
+msgstr "Ezen a felületen van mód a segédanyagok kezelésére, úgymint: segédanyag átemelése, hiperlink és új fájl csatolása."
+
+#: admingeneral!
+msgid "It also offers the list of all the resources and the option of Search."
+msgstr "Itt található a saját segédanyagok listája valamint egy keresőfelület."
+
+#: admingeneral!
+msgid ""
+"A quick filter option allows for a faster choice between different modes of "
+"resources."
+msgstr "A gyorsszűrő gyorsabb keresést tesz lehetővé az egyes segédanyag csoportokon belül."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from external repositories."
+msgstr "Új segédanyag hozzáadása külső virtuális gyűjteményből, például az Europeana-ból."
+
+#: admingeneral!
+msgid ""
+"Add in your collection a new resource found online by providing its URL."
+msgstr "Interneten elérhető segédanyag csatolása a vebcím (URL) megadásával."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from your local disk."
+msgstr "Új segédanyag hozzáadása saját számítógépről vagy meghajtóról."
+
+#: admingeneral!
+msgid "Sort alphabetically the resources based on Title"
+msgstr "Cím alapján rendezze sorba a segédanyagokat."
+
+#: admingeneral!
+msgid "Sort the resources based on their status (public – private)."
+msgstr "Státusz alapján rendezze sorba a segédanyagokat. (nyilvános - nem nyilvános)"
+
+#: admingeneral!
+msgid "Sort the resources based on the Date Added."
+msgstr "A feltöltés dátuma alapján rendezze sorba a segédanyagokat."
+
+#: admingeneral!
+msgid "Search using keywords through your resources."
+msgstr "Keresés kulcsszó alapján."
+
+#: admingeneral!
+msgid "Describe your resource providing the information requested bellow."
+msgstr "Jellemezze a segédanyagot az itt kért adatok magadásával."
+
+#: admingeneral!
+msgid ""
+"Make your resource public and visible in your pathway by clicking the Public"
+" button."
+msgstr "Tegye a segédanyagot nyilvánossá és láthatóvá a tanösvényben a Nyilvános gomb megnyomásával"
+
+#: admingeneral!
+msgid "Use of more elements to describe your pathway"
+msgstr "A tanösvény leírása több adat segítségével."
+
+#: admingeneral!
+msgid "Basic elements for describe your pathway."
+msgstr "Alapvető adatok a tanösvény leírásához."
+
+#: admingeneral!
+msgid "Use of more elements to describe your resource"
+msgstr "A segédanyag leírása több adat segítségével."
+
+#: admingeneral!
+msgid "Basic elements for describe your resource."
+msgstr "Alapvető adatok a segédanyag leírásához."
+
+#: admingeneral!
+msgid "Pathway last saved at"
+msgstr "Utolsó mentés ideje"

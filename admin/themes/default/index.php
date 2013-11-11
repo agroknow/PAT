@@ -1,7 +1,7 @@
 <?php
 $pageTitle = __('Dashboard');
 head(array('bodyclass'=>'index primary-secondary', 'title'=>$pageTitle)); ?>
-<h1><?php echo $pageTitle;; ?></h1>
+<h1><?php echo __($pageTitle); ?></h1>
     <div id="primary">
         
         <?php // Retrieve the latest version of Omeka by pinging the Omeka server. ?>
@@ -17,6 +17,15 @@ head(array('bodyclass'=>'index primary-secondary', 'title'=>$pageTitle)); ?>
         <?php echo flash(); ?>    
             <div id="getting-started">
                 <h2><?php echo __('Getting Started with '.settings('site_title').''); ?></h2>
+                <p class="help_text">
+                    <?php echo __('Τhe Dashboard of the Pathway Authoring Tool provides you with an overview of what is available on the site.'); ?> <br>
+                    <?php echo __('You can either access Resources and Pathway sections from the toolbar or from the links provided right below the toolbar.'); ?><br>
+                    <?php echo __('Moreover, you can find guidelines and overview of the site.'); ?>
+                    
+                </p>
+                <div style="width:100%; text-align: center;">
+                    <iframe width="640" height="392" src="//www.youtube.com/embed/U56JTiJaKyY" frameborder="0" allowfullscreen></iframe> 
+                </div>
                 <dl>
                     <dt class="items"><?php echo link_to('items', null, __('Resources')); ?></dt>
                     <dd class="items">
@@ -89,8 +98,14 @@ head(array('bodyclass'=>'index primary-secondary', 'title'=>$pageTitle)); ?>
                 <h2><?php echo __('Guidelines'); ?></h2>
 <!--                <p><a href="http://www.natural-europe.eu/files/Natural_Europe_Pathway_Authoring_Tool_Manual.pdf" target="_blank"><?php //echo __('Natural Europe Manual'); ?></a></p>-->
 			<p><a href="http://education.natural-europe.eu/natural_europe/archive/handbook/natural-europe-educational-pathway-handbook.pdf" target="_blank"><?php echo __('Natural Europe Handbook'); ?></a></p>
-                        <p><a href="http://dl.dropbox.com/u/1617646/Natural%20Europe%20Educational%20Pathway%20Handbook%20lighter%20version.pdf" target="_blank"><?php echo __('Natural Europe Handbook'); ?><?php echo __(' (easier to downoad)'); ?></a></p>
+                       <?php /*<p><a href="http://dl.dropbox.com/u/1617646/Natural%20Europe%20Educational%20Pathway%20Handbook%20lighter%20version.pdf" target="_blank"><?php echo __('Natural Europe Handbook'); ?> (<?php echo __('easier to downoad'); ?>)</a></p> */ ?>
             <p><a href="<?php $uri = WEB_ROOT; echo $uri; ?>/quality" target="_blank"><?php echo __('Quality Criteria for Natural Europe Pathways'); ?></a></p>
+            </div>
+            
+            <div id="site-meta" class="info-panel">
+                <h2><?php echo __('Guidelines'); ?></h2>
+<!--                <p><a href="http://www.natural-europe.eu/files/Natural_Europe_Pathway_Authoring_Tool_Manual.pdf" target="_blank"><?php //echo __('Natural Europe Manual'); ?></a></p>-->
+			<p><iframe width="190" height="175" src="//www.youtube.com/embed/QFXBLqZve3M" frameborder="0" allowfullscreen></iframe> </p>
             </div>
            <?php /*?> <div id="recent-items" class="info-panel">
                 <h2><?php echo __('Recent Items'); ?></h2>

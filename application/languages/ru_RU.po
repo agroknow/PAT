@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <kadrihaugas@gmail.com>, 2012.
-# Milla Pilv <ljuda@miksike.ee>, 2012.
+# tnhm <kadrihaugas@gmail.com>, 2012
+# tnhm <kadrihaugas@gmail.com>, 2013
+# Milla Pilv <ljuda@miksike.ee>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-11-22 16:18-0500\n"
-"PO-Revision-Date: 2012-12-19 11:20+0000\n"
+"PO-Revision-Date: 2013-09-24 13:56+0000\n"
 "Last-Translator: tnhm <kadrihaugas@gmail.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -3045,3 +3046,259 @@ msgstr "Подтвердить"
 #: admin/applications/Functions.phpgeneral!
 msgid "Choose language"
 msgstr "Выберите язык"
+
+#: admingeneral!
+msgid "Delete Resource"
+msgstr "Удалить учебный материал"
+
+#: admingeneral!
+msgid "Delete Pathway"
+msgstr "Удалить учебную тропу"
+
+#: admingeneral!
+msgid "Add it to my Repository"
+msgstr "Добавить в мой репозиторий"
+
+#: admingeneral!
+msgid "Save and Return to Pathway"
+msgstr "Сохранить и вернуться к тропу"
+
+#: admingeneral!
+msgid "Portuguese"
+msgstr "Португальский язык"
+
+#: admingeneral!
+msgid "Hungarian"
+msgstr "Bенгерский язык"
+
+#: admingeneral!
+msgid "Russian"
+msgstr "Pусский язык"
+
+#: admingeneral!
+msgid "Finnish"
+msgstr "Финский язык "
+
+#: admingeneral!
+msgid "Estonian"
+msgstr "Эстонский язык"
+
+#: admingeneral!
+msgid "Spanish"
+msgstr "Испанский язык"
+
+#: admingeneral!
+msgid "Greek"
+msgstr "Греческий язык"
+
+#: admingeneral!
+msgid "German"
+msgstr "Немецкий язык"
+
+#: admingeneral!
+msgid "English"
+msgstr "Aнглийский язык"
+
+#: admingeneral!
+msgid "Organization"
+msgstr "Oрганизация"
+
+#: admingeneral!
+msgid "Surname"
+msgstr "Фамилия"
+
+#: admingeneral!
+msgid "Add new"
+msgstr "Добавить нового"
+
+#: admingeneral!
+msgid "Remove Language"
+msgstr "Yдалять язык"
+
+#: admingeneral!
+msgid "Add Language"
+msgstr "Добавить язык"
+
+#: admingeneral!
+msgid "Browse"
+msgstr "Просмотр"
+
+#: admingeneral!
+msgid "No"
+msgstr "Hет"
+
+#: admingeneral!
+msgid "Yes, if others share alike"
+msgstr "Да, если другие распространение на тех же"
+
+#: admingeneral!
+msgid "Yes"
+msgstr "Да"
+
+#: admingeneral!
+msgid "Insert new image to your collection"
+msgstr "Вставьте новие изображение в вашей коллекции"
+
+#: admingeneral!
+msgid "Insert Image"
+msgstr "Ввод изображение"
+
+#: admingeneral!
+msgid "Keep in mind that you didn't select a file to upload."
+msgstr "Имейте в виду, что вы не выбрали файл для загрузки."
+
+#: admingeneral!
+msgid "You must fill all the mandatory fields (*)"
+msgstr "Вы должны заполнить все обязательные поля (*)"
+
+#: admingeneral!
+msgid "Save"
+msgstr "Запомнить"
+
+#: admingeneral!
+msgid "Only recommended"
+msgstr "Pекомендуется только"
+
+#: admingeneral!
+msgid "Enrich Metadata"
+msgstr "Yлучшать метаданных"
+
+#: admingeneral!
+msgid "Filter results by type"
+msgstr "Фильтр по типу"
+
+#: admingeneral!
+msgid "Report a problem"
+msgstr "Сообщить о проблеме"
+
+#: admingeneral!
+msgid "Add Resource"
+msgstr "Добавить учебный материал"
+
+#: admingeneral!
+msgid "Add File"
+msgstr "Ввести файл"
+
+#: admingeneral!
+msgid "Add Pathway"
+msgstr "Прибавить учебную тропу"
+
+#: admingeneral!
+msgid "easier to downoad"
+msgstr "проще скачать"
+
+#: admingeneral!
+msgid "Getting Started with Natural Europe Pathway Authoring Tool"
+msgstr "Приступая к работе с инструмент Natural Europe"
+
+#: admingeneral!
+msgid ""
+"Are you sure you want to CHANGE the language? This action will be SAVED!"
+msgstr "Вы уверены, что хотите изменить язык? Это действие будет сохранены!"
+
+#: admingeneral!
+msgid "Are you sure you want to DELETE it?"
+msgstr "Вы уверены, что желаете удалить?"
+
+#: admingeneral!
+msgid "evolution (biology)"
+msgstr "эволюции (биология)"
+
+#: admingeneral!
+msgid "mechanics (physics)"
+msgstr "механика (физика)"
+
+#: admingeneral!
+msgid "reproduction (biology)"
+msgstr "воспроизведение (биология)"
+
+#: admingeneral!
+msgid ""
+"Τhe Dashboard of the Pathway Authoring Tool provides you with an overview of"
+" what is available on the site."
+msgstr "Приборной панел инструмента Pathway Tool обеспечивает вам обзор того, что доступно на сайте."
+
+#: admingeneral!
+msgid ""
+"You can either access Resources and Pathway sections from the toolbar or "
+"from the links provided right below the toolbar."
+msgstr "Mожете либо доступ к ресурсам и секций пути на панели инструментов или от ссылки при условии право под панелью инструментов."
+
+#: admingeneral!
+msgid "Moreover, you can find guidelines and overview of the site."
+msgstr "Кроме того, вы можете найти руководящие принципы и общее представление о сайте."
+
+#: admingeneral!
+msgid ""
+"The Resources area consists of Resources Management options such as Ingest a"
+" Resource, Add a Hyperlink, Add a File."
+msgstr "Ресурсы область состоит из ресурсов опций, таких как глотать ресурса, добавить гиперссылку, добавить файл."
+
+#: admingeneral!
+msgid "It also offers the list of all the resources and the option of Search."
+msgstr "Он также предлагает список всех ресурсов и возможностью поиска."
+
+#: admingeneral!
+msgid ""
+"A quick filter option allows for a faster choice between different modes of "
+"resources."
+msgstr "Быстрый фильтр опция позволяет быстрее выбора между различными видами ресурсов."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from external repositories."
+msgstr "Добавить в свою коллекцию новый ресурс от внешних хранилищ."
+
+#: admingeneral!
+msgid ""
+"Add in your collection a new resource found online by providing its URL."
+msgstr "Добавить в Вашей коллекции нового ресурса найти в Интернете, предоставляя своим URL."
+
+#: admingeneral!
+msgid "Add in your collection a new resource from your local disk."
+msgstr "Добавить в Вашей коллекции нового ресурса с локального диска."
+
+#: admingeneral!
+msgid "Sort alphabetically the resources based on Title"
+msgstr "Сортировать по алфавиту ресурсов на основе Название"
+
+#: admingeneral!
+msgid "Sort the resources based on their status (public – private)."
+msgstr "Сортировать ресурсов на основе их статуса (государственно - частного)."
+
+#: admingeneral!
+msgid "Sort the resources based on the Date Added."
+msgstr "Сортировать ресурсов на основе Дата добавления."
+
+#: admingeneral!
+msgid "Search using keywords through your resources."
+msgstr "Поиск по ключевым словам через ваши ресурсы."
+
+#: admingeneral!
+msgid "Describe your resource providing the information requested bellow."
+msgstr "Опишите ваш ресурс представления запрашиваемой информации, приведенную ниже."
+
+#: admingeneral!
+msgid ""
+"Make your resource public and visible in your pathway by clicking the Public"
+" button."
+msgstr "Сделайте ваш ресурс общественных и видимых на пути своем нажав на кнопку общественностью."
+
+#: admingeneral!
+msgid "Use of more elements to describe your pathway"
+msgstr "Использование более элементов, чтобы выразить вашу пути"
+
+#: admingeneral!
+msgid "Basic elements for describe your pathway."
+msgstr "Основные элементы по описали своего пути."
+
+#: admingeneral!
+msgid "Use of more elements to describe your resource"
+msgstr "Использование более элементов, чтобы описать ваш ресурс"
+
+#: admingeneral!
+msgid "Basic elements for describe your resource."
+msgstr "Основными элементами для выразить свой ресурс."
+
+#: admingeneral!
+msgid "Pathway last saved at"
+msgstr "Последнее изменение"

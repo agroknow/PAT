@@ -11,6 +11,8 @@ if ($exhibit->title) {
 <?php echo js('scriptaculous'); ?>
 <?php echo js('items'); ?>
 <?php echo js('tooltip_pathways'); ?>
+<?php echo js('tooltip_pathways_metadata'); ?>
+<?php echo js('jquery.jstree'); ?>
 <?php echo flash(); ?>
 <script type="text/javascript">
 
@@ -20,13 +22,15 @@ if ($exhibit->title) {
             if(value=='none'){
                 jQuery('.optional_element').css("display", "block"); 
                 jQuery('#show_optional').css("background-color", "#E9F6DA");
-                jQuery('#show_optional').text("Only recommended");
+                jQuery('#show_optional').text("<?php echo __('Only recommended'); ?>");
+                jQuery('#show_optional_help').text("<?php echo __('Basic elements for describe your pathway.'); ?>");
 
  
             }else{
                 jQuery('.optional_element').css("display", "none"); 
                 jQuery('#show_optional').css("background-color", "#E9F6DA");
-                jQuery('#show_optional').text("Enrich Metadata");
+                jQuery('#show_optional').text("<?php echo __('Enrich Metadata'); ?>");
+                jQuery('#show_optional_help').text("<?php echo __('Use of more elements to describe your pathway'); ?>");
 
 
             }
@@ -44,7 +48,7 @@ if ($exhibit->title) {
     //<![CDATA[
     var listSorter = {};
     
-    function makeSectionListDraggable()
+    /*function makeSectionListDraggable()
     {
         // var sectionList = jQuery('.section-list');
         var sectionList = jQuery('.no-drag-section');
@@ -92,24 +96,24 @@ if ($exhibit->title) {
                 orderInput.attr('name', nInputName);
             });
         });
-    }
+    }*/
     
     jQuery(window).load(function() {
         /* Omeka.ExhibitBuilder.wysiwyg(); */
         Omeka.ExhibitBuilder.addStyling();
         
-        <!--makeSectionListDraggable();  -->
+        /*makeSectionListDraggable();  */
         
         // Fixes jQuery UI sortable bug in IE7, where dragging a nested sortable would
         // also drag its container. See http://dev.jqueryui.com/ticket/4333
-        jQuery(".page-list li").hover(
+        /*jQuery(".page-list li").hover(
         function(){
             jQuery(".section-list").sortable("option", "disabled", true);
         },
         function(){
             jQuery(".section-list").sortable("option", "disabled", false);
         }
-    );
+    );*/
     });
     //]]>   
 </script>
@@ -175,7 +179,7 @@ if ($exhibit->title) {
                         foreach ($datalan as $datalan1) {
                             echo '<option value="' . $datalan1['id'] . '" ';
 //if($datarecordvalue===$datalan1['id']){echo 'selected=selected';}
-                            echo '>' . $datalan1['locale_name'] . '</option>';
+                            echo '>' . __($datalan1['locale_name']) . '</option>';
                         }
                         echo '</select>';
                         ?>
@@ -234,32 +238,65 @@ if ($exhibit->title) {
             //Metadata start 
             if (isset($exhibit['id'])) {
                 ?>
-
-                <?PHP /*<div class="field">
+                <?php /*<div class="field">
                     <?php //echo text(array('name' => 'slug', 'id' => 'slug', 'class' => 'textinput'), $exhibit->slug, 'Pathway Slug (' . __('no spaces or special characters') . ')'); ?>
                     <?php //echo form_error('slug'); ?>
                 </div> */ ?>
                 <?php if (has_permission('ExhibitBuilder_Exhibits', 'makepublic')) { ?>
                     <div class="field">
-                        <label for="featured"><?php echo __('Pathway ready for validation'); ?>:</label>
+                        <label for="featured" style="width:auto;"><?php echo __('Pathway ready for validation'); ?> <?php echo ' <img id="publicText" src="' . uri("themes/default/items/images/information.png") . '">'; ?>:</label>
                         <div class="radio"><?php echo checkbox(array('name' => 'public', 'id' => 'public'), $exhibit->public); ?></div>
                     </div>
+                <div id="publicText_help" style="display:none; position:absolute;top:0px; border:1px solid #333;background:#f7f5d1;padding:2px 5px; color:#333;z-index:100;">
+        <?php echo __('Make your pathway public'); ?>
+    </div>
+                        <script type="text/javascript">
+var my_tooltip = new Tooltip_gen('publicText', 'publicText_help');
+    </script>
                 <?php } ?>
 
 
                 <div style="border-bottom:solid; position:relative;"></div>
                 <br style="clear:both;">
                 <script type="text/javascript">
-                    function toggleDiv(divId) {
-                        jQuery("#"+divId).toggle();
+                    function toggleDiv(divId,divIdHide,adivId,adivIdHide) {
+                        var divIdtext = document.getElementById(divId);
+                        var divIdHidetext = document.getElementById(divIdHide);
+                        var adivIdtext = document.getElementById(adivId);
+                        var adivIdHidetext = document.getElementById(adivIdHide);
+                        divIdtext.style.display = "block";
+                        divIdHidetext.style.display = "none";
+                        adivIdtext.classList.add("current");
+                        adivIdHidetext.classList.remove("current");
                     }
                 </script>
-                <a href="javascript:toggleDiv('metadata_text');" style="color: #446677;text-decoration:none;font-size: 1.8em;font-weight: normal;line-height: 1.2em"><?php echo __('Describe your pathway'); ?></a>	
-                <div id="metadata_text" style="clear:both; display: none;">
-                    <div>
-                        <a style="position:relative; float:right; right:0px; background-color: #E9F6DA;cursor: hand; cursor: pointer;" id="show_optional" >Enrich Metadata</a>
-                    </div>
 
+                <ul id="tertiary-nav" class="navigation">
+                <li id="stepbutton1" ><a class="current" id="stepahref1" href="javascript:toggleDiv('authoring_text','metadata_text','stepahref1','stepahref2');" style="float: left; font-size: 14px;"><?php echo __('AUTHORING'); ?></a></li>
+                <li id="stepbutton2" ><a id="stepahref2" href="javascript:toggleDiv('metadata_text','authoring_text','stepahref2','stepahref1');" style="float: left; clear: none; margin-left: 2px; font-size: 14px;"><?php echo __('DESCRIBE YOUR PATHWAY'); ?></a></li>
+                </ul>
+                                <div id="stepbutton1_help" style="display:none; position:absolute;top:0px; border:1px solid #333;background:#f7f5d1;padding:2px 5px; color:#333;z-index:100;">
+        <?php echo __('This is the area where you can create your pathway'); ?>
+    </div>
+                <div id="stepbutton2_help" style="display:none; position:absolute;top:0px; border:1px solid #333;background:#f7f5d1;padding:2px 5px; color:#333;z-index:100;">
+        <?php echo __('Provide information about your pathway and make it searchable through the finders.'); ?>
+    </div>
+                        <script type="text/javascript">
+var my_tooltip = new Tooltip_gen('stepbutton1', 'stepbutton1_help');
+var my_tooltip = new Tooltip_gen('stepbutton2', 'stepbutton2_help');
+    </script>
+                <div id="metadata_text" style="clear:both; display: none;">     
+                    <div>
+                        <a style="position:relative; float:right; right:0px; background-color: #E9F6DA;cursor: hand; cursor: pointer;" id="show_optional" ><?php echo __('Enrich Metadata'); ?></a>
+                    </div>
+                        <div id="show_optional_help" style="display:none; position:absolute;top:0px; border:1px solid #333;background:#f7f5d1;padding:2px 5px; color:#333;z-index:100;">
+        <?php echo __('Use of more elements to describe your pathway'); ?>
+    </div>
+     <script type="text/javascript">
+var my_tooltip = new Tooltip_gen('show_optional', 'show_optional_help');
+</script>  
+<br>
+                    <legend><?php echo __('Pathway Metadata'); ?></legend>
                     <div class="vertical-nav" id="content" style=" left:-38px;position:relative; float:left; width:200px;">
                         <ul id="section-nav" class="navigation tabs">
                             <?php
@@ -295,8 +332,13 @@ if ($exhibit->title) {
                                 $step = 0;
 
 //query for all elements without asking pelement
-                                $sql = "SELECT f.*,e.vocabulary_id,e.id as elm_id FROM  metadata_element_hierarchy f  JOIN metadata_element e ON f.element_id = e.id WHERE f.is_visible=1  ORDER BY (case WHEN f.sequence IS NULL THEN '9999' ELSE f.sequence END) ASC";
-/////////////////query for translate specific elements//////////
+                                //$sql = "SELECT f.*,e.vocabulary_id,e.id as elm_id FROM  metadata_element_hierarchy f  JOIN metadata_element e ON f.element_id = e.id WHERE f.is_visible=1  ORDER BY (case WHEN f.sequence IS NULL THEN '9999' ELSE f.sequence END) ASC";
+                                $values=$metadataFile[metadata_elements_hide_from_pathways][element_hierarchy_pathways_hide];
+                    if($values != false){
+                        $valuesql= "and f.id NOT IN (".implode(',', $values).") ";
+                    }else{$valuesql="";}
+                                $sql = "SELECT f.*,e.vocabulary_id,e.id as elm_id FROM  metadata_element_hierarchy f  JOIN metadata_element e ON f.element_id = e.id WHERE f.is_visible=1 and e.schema_id=".$metadataFile[metadata_schema_resources][id]." ".$valuesql." ORDER BY (case WHEN f.sequence IS NULL THEN '9999' ELSE f.sequence END) ASC";
+///query for translate specific elements//////////
                                 if (isset($_POST['submit_language'])) {
                                     $sql = "SELECT f.*,e.vocabulary_id,e.id as elm_id FROM  metadata_element_hierarchy f  JOIN metadata_element e ON f.element_id = e.id WHERE (f.id=6 or f.id=8 or f.id=35) and f.is_visible=1 ORDER BY (case WHEN f.sequence IS NULL THEN '9999' ELSE f.sequence END) ASC";
                                 }
@@ -356,7 +398,7 @@ if ($exhibit->title) {
                 id = (id - 1) + 2;
                 document.getElementById(''+iddiv+'').value = id;
         	
-                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_field' style='clear:both;'><textarea cols='60' rows='4' class='textinput' name='"+divid+"_"+id+"' id='txt" + id + "' style='float:left;'></textarea>&nbsp;&nbsp<div style='position:relative; left:5px; top:2px; float:left;'><select style='vertical-align:top;' name='"+divid+"_"+id+"_lan' class='combo'><option value='none'>Select </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<br><a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_field\"); return false;'>Remove Language</a></div><div>");
+                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_field' style='clear:both;'><textarea cols='60' rows='4' class='textinput' name='"+divid+"_"+id+"' id='txt" + id + "' style='float:left;'></textarea>&nbsp;&nbsp<div style='position:relative; left:5px; top:2px; float:left;'><select style='vertical-align:top;' name='"+divid+"_"+id+"_lan' class='combo'><option value='none'><?php echo __('Select'); ?> </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<br><a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_field\"); return false;'><?php echo __('Remove Language'); ?></a></div><div>");
 
         	
             }
@@ -366,14 +408,14 @@ if ($exhibit->title) {
                 id = (id - 1) + 2;
                 document.getElementById(''+iddiv+'').value = id;
 
-                jQuery('#'+divid+'').append("<div id='"+divid+"_"+id+"' style='float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px;width:100%;'><input name='vcard_general_"+divid+"_"+id+"' id='vcard_general_"+divid+"_"+id+"' type='hidden' value=''><div style='float:left;'><label style='width:158px;'>"+label+"&nbsp;&nbsp;<a class='lom-remove' href='#' onClick='removedivid(\""+divid+"_"+id+"\"); return false;'>Remove</a></label></div><br><div style='float:left;'><span style='float:left; width:70px;'>Name: </span><input type='text' value='' name='vcard_name_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><span style='float:left; width:70px;'>Surname: </span><input type='text' value='' name='vcard_surname_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><span style='float:left; width:70px;'>Email: </span><input type='text' value='' name='vcard_email_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><span style='float:left; width:70px;'>Organization: </span><input type='text' value='' name='vcard_organization_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><div></div>");
+                jQuery('#'+divid+'').append("<div id='"+divid+"_"+id+"' style='float:left;border-bottom:1px solid #d7d5c4;padding-right:9px; margin-right:5px;padding-bottom:9px; margin-bottom:5px;width:100%;'><input name='vcard_general_"+divid+"_"+id+"' id='vcard_general_"+divid+"_"+id+"' type='hidden' value=''><div style='float:left;'><label style='width:158px;'>"+label+"&nbsp;&nbsp;<a class='lom-remove' href='#' onClick='removedivid(\""+divid+"_"+id+"\"); return false;'><?php echo __('Remove'); ?></a></label></div><br><div style='float:left;'><span style='float:left; width:70px;'>Name: </span><input type='text' value='' name='vcard_name_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><span style='float:left; width:70px;'>Surname: </span><input type='text' value='' name='vcard_surname_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><span style='float:left; width:70px;'>Email: </span><input type='text' value='' name='vcard_email_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><span style='float:left; width:70px;'>Organization: </span><input type='text' value='' name='vcard_organization_"+divid+"_"+id+"' style='float:left;width:200px;' id='"+divid+"_"+id+"' class='textinput'><br><br><div></div>");
 
         	
             }
 
             function removeFormvcardExisted(divid,element_hierarchy,record_id,multi,vcard,parent_indexer) {
 
-                var answer = confirm("Are you sure you want to DELETE it?")
+                var answer = confirm("<?php echo __('Are you sure you want to DELETE it?'); ?>")
                 if (answer){
 
                     jQuery.post("<?php echo uri('exhibits/deleteelementvalue'); ?>", { element_hierarchy: element_hierarchy, record_id: record_id, multi: multi, vcard: vcard, parent_indexer: parent_indexer },
@@ -389,7 +431,7 @@ if ($exhibit->title) {
 
             function removeFormmultiParent(divid,element_hierarchy,record_id,multi,parent_element) {
 
-                var answer = confirm("Are you sure you want to DELETE it?")
+                var answer = confirm("<?php echo __('Are you sure you want to DELETE it?'); ?>")
                 if (answer){
 
                     jQuery.post("<?php echo uri('exhibits/deleteelementvalue'); ?>", { element_hierarchy: element_hierarchy, record_id: record_id, multi: multi, parent_element: parent_element},
@@ -406,7 +448,7 @@ if ($exhibit->title) {
                 id = (id - 1) + 2;
                 document.getElementById(''+iddiv+'').value = id;
         	
-                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_field' style='margin-top:15px;style='clear:both;''><input type='text' class='textinput' style='width:200px;' name='"+divid+"_"+id+"' id='txt" + id + "' value=''>&nbsp;&nbsp<select style='vertical-align:top;' name='"+divid+"_"+id+"_lan' class='combo'><option value='none'>Select </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_field\"); return false;'>Remove Language</a><div>");
+                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_field' style='margin-top:15px;style='clear:both;''><input type='text' class='textinput' style='width:200px;' name='"+divid+"_"+id+"' id='txt" + id + "' value=''>&nbsp;&nbsp<select style='vertical-align:top;' name='"+divid+"_"+id+"_lan' class='combo'><option value='none'><?php echo __('Select'); ?> </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_field\"); return false;'><?php echo __('Remove Language'); ?></a><div>");
 
         	
             }
@@ -435,7 +477,7 @@ if ($exhibit->title) {
                 id = (id - 1) + 2;
                 document.getElementById(''+iddiv+'').value = id;
 
-                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_inputs'><hr style='clear:both;'><a class='lom-add-new' href='#' onClick='addFormField(\"0\",\""+divid+"_"+id+"\",\"hdnLine_"+divid+"_"+id+"\"); return false;'>Add Language</a>&nbsp;&nbsp;<a class='lom-remove' href='#' onClick='removeFormFieldTotal(\""+divid+"_"+id+"\"); return false;'>Remove "+label+"</a><br><br><div id='"+divid+"_"+id+"_1_field'><textarea cols='60' rows='4' class='textinput' name='"+divid+"_"+id+"_1' id='txt1'></textarea>&nbsp;&nbsp<select style='vertical-align:top;' name='"+divid+"_"+id+"_1_lan' class='combo'><option value='none'>Select </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_1_field\"); return false;'>Remove Language</a><div><input type='hidden' name='hdnLine_"+divid+"_"+id+"' id='hdnLine_"+divid+"_"+id+"' value='1'></div>");
+                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_inputs'><hr style='clear:both;'><a class='lom-add-new' href='#' onClick='addFormField(\"0\",\""+divid+"_"+id+"\",\"hdnLine_"+divid+"_"+id+"\"); return false;'><?php echo __('Add Language'); ?></a>&nbsp;&nbsp;<a class='lom-remove' href='#' onClick='removeFormFieldTotal(\""+divid+"_"+id+"\"); return false;'><?php echo __('Remove'); ?> "+label+"</a><br><br><div id='"+divid+"_"+id+"_1_field'><textarea cols='60' rows='4' class='textinput' name='"+divid+"_"+id+"_1' id='txt1'></textarea>&nbsp;&nbsp<select style='vertical-align:top;' name='"+divid+"_"+id+"_1_lan' class='combo'><option value='none'><?php echo __('Select'); ?> </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_1_field\"); return false;'><?php echo __('Remove Language'); ?></a><div><input type='hidden' name='hdnLine_"+divid+"_"+id+"' id='hdnLine_"+divid+"_"+id+"' value='1'></div>");
 
         	
             }
@@ -445,7 +487,7 @@ if ($exhibit->title) {
                 id = (id - 1) + 2;
                 document.getElementById(''+iddiv+'').value = id;
 
-                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_inputs'><hr style='clear:both;'><a class='lom-add-new' href='#' onClick='addFormFieldText(\"0\",\""+divid+"_"+id+"\",\"hdnLine_"+divid+"_"+id+"\"); return false;'>Add Language</a>&nbsp;&nbsp;<a class='lom-remove' href='#' onClick='removeFormFieldTotal(\""+divid+"_"+id+"\"); return false;'>Remove "+label+"</a><br><br><div id='"+divid+"_"+id+"_1_field'><input type='text' class='textinput' style='width:200px;' name='"+divid+"_"+id+"_1' id='txt1' value=''>&nbsp;&nbsp<select style='vertical-align:top;' name='"+divid+"_"+id+"_1_lan' class='combo'><option value='none'>Select </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_1_field\"); return false;'>Remove Language</a><div><input type='hidden' name='hdnLine_"+divid+"_"+id+"' id='hdnLine_"+divid+"_"+id+"' value='1'></div>");
+                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_inputs'><hr style='clear:both;'><a class='lom-add-new' href='#' onClick='addFormFieldText(\"0\",\""+divid+"_"+id+"\",\"hdnLine_"+divid+"_"+id+"\"); return false;'><?php echo __('Add Language'); ?></a>&nbsp;&nbsp;<a class='lom-remove' href='#' onClick='removeFormFieldTotal(\""+divid+"_"+id+"\"); return false;'><?php echo __('Remove'); ?> "+label+"</a><br><br><div id='"+divid+"_"+id+"_1_field'><input type='text' class='textinput' style='width:200px;' name='"+divid+"_"+id+"_1' id='txt1' value=''>&nbsp;&nbsp<select style='vertical-align:top;' name='"+divid+"_"+id+"_1_lan' class='combo'><option value='none'><?php echo __('Select'); ?> </option><?php foreach ($datalan as $datalan1) { ?><option value='<?php echo $datalan1['value']; ?>'><?php echo voc_multi_label($datalan1['vov_rec_id']); ?></option><?php } ?></select>&nbsp;&nbsp;<a class='lom-remove' style='float:right;' href='#' onClick='removeFormField(\"#"+divid+"_"+id+"_1_field\"); return false;'><?php echo __('Remove Language'); ?></a><div><input type='hidden' name='hdnLine_"+divid+"_"+id+"' id='hdnLine_"+divid+"_"+id+"' value='1'></div>");
 
         	
             }
@@ -455,7 +497,7 @@ if ($exhibit->title) {
                 id = (id - 1) + 2;
                 document.getElementById(''+iddiv+'').value = id;
 
-                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_inputs'><hr style='clear:both;'><div id='"+divid+"_"+id+"_1_field'><input type='text' class='textinput' style='width:200px;' name='"+divid+"_"+id+"_1' id='txt1' value=''><a class='lom-remove' href='#' onClick='removeFormFieldTotal(\""+divid+"_"+id+"\"); return false;'>Remove </a></div>");
+                jQuery('#'+divid+'_inputs').append("<div id='"+divid+"_"+id+"_inputs'><hr style='clear:both;'><div id='"+divid+"_"+id+"_1_field'><input type='text' class='textinput' style='width:200px;' name='"+divid+"_"+id+"_1' id='txt1' value=''><a class='lom-remove' href='#' onClick='removeFormFieldTotal(\""+divid+"_"+id+"\"); return false;'><?php echo __('Remove'); ?> </a></div>");
 
         	
             }
@@ -505,7 +547,7 @@ if ($exhibit->title) {
 
         function removeFormFieldExisted(id,element_hierarchy,language_id,record_id,multi) {
 
-            var answer = confirm("Are you sure you want to DELETE it?")
+            var answer = confirm("<?php echo __('Are you sure you want to DELETE it?'); ?>")
             if (answer){
 
                 jQuery.post("<?php echo uri('exhibits/deleteelementvalue'); ?>", { element_hierarchy: element_hierarchy, language_id: language_id, record_id: record_id, multi: multi },
@@ -520,7 +562,7 @@ if ($exhibit->title) {
 
         function removeFormFieldTotalExisted(id,element_hierarchy,record_id,multi,allvalues) {
 
-            var answer = confirm("Are you sure you want to DELETE it?")
+            var answer = confirm("<?php echo __('Are you sure you want to DELETE it?'); ?>")
             if (answer){
 
                 jQuery.post("<?php echo uri('exhibits/deleteelementvalue'); ?>", { element_hierarchy: element_hierarchy, record_id: record_id, multi: multi, allvalues: allvalues },
@@ -534,7 +576,7 @@ if ($exhibit->title) {
 
         function removeFormFieldTotal(id) {
 
-            var answer = confirm("Are you sure you want to DELETE it?")
+            var answer = confirm("<?php echo __('Are you sure you want to DELETE it?'); ?>")
             if (answer){
 
                 jQuery('#'+id+'_inputs').remove();
@@ -543,7 +585,7 @@ if ($exhibit->title) {
 
         function UpdateLangstringFormFieldExisted(element_hierarchy,record_id,multi,language_id_old,language_id,id) {
 
-            var answer = confirm("Are you sure you want to CHANGE the language? This action will be SAVED!");
+            var answer = confirm("<?php echo __('Are you sure you want to CHANGE the language? This action will be SAVED!'); ?>");
             if (answer){
 
                 jQuery.post("<?php echo uri('exhibits/updatelangstringelementvalue'); ?>", { element_hierarchy: element_hierarchy, language_id: language_id, language_id_old: language_id_old, record_id: record_id, multi: multi },
@@ -558,7 +600,7 @@ if ($exhibit->title) {
 
         function removedivid(id) {
 
-            var answer = confirm("Are you sure you want to DELETE it?")
+            var answer = confirm("<?php echo __('Are you sure you want to DELETE it?'); ?>")
             if (answer){
 
                 jQuery('#'+id+'').remove();
@@ -952,10 +994,9 @@ if ($exhibit->title) {
             ?>
 
             <br>
-            <div style="border-bottom:solid; position:relative;"></div>
             <br style="clear:both;">
-            <fieldset>
-                <?php if (isset($exhibit['id'])) { ?> <legend><?php echo return_template_by_id($exhibit['target_group']); ?> <?php echo __('Sections and Pages'); ?></legend>
+            <fieldset id="authoring_text">
+                <?php if (isset($exhibit['id'])) { ?> <legend><?php echo __(''.return_template_by_id($exhibit['target_group']).''); ?> <?php echo __('Sections and Pages'); ?></legend>
                     <div id="section-list-container">
                         <?php if (!$exhibit->Sections): ?>
                             <p><?php echo __('There are no sections'); ?>.</p>
@@ -968,15 +1009,28 @@ if ($exhibit->title) {
                     </div>
                 <?php }else { ?> <legend><?php echo __('Select Pathway Template'); ?></legend>
                     <?php
-                    echo '<select name="template">';
+                    echo '<select name="template" style="float:left;">';
                     $total_templates = return_template_by_id(0);
                     //print_r($total_templates);
                     foreach ($total_templates as $total_templates) {
-                        echo '<option value="' . $total_templates['id'] . '">' . $total_templates['name'] . '</option>';
+                        echo '<option value="' . $total_templates['id'] . '">' . __($total_templates['name']) . '</option>';
                     }
 
                     echo '</select>';
                     ?>
+                <?php if (!isset($exhibit['id'])) { ?>
+                <div id="secondary" style="float:left; position: relative; top: -5px; padding-left: 70px; max-width: 600px; width: auto;">
+            <div id="site-meta" class="info-panel">
+                <h2><?php echo __('Select Pathway Template'); ?></h2>
+                <p>
+                    
+            <?php echo __('Guided pathway: Addressed to school communities'); ?><br>
+            <?php echo __('Open Pathway: Addressed to lifelong learners and especially families'); ?><br>
+            <?php echo __('Interactive Installation Pathway: To use them in Interactive Installation Tool'); ?>
+                </p>
+            </div>
+                </div>
+<?php } ?>
                 <?php } ?>
                 <!--<div id="section-add">
                     <input type="submit" name="add_section" id="add-section" value="Add Section" />
@@ -999,14 +1053,24 @@ if ($exhibit->title) {
                 <p id="exhibit-builder-save-changes">
                     <?php if (isset($exhibit['id'])) { ?>
                         <input type="submit" name="save_meta" id="save_exhibit" value="<?php echo __('Save Changes'); ?>" />
-                        <input type="submit" name="save_exhibit" id="save_exhibit" value="<?php echo __('Save and Finish'); ?>" />
+                        <input type="submit" name="save_exhibit" id="save_exhibit_finish" value="<?php echo __('Save and Finish'); ?>" />
                     <?php } else { ?>
                         <input type="submit" name="add_exhibit" id="save_exhibit" value="<?php echo __('Add a Pathway'); ?>" />
-                    <?php } ?>
-                    or 
+                    <?php } 
+                    echo __('or'); ?>
                     <a href="<?php echo html_escape(uri('exhibits')); ?>" class="cancel"><?php echo __('Cancel'); ?></a>
                 </p>
             </fieldset>
+                            <div id="save_exhibit_help" style="display:none; position:absolute;top:0px; border:1px solid #333;background:#f7f5d1;padding:2px 5px; color:#333;z-index:100;">
+        <?php echo __('Save the changes and remain to the main page of pathway'); ?>
+    </div>
+            <div id="save_exhibit_finish_help" style="display:none; position:absolute;top:0px; border:1px solid #333;background:#f7f5d1;padding:2px 5px; color:#333;z-index:100;">
+        <?php echo __('Save and go out to the list pathway'); ?>
+    </div>
+                        <script type="text/javascript">
+var my_tooltip = new Tooltip_gen('save_exhibit', 'save_exhibit_help');
+var my_tooltip = new Tooltip_gen('save_exhibit_finish', 'save_exhibit_finish_help');
+    </script>
         </form>     
 </div>
 <?php foot(); ?>

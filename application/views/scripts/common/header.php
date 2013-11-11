@@ -96,6 +96,7 @@ session_start();
 $locale = Zend_Registry::get('Zend_Locale');
 $_SESSION['get_language']=get_language_for_switch();
 $_SESSION['get_language_omeka']=get_language_for_omeka_switch();
+$_SESSION['get_language_for_internal_xml']=get_language_for_internal_xml();
 ?>    
 <div id="page-container">
 

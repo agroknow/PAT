@@ -31,23 +31,43 @@
 // $Id: listidentifiers.php,v 1.02 2003/04/08 14:17:47 stamer Exp $
 //
 // parse and check arguments
-
-
-
-
 ///////////////////////////setSpecs///////////////////////
-$xmlheader ='<?xml version="1.0" encoding="UTF-8"?>';
-$q='';
+$xmlheader = '<?xml version="1.0" encoding="UTF-8"?>';
+$q = '';
 if (isset($_GET['query']) and strlen($_GET['query'])) {
     $getset = addslashes($_GET['query']);
-    $kt=explode(" ",$getset);//Breaking the string to array of words
+    $kt = explode(" ", $getset); //Breaking the string to array of words
 // Now let us generate the sql 
-			while(list($key,$val)=each($kt)){
-if($val<>" " and strlen($val) > 0){$q .= " title like '%$val%' or ";}
+    while (list($key, $val) = each($kt)) {
+        if ($val <> " " and strlen($val) > 0) {
+            $q .= " title like '%$val%' or ";
+        }
+    }// end of while
+    $q = substr($q, 0, (strlen($q) - 3));
+    $q = " and (" . $q . ")";
+}
+$getset2 = '';
+$j = '';
+if (isset($_GET['template']) and strlen($_GET['template'])) {
+    $getset2 = 'Template = "' . addslashes($_GET['template']) . '"';
+// Now let us generate the sql 
 
-			}// end of while
-$q=substr($q,0,(strlen($q)-3));
-$q=" and (".$q.")";
+    $maxIdSQL = "SELECT * from omeka_exhibits_templates";
+//echo $maxIdSQL;break;
+    $exec = $db->query($maxIdSQL);
+    $result_multi = $exec->fetchAll();
+    $result = $result_multi; //ALL
+
+    foreach ($result as $result) {
+        if ($_GET['template'] == $result['name']) {
+            $j .= " target_group=" . $result['id'] . " ";
+        }
+    }
+    if (!strlen($j) > 0) {
+        $j .= " 0 ";
+    }
+
+    $q .=" and (" . $j . ")";
 }
 
 
@@ -57,16 +77,16 @@ $row_itemtotal = $exectotal->fetchAll();
 $completeListSize = count($row_itemtotal);
 
 
-if (isset($_GET['offset']) and $_GET['offset']> 0) {
-    $_GET['offset']=  onlyNumbers($_GET['offset']);
+if (isset($_GET['offset']) and $_GET['offset'] > 0) {
+    $_GET['offset'] = onlyNumbers($_GET['offset']);
     $resumptionTokenoffset = " OFFSET " . $_GET['offset'] . "";
     $offset = $_GET['offset'];
 } else {
     $resumptionTokenoffset = " OFFSET 0";
     $offset = "0";
 }
-if (isset($_GET['count']) and $_GET['count']> 0) {
-    $_GET['count']=  onlyNumbers($_GET['count']);
+if (isset($_GET['count']) and $_GET['count'] > 0) {
+    $_GET['count'] = onlyNumbers($_GET['count']);
     $MAXIDS = $_GET['count'] . "";
 } else {
     $MAXIDS = 12;
@@ -82,10 +102,10 @@ if (!$count_results > 0) {
 
 if (empty($errors)) { //if no errors
     $output .= "<List>\n";
-    $output .= "<totalResults>".$completeListSize."</totalResults>";
-    $output .= "<startIndex>".$offset."</startIndex>";
-    $output .= "<itemsPerPage>".$MAXIDS."</itemsPerPage>";
-    $output .= "<Query searchTerms='".$getset."' count='".$MAXIDS."' startIndex='".$offset."'/>";
+    $output .= "<totalResults>" . $completeListSize . "</totalResults>";
+    $output .= "<startIndex>" . $offset . "</startIndex>";
+    $output .= "<itemsPerPage>" . $MAXIDS . "</itemsPerPage>";
+    $output .= "<Query searchTerms='" . $getset . "' " . $getset2 . " count='" . $MAXIDS . "' startIndex='" . $offset . "'/>";
 
     foreach ($row_item as $row_item) {
 
@@ -103,21 +123,25 @@ if (empty($errors)) { //if no errors
 //$metadatarecordvalue_res=mysql_query($sqlmetadatarecordvalue);
 //$metadatarecordvalue=mysql_fetch_array($metadatarecordvalue_res);
 
-       
+
         $output .= '<item>' . "\n";
-        $output .= '<title>' . "\n";
+        $output .= '<title>';
         $output .= htmlspecialchars($row_item['title']);
         $output .= '</title>' . "\n";
-        $output .= '<link>' . "\n";
-        $output .= '<![CDATA['.$MY_URI.'?verb=GetRecord&identifier=scorm:'.$repositoryIdentifier.':'.$row_item['id'].']]>';
+        $output .= '<link>';
+        $output .= '<![CDATA[' . $MY_URI . '?verb=GetRecord&identifier=scorm:' . $repositoryIdentifier . ':' . $row_item['id'] . ']]>';
         $output .= '</link>' . "\n";
+        $output .= '<template>';
+        $output .= return_template_by_id($row_item['target_group']);
+        $output .= '</template>' . "\n";
+        $output .= '<jsonResponce>';
+        $output .= '<![CDATA[http://' . $_SERVER['SERVER_NAME'] . '' . uri('exhibits/show') . '/' . $row_item['slug'] . ']]>';
+        $output .= '</jsonResponce>' . "\n";
 
         $output .= '</item>' . "\n";
     }
 
 ///////////////resumptionToken creation
-
-    
 // end ListRecords
     $output .=
             '</List>' . "\n";

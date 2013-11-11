@@ -27,12 +27,12 @@ Allow from all
 </Files>
 
 # Uncomment the lines below in order to enable caching of some files via Apache (after a finished site has gone live)
-#<IfModule mod_expires.c>
-#  <FilesMatch "\.(js|ico|gif|jpg|png|css|xml)$">
-#       ExpiresActive on
-#       ExpiresDefault "access plus 2 hours"
-#   </FilesMatch>
-#</IfModule>
+<IfModule mod_expires.c>
+  <FilesMatch "\.(js|ico|gif|jpg|png|css|xml)$">
+       ExpiresActive on
+       ExpiresDefault "access plus 2 hours"
+   </FilesMatch>
+</IfModule>
 <ifModule mod_deflate.c>
 SetOutputFilter DEFLATE
     <FilesMatch ".(js|ico|css|html|htm|php|xml|swf)$">

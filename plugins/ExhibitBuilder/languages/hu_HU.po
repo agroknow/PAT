@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <holler@mttm.hu>, 2012.
-# Judit Holler <holler@mttm.hu>, 2013.
-#   <rajczy@nhmus.hu>, 2012.
-#   <vas.zoltan@gmail.com>, 2012.
+# holler <holler@mttm.hu>, 2012
+# holler <holler@mttm.hu>, 2013
+# rajczym <rajczy@nhmus.hu>, 2012
+# vas.zoltan <vas.zoltan@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2013-02-07 16:24+0000\n"
+"PO-Revision-Date: 2013-09-15 21:08+0000\n"
 "Last-Translator: holler <holler@mttm.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
@@ -731,7 +731,7 @@ msgstr "Tanösvény-típus választása"
 
 #: admingeneral!
 msgid "There are no sections"
-msgstr "Nincsenek szakaszok"
+msgstr "Nincsenek szakaszok."
 
 #: admingeneral!
 msgid "Cancel"
@@ -762,3 +762,313 @@ msgstr "Beszúrás"
 #: admingeneral!
 msgid "No items"
 msgstr "Nincsen egyetlen tétel sem."
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Új kép felvétele a saját gyűjteménybe."
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Oktatási tanösvény"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Családi tanösvény"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Interaktív berendezés anyaga"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "Szerkesztés"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "A tanösvény metaadatai"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Oldalak"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Az oldalhoz tartozó segédanyagokat itt lehet behívni a saját segédanyag-gyűjteményből. A segédanyagok csatolása egyesével lehetséges."
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Segédanyag hozzáadása"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Segédanyag beszúrása"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Új fájl felvétele a saját gyűjteménybe"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Új hivatkozás felvétele a saját gyűjteménybe"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Kép beszúrása. Az itt beszúrt kép a szövegtörzsben jelenik meg, az utána következő szövegblokk alatt."
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "A kiválasztott kép beszúrása."
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Fontos információ: Új segédanyagot csatolása előtt mindenképpen menteni kell a változtatásokat."
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Az új segédanyag csatolása során a program újratölti az oldalt, és a nem mentett változtatások elvesznek."
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Kedvcsináló"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Oktatási"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Feladatok"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "1. képernyő"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "2. képernyő"
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "3. képernyő"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "4. képernyő"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "5. képernyő"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "6. képernyő"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "7. képernyő"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "8. képernyő"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "9. képernyő"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "10. képernyő"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "11. képernyő"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "12. képernyő"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "13. képernyő"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "14. képernyő"
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "15. képernyő"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "A tanösvények felületen az Ön felhasználói fiókjába tartozó tanösvények találhatók."
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Ha bele szeretne nézni valamelyik tanösvénybe, akkor kattinson a címére."
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Itt tud tanösvényt szerkeszteni, törölni vagy újat létre hozni."
+
+#: admingeneral!
+msgid "Guided pathway: Addressed to school communities"
+msgstr "Oktatási tanösvény vagy irányított tanösvény - pedagógusok és tanítványaik számára készül"
+
+#: admingeneral!
+msgid ""
+"Open Pathway: Addressed to lifelong learners and especially families"
+msgstr "Családi tanösvény vagy játék-alapú tanösvény - életkortól függetlenül minden tanulni vágyó számára"
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Interaktív egység tartalma - számítógépes terminál anyagaként szolgáló tanösvény "
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Itt teheti a tanösvényt nyilvánossá."
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "Ez az a felület, ahol tanösvényt lehet létre hozni."
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Mentés és az oldal további szerkesztése."
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Mentés és visszatérés a tanösvény kezdőlapjához."
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Változások mentése"
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Mentés és kilépés."
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Adja meg a tanösvény alapinformációit annak érdekében, hogy a böngészőben kereshetővé váljon."
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Milyen előkészületeket kell tenni mielőtt nekilátunk a munkának?"
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "A tanterv mely egységeit fedi le a tanösvény? Milyen előzetes tudással kell rendelkezniük a résztvevő diákoknak?"
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Milyen módszerekkel és anyagokkal kelthetjük fel a diákok érdeklődését téma iránt? "
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Mely kérdésekkel ösztönzhetjük a diákokat arra, hogy meglévő tudásuk felhasználásával tovább gondolkodjanak az adott témáról?"
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Módszerek, amelyekkel arra bátorítjuk a diákokat, hogy az előző tevékenység során felmerült kérdésekre magyarázatokat keressenek. "
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Olyan eszközök és anyagok bemutatása, amelyek segítségével arra ösztönzhetjük a diákokat, hogy a tudományos kérdések megválaszolásakor a tényekből induljanak ki. "
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Hol és hogyan hogyan gyűjtenek bizonyítékokat a diákok az előző szakaszokban megfogalmazott kérdések megválaszolásához? "
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Mi a vizsgált téma korrekt magyarázata?"
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Hogyan segíthetjük csoportokat saját magyarázataik értékelésében?  "
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Hogyan mutassák be és indokolják a csoportok az általuk javasolt magyarázatokat?"
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Megszilárdító tevékenységek és anyagok. "
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "A tanösvény és a segédanyagok készítőjének valamint az intézménynek az elérhetősége. "
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "A tanösvény rövid bemutatása. (Szükséges eszközök, megvalósításhoz szükséges idő, korosztály stb.)"
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "A tevékenység keretének helyes megválasztásával hogyan kelthetjük fel a gyermekek/résztvevők érdeklődését? "
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Indító kérdések, amelyekkel a gyerekeket/résztvevőket bevonhatjuk a foglalkozásba."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Játékok, fejtörők, felfedező utak...\nTermészetesen használati útmutató és megfejtés kíséretében."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "A játék összegzése.\nGratuláljunk a nyertesnek, és magyarázzuk el, hogy mi a jutalma, és hol veheti át. "
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Családi tanösvény"

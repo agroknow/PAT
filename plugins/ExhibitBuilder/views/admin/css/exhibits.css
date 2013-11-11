@@ -1,4 +1,8 @@
-/* -- Exhibits Icons -- */
+#show-or-hide-search {
+    display: block;
+    font-size: 1.5em;
+    padding: 20px;
+}/* -- Exhibits Icons -- */
 .delete-exhibit {
     background-position: 0 50%;
     padding-left: 18px;
@@ -52,7 +56,7 @@
 }
 
 .section-list {
-    width:512px;
+    width:612px;
     float:left;
 }
 
@@ -400,6 +404,11 @@ button.cancel {
     display: block;
     padding:20px;
 }
+#show-or-hide-search2 {
+    display: block;
+    font-size: 1.5em;
+    padding: 20px;
+}
 
 #page-form .exhibit-form-element {
     position:relative;
@@ -448,4 +457,47 @@ button.cancel {
 button#page_metadata_form {
     float:none;
     margin-left: 20px;
+}
+#buttonfrommycollection{
+    background-color: #6D8E1D;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50.01%, rgba(255, 255, 255, 0));
+}
+#buttonfromnew{
+    background-color: #6D8E1D;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50.01%, rgba(255, 255, 255, 0));
+    display: none;
+}
+#buttonfrommycollection2{
+    background-color: #6D8E1D;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50.01%, rgba(255, 255, 255, 0));
+}
+#buttonfromnew2{
+    background-color: #6D8E1D;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50.01%, rgba(255, 255, 255, 0));
+    display: none;
+}
+#buttonfromnew3{
+    background-color: #6D8E1D;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 50.01%, rgba(255, 255, 255, 0));
+    display: none;
+}
+#supporting-nav li{
+    display: block;
+}
+#supporting-nav a.current {
+ background: none repeat scroll 0 0 #FFFFFF !important;
+    border-color: #D7D5C4;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 0 1px 3px;
+    color: #CC6600;
+    font-weight: bold;
+}
+#supporting-nav a {
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    color: #446677;
+    display: block;
+    padding: 9px 9px 6px;
+    text-decoration: none;
 }

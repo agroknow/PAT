@@ -76,7 +76,7 @@ if ($format=="PDF" || $format=="HTML,PDF")
 	echo '<img src="'.$uri.'/application/views/scripts/images/files-icons/pdf.png"/>';
 	}
 else {
-	echo '<img src="http://open.thumbshots.org/image.aspx?url='.$identifier.'"/>';
+	echo '<img src="http://img.bitpixels.com/getthumbnail?code=29089&size=200&url='.$identifier.'"/>';
 	}
 echo '</div>';
 echo '<div style="float:left;width:605px;"><strong>'.$title.'</strong><br>'.$descrip.'';

@@ -40,6 +40,14 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         } catch (Exception $e) {
             die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
         }
+        $metadataFile = CONFIG_DIR . '/metadata.ini';
+        if (!file_exists($metadataFile)) {
+            throw new Zend_Config_Exception('Your Omeka metadata file is missing.');
+        }        
+        //$metadataFile =Zend_Config_Ini($metadataFile, NULL);
+        $metadataFile = parse_ini_file($metadataFile,true);
+        Zend_Registry::set('metadataFile', $metadataFile);
+        $this->view->assign(compact('metadataFile'));
         Zend_Registry::set('db', $db);
     }
 
@@ -164,7 +172,20 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
      * */
     public function itemsAction() {
         $user = current_user();
-        $results = $this->_helper->searchItems(array('search' => 'advanced', 'type' => '6', 'user' => '' . $user['id'] . ''));
+        $results = $this->_helper->searchItems(array('search' => 'advanced', 'public' => '1', 'type' => '6', 'user' => '' . $user['id'] . ''));
+
+        // Build the pagination.
+        $pagination = array(
+            'per_page' => $results['per_page'],
+            'page' => $results['page'],
+            'total_results' => $results['total_results']);
+        Zend_Registry::set('pagination', $pagination);
+
+        $this->view->items = $results['items'];
+    }
+     public function items2Action() {
+        $user = current_user();
+        $results = $this->_helper->searchItems(array('search' => 'advanced', 'public' => '1', 'user' => '' . $user['id'] . ''));
 
         // Build the pagination.
         $pagination = array(
@@ -198,7 +219,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         $this->view->orderOnForm = $orderOnForm;
     }
 
-    public function showAction() {
+    public function showAction() { 
         $exhibit = $this->_findByExhibitSlug();
         if (!$exhibit) {
             $this->errorAction();
@@ -234,6 +255,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         }
 
         fire_plugin_hook('show_exhibit', $exhibit);
+        $this->getResponse()->setHeader('Content-Type', 'application/json');
         $this->renderExhibit(compact('exhibit'), 'summary');
     }
 
@@ -312,16 +334,18 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         }
         //$lastexid=bypass($lastexid);
         libxml_use_internal_errors(false);
+        $metadataFile= Zend_Registry::get('metadataFile');
         $uri = WEB_ROOT;
         $xml_general = array();
-        $sqlvocelem2 = "SELECT d.vocabulary_id FROM metadata_element d JOIN  metadata_element_hierarchy e ON d.id = e.element_id WHERE e.datatype_id=5 and e.is_visible=1";
-        $execvocele2 = $db->query($sqlvocelem2);
-        $datavocele2 = $execvocele2->fetchAll();
+        $execvocele2_general = $db->query("SELECT DISTINCT d.vocabulary_id FROM metadata_element d JOIN  metadata_element_hierarchy e ON d.id = e.element_id WHERE e.datatype_id=? and e.is_visible=? and d.schema_id=?", array(5,1,$metadataFile[metadata_schema_resources][id]));
+        $datavocele2 = $execvocele2_general->fetchAll();
+        $execvocele2_general = NULL;
+        $sqlvocelem = "SELECT e.value,d.id FROM metadata_vocabulary d JOIN metadata_vocabulary_record e ON d.id = e.vocabulary_id LEFT JOIN
+					metadata_vocabulary_value f ON f.vocabulary_rid = e.id WHERE d.id=?";
         foreach ($datavocele2 as $datavocele2) {
-            $sqlvocelem = "SELECT e.value,d.id FROM metadata_vocabulary d JOIN metadata_vocabulary_record e ON d.id = e.vocabulary_id JOIN
-					metadata_vocabulary_value f ON f.vocabulary_rid = e.id WHERE d.id=" . $datavocele2['vocabulary_id'] . "";
-            $execvocele = $db->query($sqlvocelem);
-            $datavocele = $execvocele->fetch();
+        $execvocele = $db->query($sqlvocelem, array($datavocele2['vocabulary_id']));
+        $datavocele = $execvocele->fetch();
+        $execvocele = NULL;
 
             $xmlvoc = '' . $uri . '/archive/xmlvoc/' . $datavocele['value'] . '.xml';
             // $xmlvoc='http://aglr.agroknow.gr/organic-edunet/archive/xmlvoc/new_oe_ontology_hierrarchy.xml';
@@ -464,20 +488,20 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         $exhibit = $this->findById();
         $user = current_user();
 
-
+        $metadataFile= Zend_Registry::get('metadataFile');
         if (!exhibit_builder_user_can_edit($exhibit)) {
             throw new Omeka_Controller_Exception_403;
         }
         $_SESSION['get_language_for_internal_xml'] = get_language_for_internal_xml();
                     $uri = WEB_ROOT;
                     $xml_general = array();
-                    $execvocele2_general = $db->query("SELECT d.vocabulary_id FROM metadata_element d JOIN  metadata_element_hierarchy e ON d.id = e.element_id WHERE e.datatype_id=5 and e.is_visible=1");
+                    $execvocele2_general = $db->query("SELECT DISTINCT d.vocabulary_id FROM metadata_element d JOIN  metadata_element_hierarchy e ON d.id = e.element_id WHERE e.datatype_id=? and e.is_visible=? and d.schema_id=?", array(5,1,$metadataFile[metadata_schema_resources][id]));
                     $datavocele2 = $execvocele2_general->fetchAll();
                     $execvocele2_general = NULL;
+                    $sqlvocelem = "SELECT e.value,d.id FROM metadata_vocabulary d JOIN metadata_vocabulary_record e ON d.id = e.vocabulary_id LEFT JOIN
+					metadata_vocabulary_value f ON f.vocabulary_rid = e.id WHERE d.id=?";
                     foreach ($datavocele2 as $datavocele2) {
-                        $sqlvocelem = "SELECT e.value,d.id FROM metadata_vocabulary d JOIN metadata_vocabulary_record e ON d.id = e.vocabulary_id JOIN
-					metadata_vocabulary_value f ON f.vocabulary_rid = e.id WHERE d.id=" . $datavocele2['vocabulary_id'] . "";
-                        $execvocele = $db->query($sqlvocelem);
+                        $execvocele = $db->query($sqlvocelem, array($datavocele2['vocabulary_id']));
                         $datavocele = $execvocele->fetch();
                         $execvocele = NULL;
                         //$xmlvoc = '' . $uri . '/archive/xmlvoc/' . $datavocele['value'] . '.xml';
@@ -489,10 +513,14 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
                         unset($reader);
                         //$reader->close();
                     }
-
+                    
                     //query for creating general elements pelement=0
-                    $sql2 = "SELECT * FROM metadata_element_hierarchy WHERE pelement_id=0 and is_visible=1  ORDER BY (case WHEN sequence IS NULL THEN '9999' ELSE sequence END) ASC;";
-                    $exec3 = $db->query($sql2);
+                    $values=$metadataFile[metadata_elements_hide_from_pathways][element_hierarchy_pathways_hide];
+                    if($values != false){
+                        $valuesql= "and a.id NOT IN (".implode(',', $values).") ";
+                    }else{$valuesql="";}
+                    $sql2 = "SELECT a.* FROM metadata_element_hierarchy a JOIN metadata_element b on b.id=a.element_id WHERE b.schema_id=? and a.pelement_id=? and a.is_visible=? ".$valuesql." ORDER BY (case WHEN a.sequence IS NULL THEN 9999 ELSE a.sequence END) ASC;";
+                    $exec3 = $db->query($sql2, array($metadataFile[metadata_schema_resources][id],0,1)); 
                     $general_pelements = $exec3->fetchAll();
                     $exec3 = NULL;
                     $this->view->assign(compact('general_pelements', 'xml_general', 'db'));
@@ -736,6 +764,96 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
     }
 
     public function editPageContentAction() {
+        
+        if (array_key_exists('add_new_item', $_POST)) {
+            $lastexid = savenewitem($lastexid, null);
+            //$this->view->elementSets = $this->_getExhibitElementSets();
+
+            $varName = strtolower($this->_modelClass);
+
+            $record = $this->findById($lastexid,'Item');
+
+            try {
+                if ($record->saveForm($_POST)) {
+                     $exhibitPage = $this->findById(null, 'ExhibitPage');
+                     $exhibitSection = $exhibitPage->Section;
+                     $exhibit = $exhibitSection->Exhibit;
+                    addteasers_to_pathway_page($exhibit->id,$exhibitSection->id,$exhibitPage->id,$lastexid);
+                    $this->redirect->goto('edit-page-content', null, null, array('id' => $exhibitPage->id));
+                }
+            } catch (Omeka_Validator_Exception $e) {
+                $this->flashValidationErrors($e);
+            }
+            $this->view->assign(array($varName => $record));
+            //$this->redirect->goto('edit', null, null, array('id' => $lastexid));
+            //$this->render('metadataform',$_POST);
+        }elseif (array_key_exists('add_new_item_link', $_POST)) {
+            $lastexid = savenewitem($lastexid, '11');
+            //$this->view->elementSets = $this->_getItemElementSets();
+
+            $varName = strtolower($this->_modelClass);
+
+            $record = $this->findById($lastexid,'Item');
+
+            try {
+                if ($record->saveForm($_POST)) {
+                     $exhibitPage = $this->findById(null, 'ExhibitPage');
+                     $exhibitSection = $exhibitPage->Section;
+                     $exhibit = $exhibitSection->Exhibit;
+                    addteasers_to_pathway_page($exhibit->id,$exhibitSection->id,$exhibitPage->id,$lastexid);
+                    $this->redirect->goto('edit-page-content', null, null, array('id' => $exhibitPage->id));
+                }
+            } catch (Omeka_Validator_Exception $e) {
+                $this->flashValidationErrors($e);
+            }
+            $this->view->assign(array($varName => $record));
+            //$this->redirect->goto('edit', null, null, array('id' => $lastexid));
+            //$this->render('metadataform',$_POST);
+          }elseif (array_key_exists('add_new_item2', $_POST)) {
+                  require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
+
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
+        try {
+            $mysqli = $db->getConnection()->getConnection();
+        } catch (Exception $e) {
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
+        }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
+              
+            $lastexid = savenewitem($lastexid, null);
+            //$this->view->elementSets = $this->_getExhibitElementSets();
+
+            $varName = strtolower($this->_modelClass);
+
+            $record = $this->findById($lastexid,'Item');
+
+            try {
+                if ($record->saveForm($_POST)) {
+                     $exhibitPage = $this->findById(null, 'ExhibitPage');
+                     $exhibitSection = $exhibitPage->Section;
+                     $exhibit = $exhibitSection->Exhibit;
+                     $orderitem=preg_replace("/[^0-9]/", "", $_POST['order']);
+                     if($record['item_type_id']==6){
+                     $query_teaser = "update omeka_items_section_pages set item_id=" . $lastexid . " where omeka_items_section_pages.page_id=".$exhibitPage->id." and omeka_items_section_pages.order=".$orderitem."";
+                     $result_teaser = $db->query($query_teaser);
+                     }
+                    $this->redirect->goto('edit-page-content', null, null, array('id' => $exhibitPage->id));
+                }
+            } catch (Omeka_Validator_Exception $e) {
+                $this->flashValidationErrors($e);
+            }
+            $this->view->assign(array($varName => $record));
+            //$this->redirect->goto('edit', null, null, array('id' => $lastexid));
+            //$this->render('metadataform',$_POST);
+       
+        } else {
+        
         $exhibitPage = $this->findById(null, 'ExhibitPage');
         $exhibitSection = $exhibitPage->Section;
         $exhibit = $exhibitSection->Exhibit;
@@ -770,6 +888,8 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
            $this->redirect->gotoRoute(array('action' => 'edit', 'id' => $exhibit->id), 'exhibitStandard');
         }else{
           $this->render('page-content-form');  
+        }
+        
         }
         
     }
@@ -863,7 +983,15 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
     }
 
     /////HERE WE HAVE SOME AJAX-ONLY ACTIONS /////
-
+    
+    public function addteasersAction() {
+        return $this->render('addteasers');
+    }
+    
+    public function deleteteasersAction() {
+        return $this->render('deleteteasers');
+    }
+    
     public function sectionListAction() {
         $this->view->exhibit = $this->findOrNew();
         return $this->render('section-list');

@@ -31,7 +31,7 @@ class Omeka_Core_Resource_Locale extends Zend_Application_Resource_Locale {
             array('file_name_prefix' => 'omeka_i18n_cache'));
 		
         ////gkista add in order to get the language for get parameter and change it to omeka ids
-		$locale=get_language_for_omeka_switch();
+		 $locale=get_language_for_omeka_switch();
 		if(strlen($locale)>0){
 			
 			$this->setOptions(array(

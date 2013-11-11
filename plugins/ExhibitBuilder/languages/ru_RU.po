@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Omeka package.
 # 
 # Translators:
-#   <kadrihaugas@gmail.com>, 2012.
+# tnhm <kadrihaugas@gmail.com>, 2012
+# tnhm <kadrihaugas@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Pathway Authoring Tool\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2012-12-19 11:46+0000\n"
+"PO-Revision-Date: 2013-09-25 19:12+0000\n"
 "Last-Translator: tnhm <kadrihaugas@gmail.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/pathway-authoring-tool/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -759,3 +760,313 @@ msgstr "Ввод"
 #: admingeneral!
 msgid "No items"
 msgstr "Записи отсутствуют"
+
+#: admingeneral - metadata editor!
+msgid "Insert new image to your collection"
+msgstr "Вставьте новие изображение в вашей коллекции"
+
+#: admingeneral!
+msgid "Guided Pathway"
+msgstr "Yправляемaя учебнaя тропa"
+
+#: admingeneral!
+msgid "Game-Based Pathway"
+msgstr "Yчебнaя тропa основанный на игре"
+
+#: admingeneral!
+msgid "Interactive Installation Pathway"
+msgstr "Yчебнaя тропa - интерактивная установка"
+
+#: admingeneral!
+msgid "AUTHORING"
+msgstr "АВТОРИНГ"
+
+#: admingeneral!
+msgid "DESCRIBE YOUR PATHWAY"
+msgstr "ОПИШИТЕ СВОЕ УЧЕБНAЯ ТРОПA"
+
+#: admingeneral!
+msgid "Pages"
+msgstr "Страницы"
+
+#: admingeneral!
+msgid ""
+"Add one of your resources as supporting material for this page. Resources "
+"that will be added here serve as complementary to the items attached on the "
+"pathway"
+msgstr "Добавьте одну из ваших ресурсов как вспомогательный материал для этой страницы. Добавляемые материалы дополнят <br> подключенный к учебной тропе материал"
+
+#: admingeneral!
+msgid "Add supporting material"
+msgstr "Добавить дополнительный материал"
+
+#: admingeneral!
+msgid "Insert Supporting Material"
+msgstr "Вставьте дополнительный материал"
+
+#: admingeneral!
+msgid "Insert new file to your collection"
+msgstr "Вставьте новие файлов в вашей коллекции"
+
+#: admingeneral!
+msgid "Insert new hyperlink to your collection"
+msgstr "Вставьте новие гиперссылку в вашей коллекции"
+
+#: admingeneral!
+msgid ""
+"Insert image: the image files added here will appear within the corpus of "
+"your pathway."
+msgstr "Вставить изображение: файлы изображений добавил тут же появится в своде ваших учебную тропу."
+
+#: admingeneral!
+msgid "Insert Selected Image"
+msgstr "Вставьте выбранные пункты"
+
+#: admingeneral!
+msgid ""
+"Important info: When you are inserting a new external resource please make "
+"sure you saved all the changes in your pathway."
+msgstr "Важная информация: Когда вы вставляете новый внешний ресурс пожалуйста, убедитесь, что вы сохранили все изменения в вашей учебнaя тропa."
+
+#: admingeneral!
+msgid ""
+"Inserting a new external resource will reload your pathway page and all the "
+"unsaved changes will be lost."
+msgstr "Вставка нового внешнего ресурса будет перезагрузить страницу учебную тропу и все несохраненные изменения будут потеряны."
+
+#: admingeneral!
+msgid "Introductory Section"
+msgstr "Вводный раздел"
+
+#: admingeneral!
+msgid "Educational"
+msgstr "Oбразовательный"
+
+#: admingeneral!
+msgid "Assignments"
+msgstr "Hазначение"
+
+#: admingeneral!
+msgid "Screen 1"
+msgstr "Экран 1"
+
+#: admingeneral!
+msgid "Screen 2"
+msgstr "Экран 2"
+
+#: admingeneral!
+msgid "Screen 3"
+msgstr "Экран 3"
+
+#: admingeneral!
+msgid "Screen 4"
+msgstr "Экран 4"
+
+#: admingeneral!
+msgid "Screen 5"
+msgstr "Экран 5"
+
+#: admingeneral!
+msgid "Screen 6"
+msgstr "Экран 6"
+
+#: admingeneral!
+msgid "Screen 7"
+msgstr "Экран 7"
+
+#: admingeneral!
+msgid "Screen 8"
+msgstr "Экран 8"
+
+#: admingeneral!
+msgid "Screen 9"
+msgstr "Экран 9"
+
+#: admingeneral!
+msgid "Screen 10"
+msgstr "Экран 10"
+
+#: admingeneral!
+msgid "Screen 11"
+msgstr "Экран 11"
+
+#: admingeneral!
+msgid "Screen 12"
+msgstr "Экран 12"
+
+#: admingeneral!
+msgid "Screen 13"
+msgstr "Экран 13"
+
+#: admingeneral!
+msgid "Screen 14"
+msgstr "Экран 14 "
+
+#: admingeneral!
+msgid "Screen 15"
+msgstr "Экран 15"
+
+#: admingeneral!
+msgid ""
+"The Pathway area provides a list of the Pathways available on the users "
+"account."
+msgstr "Путь область обеспечивает список учебную тропу на счете пользователя."
+
+#: admingeneral!
+msgid "To read more about each Pathway, click on the Title link."
+msgstr "Чтобы узнать больше о каждомy учебную тропу, нажать на название ссылки."
+
+#: admingeneral!
+msgid "Also you can add a new Pathway, edit and delete Pathways."
+msgstr "Также вы можете добавить новую учебную тропу, редактировать и удалять учебную тропу."
+
+#: admingeneral!
+msgid "Open pathway: Addressed to school communities"
+msgstr "Oткрытa учебнaя тропa: адресованы школьным общин"
+
+#: admingeneral!
+msgid ""
+"Game-based Pathway: Addressed to lifelong learners and especially families"
+msgstr "Yчебную тропу по мотивам игр: Адресовано на протяжении всей жизни и особенно семьи"
+
+#: admingeneral!
+msgid ""
+"Interactive Installation Pathway: To use them in Interactive Installation "
+"Tool"
+msgstr "Интерактивная установка учебную тропу: использовать их в инструмент Interactive установке"
+
+#: admingeneral!
+msgid "Make your pathway public"
+msgstr "Сделайте свое учебную тропу общественности"
+
+#: admingeneral!
+msgid "This is the area where you can create your pathway"
+msgstr "Это зона, где вы можете создать свою учебную тропу"
+
+#: admingeneral!
+msgid "Save and remain in the same page"
+msgstr "Сохранить и добавить еще одну страницу"
+
+#: admingeneral!
+msgid "Save and go back to the main page of pathway"
+msgstr "Сохранить и вернуться к главной странице учебную тропу"
+
+#: admingeneral!
+msgid "Save the changes and remain to the main page of pathway"
+msgstr "Сохранить изменения и добавить к основному страницу из учебную тропу"
+
+#: admingeneral!
+msgid "Save and go out to the list pathway"
+msgstr "Сохранить и перейти к списку учебную тропу"
+
+#: admingeneral!
+msgid ""
+"Provide information about your pathway and make it searchable through the "
+"finders."
+msgstr "Заполните анкету о Вашем учебную тропу и сделать его поиска через искатели."
+
+#: admingeneral!
+msgid ""
+"Info about any necessary arrangements needed by the interested teacher "
+"before launching the activities described and/or proposed in the following "
+"sections."
+msgstr "Информация о любых необходимых мер, необходимых для заинтересованных учителей Перед запуском деятельности\nописанных и / или предложенный в следующих разделах."
+
+#: admingeneral!
+msgid ""
+"Give the relevant education curriculum which inform in a direct way about "
+"the prerequisite knowledge of the students to participate in the educational"
+" pathway."
+msgstr "Дайте соответствующие учебной программы, которые информируют в прямой форме, об отсутствии специальных знаний студентов для участия в учебную тропу."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that would be used inside the classroom for "
+"attracting the student's attention."
+msgstr "Опишите средства и материалы, которые будут использоваться внутри класса для привлечения внимания студентов."
+
+#: admingeneral!
+msgid ""
+"Format questions that will be presented to the students for further "
+"enhancement of their engagement in thinking about the target subject matter "
+"based on their existing knowledge."
+msgstr "Формат вопросов, которые будут представлены на студентов для дальнейшего расширения их участия в думает по этому поводу объекта съемки на основе существующих знаний."
+
+#: admingeneral!
+msgid ""
+"Describe the way that students can be encouraged to propose possible "
+"explanations to the questions emerged from the previous activity."
+msgstr "Опишите таким образом, что студенты могут быть поощрены предложить возможные объяснения на вопросы, вышла из предыдущей деятельности."
+
+#: admingeneral!
+msgid ""
+"Describe the means and material that will be used for facilitating the "
+"students to focus on evidence as a source of answers to scientific "
+"questions."
+msgstr "Опишите средства и материалы, которые будут использованы для содействия студентам сосредоточиться на показания в качестве источника ответов на научные вопросы."
+
+#: admingeneral!
+msgid ""
+"Locate the appropriate resource and/or the actual exhibit. Give details "
+"about the way that students will gather evidence according to the questions "
+"posed in the previous stages."
+msgstr "Найдите соответствующий ресурс и / или фактического выставляю. Подробно расскажите о том, как, что студенты будут собирать доказательства по на вопросы, заданные на предыдущих этапах."
+
+#: admingeneral!
+msgid "Explain the phases of the educational programme."
+msgstr "Объяснить фазы образовательной программы."
+
+#: admingeneral!
+msgid "Explain how the students groups will evaluate their own explanations."
+msgstr "Объясните, каким образом студенты группы будут оценивать свои собственные объяснения."
+
+#: admingeneral!
+msgid ""
+"Details on how to produce a report with the findings of students, presenting"
+" and justifying its proposed explanations to other groups, and to the "
+"teacher."
+msgstr "Подробнее о том, как подготовить доклад с выводами студентов, представление и обоснование предложенных объяснений других групп, а также учителя."
+
+#: admingeneral!
+msgid "Describe the context of the follow-up activities and materials"
+msgstr "Опишите контексте дополнительные задания и материалы"
+
+#: admingeneral!
+msgid ""
+"Give the contact info of the persons and the organization that are related "
+"with this pathway."
+msgstr "Дайте контактные данные лиц и организаций, которые связаны с этим учебную тропу"
+
+#: admingeneral!
+msgid ""
+"Give a basic description about the educational pathway. The means that will "
+"be used, the age range etc."
+msgstr "Дайте описание основных учебную тропу.Средство, которое будет использоваться, и т.д. возрасте."
+
+#: admingeneral!
+msgid ""
+"Set the activity context in a appropriate way in order to attract the "
+"attention of participants."
+msgstr "Установите в контексте деятельности соответствующим образом для того, чтобы привлечь внимание участников."
+
+#: admingeneral!
+msgid ""
+"Give guidelines on how the participants will fill in for example the "
+"questionnaires."
+msgstr "Дайте рекомендации по участникам заполнить, например, в анкетах."
+
+#: admingeneral!
+msgid ""
+"Give the differ kinds of games like crosswords, multiple choice questions "
+"etc. Explain how to play with them, in groups or individually."
+msgstr "Дайте различные виды игр, как кроссворды, вопросов множественного выбора и т.д. Объясните, как играть с ними, в группах или индивидуально."
+
+#: admingeneral!
+msgid ""
+"Evaluate the results of the games, congratulate the winner and explain to "
+"him what his present is and how he can receive it."
+msgstr "Оценка результатов игры, поздравляем победителя и объяснить ему, что его настоящее, и как он может получить его."
+
+#: admingeneral!
+msgid "Open Pathway"
+msgstr "Oткрытa учебнaя тропa"
