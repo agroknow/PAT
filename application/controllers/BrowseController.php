@@ -55,6 +55,6 @@ class BrowseController extends Omeka_Controller_Action
 		$this->view->assign(compact('menuexhibits'));
                 $this->view->assign(compact('menuexhibits_paging'));
 		
-        $this->_helper->viewRenderer->renderScript('index.php');
+        $this->_helper->viewRenderer->renderScript('browse.php');
     }
 }
