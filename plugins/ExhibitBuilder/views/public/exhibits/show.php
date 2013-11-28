@@ -415,27 +415,31 @@
 								
                                 $.each( file.metadata.lom.relation.relation, function(ck,cv) {
                                     relationLabel = file.metadata.lom.relation.label;
-                                    if (cv.kind.value!=undefined) {
-                                        relationString += '<span><b>'+cv.kind.value+':</b></span>';
+                                    if(cv.kind!=undefined){
+                                        if (cv.kind.value!=undefined) {
+                                            relationString += '<span><b>'+cv.kind.value+':</b></span>';
 									
-                                    }
-                                    if (cv.kind.value!=undefined) {
-                                        relationString += '<span> '+cv.entry.value+'</span>';
+                                        }
+                                        if (cv.entry.value!=undefined) {
+                                            relationString += '<span> '+cv.entry.value+'</span>';
 									
+                                        }
                                     }
 									
                                 });
 								
                             } else {
-                                if (file.metadata.lom.relation.relation.kind.value!=undefined) {
-                                    relationString += '<span><b>'+file.metadata.lom.relation.relation.kind.value+':</b></span>';
+                                if (file.metadata.lom.relation.relation.kind!=undefined){
+                                    if (file.metadata.lom.relation.relation.kind.value!=undefined) {
+                                        relationString += '<span><b>'+file.metadata.lom.relation.relation.kind.value+':</b></span>';
 									
-                                }
-                                if (file.metadata.lom.relation.relation.kind.value!=undefined) {
-                                    relationString += '<span> '+file.metadata.lom.relation.relation.entry.value+'</span>';
+                                    }
+                                    if (file.metadata.lom.relation.relation.entry.value!=undefined) {
+                                        relationString += '<span> '+file.metadata.lom.relation.relation.entry.value+'</span>';
 									
+                                    }
+                                    relationLabel = file.metadata.lom.relation.label;
                                 }
-                                relationLabel = file.metadata.lom.relation.label;
                             }
 							
                             imgInText.lb += '<span><b>'+relationLabel+':</b>';
