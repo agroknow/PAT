@@ -430,13 +430,17 @@
 								
                             } else {
                                 if (file.metadata.lom.relation.relation.kind!=undefined){
-                                    if (file.metadata.lom.relation.relation.kind.value!=undefined) {
-                                        relationString += '<span><b>'+file.metadata.lom.relation.relation.kind.value+':</b></span>';
+                                    if(file.metadata.lom.relation.relation.kind!=undefined ){
+                                        if (file.metadata.lom.relation.relation.kind.value!=undefined) {
+                                            relationString += '<span><b>'+file.metadata.lom.relation.relation.kind.value+':</b></span>';
 									
+                                        }
                                     }
-                                    if (file.metadata.lom.relation.relation.entry.value!=undefined) {
-                                        relationString += '<span> '+file.metadata.lom.relation.relation.entry.value+'</span>';
+                                    if(file.metadata.lom.relation.relation.entry!=undefined ){
+                                        if (file.metadata.lom.relation.relation.entry.value!=undefined) {
+                                            relationString += '<span> '+file.metadata.lom.relation.relation.entry.value+'</span>';
 									
+                                        }
                                     }
                                     relationLabel = file.metadata.lom.relation.label;
                                 }
