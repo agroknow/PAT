@@ -1,6 +1,6 @@
 <?php
 $title = __('Browse Exhibits by Tag');
-head('title' => $title, 'bodyclass' => 'exhibits');
+//head('title' => $title, 'bodyclass' => 'exhibits');
 ?>
 
 <h1><?php echo $title; ?></h1>
