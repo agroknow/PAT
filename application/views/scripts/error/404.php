@@ -47,7 +47,7 @@
         </section>
         
         <section class="inner clearfix footer">
-            <a href="http://www.natural-europe.eu/"><img src="../../../plugins/ExhibitBuilder/views/public/exhibits/images/logo_n.png" /></a>
+            <a href="http://www.natural-europe.eu/"><img src="<?php echo uri(''); ?>plugins/ExhibitBuilder/views/public/exhibits/images/logo_n.png" /></a>
         </section>
     </body>
 </html>
