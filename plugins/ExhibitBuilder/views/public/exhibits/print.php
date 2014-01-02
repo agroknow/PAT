@@ -64,7 +64,8 @@ foreach ($sections as $sections2) {
                     $metadatarecordvalue_res = $exec->fetch();
                     if (strlen($metadatarecordvalue_res['value']) > 0) {
                         if (is_array(getimagesize($metadatarecordvalue_res['value']))) {
-                            $content .= '<a href="' . $metadatarecordvalue_res['value'] . '" target="new"><img src="' . $metadatarecordvalue_res['value'] . '" style="width:150px; height:150px;"></a>';
+                            $metadatarecordvalue_res['value'] = str_replace('http://', '', $metadatarecordvalue_res['value']);
+                            $content .= '<a href="' . $metadatarecordvalue_res['value'] . '" target="new"><img src="http://images.weserv.nl/?url='.$metadatarecordvalue_res['value'].'&w=135&h=110&t=square&a=t" style="width:150px; height:150px;"></a>';
                         } else {
                             $content .= '<a href="' . $metadatarecordvalue_res['value'] . '" target="new">' . $metadatarecordvalue_res['value'] . '</a>';
                         }
@@ -99,11 +100,7 @@ foreach ($sections as $sections2) {
                     $metadatarecordvalue_res = $exec->fetch();
 
                     if (strlen($metadatarecordvalue_res['value']) > 0) {
-                        if (is_array(getimagesize($metadatarecordvalue_res['value']))) {
-                            $outputteasers .= '<a href="' . $metadatarecordvalue_res['value'] . '" target="new"><img src="' . $metadatarecordvalue_res['value'] . '" style="width:150px; height:150px;"></a>';
-                        } else {
                             $outputteasers .= '<a href="' . $metadatarecordvalue_res['value'] . '" target="new">' . $metadatarecordvalue_res['value'] . '</a>';
-                        }
                     }
                 }
             }
