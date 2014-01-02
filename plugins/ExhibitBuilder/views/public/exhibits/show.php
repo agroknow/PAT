@@ -106,7 +106,7 @@
                 <section class="fl clearfix social">
 
                     <a href="mailto:?subject='<?php echo h($exhibit->title); ?>'&body=http://<?php echo $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; ?>" class="email" data-translation="Email">Email it!</a>
-                    <a href="javascript:void(0);" class="print" data-translation="Print">Print it!</a>
+                    <a target="_blank" href="<?php echo uri('exhibits/pdfexport?slug='.$exhibit->slug.'&lang='.$_SESSION['get_language'].'');?>" class="print" data-translation="Print">Print it!</a>
                     <a target="_blank" href="https://facebook.com/sharer.php?u=http://<?php echo $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; ?>" class="socbuttons fb">facebook</a>
                     <a target="_blank" href="https://twitter.com/intent/tweet?url=http://<?php echo $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; ?>&text='<?php echo h($exhibit->title); ?>'" class="socbuttons tw">twitter</a>
                     <a target="_blank" href="https://plus.google.com/share?url=http://<?php echo $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; ?>" class="socbuttons gp">google+</a>

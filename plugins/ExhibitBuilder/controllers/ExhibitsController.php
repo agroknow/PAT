@@ -258,6 +258,22 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         $this->getResponse()->setHeader('Content-Type', 'application/json');
         $this->renderExhibit(compact('exhibit'), 'summary');
     }
+    //Add printing functionality
+    public function pdfexportAction() {
+        $_GET['slug']=$_GET['slug'];
+        $exhibit = $this->_findByExhibitSlug($_GET['slug']);
+        if (!$exhibit) {
+            $this->errorAction();
+        }
+        
+        fire_plugin_hook('show_exhibit', $exhibit);
+
+        $this->getResponse()->setHeader('Content-type', 'application/pdf', true);
+
+        $this->renderExhibit(compact('exhibit'), 'print');
+        
+
+    }
 
     /**
      * Figure out how to render the exhibit.  
@@ -272,7 +288,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
         $this->view->assign($vars);
 
         /* If we don't pass a valid value to $toRender, thow an exception. */
-        if (!in_array($toRender, array('show', 'summary', 'item'))) {
+        if (!in_array($toRender, array('show', 'summary', 'item', 'print'))) {
             throw new Exception('You gotta render some stuff because whatever!');
         }
         return $this->render($toRender);
