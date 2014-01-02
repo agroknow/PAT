@@ -47,6 +47,9 @@ foreach ($sections as $sections2) {
             $pagestexttext = trim($pagestext['text']);
             $pagestexttext = trim($pagestexttext, chr(0xC2) . chr(0xA0) . chr(0xb));
             $pagestexttext = str_replace("", " ", $pagestext['text']);
+            $startPoint = '<iframe';
+            $endPoint = '</iframe>';
+            $pagestexttext = preg_replace('#('.preg_quote($startPoint).')(.*)('.preg_quote($endPoint).')#si', '', $pagestexttext);
 
             $content .= trim($pagestexttext) . "<br>";
             if ($pagestext['item_id'] > 0) {
@@ -117,9 +120,11 @@ $content = '<page style="font-family: freeserif"><br />' . nl2br($content) . '</
 
 // convert to PDF
 try {
-    $html2pdf = new HTML2PDF('P', 'A4', 'en');
+    //$html2pdf = new HTML2PDF('P', 'A4', 'en');
+    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8', array(10, 10, 10, 10)); 
     $html2pdf->pdf->SetTitle(h($exhibit['title']));
     $html2pdf->pdf->SetDisplayMode('real');
+    $html2pdf->pdf->setRTL($enable);
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output(h($exhibit['title']) . '.pdf');
     //$html2pdf->Output(''.$exhibit['title'].'.pdf');
