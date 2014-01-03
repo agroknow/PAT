@@ -49,6 +49,16 @@ class ExhibitTable extends Omeka_Db_Table
                 case 'featured':
                     $this->filterByFeatured($select, $params['featured']);
                     break;
+                // Added by gkista!!! for checking the users for same institution.
+                case 'user':
+                    $users = explode(',', $paramValue);
+                    $select->joinInner(array('en'=>$db->entities_relation), "e.id = en.relation_id", array());
+                    $forsql = '';
+                    foreach ($users as $k => $user) {
+                        $forsql .= '(en.entity_id = '.trim($user) .' and en.relationship_id=1) or ';
+                    }
+                    $forsql = substr($forsql, 0, -4);
+                    $select->where($forsql);
             }
         }
         

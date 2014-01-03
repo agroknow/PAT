@@ -51,11 +51,11 @@ head(array('title' => $title, 'bodyclass' => 'exhibits'));
         </div>
 
     <?php else: //Show the exhibits in a table?>
-        <?php $user = current_user();
-        if ($user['id'] == 1 or $user['role'] == 'super') {
+        <?php //$user = current_user();
+        //if ($user['id'] == 1 or $user['role'] == 'super') {
             ?>
             <div class="pagination"><?php echo pagination_links(); ?></div>
-    <?php } ?>
+    <?php //} ?>
 
         <table id="exhibits">
             <col id="col-id" />
@@ -84,12 +84,13 @@ head(array('title' => $title, 'bodyclass' => 'exhibits'));
             </thead>
             <tbody>
 
-                <?php if ($user['id'] != 1 and $user['role'] != 'super') {
-                    $exhibits = exhibit_builder_get_exhibits(array('sort' => 'alpha'));
-                } ?>       
+                <?php //if ($user['id'] != 1 and $user['role'] != 'super') {
+                    //$exhibits = exhibit_builder_get_exhibits(array('sort' => 'alpha'));
+                //} 
+                ?>       
     <?php foreach ($exhibits as $key => $exhibit): ?>
 
-                        <?php if ($user['id'] == 1 or $user['role'] == 'super' or $exhibit->wasAddedBy(current_user()) or sameinstitutionexhibit($exhibit, $user)) {  //if he has add the exhibit ?>       
+     
                         <tr class="exhibit <?php if ($key % 2 == 1) echo ' even'; else echo ' odd'; ?>">
                             <td>
                                 <?php echo link_to($exhibit, 'edit', html_escape($exhibit->title), array('class' => 'edit', 'onclick' => 'showloader();')); ?>
@@ -127,13 +128,13 @@ head(array('title' => $title, 'bodyclass' => 'exhibits'));
                         <?php endif; ?>
                             </td>
                         </tr>
-            <?php } //natural europe if ceate pathway ?>
+
         <?php endforeach; ?>
             </tbody>
         </table>
-        <?php if ($user['id'] == 1 or $user['role'] == 'super') { ?>
+        <?php //if ($user['id'] == 1 or $user['role'] == 'super') { ?>
             <div class="pagination"><?php echo pagination_links(); ?></div>
-    <?php } ?>
+    <?php //} ?>
 <?php endif; ?>
 
 </div>

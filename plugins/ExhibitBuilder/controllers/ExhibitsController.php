@@ -66,6 +66,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
                     break;
             }
         }
+        $user = current_user(); //print_r($user);
         //custom code for loop all exhibits that are public
         $menuexhibits = exhibit_builder_get_exhibits(array('public' => '1', 'sort' => 'recent'));
         $this->view->assign(compact('menuexhibits'));
@@ -80,32 +81,48 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
 
         $params = $this->_getAllParams();
         $user = current_user(); //print_r($user);
-        $params['user'] = $user['entity_id'];
+        // Add users to bring their exhibits
+        if ($user['id'] != 1 and $user['role'] != 'super') {
+            $params['user'] = $user['entity_id'];
+            // get acl file properties
+            $acl = get_acl();
+            //if user can edit same institution exhibits
+            $canEditSameInstitution = $acl->isAllowed($user, 'ExhibitBuilder_Exhibits', 'editSameInstitution');
+            $sameinstitution = 0;
+              if ($canEditSameInstitution && strlen($user['institution']) > 0 && isset($user['institution'])) {
+                 $sqlWhereClause = "institution='" . $user['institution'] . "'";
+                 $tusers = get_db()->getTable('User')->findBySql($sqlWhereClause);
+                     foreach ($tusers as $tusers) {
+                         $params['user'] .= ','.$tusers['entity_id'];
+                     }
+              }
+        }
 
-
+        
         $recordsPerPage = $this->_getBrowseRecordsPerPage();
         $currentPage = $this->_getBrowseRecordsPage();
 
         $table = $this->getTable($this->_modelClass);
-
+        
+        $params['sort'] = 'alpha';
         $records = $table->findBy($params, $recordsPerPage, $currentPage);
 
         // print_r($records);
-        $user = current_user();
-        $totalrecordsq = $table->findAll();
-        $count = 0;
-        foreach ($totalrecordsq as $keytotal => $totalrecord): //echo $record['id']."<br>";
-            if ($user['id'] == 1 or $user['role'] == 'super' or $totalrecord->wasAddedBy(current_user()) or sameinstitutionexhibit($totalrecord, $user)) {
-                $count+=1;
-            }
-        endforeach;
+//        $user = current_user();
+//        $totalrecordsq = $table->findAll();
+//        $count = 0;
+//        foreach ($totalrecordsq as $keytotal => $totalrecord): //echo $record['id']."<br>";
+//            if ($user['id'] == 1 or $user['role'] == 'super' or $totalrecord->wasAddedBy(current_user()) or sameinstitutionexhibit($totalrecord, $user)) {
+//                $count+=1;
+//            }
+//        endforeach;
 
-        if ($user['id'] != 1 or $user['role'] != 'super') {
-            $totalRecords = $count;
-        } else {
+//        if ($user['id'] != 1 or $user['role'] != 'super') {
+//            $totalRecords = $count;
+//        } else {
 
             $totalRecords = $table->count($params);
-        }
+//        }
 
         Zend_Registry::set($pluralName, $records);
 
@@ -127,7 +144,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_Action {
 
         // old code which call browse action at omeka/controller/action parent::browseAction();
     }
-
+    
     protected function _findByExhibitSlug($exhibitSlug = null) {
         if (!$exhibitSlug) {
             $exhibitSlug = $this->_getParam('slug');

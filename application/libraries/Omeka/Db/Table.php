@@ -300,7 +300,7 @@ class Omeka_Db_Table {
         if ($sortParams) {
             list($sortField, $sortDir) = $sortParams;
             $this->applySorting($select, $sortField, $sortDir);
-        }
+        }     
         $this->applySearchFilters($select, $params);
         $this->_fireBrowseSqlHook($select, $params);
         //echo $select."<br><br>"; break;
