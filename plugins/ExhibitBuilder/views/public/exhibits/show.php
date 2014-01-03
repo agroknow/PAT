@@ -546,7 +546,7 @@
                                         if (vo.file != undefined) {
 
                                             var img = (vo.file.thumbs != undefined) ? vo.file.thumbs.full : vo.file.metadata.lom.general.identifier.entry.value;
-                                            var tmpImg = "http://images.weserv.nl/?url=" + img.replace("http://", "") + "&w=135&h=110&t=square&a=t";
+                                            var tmpImg = "http://images.weserv.nl/?url=" + img.replace("http://", "") + "&w=175&h=140&t=square&a=t";
                                             var imgInText = setLightBox(vo.file, 390);
 
                                             if (!galIsOpened) {
@@ -554,7 +554,7 @@
                                                 galIsOpened = true;
                                             }
 
-                                            returnString += '<a class="lbtrigger" href="#inline' + imgInText.id + '"><img height="110" src="' + tmpImg + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'height\',\'110\');this.setAttribute(\'onerror\',\'null\');" data-img="' + img + '" /><span>' + vo.file.metadata.lom.general.title.value + '</span></a>' + imgInText.lb; // thumb
+                                            returnString += '<a class="lbtrigger" href="#inline' + imgInText.id + '"><img height="140" src="' + tmpImg + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'height\',\'140\');this.setAttribute(\'onerror\',\'null\');" data-img="' + img + '" /><span>' + vo.file.metadata.lom.general.title.value + '</span></a>' + imgInText.lb; // thumb
 
                                             //  get images for gallery
                                             var gTmp = {};
