@@ -658,6 +658,12 @@ function injestitem() {
     $last_record_id = $row["LAST_EXHIBIT_ID"];
     $exec = null;
 
+    $metadataFile = Zend_Registry::get('metadataFile'); /////read metadata file
+    //general identifier prefix
+    $general_identifier_prefix = $metadataFile[metadata_schema_resources][identifier_prefix];
+    $general_identifier_prefix = str_replace("'","",$general_identifier_prefix);
+    $general_indetifier = ''.$general_identifier_prefix.$last_record_id.'';
+
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id) VALUES (?,?,?,?,?)";
     $execmetadatarecordSql = $db->query($metadatarecordSql, array(34, $_POST['source'], 'none', 1, $last_record_id));
     $exec = null;
@@ -821,7 +827,7 @@ function injestitem() {
     $execmetadatarecordSql = $db->query($metadatarecordSql);
     $exec = null;
 
-    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','" . $_POST['identifier'] . "','none',1, " . $last_record_id . ",1,0)";
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES ('55','" . $general_indetifier.  "','none',1, " . $last_record_id . ",1,0)";
     $execmetadatarecordSql = $db->query($metadatarecordSql);
     $exec = null;
 
@@ -1020,12 +1026,12 @@ function savemetadataitem($postvariable = NULL, $object_type = 'item') {
 
     if (isset($_POST['item_url']) and $metadataFile[metadata_schema_resources][element_hierarchy_location] != false and $metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] != false) {
         $_POST[$metadataFile[metadata_schema_resources][element_hierarchy_location] . '_1'] = $_POST['item_url'];
-        $_POST[$metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] . '_1'] = $_POST['item_url'];
+        //$_POST[$metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] . '_1'] = $_POST['item_url'];
     }
 //print_r($_POST);break;
     foreach ($_POST as $var => $value) {
         $var12 = explode("_", $var); //split form name at _
-        if ($var != 'item_id' and $var != 'title' and $var != 'delete_files' and $var != 'Pages' and $var != 'hdnLine' and $var != 'hdnLine_group_total' and $var != 'hdnLine_group_vcard' and $var != 'hdnLine_group_total_parent' and $var != 'slug' and $var != 'public' and $var != 'Sections' and $var != 'save_exhibit' and $var != 'date_modified' and $var != 'save_meta' and $var != 'item_url' and $var != 'collection_id' and $var12[0] != 'translatedanalytics' and $var12[0] != 'fortranslationanalytics' and $var12[0] != 'translatedanalyticslan' and $var12[0] != 'fortranslationanalyticslan' and $var12[0] != 'translatedanalyticsservice') {
+        if ($var != 'item_id' and $var != 'title' and $var != 'delete_files' and $var != 'Pages' and $var != 'hdnLine' and $var != 'hdnLine_group_total' and $var != 'hdnLine_group_vcard' and $var != 'hdnLine_group_total_parent' and $var != 'slug' and $var != 'public' and $var != 'Sections' and $var != 'save_exhibit' and $var != 'date_modified' and $var != 'save_meta' and $var != 'item_url' and $var != 'collection_id' and $var12[0] != 'translatedanalytics' and $var12[0] != 'fortranslationanalytics' and $var12[0] != 'translatedanalyticslan' and $var12[0] != 'fortranslationanalyticslan' and $var12[0] != 'translatedanalyticsservice' and $var12[0] != 'setstarrating') {
             $var1 = explode("_", $var); //split form name at _
             if ($var1[0] == 'vcard') { //if is vcard!!!
                 $var = $var1[2];
@@ -1314,6 +1320,10 @@ function savenewitem($itid, $formtype) {
     $last_record_id = $row["LAST_EXHIBIT_ID"];
     $exec = null;
 
+    //general identifier prefix
+    $general_identifier_prefix = $metadataFile[metadata_schema_resources][identifier_prefix];
+    $general_identifier_prefix = str_replace("'","",$general_identifier_prefix);
+    $general_indetifier = ''.$general_identifier_prefix.$last_record_id.'';
 
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES (?,?,?,?,?,?)";
     if ($metadataFile[metadata_schema_resources][element_hierarchy_description] != false) {
@@ -1351,7 +1361,7 @@ function savenewitem($itid, $formtype) {
         }
 
         if ($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] != false) {
-            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry], $path_url, 'none', 1, $last_record_id, 1, 0)); /////identifier entry
+            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry], $general_indetifier, 'none', 1, $last_record_id, 1, 0)); /////identifier entry
         }
     }
     if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent] != false) { ///if medatadata-identifier parent exist
@@ -2141,6 +2151,11 @@ function createresourcefromtemplate($record_id, $rowsqlfortitle) {
 
     $metadataFile = Zend_Registry::get('metadataFile'); /////read metadata file
 
+    //general identifier prefix
+    $general_identifier_prefix = $metadataFile[metadata_schema_resources][identifier_prefix];
+    $general_identifier_prefix = str_replace("'","",$general_identifier_prefix);
+    $general_indetifier = ''.$general_identifier_prefix.$last_record_id.'';
+    
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?)";
     if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent] != false) {
         $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent], 'Parent Element', 'none', 1, $last_record_id, 1, 0)); ///location in metadata record
@@ -2188,6 +2203,15 @@ function createresourcefromtemplate($record_id, $rowsqlfortitle) {
 //echo "<br>";
             //$execmetadatarecordSql = $db->query($metadatarecordSql);
             $exec = null;
+        }
+    }
+
+    // insert general identifier to resource that has not from template
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE value=?";
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_identifier_parent] != false) { ///if identifier parent exist
+
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] != false) {
+            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry], $general_indetifier, 'none', 1, $last_record_id, 1, 0, $general_indetifier)); /////identifier entry
         }
     }
 

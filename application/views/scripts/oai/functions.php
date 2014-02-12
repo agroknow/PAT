@@ -371,7 +371,7 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
 
 
                             foreach ($datageneral5 as $datageneral5) {
-                                $ontology2_en_value_string='';
+                                $ontology2_en_value_string = '';
                                 if ($datageneral6['datatype_id'] == 5) {
                                     if (strlen($datageneral5['classification_id']) > 0) {
 
@@ -456,11 +456,10 @@ function preview_elements($datageneral4, $datageneral5, $metadatarecord, $datage
                         } elseif ($datageneral4['machine_name'] == 'purpose_educational_objective') {
                             $class_source = "Revised Bloom's Taxonomy";
                             $taxon_id_value = $ontology1;
-                            $taxon_entry=$ontology3;
+                            $taxon_entry = $ontology3;
                         } else {
                             $class_source = '';
                         }
-                        
                     }
                     ////////////for NE/////////////////
                     ////////////////////create puprose value from element machine name//////////////////////
@@ -644,7 +643,7 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
 
     $multi = 0;
     $previousmulti = 0;
-
+    $metadataFile = Zend_Registry::get('metadataFile'); /////read metadata file
 
 
 
@@ -780,9 +779,13 @@ function preview_elements_from_datatype($datageneral4, $datageneral5, $metadatar
     } else {
 
         foreach ($datageneral5 as $datageneral5) {
-            $output.= '<' . $machine_name . '>' . "\n";
+            $output.= '<' . $machine_name . '>' . "";
             $datageneral5['value'] = str_replace('&amp;', '&', $datageneral5['value']);
-            $output.= '<![CDATA[' . $datageneral5['value'] . ']]>';
+            if (($datageneral5['element_hierarchy'] == $metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] or $datageneral5['element_hierarchy'] == $metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog] or $datageneral5['element_hierarchy'] == $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog] or $datageneral5['element_hierarchy'] == $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry]) and $datageneral5['multi'] == 1) {
+                $output.='' . $datageneral5['value'] . '';
+            } else {
+                $output.= '<![CDATA[' . $datageneral5['value'] . ']]>';
+            }
             $output.= '</' . $machine_name . '>' . "\n";
             //$output.=xmlformat($datageneral5['value'], $machine_name, '', $indent);
         }

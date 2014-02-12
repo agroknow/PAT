@@ -204,7 +204,7 @@ function exhibit_builder_exhibit_form_item($item, $orderOnForm = null, $label = 
 
         $html .= '</div>' . "\n";
     } else {
-        $html .= '<a href="javascript:void(0);" id="youtube_show_in_im_'.$orderOnForm.'"><img width="100" height="75" src="'.uri('themes/default/images/add_supporting_material.png').'" style="position:absolute; left: 29px; top:60px;"></a><p class="attach-item-link"><a href="#" class="button">' . __('Insert Image') . '</a></p><br><span style="position:relative; left:120px; width:500px;">' . __('Insert image: the image files added here will appear within the corpus of your pathway.') . '</span>' . "\n";
+        $html .= '<a href="javascript:void(0);" id="youtube_show_in_im_' . $orderOnForm . '"><img width="100" height="75" src="' . uri('themes/default/images/add_supporting_material.png') . '" style="position:absolute; left: 29px; top:60px;"></a><p class="attach-item-link"><a href="#" class="button">' . __('Insert Image') . '</a></p><br><span style="position:relative; left:120px; width:500px;">' . __('Insert image: the image files added here will appear within the corpus of your pathway.') . '</span>' . "\n";
     }
 
     // If this is ordered on the form, make sure the generated form element indicates its order on the form.
@@ -690,21 +690,21 @@ function link_to_exhibit($text = null, $props = array(), $exhibitSection = null,
 
 function exhibit_picture($ex_eid, $size, $page, $slugsec = 'to-begin-with') {
 
-require_once 'Omeka/Core.php';
-        $core = new Omeka_Core;
+    require_once 'Omeka/Core.php';
+    $core = new Omeka_Core;
 
+    try {
+        $db = $core->getDb();
+
+        //Force the Zend_Db to make the connection and catch connection errors
         try {
-            $db = $core->getDb();
-
-            //Force the Zend_Db to make the connection and catch connection errors
-            try {
-                $mysqli = $db->getConnection()->getConnection();
-            } catch (Exception $e) {
-                throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
-            }
+            $mysqli = $db->getConnection()->getConnection();
         } catch (Exception $e) {
-            die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+            throw new Exception("<h1>MySQL connection error: [" . mysqli_connect_errno() . "]</h1>" . "<p>" . $e->getMessage() . '</p>');
         }
+    } catch (Exception $e) {
+        die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
+    }
     $db->query("SET NAMES 'utf8'");
 
     $ex_eid = (int) $ex_eid;
@@ -868,7 +868,7 @@ function bypass() {
     $sectiondb = $db->ExhibitSection;
     $sectionPagedb = $db->ExhibitPage;
     $sectionPageTextdb = $db->ExhibitPageEntry;
-    $metadataFile= Zend_Registry::get('metadataFile');
+    $metadataFile = Zend_Registry::get('metadataFile');
     $date_modified = date("Y-m-d H:i:s");
 
     $maxIdSQL = "SELECT MAX(id) AS MAX_ID FROM " . $exhibitdb . " LIMIT 0,1";
@@ -880,7 +880,7 @@ function bypass() {
     if ($_POST['slug']) {
         $path_slug = toSlug($_POST['slug']);
     } else {
-        
+
         $path_slug = toSlug($_POST['title']);
         //$path_slug = str_replace(" ", "-", $_POST['title']);
         //$path_slug = preg_replace('/[^a-zA-Z0-9\-_]/', '', $path_slug);
@@ -911,7 +911,7 @@ function bypass() {
     } else {
         $path_description = "";
     }
-    $path_language = $_POST['language']; 
+    $path_language = $_POST['language'];
     $path_language = find_voc_rec_id($path_language, $metadataFile[metadata_schema_resources][vocabulary_record_languages]);
     if ($_POST['public']) {
         $path_public = $_POST['public'];
@@ -929,8 +929,8 @@ function bypass() {
     $pathtopath = $uri . "/exhibits/show/" . $path_slug . "/to-begin-with";
 
     //echo $mainAttributesSql = "INSERT INTO $exhibitdb (id, title, description, credits, featured, public, theme, slug, target_group, date_modified) VALUES (NULL,'" . $path_title . "',\"Pathway's Subtitle\", 'Write the credits for this exhibits. If no credits, then erase this line', 0, " . $path_public . ", '','" . $path_slug . "', " . $template . ",'')";
-$maxIdSQL = "INSERT INTO $exhibitdb (id, title, description, credits, featured, public, theme, slug, target_group, date_modified) VALUES (?,?,?,?,?,?,?,?,?,?)";
-    $exec = $db->exec($maxIdSQL, array(NULL,$path_title,"Pathway's Subtitle", 'Write the credits for this exhibits. If no credits, then erase this line', 0, $path_public, NULL,$path_slug,$template,'')); //exhibit add
+    $maxIdSQL = "INSERT INTO $exhibitdb (id, title, description, credits, featured, public, theme, slug, target_group, date_modified) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    $exec = $db->exec($maxIdSQL, array(NULL, $path_title, "Pathway's Subtitle", 'Write the credits for this exhibits. If no credits, then erase this line', 0, $path_public, NULL, $path_slug, $template, '')); //exhibit add
 //echo $mainAttributesSql;break;
     //$db->exec($mainAttributesSql);
 
@@ -950,131 +950,125 @@ $maxIdSQL = "INSERT INTO $exhibitdb (id, title, description, credits, featured, 
     $row = $exec->fetch();
     $last_record_id = $row["LAST_EXHIBIT_ID"];
     $exec = null;
-    
+
+    //general identifier prefix
+    $general_identifier_prefix = $metadataFile[metadata_schema_resources][identifier_prefix];
+    $general_identifier_prefix = str_replace("'", "", $general_identifier_prefix);
+    $general_indetifier = '' . $general_identifier_prefix . $last_record_id . '';
+
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?,?)";
-    if($metadataFile[metadata_schema_resources][element_hierarchy_resource_language]!=false){
-      $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_resource_language],NULL,'none',$path_language,1, $last_record_id,1,1)); ///metadata language for resource - pathway
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_resource_language] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_resource_language], NULL, 'none', $path_language, 1, $last_record_id, 1, 1)); ///metadata language for resource - pathway
     }
-    if($metadataFile[metadata_schema_resources][element_hierarchy_pathways_type]!=false and $metadataFile[metadata_schema_resources][vocabulary_record_pathways_standar_type]!=false){
-      $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_pathways_type],NULL,'none',$metadataFile[metadata_schema_resources][vocabulary_record_pathways_standar_type],1, $last_record_id,1,0));  ///metadata type for pathways standar to seperate from resources
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_pathways_type] != false and $metadataFile[metadata_schema_resources][vocabulary_record_pathways_standar_type] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_pathways_type], NULL, 'none', $metadataFile[metadata_schema_resources][vocabulary_record_pathways_standar_type], 1, $last_record_id, 1, 0));  ///metadata type for pathways standar to seperate from resources
     }
-    if($metadataFile[metadata_schema_resources][element_hierarchy_format]!=false){
-     $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_format],NULL,'none',$formetypetext,1, $last_record_id,1,1)); /////format type
-    } 
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_language]!=false and $metadataFile[metadata_schema_resources][vocabulary_record_languages_english]!=false){
-      $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_language],NULL,'none',$metadataFile[metadata_schema_resources][vocabulary_record_languages_english],1, $last_record_id,1,1)); ///metadata language in metadata record  
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_format] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_format], NULL, 'none', $formetypetext, 1, $last_record_id, 1, 1)); /////format type
     }
-    
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_language] != false and $metadataFile[metadata_schema_resources][vocabulary_record_languages_english] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_language], NULL, 'none', $metadataFile[metadata_schema_resources][vocabulary_record_languages_english], 1, $last_record_id, 1, 1)); ///metadata language in metadata record  
+    }
+
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer) VALUES (?,?,?,?,?,?)";
-    if($metadataFile[metadata_schema_resources][element_hierarchy_description]!=false){
-      $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_description], $path_description, 'en', 1, $last_record_id, 1)); ///description in metadata record  
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_description] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_description], $path_description, 'en', 1, $last_record_id, 1)); ///description in metadata record  
     }
-    if($metadataFile[metadata_schema_resources][element_hierarchy_title]!=false){
-      $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_title], $path_title, 'en', 1, $last_record_id, 1)); ///title in metadata record
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_title] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_title], $path_title, 'en', 1, $last_record_id, 1)); ///title in metadata record
     }
 
-    
+
     $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?)";
-    if($metadataFile[metadata_schema_resources][element_hierarchy_location]!=false){
-      $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_location], $pathtopath, 'none', 1, $last_record_id, 1, 0)); ///location in metadata record
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_location] != false) {
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_location], $pathtopath, 'none', 1, $last_record_id, 1, 0)); ///location in metadata record
     }
     $execmetadatarecordSql = null;
-    
-    
-    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?)"; 
-    if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_parent]!=false){ ///if identifier parent exist
-       
-       
-       $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_parent],'Parent Element','none',1, $last_record_id,1,0)); /////identifier parent
-       
-       if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog]!=false){
-       $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog],'URI','none',1, $last_record_id,1,0)); /////identifier catalog
-       }
-       
-       if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry]!=false){
-       $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry],$pathtopath,'none',1, $last_record_id,1,0)); /////identifier entry
-       }
-       
+
+
+    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (?,?,?,?,?,?,?)";
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_identifier_parent] != false) { ///if identifier parent exist
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_parent], 'Parent Element', 'none', 1, $last_record_id, 1, 0)); /////identifier parent
+
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog] != false) {
+            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog], 'URI', 'none', 1, $last_record_id, 1, 0)); /////identifier catalog
+        }
+
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry] != false) {
+            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry], $general_indetifier, 'none', 1, $last_record_id, 1, 0)); /////identifier entry
+        }
     }
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent]!=false){ ///if medatadata-identifier parent exist
-       
-       
-       $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent],'Parent Element','none',1, $last_record_id,1,0)); /////medatadata-identifier parent
-       
-       if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog]!=false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog_value]!=false){
-       $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog],$metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog_value],'none',1, $last_record_id,1,0)); /////medatadata-identifier catalog
-       }
-       
-       if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry]!=false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry_value_prefix]!=false){
-       $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry],$metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry_value_prefix].''. $last_record_id ,'none',1, $last_record_id,1,0)); /////medatadata-identifier entry
-       }
-            
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent] != false) { ///if medatadata-identifier parent exist
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_parent], 'Parent Element', 'none', 1, $last_record_id, 1, 0)); /////medatadata-identifier parent
+
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog] != false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog_value] != false) {
+            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog], $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_catalog_value], 'none', 1, $last_record_id, 1, 0)); /////medatadata-identifier catalog
+        }
+
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry] != false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry_value_prefix] != false) {
+            $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry], $metadataFile[metadata_schema_resources][element_hierarchy_metadata_identifier_entry_value_prefix] . '' . $last_record_id, 'none', 1, $last_record_id, 1, 0)); /////medatadata-identifier entry
+        }
     }
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema]!=false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema_id]!=false){///if medatadata-schema exist
-      $execmetadatarecordSql=$db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema_id],$metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema],'none',1, $last_record_id,1,0)); /////medatadata-schema   
-     }
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema] != false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema_id] != false) {///if medatadata-schema exist
+        $execmetadatarecordSql = $db->query($metadatarecordSql, array($metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema_id], $metadataFile[metadata_schema_resources][element_hierarchy_metadata_schema], 'none', 1, $last_record_id, 1, 0)); /////medatadata-schema   
+    }
     $execmetadatarecordSql = null;
 
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_parent]!=false){ ///if medatadata-creator parent exist
-        
-    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_parent].",'Parent Element','none',1, " . $last_record_id . ",1,0)";
-    $execmetadatarecordSql = $db->query($metadatarecordSql);
-    $execmetadatarecordSql = null;
-    
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role]!=false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role_value]!= false){  /////metadata creator role
-      $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES (".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role].",NULL,'none',".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role_value].",1, " . $last_record_id . ",1,0)";
-    $execmetadatarecordSql = $db->query($metadatarecordSql);
-    $execmetadatarecordSql = null;   
-    }
-     
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_vcard]!=false){ /////metdata creator vcard
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_parent] != false) { ///if medatadata-creator parent exist
+        $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (" . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_parent] . ",'Parent Element','none',1, " . $last_record_id . ",1,0)";
+        $execmetadatarecordSql = $db->query($metadatarecordSql);
+        $execmetadatarecordSql = null;
 
-///////////////////////vcard///////////////////////////
-    $entityuser = current_user(); //print_r($entityuser); break;
-    $vcard_name = $entityuser['first_name'];
-    $vcard_surname = $entityuser['last_name'];
-    $vcard_email = $entityuser['email'];
-    $vcard_organization = $entityuser['institution'];
-
-    if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
-
-        $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
-        $execchechvcard = $db->query($chechvcard);
-        $result_chechvcard = $execchechvcard->fetch();
-        $execchechvcard = null;
-
-        if (strlen($result_chechvcard['id']) > 0) {
-
-            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES (".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_vcard].",'creator','none',1, " . $last_record_id . ",1," . $result_chechvcard['id'] . ",0)";
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role] != false and $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role_value] != false) {  /////metadata creator role
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, vocabulary_record_id, multi, record_id, parent_indexer,is_editable) VALUES (" . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role] . ",NULL,'none'," . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_role_value] . ",1, " . $last_record_id . ",1,0)";
             $execmetadatarecordSql = $db->query($metadatarecordSql);
-            $exec = null;
-        } else {
-            $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
-            $execchechvcardins = $db->query($chechvcardins);
-            $result_chechvcardins = $execchechvcardins->fetch();
-            $execchechvcardins = null;
+            $execmetadatarecordSql = null;
+        }
 
-            $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
-            $execchechvcardnew = $db->query($chechvcardnew);
-            $result_chechvcardnew = $execchechvcardnew->fetch();
-            $execchechvcardnew = null;
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_vcard] != false) { /////metdata creator vcard
+///////////////////////vcard///////////////////////////
+            $entityuser = current_user(); //print_r($entityuser); break;
+            $vcard_name = $entityuser['first_name'];
+            $vcard_surname = $entityuser['last_name'];
+            $vcard_email = $entityuser['email'];
+            $vcard_organization = $entityuser['institution'];
 
-            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES (".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_vcard].",'creator','none',1, " . $last_record_id . ",1," . $result_chechvcardnew['id'] . ",0)";
+            if (strlen($vcard_name) > 0 or strlen($vcard_surname) > 0 or strlen($vcard_email) > 0 or strlen($vcard_organization) > 0) {
+
+                $chechvcard = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+                $execchechvcard = $db->query($chechvcard);
+                $result_chechvcard = $execchechvcard->fetch();
+                $execchechvcard = null;
+
+                if (strlen($result_chechvcard['id']) > 0) {
+
+                    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES (" . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_vcard] . ",'creator','none',1, " . $last_record_id . ",1," . $result_chechvcard['id'] . ",0)";
+                    $execmetadatarecordSql = $db->query($metadatarecordSql);
+                    $exec = null;
+                } else {
+                    $chechvcardins = "insert into metadata_vcard SET name='" . $vcard_name . "',surname='" . $vcard_surname . "',email='" . $vcard_email . "',organization='" . $vcard_organization . "'";
+                    $execchechvcardins = $db->query($chechvcardins);
+                    $result_chechvcardins = $execchechvcardins->fetch();
+                    $execchechvcardins = null;
+
+                    $chechvcardnew = "select * from metadata_vcard WHERE name='" . $vcard_name . "' and surname='" . $vcard_surname . "' and email='" . $vcard_email . "' and organization='" . $vcard_organization . "'";
+                    $execchechvcardnew = $db->query($chechvcardnew);
+                    $result_chechvcardnew = $execchechvcardnew->fetch();
+                    $execchechvcardnew = null;
+
+                    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,vcard_id,is_editable) VALUES (" . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_vcard] . ",'creator','none',1, " . $last_record_id . ",1," . $result_chechvcardnew['id'] . ",0)";
+                    $execmetadatarecordSql = $db->query($metadatarecordSql);
+                    $exec = null;
+                }
+            }//if isset one value from vcard
+///////////////////////end vcard///////////////////////////
+        }
+
+        if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_date] != false) { /////metdata creator vcard
+            $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (" . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_date] . ",'" . $date_modified . "','none',1, " . $last_record_id . ",1,0)";
             $execmetadatarecordSql = $db->query($metadatarecordSql);
             $exec = null;
         }
-    }//if isset one value from vcard
-///////////////////////end vcard///////////////////////////
-
-}
-    
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_date]!=false){ /////metdata creator vcard
-
-    $metadatarecordSql = "INSERT INTO metadata_element_value (element_hierarchy, value, language_id, multi, record_id, parent_indexer,is_editable) VALUES (".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_creator_date].",'" . $date_modified . "','none',1, " . $last_record_id . ",1,0)";
-    $execmetadatarecordSql = $db->query($metadatarecordSql);
-    $exec = null;
-    }
-        
     }///////end of if exist metadata - creator
 
 
@@ -1334,7 +1328,7 @@ function create_section_pages($v, $last_section_id, $sectionPageSql, $sectionPag
             $db->exec($sectionPageSql, array($last_section_id, '2', 'Screen 2'));
             $db->exec($sectionPageTextSql);
         }
-}
+    }
 }
 
 function savemetadataexhibit() {
@@ -1354,14 +1348,14 @@ function savemetadataexhibit() {
     } catch (Exception $e) {
         die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-    
+
     $maxIdSQL = "select * from metadata_record where object_id=" . $_POST['exhibit_id'] . " and object_type='exhibit'";
     $exec = $db->query($maxIdSQL);
     $row = $exec->fetch();
     $record_id = $row["id"];
     $exec = null;
-    
-     $metadataFile= Zend_Registry::get('metadataFile');/////read metadata file 
+
+    $metadataFile = Zend_Registry::get('metadataFile'); /////read metadata file 
     foreach ($_POST as $var => $value) {
 
 
@@ -1481,7 +1475,6 @@ function savemetadataexhibit() {
                         $maxIdSQL = "insert into metadata_element_value (element_hierarchy,value,language_id,record_id,multi,parent_indexer,vocabulary_record_id,classification_id) VALUES (?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE value=?,vocabulary_record_id=?,classification_id=?";
                         $exec = $db->exec($maxIdSQL, array($var, $value, $language, $record_id, $varmulti, $parent_indexer, $vocabulary_record_id, $classification_id, $value, $vocabulary_record_id, $classification_id)); //title
 //echo $maxIdSQL."<br>";
-
                         //$exec = $db->query($maxIdSQL);
                         $result_multi = $exec->fetch();
                         $exec = null;
@@ -1490,26 +1483,30 @@ function savemetadataexhibit() {
             }//end not get in if is language name at form    
         }
     }
-    if($metadataFile[metadata_schema_resources][element_hierarchy_metadata_language]== false){$metadataFile[metadata_schema_resources][element_hierarchy_metadata_language]=0;}
-    if($metadataFile[metadata_schema_resources][element_hierarchy_title]== false){$metadataFile[metadata_schema_resources][element_hierarchy_title]=0;}
-    $sqllan = "SELECT b.value FROM metadata_element_value as a inner join metadata_vocabulary_record as b on b.id=a.vocabulary_record_id WHERE a.record_id=" . $record_id . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_metadata_language]."  "; //echo $sqllan; break;
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_metadata_language] == false) {
+        $metadataFile[metadata_schema_resources][element_hierarchy_metadata_language] = 0;
+    }
+    if ($metadataFile[metadata_schema_resources][element_hierarchy_title] == false) {
+        $metadataFile[metadata_schema_resources][element_hierarchy_title] = 0;
+    }
+    $sqllan = "SELECT b.value FROM metadata_element_value as a inner join metadata_vocabulary_record as b on b.id=a.vocabulary_record_id WHERE a.record_id=" . $record_id . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_metadata_language] . "  "; //echo $sqllan; break;
     $execlan = $db->query($sqllan);
     $result_multi = $execlan->fetch();
     $execlan = null;
-    $sqllan4 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_title]." and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
+    $sqllan4 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_title] . " and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
     $execlan4 = $db->query($sqllan4);
     $result_multi4 = $execlan4->fetch();
     $execlan4 = null;
-    $sqllan2 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_title]." and language_id='en'"; //echo $sqllan; break;
+    $sqllan2 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_title] . " and language_id='en'"; //echo $sqllan; break;
     $execlan2 = $db->query($sqllan2);
     $result_multi2 = $execlan2->fetch();
     $execlan2 = null;
     if (strlen($result_multi4['value']) > 0) {
-        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_title]." and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_title] . " and language_id='" . $result_multi['value'] . "'"; //echo $sqllan; break;
     } elseif (strlen($result_multi2['value']) > 0) {
-        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_title]." and language_id='en'"; //echo $sqllan; break;
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_title] . " and language_id='en'"; //echo $sqllan; break;
     } else {
-        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_title]." LIMIT 0,1";
+        $sqllan3 = "SELECT * FROM metadata_element_value WHERE record_id=" . $record_id . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_title] . " LIMIT 0,1";
     }
 //echo $sqllan3; break;
     $execlan3 = $db->query($sqllan3);
@@ -1520,7 +1517,7 @@ function savemetadataexhibit() {
     if (strlen($exhibit_title_from_metadata) > 2) {
         $exhibit_title_from_metadata = $exhibit_title_from_metadata;
     } else {
-        $exhibit_title_from_metadata = $_POST[$metadataFile[metadata_schema_resources][element_hierarchy_title].'_1'];
+        $exhibit_title_from_metadata = $_POST[$metadataFile[metadata_schema_resources][element_hierarchy_title] . '_1'];
     }//title gia pathway
     //$path_slug = $_POST['slug'];
     //$path_slug = str_replace(" ", "-", $path_slug);
@@ -1529,7 +1526,6 @@ function savemetadataexhibit() {
     //if ($countslug < 2) {
     //    $path_slug = "Pathway-slug-" . $_POST['exhibit_id'];
     //}
-
     //$maxIdSQL = "SELECT slug FROM omeka_exhibits WHERE id=" . $_POST['exhibit_id'] . " LIMIT 0,1"; //echo $maxIdSQL;break;
     //$exec = $db->query($maxIdSQL);
     //$row2 = $exec->fetch();
@@ -1553,7 +1549,7 @@ function savemetadataexhibit() {
     //$maxIdSQL = "update omeka_exhibits SET title='" . addslashes($exhibit_title_from_metadata) . "',public=" . $_POST['public'] . ",date_modified='" . $_POST['date_modified'] . "' where id=" . $_POST['exhibit_id'] . "";
     //$exec = $db->query($maxIdSQL);
     $maxIdSQL = "update omeka_exhibits SET title=?,public=?,date_modified=? where id=?";
-    $exec = $db->exec($maxIdSQL, array($exhibit_title_from_metadata, $_POST['public'],$_POST['date_modified'],$_POST['exhibit_id'])); //title
+    $exec = $db->exec($maxIdSQL, array($exhibit_title_from_metadata, $_POST['public'], $_POST['date_modified'], $_POST['exhibit_id'])); //title
 //$result_multi=$exec->fetch();
     $exec = null;
 
@@ -1578,7 +1574,7 @@ function teaser($ex_eid, $type = 'null', $sec_id) {
     } catch (Exception $e) {
         die($e->getMessage() . '<p>Please refer to <a href="http://omeka.org/codex/">Omeka documentation</a> for help.</p>');
     }
-    $metadataFile= Zend_Registry::get('metadataFile');
+    $metadataFile = Zend_Registry::get('metadataFile');
     $maxIdSQL = "select * from omeka_teasers where exhibit_id=" . $ex_eid . " and type!='europeana' and sec_id=" . $sec_id;
 //echo $maxIdSQL;break;
     $exec = $db->query($maxIdSQL);
@@ -1601,12 +1597,12 @@ function teaser($ex_eid, $type = 'null', $sec_id) {
                     $resultrec = $exec->fetch();
 
                     if (isset($resultrec['id']) and $resultrec['id'] > 1) {
-                        $sql = "select * from metadata_element_value where record_id=" . $resultrec['id'] . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_title]." and language_id='en'";
+                        $sql = "select * from metadata_element_value where record_id=" . $resultrec['id'] . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_title] . " and language_id='en'";
 //echo $sql."<br>";
                         $exec = $db->query($sql);
                         $result = $exec->fetch();
 
-                        $sql = "select * from metadata_element_value where record_id=" . $resultrec['id'] . " and element_hierarchy=".$metadataFile[metadata_schema_resources][element_hierarchy_location]."";
+                        $sql = "select * from metadata_element_value where record_id=" . $resultrec['id'] . " and element_hierarchy=" . $metadataFile[metadata_schema_resources][element_hierarchy_location] . "";
 //echo $sql;break;
                         $exec = $db->query($sql);
                         $resultloc = $exec->fetch();
@@ -1736,7 +1732,8 @@ function return_template_by_id($template_id) {  //if template_id=0 then return A
     }
     return $result;
 }
-function toSlug($string,$space="-") { 
+
+function toSlug($string, $space = "-") {
     if (function_exists('iconv')) {
         $string = iconv('utf-8', 'ascii//TRANSLIT//IGNORE', $string);
     }
@@ -1747,7 +1744,8 @@ function toSlug($string,$space="-") {
     $string = str_replace(" ", $space, $string);
     return $string;
 }
-function addteasers_to_pathway_page($ex_eid=NULL, $sec_id=NULL, $pg_id=NULL, $item_id=NULL) {
+
+function addteasers_to_pathway_page($ex_eid = NULL, $sec_id = NULL, $pg_id = NULL, $item_id = NULL) {
     require_once 'Omeka/Core.php';
     $core = new Omeka_Core;
 
@@ -1767,30 +1765,30 @@ function addteasers_to_pathway_page($ex_eid=NULL, $sec_id=NULL, $pg_id=NULL, $it
     $user_id = $user['entity_id'];
 
 //if isset the exhibit	
-    $result_sqlexhibit=exhibit_builder_get_exhibit_by_id($ex_eid);
-    
-    if (isset($result_sqlexhibit['id']) and $item_id>0) {
+    $result_sqlexhibit = exhibit_builder_get_exhibit_by_id($ex_eid);
 
-           if ($user['id'] == 1 or $user['role'] == 'super' or $result_sqlexhibit->wasAddedBy(current_user()) or sameinstitutionexhibit($result_sqlexhibit, $user)) {
+    if (isset($result_sqlexhibit['id']) and $item_id > 0) {
 
-                $query_item_js = "select text from omeka_element_texts  where record_id=" . $item_id . " and element_id=68";
+        if ($user['id'] == 1 or $user['role'] == 'super' or $result_sqlexhibit->wasAddedBy(current_user()) or sameinstitutionexhibit($result_sqlexhibit, $user)) {
+
+            $query_item_js = "select text from omeka_element_texts  where record_id=" . $item_id . " and element_id=68";
 //echo $query_item_js; break;
-                    $res_item_js = $db->query($query_item_js);
-                    $result_item_js = $res_item_js->fetch();
+            $res_item_js = $db->query($query_item_js);
+            $result_item_js = $res_item_js->fetch();
 
-                if ($item_id > 0) {
-                    $query_teaser = "insert into omeka_teasers (sec_id,exhibit_id,pg_id,item_id,type) values (" . $sec_id . "," . $ex_eid . "," . $pg_id . "," . $item_id . ",'null')";
-                    $result_teaser = $db->query($query_teaser);
+            if ($item_id > 0) {
+                $query_teaser = "insert into omeka_teasers (sec_id,exhibit_id,pg_id,item_id,type) values (" . $sec_id . "," . $ex_eid . "," . $pg_id . "," . $item_id . ",'null')";
+                $result_teaser = $db->query($query_teaser);
 
-                    $query_teaser = "SELECT LAST_INSERT_ID() AS LAST_ID FROM omeka_teasers";
-                    $result_teaser = $db->query($query_teaser);
-                    $result_teaser_id = $result_teaser->fetch();
-                    
-                    
-                    return array('id'=>$result_teaser_id['LAST_ID'], 'text'=>$result_item_js['text']);
-                }
-            }else{
-                   return false; 
+                $query_teaser = "SELECT LAST_INSERT_ID() AS LAST_ID FROM omeka_teasers";
+                $result_teaser = $db->query($query_teaser);
+                $result_teaser_id = $result_teaser->fetch();
+
+
+                return array('id' => $result_teaser_id['LAST_ID'], 'text' => $result_item_js['text']);
             }
+        } else {
+            return false;
         }
+    }
 }

@@ -560,12 +560,12 @@ abstract class Omeka_Record implements ArrayAccess
                 if($metadataFile[metadata_schema_resources][element_hierarchy_format]!=false){
 		savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_format],NULL,''.$data_to_save['item_id'].'','item','1',$formetypetext);
                 }
-                if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog]!=false){
-                savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog],'URI',''.$data_to_save['item_id'].'','item','1');
-                }
-                if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry]!=false){
-                savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry],''.$uri.'/archive/files/'.$data_to_save['archive_filename'].'',''.$data_to_save['item_id'].'','item','1');
-                }
+//                if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog]!=false){
+//                savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_identifier_catalog],'URI',''.$data_to_save['item_id'].'','item','1');
+//                }
+//                if($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry]!=false){
+//                savelomelement($metadataFile[metadata_schema_resources][element_hierarchy_identifier_entry],''.$uri.'/archive/files/'.$data_to_save['archive_filename'].'',''.$data_to_save['item_id'].'','item','1');
+//                }
                 if(stripos(' '.$data_to_save['mime_os'],"image")>0){$formtype=6;}else{$formtype=20;}
 		saveomekasql('UPDATE omeka_items SET item_type_id='.$formtype.' where id='.$data_to_save['item_id'].'');
 		

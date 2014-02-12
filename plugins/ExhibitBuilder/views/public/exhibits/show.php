@@ -250,18 +250,18 @@
                             imgInText.id = Math.floor((Math.random() * 900) + 1);
                             imgInText.title = file.metadata.lom.general.title.value;
 
-                            var ext = file.metadata.lom.general.identifier.entry.value.split('.').pop().toLowerCase();
+                            var ext = file.metadata.lom.technical.location.value.split('.').pop().toLowerCase();
                             if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
                                 //imgInText.img = 'http://img.bitpixels.com/getthumbnail?code=29089&size='+size+'&url='+file.metadata.lom.general.identifier.entry.value+'&_dad=portal&_schema=PORTAL';
                                 imgInText.img = '../../../plugins/ExhibitBuilder/views/public/exhibits/images/html_l.png';
 
-                                if (file.metadata.lom.general.identifier.entry.value.indexOf("/content/thumbs/src/") != -1) {
-                                    var e = encodeURIComponent(file.metadata.lom.general.identifier.entry.value.replace("http://", ""));
+                                if (file.metadata.lom.technical.location.value.indexOf("/content/thumbs/src/") != -1) {
+                                    var e = encodeURIComponent(file.metadata.lom.technical.location.value.replace("http://", ""));
                                     imgInText.img = "http://images.weserv.nl/?url=" + e + "&w=" + size;
                                 }
 
                             } else {
-                                var e = encodeURIComponent(file.metadata.lom.general.identifier.entry.value.replace("http://", ""));
+                                var e = encodeURIComponent(file.metadata.lom.technical.location.value.replace("http://", ""));
                                 imgInText.img = "http://images.weserv.nl/?url=" + e + "&w=" + size;
                             }
 
@@ -292,7 +292,7 @@
                             imgInText.lb = '<section class="lb" id="inline' + imgInText.id + '"><h3 class="ac" data-translation="Access_the_Resource">Access the Resource:</h3>';
 
                             imgInText.lb += '<article class="clearfix lbinner">';
-                            imgInText.lb += '<section class="lbleft"><h2>' + imgInText.title + '</h2><a href="' + file.metadata.lom.general.identifier.entry.value + '" target="_blank"><img src="' + imgInText.img + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'width\',\'390\');this.setAttribute(\'onerror\',\'null\');" data-img="' + file.metadata.lom.general.identifier.entry.value + '" /></a>'
+                            imgInText.lb += '<section class="lbleft"><h2>' + imgInText.title + '</h2><a href="' + file.metadata.lom.technical.location.value + '" target="_blank"><img src="' + imgInText.img + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'width\',\'390\');this.setAttribute(\'onerror\',\'null\');" data-img="' + file.metadata.lom.technical.location.value + '" /></a>'
 
                             if (file.europeana != undefined && file.europeana.url != undefined) {
                                 imgInText.lb += '<a class="europeana" href="' + file.europeana.url + '" target="_blank"><img src="../../../plugins/ExhibitBuilder/views/public/exhibits/images/europeana-logo-en.png" /></a>';
@@ -545,7 +545,7 @@
 
                                         if (vo.file != undefined) {
 
-                                            var img = (vo.file.thumbs != undefined) ? vo.file.thumbs.full : vo.file.metadata.lom.general.identifier.entry.value;
+                                            var img = (vo.file.thumbs != undefined) ? vo.file.thumbs.full : vo.file.metadata.lom.technical.location.value;
                                             var tmpImg = "http://images.weserv.nl/?url=" + img.replace("http://", "") + "&w=175&h=140&t=square&a=t";
                                             var imgInText = setLightBox(vo.file, 390);
 
@@ -558,7 +558,7 @@
 
                                             //  get images for gallery
                                             var gTmp = {};
-                                            gTmp.path = vo.file.metadata.lom.general.identifier.entry.value;
+                                            gTmp.path = vo.file.metadata.lom.technical.location.value;
                                             gTmp.title = vo.file.metadata.lom.general.title.value;
                                             if (vo.file.metadata.lom.general.description != undefined && vo.file.metadata.lom.general.description.value != undefined) {
                                                 gTmp.description = vo.file.metadata.lom.general.description.value;
@@ -603,9 +603,9 @@
                         function setSupportMaterial(file) {
                             var toReturn = '';
 
-                            if (file.metadata.lom.general.identifier.entry.value == undefined)
+                            if (file.metadata.lom.technical.location.value == undefined)
                                 return '';
-                            var img = file.metadata.lom.general.identifier.entry.value;
+                            var img = file.metadata.lom.technical.location.value;
 
                             var extension = img.substr((img.lastIndexOf('.') + 1));
                             switch (extension) {
@@ -639,7 +639,7 @@
                             }
 
                             var imgInText = setLightBox(file, 390);
-                            toReturn += '<a class="lbtrigger clearfix" href="#inline' + imgInText.id + '"><img height="75" src="' + tmpImg + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'height\',\'75\');this.setAttribute(\'onerror\',\'null\');" data-img="' + file.metadata.lom.general.identifier.entry.value + '" /><span>' + file.metadata.lom.general.title.value + '</span></a>' + imgInText.lb; // thumb
+                            toReturn += '<a class="lbtrigger clearfix" href="#inline' + imgInText.id + '"><img height="75" src="' + tmpImg + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'height\',\'75\');this.setAttribute(\'onerror\',\'null\');" data-img="' + file.metadata.lom.technical.location.value + '" /><span>' + file.metadata.lom.general.title.value + '</span></a>' + imgInText.lb; // thumb
 
                             return toReturn;
                         }
