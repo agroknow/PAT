@@ -131,7 +131,8 @@
                     <div id="tabs_container"></div>
                 </div>
 
-                <section class="mdblock clearfix">
+<!--               Hide metadata elements -->
+<!--<section class="mdblock clearfix">
 
                     <div class="fl">
 
@@ -163,7 +164,7 @@
 
                     </div>
 
-                </section>
+                </section>-->
 
             </section>
 
@@ -546,7 +547,7 @@
                                         if (vo.file != undefined) {
 
                                             var img = (vo.file.thumbs != undefined) ? vo.file.thumbs.full : vo.file.metadata.lom.technical.location.value;
-                                            var tmpImg = "http://images.weserv.nl/?url=" + img.replace("http://", "") + "&w=175&h=140&t=square&a=t";
+                                            var tmpImg = "http://images.weserv.nl/?url=" + img.replace("http://", "") + "&w=235&h=200&t=square&a=t";
                                             var imgInText = setLightBox(vo.file, 390);
 
                                             if (!galIsOpened) {
@@ -554,7 +555,7 @@
                                                 galIsOpened = true;
                                             }
 
-                                            returnString += '<a class="lbtrigger" href="#inline' + imgInText.id + '"><img height="140" src="' + tmpImg + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'height\',\'140\');this.setAttribute(\'onerror\',\'null\');" data-img="' + img + '" /><span>' + vo.file.metadata.lom.general.title.value + '</span></a>' + imgInText.lb; // thumb
+                                            returnString += '<a class="lbtrigger" href="#inline' + imgInText.id + '"><img height="200" src="' + tmpImg + '" onerror="this.setAttribute(\'src\',this.getAttribute(\'data-img\'));this.setAttribute(\'height\',\'200\');this.setAttribute(\'onerror\',\'null\');" data-img="' + img + '" /><span>' + vo.file.metadata.lom.general.title.value + '</span></a>' + imgInText.lb; // thumb
 
                                             //  get images for gallery
                                             var gTmp = {};
@@ -746,15 +747,16 @@
                                     if (j.metadata.lom.general.language.value != undefined) {
                                         bi += '<div><label>' + j.metadata.lom.general.language.label + ':</label><span>' + j.metadata.lom.general.language.value + '</span></div>';
                                     }
-                                    if (j.metadata.omeka.dateModified != undefined) {
-                                        bi += '<div><label data-translation="Pathway_last_saved_at">Pathway last saved at</label><label>:</label><span>' + j.metadata.omeka.dateModified + '</span></div>';
-                                    }
+                                    //hide pathway last saved
+//                                    if (j.metadata.omeka.dateModified != undefined) {
+//                                        bi += '<div><label data-translation="Pathway_last_saved_at">Pathway last saved at</label><label>:</label><span>' + j.metadata.omeka.dateModified + '</span></div>';
+//                                    }
                                     if (j.metadata.lom.metaMetadata.contribute.role != undefined && j.metadata.lom.metaMetadata.contribute.role.value == 'creator') {
                                         var vcardSample = j.metadata.lom.metaMetadata.contribute.entity.value;
                                         vcFn = vCard.initialize(vcardSample).get_fn();
                                         vcEmail = vCard.initialize(vcardSample).get_email();
-                                        bi += '<div><label data-translation="Name">Name</label><label>:</label><span>' + vcFn + '</span></div>';
-                                        bi += '<div><label data-translation="Email">Email</label><label>:</label><span>' + vcEmail + '</span></div>';
+//                                        bi += '<div><label data-translation="Name">Name</label><label>:</label><span>' + vcFn + '</span></div>';
+//                                        bi += '<div><label data-translation="Email">Email</label><label>:</label><span>' + vcEmail + '</span></div>';
                                     }
 
                                     if (j.metadata.lom.educational.typicalAgeRange != undefined) {
@@ -790,411 +792,417 @@
                                         $(this).next().slideToggle('fast').prev().toggleClass('opened');
                                     });
 
-                                    var gText = '';
-                                    if (j.metadata.lom.general != undefined) {
-
-                                        if (j.metadata.lom.general.identifier != undefined) {
-                                            gText += '<div class="subtitle">' + j.metadata.lom.general.identifier.label + '</div>';
-
-                                            if (j.metadata.lom.general.identifier.catalog != undefined) {
-                                                gText += '<div><span>' + j.metadata.lom.general.identifier.catalog.label + ':</span>' + j.metadata.lom.general.identifier.catalog.value + '</div>';
-                                            }
-                                            if (j.metadata.lom.general.identifier.entry != undefined) {
-                                                gText += '<div><span>' + j.metadata.lom.general.identifier.entry.label + ':</span>' + j.metadata.lom.general.identifier.entry.value + '</div>';
-                                            }
-                                        }
-
-                                        if (j.metadata.lom.general.title != undefined) {
-                                            gText += '<div class="subtitle">' + j.metadata.lom.general.title.label + '</div>';
-                                            gText += '<div>' + j.metadata.lom.general.title.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.general.language != undefined) {
-                                            gText += '<div class="subtitle">' + j.metadata.lom.general.language.label + '</div>';
-                                            gText += '<div>' + j.metadata.lom.general.language.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.general.description != undefined && j.metadata.lom.general.description.value) {
-                                            gText += '<div class="subtitle">' + j.metadata.lom.general.description.label + '</div>';
-                                            gText += '<div>' + j.metadata.lom.general.description.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.general.keyword != undefined) {
-
-                                            var ktmp = '';
-                                            var klabel = '';
-                                            if (j.metadata.lom.general.keyword instanceof Array) {
-                                                var tmpKeywords = [];
-                                                $.each(j.metadata.lom.general.keyword, function(kk, kv) {
-                                                    tmpKeywords.push(kv.value);
-                                                    klabel = kv.label;
-                                                });
-                                                ktmp = '<div>' + tmpKeywords.join(', ') + '</div>';
-                                            } else {
-                                                ktmp = '<div>' + j.metadata.lom.general.keyword.value + '</div>';
-                                                klabel = j.metadata.lom.general.keyword.label;
-                                            }
-
-                                            gText += '<div class="subtitle">' + klabel + '</div>' + ktmp;
-
-                                        }
-
-                                        $("#general-text").html(gText.replace(/undefined/gi, ""));
-                                        $("#general-text").prev().text(j.metadata.lom.general.label);
-
-                                    } else {
-                                        $("#general-text").prev().remove();
-                                        $("#general-text").remove();
-                                    }
-
-
-                                    var lcText = '';
-                                    if (j.metadata.lom.lifeCycle != undefined) {
-
-                                        if (j.metadata.lom.lifeCycle.contribute != undefined) {
-
-                                            //lcText += '<div class="subtitle">Contributions</div>';
-                                            if (j.metadata.lom.lifeCycle.contribute instanceof Array) {
-                                                var k = 1;
-                                                $.each(j.metadata.lom.lifeCycle.contribute, function(lk, lv) {
-
-                                                    if (lv.role != undefined) {
-                                                        lcText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
-                                                        lcText += '<div>';
-                                                        lcText += '<span>' + lv.role.label + ':</span>';
-                                                        lcText += lv.role.value;
-                                                        lcText += '</div>';
-
-                                                        if (lv.entity != undefined) {
-                                                            lcText += '<div>';
-                                                            lcText += '<span>' + lv.entity.label + ':</span>';
-
-                                                            var vc = lv.entity.value;
-                                                            var vcFn = vCard.initialize(vc).get_fn();
-                                                            var vcEmail = vCard.initialize(vc).get_email();
-                                                            var vcOrg = vCard.initialize(vc).get_org();
-                                                            lcText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
-
-                                                            lcText += '</div>';
-                                                        }
-
-                                                        if (lv.date != undefined) {
-                                                            lcText += '<div>';
-                                                            lcText += '<span>' + lv.date.label + ':</span>';
-                                                            var tmpDate = lv.date.dateTime.split("T");
-                                                            lcText += tmpDate[0];
-                                                            lcText += '</div>';
-                                                        }
-
-                                                        k++;
-                                                    }
-
-                                                });
-
-                                            } else {
-
-                                                lcText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
-                                                if (j.metadata.lom.lifeCycle.contribute.role != undefined) {
-                                                    lcText += '<div>';
-                                                    lcText += '<span>' + j.metadata.lom.lifeCycle.contribute.role.label + ':</span>';
-                                                    lcText += j.metadata.lom.lifeCycle.contribute.role.value;
-                                                    lcText += '</div>';
-                                                }
-
-                                                if (j.metadata.lom.lifeCycle.contribute.entity != undefined) {
-                                                    lcText += '<div>';
-                                                    lcText += '<span>' + j.metadata.lom.lifeCycle.contribute.entity.label + ':</span>';
-
-                                                    var vc = j.metadata.lom.lifeCycle.contribute.entity.value;
-                                                    var vcFn = vCard.initialize(vc).get_fn();
-                                                    var vcEmail = vCard.initialize(vc).get_email();
-                                                    var vcOrg = vCard.initialize(vc).get_org();
-                                                    lcText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
-
-                                                    lcText += '</div>';
-                                                }
-
-                                                if (j.metadata.lom.lifeCycle.contribute.date != undefined) {
-                                                    lcText += '<div>';
-                                                    lcText += '<span>' + j.metadata.lom.lifeCycle.contribute.date.label + ':</span>';
-                                                    var tmpDate = j.metadata.lom.lifeCycle.contribute.date.dateTime.split("T");
-                                                    lcText += tmpDate[0];
-                                                    lcText += '</div>';
-                                                }
-
-                                            }
-
-                                        }
-                                        $("#lifecycle-text").html(lcText.replace(/undefined/gi, ""));
-                                        $("#lifecycle-text").prev().text(j.metadata.lom.lifeCycle.label);
-                                    } else {
-                                        $("#lifecycle-text").prev().remove();
-                                        $("#lifecycle-text").remove();
-                                    }
-
-
-                                    var mmText = '';
-                                    if (j.metadata.lom.metaMetadata != undefined) {
-
-                                        if (j.metadata.lom.metaMetadata.identifier != undefined) {
-                                            mmText += '<div class="subtitle">' + j.metadata.lom.metaMetadata.identifier.label + '</div>';
-
-                                            if (j.metadata.lom.metaMetadata.identifier.catalog != undefined) {
-                                                mmText += '<div><span>' + j.metadata.lom.metaMetadata.identifier.catalog.label + ':</span>' + j.metadata.lom.metaMetadata.identifier.catalog.value + '</div>';
-                                            }
-                                            if (j.metadata.lom.metaMetadata.identifier.entry != undefined) {
-                                                mmText += '<div><span>' + j.metadata.lom.metaMetadata.identifier.entry.label + ':</span>' + j.metadata.lom.metaMetadata.identifier.entry.value + '</div>';
-                                            }
-                                        }
-
-                                        if (j.metadata.lom.metaMetadata.contribute != undefined) {
-
-                                            //mmText += '<div class="subtitle">Contributions</div>';
-                                            if (j.metadata.lom.metaMetadata.contribute instanceof Array) {
-                                                var k = 1;
-                                                $.each(j.metadata.lom.metaMetadata.contribute, function(lk, lv) {
-
-                                                    mmText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
-                                                    mmText += '<div>';
-                                                    mmText += '<span>' + lv.role.label + ':</span>';
-                                                    mmText += lv.role.value;
-                                                    mmText += '</div>';
-
-                                                    if (lv.entity != undefined) {
-                                                        mmText += '<div>';
-                                                        mmText += '<span>' + lv.entity.label + ':</span>';
-
-                                                        var vc = lv.entity.value;
-                                                        var vcFn = vCard.initialize(vc).get_fn();
-                                                        var vcEmail = vCard.initialize(vc).get_email();
-                                                        var vcOrg = vCard.initialize(vc).get_org();
-                                                        mmText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
-
-                                                        mmText += '</div>';
-                                                    }
-
-                                                    if (lv.date != undefined) {
-                                                        mmText += '<div>';
-                                                        mmText += '<span>' + lv.date.label + ':</span>';
-                                                        var tmpDate = lv.date.dateTime.split("T");
-                                                        mmText += tmpDate[0];
-                                                        mmText += '</div>';
-                                                    }
-
-                                                    k++;
-                                                });
-
-                                            } else {
-
-                                                mmText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
-                                                mmText += '<div>';
-                                                mmText += '<span>' + j.metadata.lom.metaMetadata.contribute.role.label + ':</span>';
-                                                mmText += j.metadata.lom.metaMetadata.contribute.role.value;
-                                                mmText += '</div>';
-
-                                                if (j.metadata.lom.metaMetadata.contribute.entity != undefined) {
-                                                    mmText += '<div>';
-                                                    mmText += '<span>' + j.metadata.lom.metaMetadata.contribute.entity.label + ':</span>';
-
-                                                    var vc = j.metadata.lom.metaMetadata.contribute.entity.value;
-                                                    var vcFn = vCard.initialize(vc).get_fn();
-                                                    var vcEmail = vCard.initialize(vc).get_email();
-                                                    var vcOrg = vCard.initialize(vc).get_org();
-                                                    mmText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
-
-                                                    mmText += '</div>';
-                                                }
-
-                                                if (j.metadata.lom.metaMetadata.contribute.date != undefined) {
-                                                    mmText += '<div>';
-                                                    mmText += '<span>' + j.metadata.lom.metaMetadata.contribute.date.label + ':</span>';
-                                                    var tmpDate = j.metadata.lom.metaMetadata.contribute.date.dateTime.split("T");
-                                                    mmText += tmpDate[0];
-                                                    mmText += '</div>';
-                                                }
-
-                                            }
-
-                                        }
-
-                                        if (j.metadata.lom.metaMetadata.metadataSchema != undefined) {
-                                            mmText += '<div class="subtitle">' + j.metadata.lom.metaMetadata.metadataSchema.label + '</div>';
-                                            mmText += '<div>' + j.metadata.lom.metaMetadata.metadataSchema.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.metaMetadata.language != undefined) {
-                                            mmText += '<div class="subtitle">' + j.metadata.lom.metaMetadata.language.label + '</div>';
-                                            mmText += '<div>' + j.metadata.lom.metaMetadata.language.value + '</div>';
-                                        }
-                                        $("#metametadata-text").html(mmText.replace(/undefined/gi, ""));
-                                        $("#metametadata-text").prev().text(j.metadata.lom.metaMetadata.label);
-                                    } else {
-                                        $("#metametadata-text").prev().remove();
-                                        $("#metametadata-text").remove();
-                                    }
-
-
-                                    var tText = '';
-                                    if (j.metadata.lom.technical != undefined) {
-
-                                        if (j.metadata.lom.technical.location != undefined) {
-                                            tText += '<div class="subtitle">' + j.metadata.lom.technical.location.label + '</div>';
-                                            tText += '<div>' + j.metadata.lom.technical.location.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.technical.format != undefined) {
-                                            tText += '<div class="subtitle">' + j.metadata.lom.technical.format.label + '</div>';
-                                            tText += '<div>' + j.metadata.lom.technical.format.value + '</div>';
-                                        }
-                                        $("#technical-text").html(tText.replace(/undefined/gi, ""));
-                                        $("#technical-text").prev().text(j.metadata.lom.technical.label);
-                                    } else {
-                                        $("#technical-text").prev().remove();
-                                        $("#technical-text").remove();
-                                    }
-
-
-                                    var eText = '';
-                                    if (j.metadata.lom.educational != undefined) {
-
-                                        if (j.metadata.lom.educational.learningResourceType != undefined) {
-
-                                            if (j.metadata.lom.educational.learningResourceType instanceof Array) {
-                                                var tmpRType = [];
-                                                var tmpRTypeLabel = '';
-                                                $.each(j.metadata.lom.educational.learningResourceType, function(krt, vrt) {
-                                                    tmpRType.push(vrt.value);
-                                                    tmpRTypeLabel = vrt.label;
-                                                });
-
-                                                eText += '<div class="subtitle">' + tmpRTypeLabel + '</div>';
-                                                eText += '<div>' + tmpRType.join(', ') + '</div>';
-
-                                            } else {
-                                                eText += '<div class="subtitle">' + j.metadata.lom.educational.learningResourceType.label + '</div>';
-                                                eText += '<div>' + j.metadata.lom.educational.learningResourceType.value + '</div>';
-                                            }
-
-                                        }
-
-                                        if (j.metadata.lom.educational.intendedEndUserRole != undefined) {
-
-                                            if (j.metadata.lom.educational.intendedEndUserRole instanceof Array) {
-                                                var tmpRole = [];
-                                                var tmpRoleLabel = '';
-                                                $.each(j.metadata.lom.educational.intendedEndUserRole, function(kr, vr) {
-                                                    tmpRole.push(vr.value);
-                                                    tmpRoleLabel = vr.label;
-                                                });
-
-                                                eText += '<div class="subtitle">' + tmpRoleLabel + '</div>';
-                                                eText += '<div>' + tmpRole.join(', ') + '</div>';
-
-                                            } else {
-                                                eText += '<div class="subtitle">' + j.metadata.lom.educational.intendedEndUserRole.label + '</div>';
-                                                eText += '<div>' + j.metadata.lom.educational.intendedEndUserRole.value + '</div>';
-                                            }
-
-                                        }
-
-                                        if (j.metadata.lom.educational.context != undefined) {
-
-                                            if (j.metadata.lom.educational.context instanceof Array) {
-                                                var tmpCtx = [];
-                                                var tmpCtxLabel = '';
-                                                $.each(j.metadata.lom.educational.context, function(kct, vct) {
-                                                    tmpCtx.push(vct.value);
-                                                    tmpCtxLabel = vct.label;
-                                                });
-
-                                                eText += '<div class="subtitle">' + tmpCtxLabel + '</div>';
-                                                eText += '<div>' + tmpCtx.join(', ') + '</div>';
-
-                                            } else {
-                                                eText += '<div class="subtitle">' + j.metadata.lom.educational.context.label + '</div>';
-                                                eText += '<div>' + j.metadata.lom.educational.context.value + '</div>';
-                                            }
-
-                                        }
-
-                                        if (j.metadata.lom.educational.typicalAgeRange != undefined) {
-                                            eText += '<div class="subtitle">' + j.metadata.lom.educational.typicalAgeRange.label + '</div>';
-                                            eText += '<div>' + j.metadata.lom.educational.typicalAgeRange.value + '</div>';
-                                        }
-                                        $("#educational-text").html(eText.replace(/undefined/gi, ""));
-                                        $("#educational-text").prev().text(j.metadata.lom.educational.label);
-                                    } else {
-                                        $("#educational-text").prev().remove();
-                                        $("#educational-text").remove();
-                                    }
-
-
-                                    var rText = '';
-                                    if (j.metadata.lom.rights != undefined) {
-
-                                        if (j.metadata.lom.rights.copyrightAndOtherRestrictions != undefined) {
-                                            rText += '<div class="subtitle" data-translation="Copyright_and_other_Restrictions">Copyright and other Restrictions</div>';
-                                            rText += '<div>' + j.metadata.lom.rights.copyrightAndOtherRestrictions.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.rights.cost != undefined) {
-                                            rText += '<div class="subtitle" data-translation="Cost">Cost</div>';
-                                            rText += '<div>' + j.metadata.lom.rights.cost.value + '</div>';
-                                        }
-
-                                        if (j.metadata.lom.rights.description != undefined) {
-                                            rText += '<div class="subtitle" data-translation="License">License</div>';
-                                            rText += '<div>' + getLicense(j.metadata.lom.rights.description.string) + '</div>';
-                                        }
-                                        $("#rights-text").html(rText.replace(/undefined/gi, ""));
-                                        $("#rights-text").prev().text(j.metadata.lom.rights.label);
-                                    } else {
-                                        $("#rights-text").prev().remove();
-                                        $("#rights-text").remove();
-                                    }
-
-
-                                    var cText = '';
-                                    if (j.metadata.lom.classification != undefined) {
-
-                                        if (j.metadata.lom.classification instanceof Array) {
-
-                                            $.each(j.metadata.lom.classification, function(ck, cv) {
-
-                                                if (cv.taxonPath != undefined) {
-                                                    if (cv.taxonPath instanceof Array) {
-                                                        $.each(cv.taxonPath, function(tk, tv) {
-                                                            cText += '<div><span>' + tv.source.string + ':</span>' + tv.taxon.entry.string + '</div>';
-                                                        });
-                                                    } else {
-                                                        cText += '<div><span>' + cv.taxonPath.source.string + ':</span>' + cv.taxonPath.taxon.entry.string + '</div>';
-                                                    }
-
-                                                }
-
-                                            });
-
-                                        } else {
-                                            var cv = j.metadata.lom.classification;
-                                            if (cv.taxonPath != undefined) {
-                                                if (cv.taxonPath instanceof Array) {
-                                                    $.each(cv.taxonPath, function(tk, tv) {
-                                                        cText += '<div><span>' + tv.source.string + ':</span>' + tv.taxon.entry.string + '</div>';
-                                                    });
-                                                } else {
-                                                    cText += '<div><span>' + cv.taxonPath.source.string + ':</span>' + cv.taxonPath.taxon.entry.string + '</div>';
-                                                }
-
-                                            }
-
-
-                                        }
-                                        $("#classification-text").html(cText.replace(/undefined/gi, ""));
-                                        $("#classification-text").prev().text(j.metadata.lom.classification.label);
-                                    } else {
-                                        $("#classification-text").prev().remove();
-                                        $("#classification-text").remove();
-                                    }
+//  Hide metadata elements
+//                                    var gText = '';
+//                                    if (j.metadata.lom.general != undefined) {
+//
+//                                        if (j.metadata.lom.general.identifier != undefined) {
+//                                            gText += '<div class="subtitle">' + j.metadata.lom.general.identifier.label + '</div>';
+//
+//                                            if (j.metadata.lom.general.identifier.catalog != undefined) {
+//                                                gText += '<div><span>' + j.metadata.lom.general.identifier.catalog.label + ':</span>' + j.metadata.lom.general.identifier.catalog.value + '</div>';
+//                                            }
+//                                            if (j.metadata.lom.general.identifier.entry != undefined) {
+//                                                gText += '<div><span>' + j.metadata.lom.general.identifier.entry.label + ':</span>' + j.metadata.lom.general.identifier.entry.value + '</div>';
+//                                            }
+//                                        }
+//
+//                                        if (j.metadata.lom.general.title != undefined) {
+//                                            gText += '<div class="subtitle">' + j.metadata.lom.general.title.label + '</div>';
+//                                            gText += '<div>' + j.metadata.lom.general.title.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.general.language != undefined) {
+//                                            gText += '<div class="subtitle">' + j.metadata.lom.general.language.label + '</div>';
+//                                            gText += '<div>' + j.metadata.lom.general.language.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.general.description != undefined && j.metadata.lom.general.description.value) {
+//                                            gText += '<div class="subtitle">' + j.metadata.lom.general.description.label + '</div>';
+//                                            gText += '<div>' + j.metadata.lom.general.description.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.general.keyword != undefined) {
+//
+//                                            var ktmp = '';
+//                                            var klabel = '';
+//                                            if (j.metadata.lom.general.keyword instanceof Array) {
+//                                                var tmpKeywords = [];
+//                                                $.each(j.metadata.lom.general.keyword, function(kk, kv) {
+//                                                    tmpKeywords.push(kv.value);
+//                                                    klabel = kv.label;
+//                                                });
+//                                                ktmp = '<div>' + tmpKeywords.join(', ') + '</div>';
+//                                            } else {
+//                                                ktmp = '<div>' + j.metadata.lom.general.keyword.value + '</div>';
+//                                                klabel = j.metadata.lom.general.keyword.label;
+//                                            }
+//
+//                                            gText += '<div class="subtitle">' + klabel + '</div>' + ktmp;
+//
+//                                        }
+//
+//                                        $("#general-text").html(gText.replace(/undefined/gi, ""));
+//                                        $("#general-text").prev().text(j.metadata.lom.general.label);
+//
+//                                    } else {
+//                                        $("#general-text").prev().remove();
+//                                        $("#general-text").remove();
+//                                    }
+
+
+//  Hide metadata elements
+//                                    var lcText = '';
+//                                    if (j.metadata.lom.lifeCycle != undefined) {
+//
+//                                        if (j.metadata.lom.lifeCycle.contribute != undefined) {
+//
+//                                            //lcText += '<div class="subtitle">Contributions</div>';
+//                                            if (j.metadata.lom.lifeCycle.contribute instanceof Array) {
+//                                                var k = 1;
+//                                                $.each(j.metadata.lom.lifeCycle.contribute, function(lk, lv) {
+//
+//                                                    if (lv.role != undefined) {
+//                                                        lcText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
+//                                                        lcText += '<div>';
+//                                                        lcText += '<span>' + lv.role.label + ':</span>';
+//                                                        lcText += lv.role.value;
+//                                                        lcText += '</div>';
+//
+//                                                        if (lv.entity != undefined) {
+//                                                            lcText += '<div>';
+//                                                            lcText += '<span>' + lv.entity.label + ':</span>';
+//
+//                                                            var vc = lv.entity.value;
+//                                                            var vcFn = vCard.initialize(vc).get_fn();
+//                                                            var vcEmail = vCard.initialize(vc).get_email();
+//                                                            var vcOrg = vCard.initialize(vc).get_org();
+//                                                            lcText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
+//
+//                                                            lcText += '</div>';
+//                                                        }
+//
+//                                                        if (lv.date != undefined) {
+//                                                            lcText += '<div>';
+//                                                            lcText += '<span>' + lv.date.label + ':</span>';
+//                                                            var tmpDate = lv.date.dateTime.split("T");
+//                                                            lcText += tmpDate[0];
+//                                                            lcText += '</div>';
+//                                                        }
+//
+//                                                        k++;
+//                                                    }
+//
+//                                                });
+//
+//                                            } else {
+//
+//                                                lcText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
+//                                                if (j.metadata.lom.lifeCycle.contribute.role != undefined) {
+//                                                    lcText += '<div>';
+//                                                    lcText += '<span>' + j.metadata.lom.lifeCycle.contribute.role.label + ':</span>';
+//                                                    lcText += j.metadata.lom.lifeCycle.contribute.role.value;
+//                                                    lcText += '</div>';
+//                                                }
+//
+//                                                if (j.metadata.lom.lifeCycle.contribute.entity != undefined) {
+//                                                    lcText += '<div>';
+//                                                    lcText += '<span>' + j.metadata.lom.lifeCycle.contribute.entity.label + ':</span>';
+//
+//                                                    var vc = j.metadata.lom.lifeCycle.contribute.entity.value;
+//                                                    var vcFn = vCard.initialize(vc).get_fn();
+//                                                    var vcEmail = vCard.initialize(vc).get_email();
+//                                                    var vcOrg = vCard.initialize(vc).get_org();
+//                                                    lcText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
+//
+//                                                    lcText += '</div>';
+//                                                }
+//
+//                                                if (j.metadata.lom.lifeCycle.contribute.date != undefined) {
+//                                                    lcText += '<div>';
+//                                                    lcText += '<span>' + j.metadata.lom.lifeCycle.contribute.date.label + ':</span>';
+//                                                    var tmpDate = j.metadata.lom.lifeCycle.contribute.date.dateTime.split("T");
+//                                                    lcText += tmpDate[0];
+//                                                    lcText += '</div>';
+//                                                }
+//
+//                                            }
+//
+//                                        }
+//                                        $("#lifecycle-text").html(lcText.replace(/undefined/gi, ""));
+//                                        $("#lifecycle-text").prev().text(j.metadata.lom.lifeCycle.label);
+//                                    } else {
+//                                        $("#lifecycle-text").prev().remove();
+//                                        $("#lifecycle-text").remove();
+//                                    }
+
+//  Hide metadata elements
+//                                    var mmText = '';
+//                                    if (j.metadata.lom.metaMetadata != undefined) {
+//
+//                                        if (j.metadata.lom.metaMetadata.identifier != undefined) {
+//                                            mmText += '<div class="subtitle">' + j.metadata.lom.metaMetadata.identifier.label + '</div>';
+//
+//                                            if (j.metadata.lom.metaMetadata.identifier.catalog != undefined) {
+//                                                mmText += '<div><span>' + j.metadata.lom.metaMetadata.identifier.catalog.label + ':</span>' + j.metadata.lom.metaMetadata.identifier.catalog.value + '</div>';
+//                                            }
+//                                            if (j.metadata.lom.metaMetadata.identifier.entry != undefined) {
+//                                                mmText += '<div><span>' + j.metadata.lom.metaMetadata.identifier.entry.label + ':</span>' + j.metadata.lom.metaMetadata.identifier.entry.value + '</div>';
+//                                            }
+//                                        }
+//
+//                                        if (j.metadata.lom.metaMetadata.contribute != undefined) {
+//
+//                                            //mmText += '<div class="subtitle">Contributions</div>';
+//                                            if (j.metadata.lom.metaMetadata.contribute instanceof Array) {
+//                                                var k = 1;
+//                                                $.each(j.metadata.lom.metaMetadata.contribute, function(lk, lv) {
+//
+//                                                    mmText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
+//                                                    mmText += '<div>';
+//                                                    mmText += '<span>' + lv.role.label + ':</span>';
+//                                                    mmText += lv.role.value;
+//                                                    mmText += '</div>';
+//
+//                                                    if (lv.entity != undefined) {
+//                                                        mmText += '<div>';
+//                                                        mmText += '<span>' + lv.entity.label + ':</span>';
+//
+//                                                        var vc = lv.entity.value;
+//                                                        var vcFn = vCard.initialize(vc).get_fn();
+//                                                        var vcEmail = vCard.initialize(vc).get_email();
+//                                                        var vcOrg = vCard.initialize(vc).get_org();
+//                                                        mmText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
+//
+//                                                        mmText += '</div>';
+//                                                    }
+//
+//                                                    if (lv.date != undefined) {
+//                                                        mmText += '<div>';
+//                                                        mmText += '<span>' + lv.date.label + ':</span>';
+//                                                        var tmpDate = lv.date.dateTime.split("T");
+//                                                        mmText += tmpDate[0];
+//                                                        mmText += '</div>';
+//                                                    }
+//
+//                                                    k++;
+//                                                });
+//
+//                                            } else {
+//
+//                                                mmText += '<div class="subtitle" data-translation="Contribution">Contribution</div>';
+//                                                mmText += '<div>';
+//                                                mmText += '<span>' + j.metadata.lom.metaMetadata.contribute.role.label + ':</span>';
+//                                                mmText += j.metadata.lom.metaMetadata.contribute.role.value;
+//                                                mmText += '</div>';
+//
+//                                                if (j.metadata.lom.metaMetadata.contribute.entity != undefined) {
+//                                                    mmText += '<div>';
+//                                                    mmText += '<span>' + j.metadata.lom.metaMetadata.contribute.entity.label + ':</span>';
+//
+//                                                    var vc = j.metadata.lom.metaMetadata.contribute.entity.value;
+//                                                    var vcFn = vCard.initialize(vc).get_fn();
+//                                                    var vcEmail = vCard.initialize(vc).get_email();
+//                                                    var vcOrg = vCard.initialize(vc).get_org();
+//                                                    mmText += '<div><span class="fn"><span data-translation="Name">Name</span>:</span>' + vcFn + '</div><div><span class="email"><span data-translation="Email">Email</span>:</span>' + vcEmail + '</div><div><span class="org"><span data-translation="Organization">Organization</span>:</span>' + vcOrg + '</div>';
+//
+//                                                    mmText += '</div>';
+//                                                }
+//
+//                                                if (j.metadata.lom.metaMetadata.contribute.date != undefined) {
+//                                                    mmText += '<div>';
+//                                                    mmText += '<span>' + j.metadata.lom.metaMetadata.contribute.date.label + ':</span>';
+//                                                    var tmpDate = j.metadata.lom.metaMetadata.contribute.date.dateTime.split("T");
+//                                                    mmText += tmpDate[0];
+//                                                    mmText += '</div>';
+//                                                }
+//
+//                                            }
+//
+//                                        }
+//
+//                                        if (j.metadata.lom.metaMetadata.metadataSchema != undefined) {
+//                                            mmText += '<div class="subtitle">' + j.metadata.lom.metaMetadata.metadataSchema.label + '</div>';
+//                                            mmText += '<div>' + j.metadata.lom.metaMetadata.metadataSchema.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.metaMetadata.language != undefined) {
+//                                            mmText += '<div class="subtitle">' + j.metadata.lom.metaMetadata.language.label + '</div>';
+//                                            mmText += '<div>' + j.metadata.lom.metaMetadata.language.value + '</div>';
+//                                        }
+//                                        $("#metametadata-text").html(mmText.replace(/undefined/gi, ""));
+//                                        $("#metametadata-text").prev().text(j.metadata.lom.metaMetadata.label);
+//                                    } else {
+//                                        $("#metametadata-text").prev().remove();
+//                                        $("#metametadata-text").remove();
+//                                    }
+
+
+//  Hide metadata elements
+//                                    var tText = '';
+//                                    if (j.metadata.lom.technical != undefined) {
+//
+//                                        if (j.metadata.lom.technical.location != undefined) {
+//                                            tText += '<div class="subtitle">' + j.metadata.lom.technical.location.label + '</div>';
+//                                            tText += '<div>' + j.metadata.lom.technical.location.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.technical.format != undefined) {
+//                                            tText += '<div class="subtitle">' + j.metadata.lom.technical.format.label + '</div>';
+//                                            tText += '<div>' + j.metadata.lom.technical.format.value + '</div>';
+//                                        }
+//                                        $("#technical-text").html(tText.replace(/undefined/gi, ""));
+//                                        $("#technical-text").prev().text(j.metadata.lom.technical.label);
+//                                    } else {
+//                                        $("#technical-text").prev().remove();
+//                                        $("#technical-text").remove();
+//                                    }
+
+
+//  Hide metadata elements
+//                                    var eText = '';
+//                                    if (j.metadata.lom.educational != undefined) {
+//
+//                                        if (j.metadata.lom.educational.learningResourceType != undefined) {
+//
+//                                            if (j.metadata.lom.educational.learningResourceType instanceof Array) {
+//                                                var tmpRType = [];
+//                                                var tmpRTypeLabel = '';
+//                                                $.each(j.metadata.lom.educational.learningResourceType, function(krt, vrt) {
+//                                                    tmpRType.push(vrt.value);
+//                                                    tmpRTypeLabel = vrt.label;
+//                                                });
+//
+//                                                eText += '<div class="subtitle">' + tmpRTypeLabel + '</div>';
+//                                                eText += '<div>' + tmpRType.join(', ') + '</div>';
+//
+//                                            } else {
+//                                                eText += '<div class="subtitle">' + j.metadata.lom.educational.learningResourceType.label + '</div>';
+//                                                eText += '<div>' + j.metadata.lom.educational.learningResourceType.value + '</div>';
+//                                            }
+//
+//                                        }
+//
+//                                        if (j.metadata.lom.educational.intendedEndUserRole != undefined) {
+//
+//                                            if (j.metadata.lom.educational.intendedEndUserRole instanceof Array) {
+//                                                var tmpRole = [];
+//                                                var tmpRoleLabel = '';
+//                                                $.each(j.metadata.lom.educational.intendedEndUserRole, function(kr, vr) {
+//                                                    tmpRole.push(vr.value);
+//                                                    tmpRoleLabel = vr.label;
+//                                                });
+//
+//                                                eText += '<div class="subtitle">' + tmpRoleLabel + '</div>';
+//                                                eText += '<div>' + tmpRole.join(', ') + '</div>';
+//
+//                                            } else {
+//                                                eText += '<div class="subtitle">' + j.metadata.lom.educational.intendedEndUserRole.label + '</div>';
+//                                                eText += '<div>' + j.metadata.lom.educational.intendedEndUserRole.value + '</div>';
+//                                            }
+//
+//                                        }
+//
+//                                        if (j.metadata.lom.educational.context != undefined) {
+//
+//                                            if (j.metadata.lom.educational.context instanceof Array) {
+//                                                var tmpCtx = [];
+//                                                var tmpCtxLabel = '';
+//                                                $.each(j.metadata.lom.educational.context, function(kct, vct) {
+//                                                    tmpCtx.push(vct.value);
+//                                                    tmpCtxLabel = vct.label;
+//                                                });
+//
+//                                                eText += '<div class="subtitle">' + tmpCtxLabel + '</div>';
+//                                                eText += '<div>' + tmpCtx.join(', ') + '</div>';
+//
+//                                            } else {
+//                                                eText += '<div class="subtitle">' + j.metadata.lom.educational.context.label + '</div>';
+//                                                eText += '<div>' + j.metadata.lom.educational.context.value + '</div>';
+//                                            }
+//
+//                                        }
+//
+//                                        if (j.metadata.lom.educational.typicalAgeRange != undefined) {
+//                                            eText += '<div class="subtitle">' + j.metadata.lom.educational.typicalAgeRange.label + '</div>';
+//                                            eText += '<div>' + j.metadata.lom.educational.typicalAgeRange.value + '</div>';
+//                                        }
+//                                        $("#educational-text").html(eText.replace(/undefined/gi, ""));
+//                                        $("#educational-text").prev().text(j.metadata.lom.educational.label);
+//                                    } else {
+//                                        $("#educational-text").prev().remove();
+//                                        $("#educational-text").remove();
+//                                    }
+
+
+//  Hide metadata elements
+//                                    var rText = '';
+//                                    if (j.metadata.lom.rights != undefined) {
+//
+//                                        if (j.metadata.lom.rights.copyrightAndOtherRestrictions != undefined) {
+//                                            rText += '<div class="subtitle" data-translation="Copyright_and_other_Restrictions">Copyright and other Restrictions</div>';
+//                                            rText += '<div>' + j.metadata.lom.rights.copyrightAndOtherRestrictions.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.rights.cost != undefined) {
+//                                            rText += '<div class="subtitle" data-translation="Cost">Cost</div>';
+//                                            rText += '<div>' + j.metadata.lom.rights.cost.value + '</div>';
+//                                        }
+//
+//                                        if (j.metadata.lom.rights.description != undefined) {
+//                                            rText += '<div class="subtitle" data-translation="License">License</div>';
+//                                            rText += '<div>' + getLicense(j.metadata.lom.rights.description.string) + '</div>';
+//                                        }
+//                                        $("#rights-text").html(rText.replace(/undefined/gi, ""));
+//                                        $("#rights-text").prev().text(j.metadata.lom.rights.label);
+//                                    } else {
+//                                        $("#rights-text").prev().remove();
+//                                        $("#rights-text").remove();
+//                                    }
+
+
+//  Hide metadata elements
+//                                    var cText = '';
+//                                    if (j.metadata.lom.classification != undefined) {
+//
+//                                        if (j.metadata.lom.classification instanceof Array) {
+//
+//                                            $.each(j.metadata.lom.classification, function(ck, cv) {
+//
+//                                                if (cv.taxonPath != undefined) {
+//                                                    if (cv.taxonPath instanceof Array) {
+//                                                        $.each(cv.taxonPath, function(tk, tv) {
+//                                                            cText += '<div><span>' + tv.source.string + ':</span>' + tv.taxon.entry.string + '</div>';
+//                                                        });
+//                                                    } else {
+//                                                        cText += '<div><span>' + cv.taxonPath.source.string + ':</span>' + cv.taxonPath.taxon.entry.string + '</div>';
+//                                                    }
+//
+//                                                }
+//
+//                                            });
+//
+//                                        } else {
+//                                            var cv = j.metadata.lom.classification;
+//                                            if (cv.taxonPath != undefined) {
+//                                                if (cv.taxonPath instanceof Array) {
+//                                                    $.each(cv.taxonPath, function(tk, tv) {
+//                                                        cText += '<div><span>' + tv.source.string + ':</span>' + tv.taxon.entry.string + '</div>';
+//                                                    });
+//                                                } else {
+//                                                    cText += '<div><span>' + cv.taxonPath.source.string + ':</span>' + cv.taxonPath.taxon.entry.string + '</div>';
+//                                                }
+//
+//                                            }
+//
+//
+//                                        }
+//                                        $("#classification-text").html(cText.replace(/undefined/gi, ""));
+//                                        $("#classification-text").prev().text(j.metadata.lom.classification.label);
+//                                    } else {
+//                                        $("#classification-text").prev().remove();
+//                                        $("#classification-text").remove();
+//                                    }
 
                                     $("#tabs ul").html(tabsHeading);
                                     $("#tabs_container").html(tabsBody);
