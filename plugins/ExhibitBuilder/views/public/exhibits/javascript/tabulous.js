@@ -42,7 +42,8 @@
             }
 
             var firstdiv = this.$elem.find('#tabs_container');
-            var firstdivheight = firstdiv.find('div:first').height();
+            //custom code to solve synchronize errors in js
+            var firstdivheight = 1*firstdiv.find('div:first').height();
 
             var alldivs = this.$elem.find('div:first').find('div.tabcontent');
 

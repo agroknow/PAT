@@ -288,9 +288,25 @@ strong { font-weight:bold; }
 	float: left;
 	margin-left: 10px;
 	display: block;
+        margin-top: 10px;
 }
 .secgal a:first-child {
 	margin-left:0;
+}
+.secgal a:nth-child(5) {
+	margin-left:0;
+}
+.lbtriggerdiv{
+    width:340px; 
+    text-align:center;
+    float: left;
+}
+.lbtriggerdiv img{
+    max-width:95%;
+    margin: 5px;
+}
+.lbtriggerdiv a{
+    max-width:99%;
 }
 .secgal a > * {
 	display: block;
@@ -301,8 +317,9 @@ strong { font-weight:bold; }
 .secgal a span {
 	margin-top: 8px;
 	font-size: 11px;
-	width: 135px;
+	width: 90%;
 	color: #434343;
+        margin-left: 10px;
 }
 .secgal a:hover span {
 	color: #8A9745;
@@ -504,4 +521,18 @@ strong { font-weight:bold; }
 .footer a {
 	display: block;
 	float: right;
+}
+/* added for scroll image */
+.image-scroll-to-tabs{
+    background-image: url("../images/arrow_up.png");
+    background-repeat: no-repeat;
+    background-size: 50px auto;
+    display: block;
+    height: 50px;
+    padding-top: 40px;
+    width: 50px;
+    float: right;
+}
+.image-scroll-to-tabs:hover{
+    background-image: url(../images/arrow_up_hover.png);
 }
